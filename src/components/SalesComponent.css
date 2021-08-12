@@ -1,0 +1,46 @@
+.sales-container{
+    font-weight: 500;
+
+
+}
+.sales-intro{
+    margin: 10px;
+}
+.sale-grid{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: stretch;
+    width: 100%;
+    overflow-x: hidden;
+    grid-template-columns: repeat(4, auto);
+    margin-left: -1px  !important;
+    margin-right: -2px  !important;
+    flex-wrap: wrap;
+}
+.sale-icon{
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+.sale-item{
+    padding: 7px;
+    text-align: center;
+    border: solid 1px #f5f5f5;
+    padding: 12px 16px;
+    font-size: 8px;
+    flex: 1;
+    height: 70px;
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+.sale-item a{
+    color: black;
+}
+
+
+@media (max-width: 767px) {
+    body::-webkit-scrollbar{
+        background-color: white;
+    }
+}

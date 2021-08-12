@@ -1,0 +1,24 @@
+.why-us-container{
+    padding: 15px;
+    background-color: #eff7f4;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.why-us-container span{
+    border-left: solid 6px #7bccb5;
+    padding: 5px;
+    font-weight: 500;
+}
+.why-us-details{
+  
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    width: 100%;
+    align-content: space-evenly;
+}
+.why-us-node{
+    margin: 15px;
+    font-size: 11px;
+}

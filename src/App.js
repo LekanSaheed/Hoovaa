@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import Header from './components/Header'
+import Home from './components/Home'
+import MobileNav from './components/MobileNav'
+import './App.css';
+import { GlobalContext } from './reducers/context'
+import BuyItem from './components/Pages/BuyItem';
+import SellItem from './components/Pages/SellItem';
+import SwapItem from './components/Pages/SwapItem';
+import RepairDevice from './components/Pages/RepairDevice';
+const App = () => {
+  const {state} = GlobalContext()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+      <Header/>
+    
+     <MobileNav/>
+      <Switch>
+        <Route exact path='/'>
+        <Home/>
+        </Route>
+        <Route path='/sell-item'>
+          <SellItem/>
+         </Route> 
+        <Route path='/buy-item'>
+          <BuyItem/>
+        </Route>
+        <Route path='/swap-item'>
+          <SwapItem/>
+        </Route>
+        <Route path='/repair-device'>
+          <RepairDevice/>
+        </Route>
+
+      </Switch>
+      </Router>
+
     </div>
-  );
+  )
 }
 
 export default App;

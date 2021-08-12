@@ -1,0 +1,17 @@
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    box-shadow: 0px 0px 10px -2px #c5c5c5;
+    align-items: baseline;
+    width: 100%;
+}
+.logo{
+    font-weight: bolder;
+    font-size: 16px;
+    letter-spacing: -1px;
+  
+}
+.logo a{
+    color: #7bcCb5;
+}
