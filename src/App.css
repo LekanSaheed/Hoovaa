@@ -10,3 +10,12 @@ body{
   font-family: 'Montserrat', sans-serif;
   color: rgb(145, 145, 145)
 }
+.card-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.card-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
