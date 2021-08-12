@@ -4,7 +4,7 @@ import HowItWorks from './HowItWorks'
 import SalesComponent from './SalesComponent'
 import Search from './Search'
 import WhyUs from './WhyUs'
-
+import MoreDetails from './MoreDetails'
 
 const Home = () => {
     return(
@@ -14,6 +14,7 @@ const Home = () => {
         <SalesComponent/>
         <HowItWorks/>
         <WhyUs/>
+        <MoreDetails/>
         </>
     )
 }
