@@ -41,6 +41,11 @@ const Cards = () => {
     })
     return (
         <div>
+            <div className='lg-card'>
+                <span>Sell Your Device</span>
+                <p>Get resale Value for your old device</p>
+                <span>Sell Now</span>
+            </div>
             <div className='card-container'>
             {cardList}
 

@@ -1,0 +1,16 @@
+.lg-nav{
+    display: flex;
+}
+.lg-nav ul{
+    margin: 10px;
+    margin-right: 15px;
+
+}
+li{
+    list-style: none;
+}
+@media(max-width: 812px){
+    .lg-nav{
+        display: none;
+    }
+}

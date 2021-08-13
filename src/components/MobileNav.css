@@ -10,7 +10,7 @@
     height: 100vh;
 }
 .nav-container{
-    background-color: #7bccb5;
+    background-color: rgb(116, 151, 255);
     color: black;
     padding: 20px;
     width: 0;
@@ -32,7 +32,7 @@
     font-weight: bold;
 }
 .nav-data{
-    background-color: #7bccb5;
+    background-color: rgb(116, 151, 255);
     color: white;
     height: 200px;
 }

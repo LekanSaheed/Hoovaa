@@ -13,5 +13,10 @@
   
 }
 .logo a{
-    color: #7bcCb5;
+    color: rgb(116, 151, 255);
+}
+@media(min-width: 812px){
+    .menu{
+        display: none;
+    }
 }

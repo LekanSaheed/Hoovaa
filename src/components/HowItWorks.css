@@ -6,7 +6,7 @@
     margin-top: 20px;
 }
 .how-serial{
-    background-color: #7bccb5;
+    background-color: rgb(116, 151, 255);
     padding: 2px;
     border-radius: 50px;
     color: white;
@@ -28,7 +28,7 @@
     font-weight: 500;
 }
 .how-cont-title{
-    border-left: solid 6px #7bccb5;
+    border-left: solid 6px rgb(116, 151, 255);
     padding: 5px;
     font-weight: 500;
 }

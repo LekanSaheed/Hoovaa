@@ -5,7 +5,7 @@
     overflow-x: scroll;
 }
 .cards{
-    background-color: #7BCCB5;
+    background-color: rgb(116, 151, 255);
     padding: 10px;
     color: white;
     max-width: 290px;
@@ -41,6 +41,32 @@
 }
 .last-text{
     font-size: 11px;
+}
+.lg-card{
+    display: none;
+    background-color: rgb(116, 151, 255);
+    min-height: 350px;
+    padding: 45px;
+    color: white;
+    font-weight: bolder;
+}
+.lg-card span{
+    font-size: 25px;
+}
+.lg-card p{
+    color: white;
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media(min-width: 812px){
+    .card-container{
+        display: none;
+    }
+    .lg-card{
+        display: block;
+    }
 }
 @media(max-width: 300px){
     .cards{

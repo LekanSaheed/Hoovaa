@@ -10,3 +10,9 @@ body{
   font-family: 'Montserrat', sans-serif;
   color: rgb(145, 145, 145)
 }
+
+@media only screen and (max-width:400px){
+  .card-container::-webkit-scrollbar{
+    display: none;
+  }
+}

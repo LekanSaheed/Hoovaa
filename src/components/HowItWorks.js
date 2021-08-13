@@ -14,7 +14,7 @@ const HowItWorks = () => {
             text: 'Book a pickup, whether home or work, our personnel gets there'
         },
         {
-            id: 2,
+            id: 3,
             title: 'Get Paid',
             text: 'You get paid as soon as our personnel picks up your device'
         }
@@ -22,11 +22,11 @@ const HowItWorks = () => {
     return (
         <div>
             <div className='how-container'>
-                <spna className='how-cont-title'>How it works</spna>
+                <span className='how-cont-title'>How it works</span>
                 <>
                    {details.map(item => {
                        return(
-                           <div className='how-flex'>
+                           <div className='how-flex' key={item.id}>
                                <AiOutlineCloseCircle style={{marginBottom: '-40px'}}/>
                                 {/* <img src='' alt='how'/> */}
                     <div className='how-group'>

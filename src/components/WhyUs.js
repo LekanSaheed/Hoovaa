@@ -35,7 +35,7 @@ icon: ''
                 <span>
                     Why Us?
                 </span>
-                <p className='why-us-details'>
+                <div className='why-us-details'>
         {details.map((item, index) => {
             return(
                 <div key={index} className='why-us-node'>
@@ -45,7 +45,7 @@ icon: ''
                 </div>
             )
         })}
-                </p>
+                </div>
             </div>
         </div>
     )
