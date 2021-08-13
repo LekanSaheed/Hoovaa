@@ -1,6 +1,6 @@
 import React from 'react'
 import {Accordion, AccordionSummary, AccordionDetails} from '@material-ui/core'
-import { AiOutlineCaretDown } from 'react-icons/ai'
+import {FaCaretDown} from 'react-icons/fa'
 import { GlobalContext } from '../reducers/context'
 import {Link } from 'react-router-dom'
 const HoovaaAccordion = () => {
@@ -9,7 +9,7 @@ const HoovaaAccordion = () => {
         <div className='accordion'>
              
              <Accordion>
-        <AccordionSummary expandIcon={<AiOutlineCaretDown/>} >
+        <AccordionSummary expandIcon={<FaCaretDown/>} >
             Services
         </AccordionSummary>
         <AccordionDetails>
@@ -35,7 +35,7 @@ const HoovaaAccordion = () => {
         </AccordionDetails>
         </Accordion>
         <Accordion>
-        <AccordionSummary expandIcon={<AiOutlineCaretDown/>} >
+        <AccordionSummary expandIcon={<FaCaretDown/>} >
             About
         </AccordionSummary>
         <AccordionDetails>
@@ -47,7 +47,7 @@ const HoovaaAccordion = () => {
         </AccordionDetails>
         </Accordion>
         <Accordion>
-        <AccordionSummary expandIcon={<AiOutlineCaretDown/>} >
+        <AccordionSummary expandIcon={<FaCaretDown/>} >
             Help
         </AccordionSummary>
         <AccordionDetails>

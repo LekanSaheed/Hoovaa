@@ -32,3 +32,29 @@
     padding: 5px;
     font-weight: 500;
 }
+@media(min-width:767px){
+    .how-child-flex{
+        display: grid;
+       grid-template-columns: repeat(3, auto);
+        padding: 50px;
+        align-content: stretch;
+        justify-content: baseline;
+        justify-items: flex-start;
+    }
+    .how-serial{
+        padding: 8px;
+        font-size: 17px;
+        border-radius: 50px;
+        padding-left: 13px;
+        padding-right: 13px;
+        margin: 10px;
+    }
+    .how-container{
+        background-color: white;
+    }
+    .how-node{
+        font-size: 15px;
+        color: grey;
+        margin: 14px;
+    }
+}

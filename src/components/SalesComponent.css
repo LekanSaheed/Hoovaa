@@ -27,6 +27,11 @@
     font-size: 8px;
     height: 70px;
     color: black;
+    transition: .5s;
+
+}
+.sale-item:hover{
+    background-color: #F9F9F9;
 }
 a{
     text-decoration: none;
@@ -49,10 +54,22 @@ a{
        padding-bottom: 20px;
        height: 110px;
    }
+   .sales-intro{
+    text-align: center;
+    font-weight: 600;
+}
 }
 @media(min-width: 812px){
     .sales-container{
         margin-top: -20px !important;
         background-color: white;
+        margin-left: 120px !important;
+        margin-right: 120px !important;
+    }
+    .sale-item{
+        border: none;
+    }
+    .sales-intro{
+        font-weight: 700;
     }
 }

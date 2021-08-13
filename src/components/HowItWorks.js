@@ -23,7 +23,7 @@ const HowItWorks = () => {
         <div>
             <div className='how-container'>
                 <span className='how-cont-title'>How it works</span>
-                <>
+                <div className='how-child-flex'>
                    {details.map(item => {
                        return(
                            <div className='how-flex' key={item.id}>
@@ -38,7 +38,7 @@ const HowItWorks = () => {
                           </div>
                        )
                    })}
-                </>
+                </div>
             </div>
         </div>
     )

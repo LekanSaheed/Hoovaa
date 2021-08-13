@@ -9,10 +9,11 @@ import BuyItem from './components/Pages/BuyItem';
 import SellItem from './components/Pages/SellItem';
 import SwapItem from './components/Pages/SwapItem';
 import RepairDevice from './components/Pages/RepairDevice';
+
 const App = () => {
 
   return (
-    <div>
+    <div >
       <Router>
       <Header/>
     
