@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React from 'react'
 import './Cards.css'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import cashman from '../assets/newoip.png'
@@ -31,24 +31,9 @@ const cardData = [
     }
 ]
 const Cards = () => {
-  const [scroll, setScroll] = useState()
-  useEffect(() => {
-      document.addEventListener('scroll', () => {
-          const scrollCheck = window.scrollY < 100
-          if(scrollCheck !== scroll){
-              setScroll(scrollCheck)
-          }
-      })
-  })
-
-  const cards = useRef(null)
-  const myscroll = (scrolloffset) => {
-      cards.current.scollLeft += scrolloffset
-      console.log(cards.current.scollLeft)
-  }
     const cardList = cardData.map((item, index) => {
         return(
-            <div ref={cards} className='cards' key={index}>
+            <div className='cards' key={index}>
                <div className='text-group'>
                <p className='title-text'>{item.titleText}</p>
                 <p className='sub-text'>{item.subText}</p><hr style={{backgroundColor: 'white', border: 'solid 1px white', width: '50px'}}/>
@@ -75,7 +60,6 @@ const Cards = () => {
                </div>
             </div>
             <div className='card-container'>
-            <button onClick={() => myscroll(-20)}>Scroll</button>
             {cardList}
 
             </div>
