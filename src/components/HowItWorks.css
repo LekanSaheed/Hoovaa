@@ -1,9 +1,13 @@
 .how-container{
     padding: 15px;
-    background-color:#eff7f4;
+    background-color:#edf1fa;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+}
+.how-container img{
+    width: 35px;
+    height: 35px;
 }
 .how-serial{
     background-color: rgb(116, 151, 255);
@@ -20,10 +24,12 @@
 }
 .how-flex{
     margin: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
 }
 .how-node{
-    padding: 10px;
-    padding-left: 18px;
+    margin-top: 10px;
     font-size: 13px;
     font-weight: 500;
 }
@@ -40,21 +46,40 @@
         align-content: stretch;
         justify-content: baseline;
         justify-items: flex-start;
+        padding-left: 80px;
+    }
+    .title-and-serial{
+        margin-top: 15px;
     }
     .how-serial{
-        padding: 8px;
-        font-size: 17px;
+        padding: 5px;
+        font-size: 12px;
         border-radius: 50px;
-        padding-left: 13px;
-        padding-right: 13px;
-        margin: 10px;
+        padding-left: 9px;
+        padding-right: 9px;
+        margin-right: 10px;
     }
     .how-container{
         background-color: white;
     }
     .how-node{
-        font-size: 15px;
+        font-size: 13px;
         color: grey;
-        margin: 14px;
+    }
+    .how-flex{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .how-group{
+        margin: 0;
+    }
+    .how-container img{
+        margin-left: 50px;
+    }
+}
+@media(min-width:901px){
+    .how-container img{
+        width: 50px;
+        height: 50px;
     }
 }

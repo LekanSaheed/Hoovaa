@@ -1,6 +1,6 @@
 .why-us-container{
     padding: 15px;
-    background-color: #eff7f4;
+    background-color: #edf1fa;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
@@ -21,4 +21,8 @@
 .why-us-node{
     margin: 15px;
     font-size: 11px;
+}
+.why-us-container img{
+    width: 35px;
+    height: 35px;
 }
