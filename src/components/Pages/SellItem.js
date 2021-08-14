@@ -54,7 +54,6 @@ const SellItem = () => {
                         )
                     })}
                 </ul>
-                <Link to={`${path} + '/phones. `}>Phones</Link>
             </div>
             
             <Switch>

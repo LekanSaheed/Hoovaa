@@ -20,13 +20,16 @@
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
 }
+.sell-page-container a{
+    color: black;
+}
 .sale-icons {
     font-size: 20px;
     color: #7497ff;
 }
 .centered-text{
     text-align: center;
-    font-size: 18px;
+    font-size: 18px;font-weight: 600;
     margin: 10px;
     padding: 15px;
     display: flex;
