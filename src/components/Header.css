@@ -2,9 +2,11 @@
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    box-shadow: 0px 0px 10px -2px #c5c5c5;
+    box-shadow: 0 0 8px 0 rgb(0 0 0 / 14%);;
     align-items: center;
     width: 100%;
+    position: relative;
+    z-index: 10;
 }
 .logo{
     font-weight: bolder;

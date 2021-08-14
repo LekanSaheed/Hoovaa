@@ -13,11 +13,10 @@ const [state, dispatch] = useReducer(reducer, defaultState)
 
 const toggleNav = () => {
     dispatch({type: 'TOGGLE_NAV'})
-    console.log('working', state.toggle)
 }
 const closeNav = () => {
     dispatch({type: 'CLOSE_NAV'})
-    console.log('did')
+
 }
     return(
         <AppContext.Provider value={{

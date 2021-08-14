@@ -42,7 +42,6 @@ const LgNav = () => {
         link: null
     }]
     const lgNav = data.map((item, index) => {
-        console.log(item.to)
         return(
                 <ul key={index}>
                     <li style={{padding: '10px'}} className={`${item.to && 'show-hidden' }`}>

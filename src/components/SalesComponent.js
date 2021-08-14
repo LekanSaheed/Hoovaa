@@ -1,17 +1,19 @@
 import React from 'react'
-import { AiOutlineEuro, AiOutlineLaptop, AiOutlineThunderbolt, AiOutlineTool } from 'react-icons/ai'
+import { AiOutlineEuro, AiOutlineLaptop, AiOutlineInsurance,
+     AiOutlineThunderbolt, AiOutlineTool } from 'react-icons/ai'
+import {BsGrid} from 'react-icons/bs'
 import './SalesComponent.css'
 import {Link} from 'react-router-dom'
 const salesData = [
     {
-        info: 'Sell',
-        icon: <AiOutlineLaptop/>,
-        to: 'sell-item'
-    },
-    {
         info: 'Buy',
         icon: <AiOutlineEuro/>,
         to: 'buy-item'
+    },
+    {
+        info: 'Sell',
+        icon: <AiOutlineLaptop/>,
+        to: 'sell-item'
     },
     {
         info: 'Swap',
@@ -22,7 +24,17 @@ const salesData = [
         info: 'Repair',
         icon: <AiOutlineTool/>,
         to: 'repair-device'
-    }
+    },
+    {
+        info: 'Gadget Insurance',
+        icon: <AiOutlineInsurance/>,
+        to: 'insurance'
+    },
+    {
+        info: 'All Services',
+        icon: <BsGrid/>,
+        to: 'all-services'
+    },
 ]
 const SalesComponent = () => {
     const sell = salesData.map((item, index) => {

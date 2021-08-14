@@ -16,7 +16,7 @@
     margin-right: -2px  !important;
 }
 .sale-icon{
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 7px;
 }
 .sale-item{
@@ -57,6 +57,10 @@ a{
    .sales-intro{
     text-align: center;
     font-weight: 600;
+}
+.sale-grid{
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
 }
 }
 @media(min-width: 812px){
