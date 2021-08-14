@@ -9,7 +9,7 @@ import Phones from './subPages/Phones'
 import HowItWorks from '../HowItWorks'
 const SellItem = () => {
 
-   const {url, path} = useRouteMatch()
+   const {url} = useRouteMatch()
   
     
     const data = [
