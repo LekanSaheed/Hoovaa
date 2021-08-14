@@ -1,6 +1,6 @@
 
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
+import React from 'react'
 import Header from './components/Header'
 import Home from './components/Home'
 import MobileNav from './components/MobileNav'
@@ -10,8 +10,10 @@ import SellItem from './components/Pages/SellItem';
 import SwapItem from './components/Pages/SwapItem';
 import RepairDevice from './components/Pages/RepairDevice';
 
-const App = () => {
 
+const App = ({hideLoader}) => {
+ 
+React.useEffect(hideLoader, [hideLoader])
   return (
     <div >
       <Router>
