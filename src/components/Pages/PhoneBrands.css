@@ -10,9 +10,9 @@
     height: 70px;
     width: 70px;
     flex: 1;
-    margin: 10px;
+    margin: 6px;
     box-shadow: 0 0 14px 0 rgba(0 0 0 / 14%);
-    border-radius: 3px;
+    border-radius: 5px;
 }
 .brand-container-flex{
     display: flex;
@@ -23,12 +23,24 @@
 .brand-search{
     box-shadow: 0 0 15px 0px rgba(0 0 0 / 14%);
     background-color: white;
-    padding-right: 10px;
-    width: 60%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-basis: 100%;
 }
 .brand-search input{
     padding: 10px;
     background-color: white;
+}
+.brand-search input::-webkit-input-placeholder{
+    font-size: 10px;
+}
+
+@media(min-width: 901px){
+    .brand-container img{
+        height: 120px;
+        width: 120px;
+    }
 }
 
 

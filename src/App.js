@@ -12,7 +12,9 @@ import RepairDevice from './components/Pages/RepairDevice';
 
 const App = ({hideLoader}) => {
  
-
+  React.useEffect(()=> {
+    window.scrollTo(0,0)
+})
 React.useEffect(hideLoader, [hideLoader])
   return (
     <div >
@@ -36,7 +38,9 @@ React.useEffect(hideLoader, [hideLoader])
         <Route path='/repair-device'>
           <RepairDevice/>
         </Route>
-
+        <Route path='/*'>
+          Page not found $)$
+        </Route>
       </Switch>
       </Router>
 

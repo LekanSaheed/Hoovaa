@@ -1,0 +1,26 @@
+.device-details-page{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    min-height: 80vh;
+    background: #fafafa;
+    padding-top: 100px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.device-details-page img{
+    height: 100px;
+    width: 100px;
+}
+.device-name{
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 14px;
+
+}
+.device-brand{
+    margin-top: 14px;
+    font-size: 10px;
+    color: #7497ff;
+    font-weight: 600;
+}

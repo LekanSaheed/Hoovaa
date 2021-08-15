@@ -7,9 +7,13 @@ import { IoLogoGameControllerB, IoMdPhonePortrait } from 'react-icons/io'
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom'
 import HowItWorks from '../HowItWorks'
 import PhoneBrands from './PhoneBrands'
-import ApplePhones from './subPages/ApplePhones'
+import { brands } from './PhoneData'
+import { laptopBrands } from './PhoneData'
 const SellItem = () => {
 
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
    const {url, path} = useRouteMatch()
   
     
@@ -30,9 +34,9 @@ const SellItem = () => {
           icon: <IoLogoGameControllerB/>,
           to: '/gaming-gadgets-brands'
 },
-{text: 'TV-brands',
+{text: 'TVs',
           icon: <BsTv/>,
-          to: '/tv'
+          to: '/tv-brands'
 }
     ]
     console.log(path)
@@ -43,7 +47,7 @@ const SellItem = () => {
                 <img src={sell} alt='sell' />
                 <span>Sell Your Stuff and Get Cash Instantly</span></div>
             <div className='sell-items-container'>
-                <span style={{fontWeight: '500'}}>What would you like to sell</span>
+                <span style={{fontWeight: '500'}}>What would you like to sell?</span>
                 <ul>
                     {data.map((item, index) => {
                         return(
@@ -60,10 +64,10 @@ const SellItem = () => {
             
             <Switch >
                     <Route  path={`${path + '/phone-brands'}`}>
-                        <PhoneBrands/>
+                        <PhoneBrands device='phone' brands={brands}/>
                     </Route>
                     <Route path={`${path + '/laptop-brands'}`}>
-                        <ApplePhones/>
+                        <PhoneBrands device='laptop' brands={laptopBrands}/>
                     </Route>
             </Switch>
             <HowItWorks/>

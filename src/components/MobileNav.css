@@ -8,7 +8,7 @@
     right: 0;
     left: 0;
     height: 100vh;
-    z-index: 50;
+    z-index: 6;
 }
 .nav-container{
     background-color: rgb(116, 151, 255);

@@ -5,6 +5,7 @@
     background-color: #f9f9f9;
     align-items: center;
     border-radius: 5px;
+    
 }
 .search-container input{
     padding: 13px;
@@ -13,4 +14,10 @@
     width: 100%;
     border-radius: 5px;
     background-color: #f9f9f9;
+}
+@media(min-width:901px){
+    .search-container{
+        position: sticky;
+       top: 100px;
+    }
 }

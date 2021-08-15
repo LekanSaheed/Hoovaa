@@ -47,11 +47,12 @@ const LgNav = () => {
                     <li style={{padding: '10px'}} className={`${item.to && 'show-hidden' }`}>
                         <Link style={{color: 'black', display: 'flex', alignItems: 'center'}}
                          to={item.link && item.link}>
-                            <span style={{backgroundColor: `${item.isLogin && 'royalblue'}`, 
+                            <span style={{backgroundColor: `${item.isLogin && '#7497ff'}`, 
                             color: `${item.isLogin && 'white'}`,
                             padding: `${item.isLogin && '10px 15px'}`,
                             fontSize: `${item.isLogin && '11px'}`,
-                            borderRadius: `${item.isLogin && '5px'}`
+                            borderRadius: `${item.isLogin && '5px'}`,
+                            fontWeight: `${item.isLogin && '700'}`
                             }}>{item.text}</span>{item.to && <FaCaretDown/>}
                             </Link></li>
                     <div className="header-hidden">

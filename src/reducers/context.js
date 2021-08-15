@@ -18,9 +18,15 @@ const closeNav = () => {
     dispatch({type: 'CLOSE_NAV'})
 
 }
+const getDevice = (item) => {
+    dispatch({type: 'SET_SELECTED_DEVICE', payload: item})
+}
+const setDeviceStorage = (n,s) => {
+    dispatch({type: 'SET_DEVICE_STORAGE', payload: n, payload2:s})
+}
     return(
         <AppContext.Provider value={{
-            state, toggleNav, closeNav
+            state, toggleNav, closeNav, getDevice, setDeviceStorage
         }}>{children}</AppContext.Provider>
     )
 }

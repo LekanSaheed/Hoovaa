@@ -7,6 +7,9 @@ import WhyUs from './WhyUs'
 import MoreDetails from './MoreDetails'
 import Partners from './Partners'
 const Home = () => {
+    React.useEffect(()=> {
+        window.scrollTo(0,0)
+    })
     return(
         <>
          <Search/>

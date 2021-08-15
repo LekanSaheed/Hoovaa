@@ -1,0 +1,17 @@
+.eval-btn{
+    background: #7497ff;
+    padding: 15px 20px;
+    color: white !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+@media(min-width: 767px){
+    .eval-btn{
+        position: unset;
+    }
+}
