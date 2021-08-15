@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {AppProvider} from './reducers/context'
 
 const loader = document.querySelector('.loader-container');
-const showLoader = () => setTimeout(() => loader.classList.remove('loader-hide'), 3000);
-const hideLoader = () => loader.classList.add('loader-hide');
+const showLoader = () => loader.classList.remove('loader-hide');
+const hideLoader = () => setTimeout(() => loader.classList.add('loader-hide') , 3000);
 ReactDOM.render(
   <React.StrictMode>
    <AppProvider>
