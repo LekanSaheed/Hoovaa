@@ -1,11 +1,13 @@
 .grid-item-container{
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     box-shadow: 0 0 10px 0 rgba(0 0 0 / 14%);
     border-radius: 5px;
     background-color: white;
     margin: 15px;
     text-align: center;
+    margin-top: 30px;
+
 
 }
 .grid-item-item{
@@ -21,4 +23,22 @@
 .grid-img{
     font-size: 20px;
 
+}
+.item-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 10000000;
+    width: 100%;
+    min-height: 100vh;
+}
+.item-page-header{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   box-shadow: 0 0 17px 0 rgba(0 0 0 / 14%);
+    font-size: 30px;
 }

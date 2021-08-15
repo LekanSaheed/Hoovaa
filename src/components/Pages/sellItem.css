@@ -3,6 +3,7 @@
     overflow-x: scroll;
     flex-wrap: wrap;
     flex-basis: 100%;
+    justify-content: center;
 }
 .sell-items-container{
     display: flex;
@@ -16,7 +17,7 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
-    border-radius: 5px;
+    border-radius: 9px;
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
 }
@@ -31,10 +32,16 @@
     text-align: center;
     font-size: 18px;font-weight: 600;
     margin: 10px;
+    margin-top: 30px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+}
+.centered-text span{
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .centered-text img{
     height:80px;
@@ -46,4 +53,10 @@
     align-items: center;
     background-color: #fafafa;
     min-height: 500px;
+    overflow-x: hidden;
+}
+@media(max-width: 300px){
+    .sell-page-container{
+        font-size: 11px;
+    }
 }

@@ -83,3 +83,9 @@
         height: 50px;
     }
 }
+
+@media(max-width:300px){
+    .how-node{
+        font-size: 11px;
+    }
+}
