@@ -50,3 +50,8 @@
     background-color: white;
    
 }
+@media(max-width:600px){
+    .item-page-header{
+        margin-top: 55px;
+    }
+}
