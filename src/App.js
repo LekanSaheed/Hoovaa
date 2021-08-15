@@ -12,6 +12,7 @@ import RepairDevice from './components/Pages/RepairDevice';
 
 const App = ({hideLoader}) => {
  
+
 React.useEffect(hideLoader, [hideLoader])
   return (
     <div >

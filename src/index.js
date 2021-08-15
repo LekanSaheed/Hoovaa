@@ -7,7 +7,7 @@ import {AppProvider} from './reducers/context'
 
 const loader = document.querySelector('.loader-container');
 const showLoader = () => loader.classList.remove('loader-hide');
-const hideLoader = () => loader.classList.add('loader-hide');
+const hideLoader = () => setTimeout(() => loader.classList.add('loader-hide') , 4000);
 ReactDOM.render(
   <React.StrictMode>
    <AppProvider>
