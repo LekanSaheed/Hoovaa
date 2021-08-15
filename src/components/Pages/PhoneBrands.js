@@ -48,7 +48,7 @@ const [brand, setBrand] = useState('')
                 )
             })}
         </div>
-       <div> Sell your <span>{brand}</span> phone</div>
+       <div style={{fontWeight: "600"}}> Sell your <span>{brand}</span> phone</div>
        {brand && brands.map(item => {
            return(
                <div>
