@@ -3,13 +3,17 @@ import './Phones.css'
 import {BsPhone} from 'react-icons/bs'
 import { AiOutlineArrowLeft, AiOutlineSearch } from 'react-icons/ai'
 import { useHistory } from 'react-router-dom'
+import HowItWorks from '../../HowItWorks'
 
 const Phones = () => {
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
     const apple = require('../ios.json')
 const history = useHistory()
     return (
         <div className="item-page">
-            <div className="item-page-header">
+            <div  className="item-page-header" id="top2">
                 <AiOutlineArrowLeft onClick={() => history.goBack()}/>
                 <AiOutlineSearch/>
             </div>
@@ -24,6 +28,7 @@ const history = useHistory()
                 )
             })}
         </div>
+        <HowItWorks/>
         </div>
     )
 }

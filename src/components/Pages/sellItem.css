@@ -21,6 +21,10 @@
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
 }
+.sale-items:hover{
+    background-color: whitesmoke;
+    transition: .5s;
+}
 .sell-page-container a{
     color: black;
 }

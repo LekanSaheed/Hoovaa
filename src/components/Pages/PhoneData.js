@@ -5,12 +5,18 @@ import amazon from '../../assets/Amazon.png'
 
 export const brands = [
     {img: apple,
-    to: '/apple-phones'},
+    to: '/apple-phones',
+    brand: 'apple'},
+    
     {img: samsung,
-    to: '/samsung-phones'},
+    to: '/samsung-phones',
+    brand: 'android'
+},
     {img: nokia,
-    to: '/nokia-phones'},
+    to: '/nokia-phones',
+    brand: 'nokia'},
     {img: amazon,
+        brand: 'amazon',
     to: '/tecno-phones'}
 ]
 

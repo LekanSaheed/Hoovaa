@@ -40,7 +40,7 @@ const HowItWorks = () => {
                      <span className='how-serial'>
                     {item.id}
                     </span> 
-                      <span style={{fontWeight: '600', fontSize: '14px', marginBottom: '4px'}}>{item.title}</span>
+                      <span style={{fontWeight: '600', fontSize: '14px', marginBottom: '4px', marginRight: '15px'}}>{item.title}</span>
                     </div>
                     <div className='how-node'>{item.text}</div>
                     </div>
