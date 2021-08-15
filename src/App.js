@@ -12,7 +12,11 @@ import RepairDevice from './components/Pages/RepairDevice';
 
 const App = ({hideLoader}) => {
  
+setTimeout(() => {
+
 React.useEffect(hideLoader, [hideLoader])
+
+}, 4000)
   return (
     <div >
       <Router>
