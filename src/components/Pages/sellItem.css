@@ -20,6 +20,7 @@
     border-radius: 9px;
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
+    font-size: 11px;
 }
 .sale-items:hover{
     background-color: whitesmoke;
