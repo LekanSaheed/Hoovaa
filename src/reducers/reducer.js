@@ -22,7 +22,7 @@
       console.log(state.newSelected)
       const name = action.payload
       const img = action.payload2
-      const evaluated = 150
+      const evaluated = Math.floor(Math.random() * 50) + 30
       return{
           ...state,
           newSelected: [{name,img, evaluated}]

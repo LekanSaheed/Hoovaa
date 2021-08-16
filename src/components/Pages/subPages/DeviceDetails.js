@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './DeviceDetails.css'
 import {Switch, Route, Link, useRouteMatch} from 'react-router-dom'
 import ItemEvaluation from './ItemEvaluation'
@@ -10,7 +10,8 @@ const DeviceDetails = ({device}) => {
     }, [])
     const {path, url } = useRouteMatch()
     const {setDeviceStorage} = GlobalContext() 
-    const newStorage = 24
+    const [selectedStorage, setSelected] = useState(null)
+    console.log(selectedStorage)
     return (
         <Switch>
             <Route exact path={path}>
@@ -22,16 +23,20 @@ const DeviceDetails = ({device}) => {
                         <img src={item.brandImg} alt='brand'/>
                         <div className='device-name'>{item.name}</div>
                         <div className='device-brand'>{item.brand}</div>
-                        select storage
+                        <span className='theme-text'>Select storage</span>
+                        <div className='grid-item-container storage-grid'>
                         {item.storage.map((storage, id) => {
                             return(
-                                <div key={id}>
-                                    <input type="radio"/>{storage}
+                                <div className='grid-item-storage' key={id}>
+                                    <input type="radio" name='deviceStorage' value={storage} onChange={(e) => setSelected(e.target.value)}
+                                    /> {storage}GB
                                 </div>
 
                             )
                         })}
-                        <Link to={`${url + '/evaluation'}`} onClick={() => setTimeout(() => {setDeviceStorage(item.name+ ' ' + newStorage, item.brandImg)}, 3000)}> Continue </Link>
+                        </div>
+                        <Link  to={`${url + '/evaluation'}`} onClick={() => setTimeout(() => {setDeviceStorage(item.name+ ' ' + selectedStorage + 'GB', item.brandImg)}, 3000)}> 
+                        <button style={{backgroundColor: `${!selectedStorage ? 'lightblue' : '#7497ff'}`}} className='btn-eval' disabled={!selectedStorage} >Continue</button> </Link>
                     </div>
                    
                 )

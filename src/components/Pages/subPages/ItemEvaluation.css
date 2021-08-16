@@ -1,14 +1,39 @@
 .eval-btn{
     background: #7497ff;
-    padding: 15px 20px;
+    padding: 6px 20px;
     color: white !important;
-    font-weight: 600;
+    font-weight: 500;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    bottom: 5px;
+    right: 10px;
+    text-align: center;
+    left: 10px;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 130;
+
+}
+
+.flex-display-eval{
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0 0 0 /14%);
+    margin: 15px;
+    border-radius: 5px;
+    align-items: center;
+    line-height: 28px;
+
+}
+.flex-display-eval img{
+    width: 100px;
+    border-radius: 7px;
+    margin-right: 10px;
+
 }
 @media(min-width: 767px){
     .eval-btn{

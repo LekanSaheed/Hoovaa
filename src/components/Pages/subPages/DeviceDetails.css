@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    min-height: 80vh;
+    min-height: 100vh;
     background: #fafafa;
     padding-top: 100px;
     padding-left: 20px;
@@ -18,8 +18,33 @@
     margin-top: 14px;
 
 }
+.storage-grid{
+    margin-left: 0;
+}
+.grid-item-storage{
+    padding: 15px;
+    border: solid 1px rgb(240, 240, 240);
+    cursor: pointer;
+    padding: 19px ;
+    transition: .5s
+}
+.grid-item-storage:hover{
+    background-color: whitesmoke;
+  
+}
+.btn-eval{
+    padding: 13px 35px;
+    border-radius: 3px;
+    color: white !important;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    background: #7497ff;
+    box-shadow: 0 0 10px 0 rgba(0 0 0 / 21%);
+}
 .device-brand{
     margin-top: 14px;
+    margin-bottom: 14px;
     font-size: 10px;
     color: #7497ff;
     font-weight: 600;
