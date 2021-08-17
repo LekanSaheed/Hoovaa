@@ -3,10 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 15px;
-    padding: 10px;
+    padding-top: 80px;
+    background-color: #fafafa;
 }
-.brand-container img{
+.brand-img{
     height: 70px;
     width: 70px;
     flex: 1;

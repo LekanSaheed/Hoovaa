@@ -1,11 +1,27 @@
 import apple from '../../assets/Apple.png'
 import samsung from '../../assets/Samsung.png'
-import nokia from '../../assets/Nokia.png'
-import amazon from '../../assets/Amazon.png'
+// import nokia from '../../assets/Nokia.png'
+// import amazon from '../../assets/Amazon.png'
 import hp from '../../assets/Hp.png'
-import dell from '../../assets/Dell.png'
+import tecno from '../../assets/tecno.jpg'
+import infinix from '../../assets/infinix.jpg'
+// import gionee from '../../assets/gionee.jpg'
+// import huawei from '../../assets/huawei.jpg'
+// import htc from '../../assets/htc.jpg'
 
-export const brands = [
+// import google from '../../assets/google.jpg'
+// import lg from '../../assets/lg.jpg'
+import microsoft from '../../assets/microsoft.jpg'
+import nikon from '../../assets/nikon.jpg'
+import toshiba from '../../assets/toshiba.jpg'
+import sony from '../../assets/sony.jpg'
+import dell from '../../assets/Dell.png'
+import mi from '../../assets/mi.jpg'
+import panasonic from '../../assets/panasonic.jpg'
+import philips from '../../assets/philips.jpg'
+import canon from '../../assets/canon.jpg'
+
+export const phoneBrands = [
     {img: apple,
     to: '/apple-phones',
     brand: 'apple'},
@@ -14,11 +30,11 @@ export const brands = [
     to: '/samsung-phones',
     brand: 'android'
 },
-    {img: nokia,
+    {img: infinix,
     to: '/infinix-phones',
     brand: 'infinix'},
-    {img: amazon,
-        brand: 'amazon',
+    {img: tecno,
+        brand: 'tecno',
     to: '/tecno-phones'}
 ]
 
@@ -32,11 +48,97 @@ export const laptopBrands = [
     brand: 'apple'
 },
     {img: samsung,
-    to: '/samsung-laptops',
-    brand: 'samsung'},
+    to: '/toshiba-laptops',
+    brand: 'toshiba'},
     {img: dell,
         brand: 'dell',
     to: '/dell-laptops'}
+]
+export const computerBrands = [
+    {img: hp,
+    to: '/hp-computers',
+    brand: 'hp'},
+    
+    {img: apple,
+    to: '/apple-computers',
+    brand: 'apple'
+},
+    {img: toshiba,
+    to: '/toshiba-computers',
+    brand: 'toshiba'},
+
+    {img: dell,
+        brand: 'dell',
+    to: '/dell-computers'}
+]
+export const gamingGadgetBrands = [
+    {img: microsoft,
+    to: '/microsoft-consoles',
+    brand: 'microsoft'},
+    
+    {img: sony,
+    to: '/sony-consoles',
+    brand: 'sony'
+}
+]
+export const tvBrands = [
+    {img: hp,
+    to: '/toshiba-tvs',
+    brand: 'toshiba'},
+    
+    {img: philips,
+    to: '/philips-tvs',
+    brand: 'philips'
+},
+    {img: panasonic,
+    to: '/panasonic-tvs',
+    brand: 'panasonic'},
+
+    {img: samsung,
+        brand: 'samsung',
+    to: '/samsung-tvs'}
+]
+export const smartWatchbrands = [
+    {img: mi,
+    to: '/mi-sw',
+    brand: 'mi'},
+    
+    {img: apple,
+    to: '/apple-sw',
+    brand: 'apple'
+},
+    {img: samsung,
+    to: '/samsung-sw',
+    brand: 'samsung'},
+    {img: dell,
+        brand: 'dell',
+    to: '/dell-sw'}
+]
+export const smartSpeakerBrands = [
+    {img: hp,
+    to: '/hp-smart-speakers',
+    brand: 'hp'},
+    
+    {img: apple,
+    to: '/apple-smart-speakers',
+    brand: 'apple'
+},
+    {img: samsung,
+    to: '/samsung-smart-speakers',
+    brand: 'samsung'},
+    {img: dell,
+        brand: 'dell',
+    to: '/dell-smart-speakers'}
+]
+export const cameraBrands = [
+    {img: nikon,
+    to: '/nikon-cameras',
+    brand: 'canon'},
+    
+    {img: canon,
+    to: '/canon-cameras',
+    brand: 'canon'
+}
 ]
 export const phoneDatas = [{
     name: 'Iphone 6',

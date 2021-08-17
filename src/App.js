@@ -9,6 +9,7 @@ import BuyItem from './components/Pages/BuyItem';
 import SellItem from './components/Pages/SellItem';
 import SwapItem from './components/Pages/SwapItem';
 import RepairDevice from './components/Pages/RepairDevice';
+import Admin from './Admin'
 
 const App = ({hideLoader}) => {
  
@@ -20,7 +21,6 @@ React.useEffect(hideLoader, [hideLoader])
     <div >
       <Router>
       <Header/>
-    
      <MobileNav/>
       <Switch>
         <Route exact path='/'>
@@ -38,9 +38,13 @@ React.useEffect(hideLoader, [hideLoader])
         <Route path='/repair-device'>
           <RepairDevice/>
         </Route>
+        <Route path="/admin">
+          <Admin/>
+        </Route>
         <Route path='/*'>
           Page not found $)$
         </Route>
+       
       </Switch>
       </Router>
 

@@ -4,7 +4,7 @@ import pricing from '../assets/pricing.png'
 import driver from '../assets/driver.png'
 import buying from '../assets/buying.png'
 
-const HowItWorks = () => {
+const HowItWorks = ({bc, mTop}) => {
     const details = [
         {
             id: 1,
@@ -27,14 +27,14 @@ const HowItWorks = () => {
     ]
     return (
         <div>
-            <div className='how-container'>
+            <div className='how-container' style={{backgroundColor: bc, marginTop: mTop}}>
                 <span className='how-cont-title'>How it works</span>
                     <div className='how-child-flex'>
                           {details.map(item => {
                               return(
                                       <div className='how-flex' key={item.id}>
                                           {/* <AiOutlineCloseCircle style={{marginBottom: '-40px'}}/> */}
-                                <img src={item.img} alt='how'/>
+                                <img className='how-img' src={item.img} alt='how'/>
                     <div className='how-group'>
                     <div className='title-and-serial'>
                      <span className='how-serial'>

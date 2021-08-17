@@ -11,7 +11,8 @@ const DeviceDetails = ({device}) => {
     const {path, url } = useRouteMatch()
     const {setDeviceStorage} = GlobalContext() 
     const [selectedStorage, setSelected] = useState(null)
-    console.log(selectedStorage)
+    console.log(path)
+
     return (
         <Switch>
             <Route exact path={path}>

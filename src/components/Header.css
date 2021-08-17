@@ -5,8 +5,10 @@
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 14%);;
     align-items: center;
     width: 100%;
-    position: relative;
-    z-index: 5;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 1;
     background: white;
 }
 .logo{

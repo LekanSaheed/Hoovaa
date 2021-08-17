@@ -1,0 +1,56 @@
+.form-control{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px 0 rgba(0 0 0 / 17%);
+}
+.form-control label{
+    font-size: 12px;
+}
+.form-control button{
+    padding: 13px;
+    border: solid 2px #7497ff23;
+    background-color: #7497ff;
+    color: white;
+    font-weight: 600;
+}
+.input-container{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 7px;
+}
+.input-container input{
+    width: 100%;
+    padding: 10px;
+}
+.check-container{
+    border: solid 2px #7497ff23;
+    border-radius: 7px;
+    background-color:#ecf1ff;
+    padding: 10px;
+}
+.checks{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    flex-direction: row-reverse;
+    align-items: baseline;
+    background-color: #ecf1ff;
+    border: solid 1px #7497ff23;
+    border-radius: 5px;
+}
+.checks input{
+    margin-left: 10px;
+    border: none;
+   
+}
+.checks span{
+    border-right: solid 1px #7497ff;
+    padding: 10px;
+}
+.checks input{
+    justify-self: flex-start;
+}

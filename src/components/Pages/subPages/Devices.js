@@ -17,6 +17,9 @@ const Devices = ({deviceName, phones, brand}) => {
 const history = useHistory()
 const {path, url} = useRouteMatch()
 const {state} = GlobalContext()
+const s = 'saq'
+s.replace('s', 'v')
+console.log(s)
     return (
       
         <div className="item-page">
@@ -30,7 +33,7 @@ const {state} = GlobalContext()
         <div className='grid-item-container'>
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
-                    <Link to={`${url + '/phone-details'}`}  key={index}>
+                    <Link to={`${url + '/'+ item.name.toLowerCase().replace(/ /g, '-')}`}  key={index}>
                     <div className='grid-item-item' onClick={() => getDevice(item)}>
                         <div className='grid-img'><BsPhone/></div>
                        <span> {item.name}</span>
@@ -41,7 +44,7 @@ const {state} = GlobalContext()
             })}
         </div>
         </Route>
-        <Route path={`${path + '/phone-details'}`}>
+        <Route path={`${path + '/:id'}`}>
             <DeviceDetails device={state.selectedDevice}/>
         </Route>
         </Switch>

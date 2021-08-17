@@ -38,7 +38,6 @@
     z-index: 10;
     width: 100%;
     min-height: 100vh;
-    overflow-y: scroll;
 }
 .item-page-header{
     padding: 15px;
@@ -49,7 +48,8 @@
     font-size: 27px;
     width: 100%;
     background-color: white;
-   
+   position: sticky;
+   top: 0;
 }
 @media(max-width:600px){
     .item-page-header{

@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react'
 
 import './PhoneBrands.css'
-import { Link, Route, useRouteMatch, Switch } from 'react-router-dom'
+import { Link, Route, useRouteMatch, Switch, useHistory } from 'react-router-dom'
 import Devices from './subPages/Devices'
 import { GlobalContext } from '../../reducers/context'
+import HowItWorks from '../HowItWorks'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const PhoneBrands = ({brands, device}) => {
     const {state} = GlobalContext()
-const [brand, setBrand] = useState('')
+ const [brand, setBrand] = useState('')
+ const history = useHistory()
 
     const {path, url} = useRouteMatch()
   const getMobile = () => {
@@ -34,7 +37,9 @@ const [brand, setBrand] = useState('')
  
     return (
         <Switch>
-<Route exact path={path}>       
+<Route exact path={path}>  
+<div>     
+<div style={{position: 'sticky', top: '30px', left: '0'}} onClick={() => history.goBack()}><AiOutlineArrowLeft/></div>
         <div className='brand-container'>
             <div className="search-container brand-search">
                 <input type='search' placeholder={`${'Search your ' + device + ' or brands'}`}/>
@@ -47,19 +52,28 @@ const [brand, setBrand] = useState('')
            
             {brands.map((item, index) => {
                 return(
-                   <Link key={index} to={url+item.to}> <img  src={item.img} alt='brands'/></Link>
+                   <Link key={index} to={url+item.to}> <img className='brand-img' src={item.img} alt='brands'/></Link>
                 )
             })}
         </div>
+        <Link to={`${path+ `${'/all-'+ device + '-brands'}`}`}>
+            <div>See all Brands</div>
+        </Link>
        <div style={{fontWeight: "600"}}> Sell your <span>{brand}</span> {device}</div>
        {brand && brands.map(item => {
            return(
                <div>
-                   {item.brand === brand && <Link to={url+ item.to}><img src={item.img} alt={item.brand}/></Link>}
+                   {item.brand === brand && <Link to={url+ item.to}>
+                       <img className='brand-img' src={item.img} alt={item.brand}/>
+                       </Link>}
                 </div>   
            )
        }) 
         }
+         
+        
+         <HowItWorks bc='#fafafa'/>
+         </div>
         </div>
 
      </Route>
