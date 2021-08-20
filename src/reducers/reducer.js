@@ -1,4 +1,10 @@
  const reducer = (state, action) => {
+     if(action.type === 'SET_PHONES'){
+         return{
+             ...state,
+             phones: action.payload
+         }
+     }
   if(action.type === "TOGGLE_NAV"){
       return{
           ...state,

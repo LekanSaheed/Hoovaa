@@ -164,7 +164,7 @@ const DeviceQuestionnaire = () => {
         const totalDeficit =   arr.reduce((x,y) => x + y, 0)
       
        if(deviceWorth - totalDeficit <= 0){
-           setCalcWorth(500)
+           setCalcWorth(Math.floor(Math.random() * (1150 - 210 + 1)) + 210)
        }
        else{
         setCalcWorth(deviceWorth - totalDeficit)

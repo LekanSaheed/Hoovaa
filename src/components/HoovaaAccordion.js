@@ -13,6 +13,9 @@ const HoovaaAccordion = () => {
             Services
         </AccordionSummary>
         <AccordionDetails>
+            <p>
+                <Link to='/admin' onClick={closeNav}>Admin</Link>
+            </p>
         <p >
             <Link to='/sell-item' onClick={closeNav}>Sell</Link>
         </p>

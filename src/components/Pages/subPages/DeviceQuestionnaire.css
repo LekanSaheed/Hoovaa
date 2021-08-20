@@ -79,9 +79,9 @@
     margin-bottom: 10px;
 }
 .radio-select{
-    padding: 8px;
+    padding: 10px;
     background-color: #fafafa;
-    border: solid 1px whitesmoke;
+    border: solid 1px rgb(226, 226, 226);
     border-radius: 5px;
     margin-bottom: 14px;
     display: flex;
@@ -92,6 +92,7 @@
 .radio-select:hover{
     background-color: #f7f7f7;
 }
+
 .qs-btn button{
     background-color: #7497ff;
     color: white;
@@ -102,6 +103,19 @@
     position: fixed;
     width: 94%;
     bottom: 10px;
+}
+.radio-select:has(input[type=radio]){
+    border: solid 1px green;
+}
+input[type=radio]:checked{
+   transform: scale(1.3);
+   -webkit-transform: scale(1.3);
+}
+input[type=radio]{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transition: .1s;
 }
 .qs-btn {
     position: fixed;

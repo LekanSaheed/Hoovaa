@@ -1,10 +1,10 @@
-import {phoneDatas, laptopBrands, phoneBrands, computerBrands, 
+import {laptopBrands, phoneBrands, computerBrands, 
     smartSpeakerBrands, smartWatchbrands, tvBrands, gamingGadgetBrands, cameraBrands
 } from '../components/Pages/PhoneData'
 
 export const defaultState = {
     toggle: false,
-    phoneData: phoneDatas,
+    phones: [],
     phoneBrands: phoneBrands,
     laptopBrands: laptopBrands,
     computerBrands: computerBrands,

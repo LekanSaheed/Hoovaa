@@ -1,14 +1,34 @@
-import React, {useReducer, useContext} from 'react'
+import React, {useReducer, useContext, useEffect, } from 'react'
 import {defaultState} from './defaultState'
+import {db} from '../components/firebase'
 import {reducer} from './reducer'
-const AppContext = React.createContext()
 
+const AppContext = React.createContext()
 
 const GlobalContext = () => {
     return useContext(AppContext)
 }
 
 const AppProvider = ({ children }) => {
+
+
+    const getPhones = () => {
+        const data = []
+        db.collection('phones').get().then(querySnapshot => {
+           querySnapshot.forEach((doc) => {
+               data.push(doc.data())
+               dispatch({type: 'SET_PHONES', payload: data})
+               console.log(data)
+           })
+            
+        }).catch(err => {
+            console.log(err)
+        })
+       
+    }
+    useEffect(() => {
+        getPhones()
+    }, [])
 const [state, dispatch] = useReducer(reducer, defaultState)
 
 const toggleNav = () => {

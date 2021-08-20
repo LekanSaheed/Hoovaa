@@ -1,72 +1,68 @@
 import React, {useState} from 'react'
 import './Admin.css'
+
+import {db, firebaseStorage} from './components/firebase'
 const Admin = () => {
     
     const [img, setImg] = useState(null)
-    const [brandImg, setBrandImg] = useState(null)
     const [name, setName] = useState('')
     const [brand, setBrand] = useState('')
     const [category, setCategory] = useState('')
     const [worth, setWorth] = useState(0)
-    const [storage, setStorage] = useState([])
     const[error, setError] = useState('')
 
    const types =['image/jpg', 'image/png', 'image/jpeg']
    
-   const allData = []
+   const handleImg = (e) => {
+    const selected = e.target.files[0]
+    
+    if(selected && types.includes(selected.type)){
+        
+        setImg(selected)
+        setError('')
+        console.log(selected)
+        console.log(img)
+    }
+    else if(!selected){
+        setError('no file selected')
+        console.log('no file')
+    }
+    else{
+        setError('invalid file type')
+        setImg(null)
+       console.log('invalid')
+    }
+}
+
+
    const handleSubmit = (e) => {
+       e.preventDefault()
     const checked = []
     const checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
     for(var i = 0; i < checkboxes.length; i++){
         checked.push(checkboxes[i].value)
-        setStorage(checked)
-    }
-       e.preventDefault()
-       allData.push({id: new Date().getTime().toString(), name,brand, category, worth:  parseInt(worth), storage: storage})
-       console.log(allData)
-   }
-    const handleImg = (e) => {
-        const selected = e.target.files[0]
-        
-        if(selected && types.includes(selected.type)){
-            
-            setImg(selected)
-            setError('')
-            console.log(selected)
-            console.log(img)
-        }
-        else if(!selected){
-            setError('no file selected')
-            console.log('no file')
-        }
-        else{
-            setError('invalid file type')
-            setImg(null)
-           console.log('invalid')
-        }
-    }
-   
-    const handleBrandImg = (e) => {
-        const selected = e.target.files[0]
-
-        if(selected && types.includes(selected.type)){
-            
-            setBrandImg(selected)
-            setError('')
-            console.log(selected)
-            console.log(brandImg)
-        }
-        else if(!selected){
-            setError('no file selected')
-            console.log('no file')
-        }
-        else{
-            setError('invalid file type')
-            setBrandImg(null)
-           console.log('invalid')
-        }
-    }
+    }  
+        const colRef = db.collection('phones')
+        const ref = firebaseStorage.ref(`/images/${img.name}`);
+        const uploadTask = ref.put(img);
+        uploadTask.on("state_changed", console.log, console.error, () => {
+          ref
+            .getDownloadURL()
+            .then((iurl) => {
+           //file upload
+            colRef.add({
+                id: new Date().getTime().toString(), name,brand, category, price:  parseInt(worth), storage: checked, img: iurl
+            })
+            .then(() => {
+                alert("Document successfully written!");
+            })
+            .catch((error) => {
+                alert("Error writing document: ", error);
+            });
+            });
+        });
     
+   }
   
     return (
         <div>
@@ -74,10 +70,8 @@ const Admin = () => {
             <form className='form-control'>
                 {error && error}
               <div className='input-container'>
+                  <label>Device Image</label>
                    <input type='file' onChange={handleImg}/>
-              </div>
-              <div  className='input-container'>
-              <input type='file' onChange={handleBrandImg}/>
               </div>
                <div className='input-container'>
                    <label>Device Name</label>
@@ -94,7 +88,7 @@ const Admin = () => {
                </div>
                <div className='input-container'>
                    <label>Device Worth</label>
-                   <input type='number' value={worth} onChange={(e) => setWorth(e.target.value)} required/>
+                   <input type='number' value={worth} onChange={(e) => setWorth(e.target.value.toLocaleString())} required/>
                </div>
                
                <div className='check-container'>
@@ -102,21 +96,21 @@ const Admin = () => {
                  <div className='checks'> <span>8GB</span> <input type='checkbox' value="8000000000" required/> </div>
                    <div className='checks'>
                        <span>16GB</span>
-                   <input type='checkbox' value='16 ' required/>
+                   <input type='checkbox' value='17179869184' required/>
                    </div>
                    <div className='checks'>
                        <span>32GB</span>
-                   <input type='checkbox' value='32000000000' required/>
+                   <input type='checkbox' value='34359738368' required/>
                    </div>
-                  <div className='checks'><span>64GB</span> <input type='checkbox' value='64000000000' required/></div>
-                  <div className='checks'><span>128GB</span> <input type='checkbox' value='128000000000' required/></div>
-                  <div className='checks'><span>256GB</span> <input type='checkbox' value='256000000000' required/></div>
-                   <div className='checks'><span>512GB</span><input type='checkbox' value='512000000000' required/></div>
+                  <div className='checks'><span>64GB</span> <input type='checkbox' value='68719476736' required/></div>
+                  <div className='checks'><span>128GB</span> <input type='checkbox' value='137438953472' required/></div>
+                  <div className='checks'><span>256GB</span> <input type='checkbox' value='274877906944' required/></div>
+                   <div className='checks'><span>512GB</span><input type='checkbox' value='549755813888' required/></div>
                    <div className='checks'>
                        <span>1TB</span>
-                   <input type='checkbox' value='10000000000' required/>
+                   <input type='checkbox' value='1099511627776' required/>
                    </div>
-                  <div className='checks'><span>2TB</span> <input type='checkbox' value='20000000000' required/></div>
+                  <div className='checks'><span>2TB</span> <input type='checkbox' value='2199023255552' required/></div>
                </div>
              
                <button onClick={handleSubmit}>Submit</button>
