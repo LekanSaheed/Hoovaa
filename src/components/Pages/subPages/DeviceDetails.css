@@ -2,11 +2,15 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    min-height: 100vh;
     background: #fafafa;
-    padding-top: 100px;
-    padding-left: 20px;
-    font-size: 20px;
+    font-size: 15px;
+}
+.device-details-container{
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 0 rgba(0 0 0 / 5%); 
+    margin-bottom: 20px;
 }
 .device-details-page img{
     height: 100px;
@@ -18,15 +22,24 @@
     margin-top: 14px;
 
 }
+.device-details-flex{
+    display: flex;
+}
 .storage-grid{
     margin-left: 0;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 10px;
+    background-color: transparent;
+    display: grid;
 }
 .grid-item-storage{
-    padding: 15px;
+    padding: 9px;
     border: solid 1px rgb(240, 240, 240);
     cursor: pointer;
-    padding: 19px ;
-    transition: .5s
+    transition: .5s;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 rgba(0 0 0 / 5%); 
 }
 .grid-item-storage:hover{
     background-color: whitesmoke;
@@ -41,6 +54,7 @@
     font-weight: 600;
     background: #7497ff;
     box-shadow: 0 0 10px 0 rgba(0 0 0 / 21%);
+    margin-top: 10px;
 }
 .device-brand{
     margin-top: 14px;

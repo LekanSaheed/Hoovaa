@@ -37,6 +37,8 @@ body{
   border-radius: 50%;
   animation: load8 1.1s infinite linear;
   transition: opacity 0.3s;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .loader-container{
   background-color: rgba(0,0,0, .7);
@@ -48,6 +50,7 @@ body{
   display: flex;align-items: center;
   justify-content: center;
   z-index: 13;
+
 }
 .loader-hide{
   opacity: 0;

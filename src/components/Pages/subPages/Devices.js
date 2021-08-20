@@ -45,7 +45,7 @@ const {state} = GlobalContext()
             <DeviceDetails device={state.selectedDevice}/>
         </Route>
         </Switch>
-        <HowItWorks/>
+        <HowItWorks mTop="0"/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './DeviceQuestionnaire.css'
-
+import question from '../../../assets/question.png'
 import {GlobalContext} from '../../../reducers/context'
 const DeviceQuestionnaire = () => {
 
@@ -169,38 +169,55 @@ const DeviceQuestionnaire = () => {
        else{
         setCalcWorth(deviceWorth - totalDeficit)
        }
+
+
+    
     }
+ const isAnswered =   document.querySelectorAll('input[type=radio]:checked').length === questions.length
+ const removeFilter = () => {
+    setModal(false)
+    document.querySelector('.question-form').classList.remove('blur-add')
+ }
+
     return (
         <div className="question-page">
           {modal &&   <div className='modal-prompt-container'>
                 <div className='modal-prompt'>
                   <div className='modal-group'>
-                       <div className='para'> <span style={{fontWeight:'700', fontSize: '15px'}}>Please answer all questions correctly</span>
+                      <div>
+                          <img src={question} alt='question'/>
+                      </div>
+                       <div className='para'>
+                            <span style={{fontWeight:'700', fontSize: '15px'}}>Please answer all questions correctly</span>
                        <p>Your answers will determine the total evaluation of your device</p>
                        </div>
-                    <button className="close-modal" onClick={()=> setModal(false)}>Got it</button>
+                    <button className="close-modal" onClick={removeFilter}>Got it</button>
                     </div>
                 </div>
             </div>}
 
-            <form className="question-form">
+            <form className="question-form blur-add">
         <div className='question-group'>
+            <div style={{margin: '15px', fontWeight: '500', fontSize: '18px', textAlign: 'center'}}>Tell us few things about your device</div>
            {questions.map((item,index)=> {
                return(
                    <div key={index} className='question-items'>
-                       <h3>{item.titleText}</h3>
-            <p>{item.text}<br/>
-            <sub className='qs-subtext'>{item.subText}</sub>  </p>
+                      <p style={{fontWeight: '600', fontSize: '14px'}}>{item.titleText}</p>
+            <p> * {item.text}<br/>
+            <sub className='qs-subtext'>  {item.subText}</sub>  </p>
            <div className='radio-group'>
-         <div>  <input type='radio' value={item.value} name={item.name} onChange={item.function}/><span>Yes</span></div>
-           <div> <input type='radio' value={item.value} name={item.name} onChange={item.function2}/><span>No</span></div>
+         <label className='radio-select'>  
+         <input type='radio' value={item.value} name={item.name} onChange={item.function}/><div>Yes</div></label>
+           <label className='radio-select'> 
+           <input type='radio' value={item.value} name={item.name} onChange={item.function2}/><div>No</div></label>
             </div>
                     </div>
                )
            })}
         </div>
 
-        <button disabled={false} className='qs-btn' onClick={calculateValue}>Continue</button>
+       <div className="qs-btn"> 
+       <button disabled={!isAnswered} style={{backgroundColor: `${!isAnswered ? 'lightblue' : "#7497ff"}`}} onClick={calculateValue}>Continue</button></div>
         {parseFloat(calcWorth)}Naira
             </form>
         </div>

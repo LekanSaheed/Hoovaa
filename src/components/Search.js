@@ -1,6 +1,7 @@
 import React, {  useState } from 'react'
 import {  AiOutlineSearch } from 'react-icons/ai'
 import { GlobalContext } from '../reducers/context'
+import {Link} from 'react-router-dom'
 import './Search.css'
 
 const Search = () => {
@@ -39,7 +40,12 @@ const {state} = GlobalContext()
         {modal && <div style={{backgroundColor: 'white', width: '100%', minHeight: '100vh'}}>
         { match ? result.map(item => {
             return(
-                <li>{item.name}</li>
+               <div>
+                    <li>
+                        <Link to='/sell-item/phone-brands/apple-phones/iphone-6'>{item.name}</Link></li>
+                <br/>
+                <br/>
+           </div>
             )
         }) : <div>not match</div>}
         </div> }

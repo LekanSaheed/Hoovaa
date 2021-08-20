@@ -99,16 +99,24 @@ const Admin = () => {
                
                <div className='check-container'>
                    <label>Storage</label>
-                 <div className='checks'> <span>8GB</span> <input type='checkbox' value="8 GB" required/> </div>
+                 <div className='checks'> <span>8GB</span> <input type='checkbox' value="8000000000" required/> </div>
                    <div className='checks'>
                        <span>16GB</span>
-                   <input type='checkbox' value='16 GB' required/>
+                   <input type='checkbox' value='16 ' required/>
                    </div>
-                  <div className='checks'><span>64GB</span> <input type='checkbox' value='64 GB' required/></div>
-                  <div className='checks'><span>128GB</span> <input type='checkbox' value='128 GB' required/></div>
-                  <div className='checks'><span>256GB</span> <input type='checkbox' value='256 GB' required/></div>
-                   <div className='checks'><span>512GB</span><input type='checkbox' value='512 GB' required/></div>
-                  <div className='checks'><span>2TB</span> <input type='checkbox' value='2 TB' required/></div>
+                   <div className='checks'>
+                       <span>32GB</span>
+                   <input type='checkbox' value='32000000000' required/>
+                   </div>
+                  <div className='checks'><span>64GB</span> <input type='checkbox' value='64000000000' required/></div>
+                  <div className='checks'><span>128GB</span> <input type='checkbox' value='128000000000' required/></div>
+                  <div className='checks'><span>256GB</span> <input type='checkbox' value='256000000000' required/></div>
+                   <div className='checks'><span>512GB</span><input type='checkbox' value='512000000000' required/></div>
+                   <div className='checks'>
+                       <span>1TB</span>
+                   <input type='checkbox' value='10000000000' required/>
+                   </div>
+                  <div className='checks'><span>2TB</span> <input type='checkbox' value='20000000000' required/></div>
                </div>
              
                <button onClick={handleSubmit}>Submit</button>
