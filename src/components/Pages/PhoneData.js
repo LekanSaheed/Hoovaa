@@ -1,25 +1,14 @@
 import apple from '../../assets/Apple.png'
 import samsung from '../../assets/Samsung.png'
-// import nokia from '../../assets/Nokia.png'
-// import amazon from '../../assets/Amazon.png'
+import tec4 from '../../assets/tecnoSpark4.jpg'
 import hp from '../../assets/Hp.png'
 import tecno from '../../assets/tecno.jpg'
 import infinix from '../../assets/infinix.jpg'
-// import gionee from '../../assets/gionee.jpg'
-// import huawei from '../../assets/huawei.jpg'
-// import htc from '../../assets/htc.jpg'
-
-// import google from '../../assets/google.jpg'
-// import lg from '../../assets/lg.jpg'
 import microsoft from '../../assets/microsoft.jpg'
-import nikon from '../../assets/nikon.jpg'
 import toshiba from '../../assets/toshiba.jpg'
 import sony from '../../assets/sony.jpg'
 import dell from '../../assets/Dell.png'
-import mi from '../../assets/mi.jpg'
-import panasonic from '../../assets/panasonic.jpg'
-import philips from '../../assets/philips.jpg'
-import canon from '../../assets/canon.jpg'
+
 
 export const phoneBrands = [
     {img: apple,
@@ -86,11 +75,11 @@ export const tvBrands = [
     to: '/toshiba-tvs',
     brand: 'toshiba'},
     
-    {img: philips,
+    {img: dell,
     to: '/philips-tvs',
     brand: 'philips'
 },
-    {img: panasonic,
+    {img: hp,
     to: '/panasonic-tvs',
     brand: 'panasonic'},
 
@@ -99,7 +88,7 @@ export const tvBrands = [
     to: '/samsung-tvs'}
 ]
 export const smartWatchbrands = [
-    {img: mi,
+    {img: toshiba,
     to: '/mi-sw',
     brand: 'mi'},
     
@@ -131,11 +120,11 @@ export const smartSpeakerBrands = [
     to: '/dell-smart-speakers'}
 ]
 export const cameraBrands = [
-    {img: nikon,
+    {img: microsoft,
     to: '/nikon-cameras',
     brand: 'canon'},
     
-    {img: canon,
+    {img: apple,
     to: '/canon-cameras',
     brand: 'canon'
 }
@@ -147,6 +136,8 @@ export const phoneDatas = [{
     category: 'phone',
     storage: [16, 32, 64],
     ram: [1,2,4],
+    price: 38000,
+    img: tec4
 },
 {
     name: 'Iphone 6s',
@@ -155,6 +146,8 @@ export const phoneDatas = [{
     category: 'phone',
     storage: [16, 32, 64],
     ram: [2,4],
+    price: 45000,
+    img: tec4
 },
 {
     name: 'Iphone 6 Plus',

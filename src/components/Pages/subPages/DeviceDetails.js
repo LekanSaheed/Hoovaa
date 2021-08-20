@@ -21,7 +21,7 @@ const DeviceDetails = ({device}) => {
             {device.map((item, index) => {
                 return(
                     <div key={index}>
-                        <img src={item.brandImg} alt='brand'/>
+                       <div className='grid-img'> <img src={item.img} alt='brand'/></div>
                         <div className='device-name'>{item.name}</div>
                         <div className='device-brand'>{item.brand}</div>
                         <span className='theme-text'>Select storage</span>
@@ -36,7 +36,8 @@ const DeviceDetails = ({device}) => {
                             )
                         })}
                         </div>
-                        <Link  to={`${url + '/evaluation'}`} onClick={() => setTimeout(() => {setDeviceStorage(item.name+ ' ' + selectedStorage + 'GB', item.brandImg)}, 3000)}> 
+                        <Link  to={`${url +  '/evaluation'}`} onClick={() => setTimeout(() =>
+                             {setDeviceStorage(item.name+ ' ' + selectedStorage + 'GB', item.brandImg, item.price)}, 3000)}> 
                         <button style={{backgroundColor: `${!selectedStorage ? 'lightblue' : '#7497ff'}`}} className='btn-eval' disabled={!selectedStorage} >Continue</button> </Link>
                     </div>
                    

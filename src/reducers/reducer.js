@@ -19,13 +19,14 @@
       }
   }
   if(action.type === "SET_DEVICE_STORAGE"){
-      console.log(state.newSelected)
       const name = action.payload
       const img = action.payload2
-      const evaluated = Math.floor(Math.random() * 50) + 30
+      const price = action.payload3
+      const usedDevicePercent = price * 20 / 100
+      const evaluated = price - usedDevicePercent
       return{
           ...state,
-          newSelected: [{name,img, evaluated}]
+          newSelected: [{name,img, evaluated, price}]
       }
   }
 }

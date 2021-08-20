@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-
+import sell from '../../assets/sell 2.png'
 import './PhoneBrands.css'
 import { Link, Route, useRouteMatch, Switch, useHistory } from 'react-router-dom'
 import Devices from './subPages/Devices'
@@ -39,13 +39,19 @@ const PhoneBrands = ({brands, device}) => {
         <Switch>
 <Route exact path={path}>  
 <div>     
-<div style={{position: 'sticky', top: '30px', left: '0'}} onClick={() => history.goBack()}><AiOutlineArrowLeft/></div>
+<div style={{ backgroundColor: 'white', padding: '6px', fontSize: '20px'}} onClick={() => history.goBack()}><AiOutlineArrowLeft/></div>
         <div className='brand-container'>
+
+            <div className='centered-text' style={{marginTop: '15px'}}><img src={sell} alt='sell'/></div>
             <div className="search-container brand-search">
                 <input type='search' placeholder={`${'Search your ' + device + ' or brands'}`}/>
                 <div style={{fontSize: '10px', fontWeight: '600', color: 'white', padding: '12px', backgroundColor: '#7497ff'}}>Search</div>
             </div>
-            <span style={{fontWeight: '300', fontSize: '13px', padding: '13px'}}> Or choose your {device} brand</span>
+           <div className='line-through'> <div></div>
+           <span style={{fontWeight: '300', fontSize: '11px', padding: '13px'}}> Or choose your {device} brand</span>
+           <div>
+               </div>
+           </div>
          
             <div className='brand-container-flex'>
            
@@ -78,16 +84,16 @@ const PhoneBrands = ({brands, device}) => {
 
      </Route>
             <Route  path={`${path + '/apple-phones'}`}>
-                <Devices deviceName='Apple phones' phones={state.phoneData} brand='apple'/>
+                <Devices deviceName='Apple phone' phones={state.phoneData} brand='apple'/>
             </Route>
             <Route path={`${path + '/samsung-phones'}`}>
-                <Devices deviceName='Samsung Phones' phones={state.phoneData} brand='samsung'/>
+                <Devices deviceName='Samsung Phone' phones={state.phoneData} brand='samsung'/>
             </Route>
             <Route path={`${path + '/tecno-phones'}`}>
-                <Devices deviceName='Tecno Phones' phones={state.phoneData} brand='tecno'/>
+                <Devices deviceName='Tecno Phone' phones={state.phoneData} brand='tecno'/>
             </Route>
             <Route path={`${path + '/infinix-phones'}`}>
-                <Devices deviceName='Infinix Phones' phones={state.phoneData} brand='infinix'/>
+                <Devices deviceName='Infinix Phone' phones={state.phoneData} brand='infinix'/>
             </Route>
         </Switch>
       

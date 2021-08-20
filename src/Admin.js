@@ -110,51 +110,7 @@ const Admin = () => {
                    <div className='checks'><span>512GB</span><input type='checkbox' value='512 GB' required/></div>
                   <div className='checks'><span>2TB</span> <input type='checkbox' value='2 TB' required/></div>
                </div>
-               <div className='input-container'>
-                   <label>Screen Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Battery Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Speaker Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Charging port Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Rough Body Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Wifi Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Network Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-                <div className='input-container'>
-                   <label>No Receipt Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
-               <div className='input-container'>
-                   <label>Firmware Deficit</label>
-                   <input type='number' placeholder='0' required/>Naira
-
-               </div>
+             
                <button onClick={handleSubmit}>Submit</button>
             </form>
             

@@ -1,6 +1,5 @@
 import React from 'react'
 import './Devices.css'
-import {BsPhone} from 'react-icons/bs'
 import { AiOutlineArrowLeft, AiOutlineSearch } from 'react-icons/ai'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import HowItWorks from '../../HowItWorks'
@@ -17,9 +16,7 @@ const Devices = ({deviceName, phones, brand}) => {
 const history = useHistory()
 const {path, url} = useRouteMatch()
 const {state} = GlobalContext()
-const s = 'saq'
-s.replace('s', 'v')
-console.log(s)
+
     return (
       
         <div className="item-page">
@@ -29,13 +26,13 @@ console.log(s)
             </div>
               <Switch>
                   <Route exact path={path}>
-            <p style={{textAlign: 'center', fontWeight: 'bolder', marginTop: '100px'}}>{deviceName}</p>
+            <p style={{textAlign: 'center', fontWeight: 'bolder', marginTop: '10px'}}>Sell your old {deviceName}</p>
         <div className='grid-item-container'>
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
-                    <Link to={`${url + '/'+ item.name.toLowerCase().replace(/ /g, '-')}`}  key={index}>
+                    <Link to={`${url + '/' + item.name.toLowerCase().replace(/ /g, '-')}`}  key={index}>
                     <div className='grid-item-item' onClick={() => getDevice(item)}>
-                        <div className='grid-img'><BsPhone/></div>
+                        <div className='grid-img'><img src={item.img} alt='ige'/></div>
                        <span> {item.name}</span>
                        <div>{item.brand}</div>        
                        </div> 

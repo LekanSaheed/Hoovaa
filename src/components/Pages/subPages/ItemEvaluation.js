@@ -19,9 +19,9 @@ const ItemEvaluation = () => {
        <Switch>
            <Route exact path={path}>
            <div style={{paddingTop: '20px', minHeight: '100vh'}}>
-               {state.newSelected.map(item => {
+               {state.newSelected.map((item, id) => {
                    return(
-                       <div style={{margin: '12px', fontSize: '25px', fontWeight: '500'}}> Sell your {item.name}</div>
+                       <div key={id} style={{margin: '12px', fontSize: '25px', fontWeight: '500'}}> Sell your {item.name}</div>
                    )
                })}
         {state.newSelected === [] ?  <div>evaluating perfect price for you</div>: state.newSelected.map(item => {

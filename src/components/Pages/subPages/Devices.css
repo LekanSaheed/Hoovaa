@@ -6,9 +6,6 @@
     background-color: white;
     margin: 15px;
     text-align: center;
-    margin-top: 30px;
-
-
 }
 .grid-item-item{
     padding: 16px;
@@ -25,9 +22,14 @@
 .grid-item-item:hover{
     background: whitesmoke;
 }
-.grid-img{
+.grid-img img{
     font-size: 20px;
+    height: 70px;
+    width: 70px;
 
+}
+.grid-img{
+    background-color: white;
 }
 .item-page{
     position: absolute;
@@ -52,7 +54,5 @@
    top: 0;
 }
 @media(max-width:600px){
-    .item-page-header{
-        margin-top: 55px;
-    }
+    
 }
