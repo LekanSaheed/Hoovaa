@@ -19,7 +19,7 @@ const App = ({hideLoader}) => {
 React.useEffect(hideLoader, [hideLoader])
   return (
     <div >
-      <Router>
+      <Router forceRefresh={true}>
       <Header/>
      <MobileNav/>
       <Switch>
