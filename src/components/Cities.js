@@ -42,17 +42,8 @@ const [loading, setLoading] = React.useState(true)
                    <div className='city-container'>
                    <h1>Please Select your city to contine\ue</h1>
                    {loading ? <div>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
+                    <Skeleton count={10}/>
+                    
 
                        </div> : cityComp}
                    </div>
