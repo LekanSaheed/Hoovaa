@@ -6,15 +6,28 @@ import { GlobalContext } from '../reducers/context'
 import './MobileNav.css'
 
 import HoovaaAccordion from './HoovaaAccordion'
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineCaretDown, AiOutlineClose } from 'react-icons/ai'
+import {MdLocationOn} from 'react-icons/md'
+
 
 const MobileNav = () => {
-    const {state, toggleNav} = GlobalContext()
+    const {state, toggleNav, closeNav} = GlobalContext()
+    
+const openCity = () => {
+    closeNav()
+    
+}
     return (
         <div className={`${state.toggle ? 'show-nav' : 'nav-container'}`}>
             <div className='nav-data'>
                 <div className='nav-data-flex'>
-                    <span>Your city</span>
+                 <div style={{display: 'flex', alignItems:'center'}}>
+                 <MdLocationOn/>
+                   <div> <div>Your city<br/>
+                   <div style={{display: 'flex', alignItems: 'center'}}> <span style={{fontSize: '15px', fontWeight: '500'}} onClick={openCity}>{state.city}</span><AiOutlineCaretDown/></div>
+                    </div>
+                    </div>
+                 </div>
                     <div onClick={toggleNav}><AiOutlineClose style={{fontSize: '22px', textShadow: '0 0 5px 5px white'}}/></div>
                     </div>
              </div>

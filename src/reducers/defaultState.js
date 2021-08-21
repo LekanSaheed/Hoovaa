@@ -14,6 +14,7 @@ export const defaultState = {
     gamingGadgetBrands: gamingGadgetBrands,
     cameraBrands: cameraBrands,
     selectedDevice: [],
-    newSelected: []
-
+    newSelected: [],
+    city: '',
+    isCity: true
 }

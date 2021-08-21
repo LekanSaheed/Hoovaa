@@ -8,7 +8,7 @@ import { Link, Switch, Route, useRouteMatch, useHistory } from 'react-router-dom
 import HowItWorks from '../HowItWorks'
 import PhoneBrands from './PhoneBrands'
 import { GlobalContext } from '../../reducers/context'
-
+import Cities from '../Cities'
 
 const SellItem = () => {
 
@@ -16,6 +16,7 @@ const SellItem = () => {
     React.useEffect(() => {
         window.scrollTo(0,0)
     }, [])
+    
    const {url, path} = useRouteMatch()
   
     
@@ -80,6 +81,7 @@ const history = useHistory()
                 </ul>
             </div>
             </div>
+            {state.isCity && <Cities/>}
             <HowItWorks bc='#fafafa' mTop='0px'/>
         </Route>
            

@@ -1,0 +1,31 @@
+.city-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 33.3%);
+    color: white;
+    font-size: 16px;
+}
+.city-modal-container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0 ,0 , .8);
+}
+.city-modal{
+    position: absolute;
+    bottom: 0;
+}
+.city-container{
+    background-color: white;
+}
+.cities{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: black;
+    margin: 10px;
+    box-shadow: 0 0 6px 0 rgba(0 0 0 / 19%);
+
+}

@@ -11,6 +11,7 @@
           toggle: !state.toggle
       }
   }
+ 
   if(action.type === "CLOSE_NAV"){
 
       return{
@@ -24,6 +25,13 @@
           selectedDevice: [action.payload]
       }
   }
+  if(action.type === 'SET_CITY'){
+    return{
+        ...state,
+        isCity: false,
+        city: action.payload
+    }
+}
   if(action.type === "SET_DEVICE_STORAGE"){
       const name = action.payload
       const img = action.payload2
