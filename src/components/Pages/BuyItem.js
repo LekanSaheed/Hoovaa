@@ -8,6 +8,8 @@ import BuyGoods from './Buy/BuyGoods'
 import {ShopProvider} from './Buy/CartContext'
 import CartButton from './CartButton'
 import Cart from './Buy/Cart'
+import trolley from '../../assets/trolley.png'
+import HowItWorks from '../HowItWorks'
 const BuyItem = () => {
     const data = [
         {text: 'Phones',
@@ -44,7 +46,10 @@ const allItems = data.map((item, index) => {
            <Switch>
                <Route exact path={path}>
             <div className='buy-grid'>
-            <h4>What would you like to buy</h4>
+            <p>What would you like to buy</p>
+            <div className='buy-img-con'>
+                <img src={trolley} alt='trolley'/>
+            </div>
               <div className="buy-items">
                   {allItems}
               </div>
@@ -58,6 +63,7 @@ const allItems = data.map((item, index) => {
                   <BuyGoods/>
               </Route>
           </Switch>
+          <HowItWorks/>
           </div>
       </ShopProvider>
        

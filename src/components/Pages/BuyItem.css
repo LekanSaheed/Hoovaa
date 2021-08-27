@@ -1,15 +1,24 @@
 .item-container{
-    padding: 15px;
+    
+    background-color: #fAFAFA;
 }
 
 .buy-items{
     display: flex;
     justify-content: center;
-    align-items: center;
+    
     flex-wrap: wrap;
     flex-basis: 100%;
+   
 }
-
+.buy-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    padding-top: 35px;
+}
 .buy-node{
     padding: 15px;
     margin: 10px;
@@ -17,4 +26,10 @@
     border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    flex: 1;
+    background-color: white;
+}
+.buy-img-con img{
+    width: 100px;
+    opacity: .7;
 }

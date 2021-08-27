@@ -23,35 +23,33 @@ const SellItem = () => {
     const data = [
         {text: 'Phones',
           icon: <IoMdPhonePortrait/>,
-          to: '/phone-brands'
 },
 {text: 'Laptops',
           icon: <AiOutlineLaptop/>,
-          to: '/laptop-brands'
 },
 {text: 'Computers',
           icon: <AiOutlineDesktop/>,
-          to: '/computer-brands'
+         
 },
 {text: 'Gaming Gadgets',
           icon: <IoLogoGameControllerB/>,
-          to: '/gaming-gadgets-brands'
+         
 },
 {text: 'TVs',
           icon: <BsTv/>,
-          to: '/tv-brands'
+        
 },
 {text: 'Cameras',
           icon: <AiOutlineCamera/>,
-          to: '/camera-brands'
+         
 },
 {text: 'Smart Watches',
           icon: <IoIosWatch/>,
-          to: '/smart-watch-brands'
+     
 },
 {text: 'Smart Speakers',
           icon: <BsSpeaker/>,
-          to: '/smart-speakers-brands'
+    
 }
     ]
     console.log(path)
@@ -71,7 +69,7 @@ const history = useHistory()
                     {data.map((item, index) => {
                         return(
                            <li key={index}> 
-                           <Link to={url + item.to} className='sale-items'>
+                           <Link to={url + '/' + item.text.toLowerCase().replace(/ /g, '-') + ' brands'.replace(/ /g, '-')} className='sale-items'>
                                 <span className='sale-icons'>{item.icon}</span>
                                 <span>{item.text}</span>
                                 </Link>
@@ -85,25 +83,25 @@ const history = useHistory()
             <HowItWorks bc='#fafafa' mTop='0px'/>
         </Route>
            
-                    <Route  path={`${path + '/phone-brands'}`}>
+                    <Route  path={`${path + '/phones-brands'}`}>
                         <PhoneBrands device='phone' brands={state.phoneBrands}/>
                     </Route>
-                    <Route path={`${path + '/laptop-brands'}`}>
+                    <Route path={`${path + '/laptops-brands'}`}>
                         <PhoneBrands device='laptop' brands={state.laptopBrands}/>
                     </Route>
-                    <Route path={`${path + '/computer-brands'}`}>
+                    <Route path={`${path + '/computers-brands'}`}>
                         <PhoneBrands device='computer' brands={state.computerBrands}/>
                     </Route>
                     <Route path={`${path + '/gaming-gadgets-brands'}`}>
                         <PhoneBrands device='gaming Gadget' brands={state.gamingGadgetBrands}/>
                     </Route>
-                    <Route path={`${path + '/tv-brands'}`}>
+                    <Route path={`${path + '/tvs-brands'}`}>
                         <PhoneBrands device='tv' brands={state.tvBrands}/>
                     </Route>
-                    <Route path={`${path + '/camera-brands'}`}>
+                    <Route path={`${path + '/cameras-brands'}`}>
                         <PhoneBrands device='camera' brands={state.cameraBrands}/>
                     </Route>
-                    <Route path={`${path + '/smart-watch-brands'}`}>
+                    <Route path={`${path + '/smart-watches-brands'}`}>
                         <PhoneBrands device='smart Watch' brands={state.smartWatchbrands}/>
                     </Route>
                     <Route path={`${path + '/smart-speakers-brands'}`}>
