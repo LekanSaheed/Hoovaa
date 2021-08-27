@@ -1,7 +1,4 @@
-.item-container{
-    
-    background-color: #fAFAFA;
-}
+
 
 .buy-items{
     display: flex;
@@ -10,6 +7,12 @@
     flex-wrap: wrap;
     flex-basis: 100%;
    
+}
+.buy-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .buy-grid{
     display: flex;
@@ -28,8 +31,109 @@
     padding-right: 20px;
     flex: 1;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
 }
-.buy-img-con img{
+.flex-items-and-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buy-img1{
     width: 100px;
     opacity: .7;
+}
+.buy-img2{
+    display: none;
+}
+.buy-text{
+    font-weight: 500;
+ text-align: center;
+}
+.gt-con{
+    display: flex;
+    color: #7497ff;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+.guarantee-text{
+    display: flex;
+    font-weight: 500;
+    color: black;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 12px;
+}
+.guarantee-text span{
+    color: #7497ff;
+    font-weight: 700;
+    font-size: 22px;
+    margin-right: 5px;
+}
+@media(min-width: 767px){
+    .flex-items-and-img{
+        flex-direction: row-reverse;
+        background-color: #fAFAFA;
+        padding: 15px 45px;
+        border-radius: 20px;
+    }
+    .buy-text{
+        font-size: 28px;
+        line-height: 46px;
+        text-align: start;
+     
+    }
+    .buy-img1{
+        display: none;
+    }
+    .buy-img2{
+        display: block;
+        width: 300px;
+    }
+    .guarantee-text{
+        font-size: 11px;
+    }
+    .buy-items{
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}
+@media(min-width: 901px){
+    .buy-text{
+        font-weight: 500;
+        font-size: 38px;
+        line-height: 53px;
+    }
+    .buy-img2{
+        width: 440px;
+    }
+    .flex-items-and-img{
+        align-items: center;
+        margin: 30px;
+        padding-top: 25px;
+    }
+    .gt-con{
+        display: flex;
+        color: #7497ff;
+    }
+    .guarantee-text{
+        display: flex;
+        font-weight: 500;
+        color: black;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        font-size: 15px;
+    }
+    .guarantee-text span{
+        color: #7497ff;
+        font-weight: 700;
+        font-size: 22px;
+        margin-right: 5px;
+    }
 }

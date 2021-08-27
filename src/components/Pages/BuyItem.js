@@ -10,6 +10,8 @@ import CartButton from './CartButton'
 import Cart from './Buy/Cart'
 import trolley from '../../assets/trolley.png'
 import HowItWorks from '../HowItWorks'
+import add from '../../assets/addtocart.png'
+import { GoCheck } from 'react-icons/go'
 const BuyItem = () => {
     const data = [
         {text: 'Phones',
@@ -32,9 +34,12 @@ const BuyItem = () => {
 const allItems = data.map((item, index) => {
  
     return(
+        <Link style={{color: 'black'}} to={url + '/buy-' + item.text.toLowerCase().replace(/ /g, '-')}>
         <div className='buy-node' key={index}>
-            <li><Link style={{color: 'black'}} to={url + '/buy-' + item.text.toLowerCase().replace(/ /g, '-')}>{item.icon}{item.text}</Link></li>
+                <div>{item.icon}</div>
+                <div>{item.text}</div>
         </div>
+        </Link>
     )
 })
 
@@ -46,13 +51,43 @@ const allItems = data.map((item, index) => {
            <Switch>
                <Route exact path={path}>
             <div className='buy-grid'>
-            <p>What would you like to buy</p>
-            <div className='buy-img-con'>
-                <img src={trolley} alt='trolley'/>
+            <p className='centered-text'>What would you like to buy</p>
+          <div className='flex-items-and-img'>
+          <div className='buy-img-con'>
+                <img className='buy-img1' src={trolley} alt='trolley'/>
+                <img className='buy-img2' src={add} alt='add2cart'/>
             </div>
+           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+               
+          <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}> 
+          <div className="buy-text">Choose your Category of choice or search gadget</div>
+         <div className='gt-con'>
+         <div className='guarantee-text'>
+          <span><GoCheck/></span>
+              <div>
+                 Top Quality Products
+              </div>
+          </div>
+          <div className='guarantee-text'>
+          <span><GoCheck/></span>
+              <div>
+                100% Guarantee
+              </div>
+          </div>
+          <div className='guarantee-text'>
+          <span><GoCheck/></span>
+              <div>
+                 DoorPost Delivery
+              </div>
+          </div>
+         </div>
+          </div>
               <div className="buy-items">
+                
                   {allItems}
               </div>
+           </div>
+          </div>
             
             </div>
                </Route>
