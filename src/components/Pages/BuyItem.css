@@ -1,6 +1,20 @@
 .item-container{
     padding: 15px;
 }
-.item-container li a{
-    color: black;
+
+.buy-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+
+.buy-node{
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 0 10px 0 rgba(0 0 0 /10%);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }

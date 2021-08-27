@@ -41,9 +41,7 @@
     width: 100%;
     min-height: 100vh;
 }
-.blur-add{
-    filter: blur(10px);
-}
+
 .item-page-header{
     padding: 15px;
     display: flex;

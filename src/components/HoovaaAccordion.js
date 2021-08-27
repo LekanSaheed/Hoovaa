@@ -12,10 +12,15 @@ const HoovaaAccordion = () => {
         <AccordionSummary expandIcon={<FaCaretDown/>} >
             Services
         </AccordionSummary>
-        <AccordionDetails>
+        
+            <AccordionDetails>
             <p>
                 <Link to='/admin' onClick={closeNav}>Admin</Link>
+
             </p>
+            </AccordionDetails>
+        <AccordionDetails>
+           
         <p >
             <Link to='/sell-item' onClick={closeNav}>Sell</Link>
         </p>

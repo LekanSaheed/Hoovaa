@@ -94,18 +94,13 @@
 }
 
 .qs-btn button{
-    background-color: #7497ff;
     color: white;
     border: none;
     border-radius: 8px;
-    box-shadow: 0 0 10px 0 #7497ff67;
     padding: 10px;
     position: fixed;
     width: 94%;
     bottom: 10px;
-}
-.radio-select:has(input[type=radio]){
-    border: solid 1px green;
 }
 input[type=radio]:checked{
    transform: scale(1.3);

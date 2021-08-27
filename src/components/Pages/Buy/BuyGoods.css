@@ -1,0 +1,20 @@
+.goods-container{
+    display: grid;
+    grid-template-columns: repeat(3, 33.3%);
+    padding: 20px;
+    grid-gap: 20px;
+}
+
+.goods-node{
+    padding: 10px;
+    margin: 10px;
+    font-size: 13px;
+    color: black;
+    text-align: center;
+}
+
+@media(min-width: 901px){
+    .goods-container{
+        grid-template-columns: repeat(5, auto);
+    }
+}

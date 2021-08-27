@@ -28,11 +28,13 @@ const [loaded, setLoad] = useState(false)
                   <Route exact path={path}>
             <p style={{textAlign: 'center', fontWeight: 'bolder', marginTop: '10px'}}>Sell your old {deviceName}</p>
         <div className='grid-item-container'>
+        {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
-                    <Link to={`${url + '/' + item.name.toLowerCase().replace(/ /g, '-')}`}  key={index}>
-                    <div className='grid-item-item' onClick={() => getDevice(item)}>
-                        <div className='grid-img'>{loaded ? null : <Skeleton height={100}/> }  <img src={item.img} alt='ige' onLoad={() => setLoad(true)}/> </div>
+                    <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '-') }`}  key={index}>
+                        {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
+                    <div className='grid-item-item' onClick={() => getDevice(item)} onLoad={()=> setLoad(true)}>
+                        <div className='grid-img'>  <img src={item.img} alt='ige' /> </div>
                        <span> {item.name}</span>
                        <div>{item.brand}</div>        
                        </div> 

@@ -217,7 +217,7 @@ const DeviceQuestionnaire = () => {
         </div>
 
        <div className="qs-btn"> 
-       <button disabled={!isAnswered} style={{backgroundColor: `${!isAnswered ? 'lightblue' : "#7497ff"}`}} onClick={calculateValue}>Continue</button></div>
+       <button disabled={!isAnswered} style={{backgroundColor: `${!isAnswered ? '#dee6ff' : "#7497ff"}`}} onClick={calculateValue}>Continue</button></div>
         {parseFloat(calcWorth)}Naira
             </form>
         </div>
