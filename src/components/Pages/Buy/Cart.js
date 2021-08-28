@@ -1,33 +1,35 @@
 import React, {} from 'react'
 import { GlobalShop } from './CartContext'
+import './Cart.css'
+
 
 const Cart = () => {
     const {state, removeItem, clearCart} = GlobalShop()
        
 
     return (
-        <div>
-            cart here
-            <div>
+        <div className='cart-container'>
+           My Cart
+            <div className='class-item-container'>
                {state.cart.length < 1 ? 'No item in cart' : state.cart.map((item, idx) => {
                     return(
-                        <div key={idx}>
-                            <div>
-                        Name   {item.name}
+                        <div key={idx} className='cart-item'>
+                            <div className='cart-item-name'>
+                       *{item.name}
                             </div>
-                            <div>
-                        Price   {item.price}
+                            <div className='cart-item-price'>
+                        ${item.price}
                             </div>
-                            <div>
-                        brand   {item.brand}
+                            <div className='cart-item-brand'>
+                        Brand   {item.brand}
                             </div>
-                            <button onClick={() => removeItem(item.id)}>remove</button>
+                            <button className='remove-btn' onClick={() => removeItem(item.id)}>Remove</button>
                         </div>
                     )
                 })}
             </div>
 
-            <button onClick={() => clearCart()}>Clear all</button>
+           {state.cart.length > 0 &&  <button onClick={() => clearCart()}>Clear all</button>}
         </div>
     )
 }

@@ -5,10 +5,9 @@ const GadgetDetails = () => {
     const [gadget, setGadget] = useState([])
     const {state, addToCart} = GlobalShop()
     useEffect(() => {
-     const selected = JSON.parse(localStorage.getItem('selected'))
-     console.log(selected, gadget)
-          selected ? setGadget([selected]) : setGadget(state.clickedDevice)
-    }, [gadget, state.clickedDevice])
+    setGadget(state.clickedDevice)
+    window.scrollTo(0,0)
+    }, [state.clickedDevice])
     return (
         <div>
             DeviceDetails
