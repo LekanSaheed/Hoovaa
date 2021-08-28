@@ -1,7 +1,7 @@
 import React, {} from 'react'
 import { GlobalShop } from './CartContext'
 import './Cart.css'
-
+import {BsTrash} from 'react-icons/bs'
 
 const Cart = () => {
     const {state, removeItem, clearCart} = GlobalShop()
@@ -9,8 +9,8 @@ const Cart = () => {
 
     return (
         <div className='cart-container'>
-           My Cart
-            <div className='class-item-container'>
+        
+            <div className='cart-item-container'>
                {state.cart.length < 1 ? 'No item in cart' : state.cart.map((item, idx) => {
                     return(
                         <div key={idx} className='cart-item'>
@@ -27,9 +27,45 @@ const Cart = () => {
                         </div>
                     )
                 })}
+                  {state.cart.length > 0 &&  <button onClick={() => clearCart()}>
+                      <span>Clear all</span>
+                      <BsTrash/>
+                       </button>}
             </div>
 
-           {state.cart.length > 0 &&  <button onClick={() => clearCart()}>Clear all</button>}
+         <div className='total-item-and-checkout'>
+             <div className='order-summary'>
+                 <p>ORDER SUMMARY</p>
+             </div>
+         <div className='cart-total-group'>
+             <div className='cart-total'>
+                 <div>
+                     Sub Total
+                 </div>
+                 <div>
+                     $
+                     </div>
+             </div>
+             <div className='cart-total'>
+                 <div>
+                Shipping Fees
+                 </div>
+                 <div>
+                     $
+                 </div>
+             </div>
+             <div className='cart-total'>
+                 <div>
+                  Estimated Total 
+                 </div>
+                 <div>
+                     $
+                 </div>
+             </div>
+         
+         </div>
+         <button className='order-summary checkout'>CHECKOUT</button>
+         </div>
         </div>
     )
 }

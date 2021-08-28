@@ -5,13 +5,13 @@ import { Link, Route, Switch, useRouteMatch } from 'react-router-dom'
 import './BuyItem.css'
 import {IoLogoGameControllerA} from 'react-icons/io'
 import BuyGoods from './Buy/BuyGoods'
-import {ShopProvider} from './Buy/CartContext'
 import CartButton from './CartButton'
 import Cart from './Buy/Cart'
 import trolley from '../../assets/trolley.png'
 import HowItWorks from '../HowItWorks'
 import add from '../../assets/addtocart.png'
 import { GoCheck } from 'react-icons/go'
+
 const BuyItem = () => {
     const data = [
         {text: 'Phones',
@@ -45,7 +45,7 @@ const allItems = data.map((item, index) => {
 
     return (
 
-      <ShopProvider>
+        
             <div className='item-container'>
             <CartButton/>
            <Switch>
@@ -100,7 +100,6 @@ const allItems = data.map((item, index) => {
           </Switch>
           <HowItWorks/>
           </div>
-      </ShopProvider>
        
     )
 }

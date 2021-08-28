@@ -4,14 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {AppProvider} from './reducers/context'
-
+import { ShopProvider } from './components/Pages/Buy/CartContext';
 const loader = document.querySelector('.loader-container');
 const showLoader = () => loader.classList.remove('loader-hide');
 const hideLoader = () => setTimeout(() => loader.classList.add('loader-hide') , 4000);
 ReactDOM.render(
   <React.StrictMode>
    <AppProvider>
-      <App hideLoader={hideLoader} showLoader={showLoader}/>
+     <ShopProvider>
+     <App hideLoader={hideLoader} showLoader={showLoader}/>
+     </ShopProvider>
    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')

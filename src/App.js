@@ -10,6 +10,9 @@ import SellItem from './components/Pages/SellItem';
 import SwapItem from './components/Pages/SwapItem';
 import RepairDevice from './components/Pages/RepairDevice';
 import Admin from './Admin'
+import { GlobalShop } from './components/Pages/Buy/CartContext'
+import StatusModal from './components/StatusModal'
+
 
 const App = ({hideLoader}) => {
  
@@ -17,10 +20,12 @@ const App = ({hideLoader}) => {
     window.scrollTo(0,0)
 })
 React.useEffect(hideLoader, [hideLoader])
+const {state} = GlobalShop()
   return (
     <div >
       <Router forceRefresh={false}>
       <Header/>
+      {state.isModal &&  <StatusModal modalContent={state.modalContent}/>}
      <MobileNav/>
       <Switch>
         <Route exact path='/'>

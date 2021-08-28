@@ -4,6 +4,8 @@ import {laptopBrands, phoneBrands, computerBrands,
 
 export const defaultState = {
     toggle: false,
+    modalContent: '',
+    isModal: false,
     phones: [],
     phoneBrands: phoneBrands,
     laptopBrands: laptopBrands,

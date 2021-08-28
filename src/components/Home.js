@@ -6,7 +6,7 @@ import Search from './Search'
 import WhyUs from './WhyUs'
 import MoreDetails from './MoreDetails'
 import Partners from './Partners'
-import ProductAnalysis from './ProductAnalysis'
+
 const Home = () => {
     React.useEffect(()=> {
         window.scrollTo(0,0)
@@ -15,7 +15,7 @@ const Home = () => {
         <>
          <Search/>
         <Cards/>
-        <ProductAnalysis/>
+
         <SalesComponent/>
         <HowItWorks/>
         <WhyUs/>

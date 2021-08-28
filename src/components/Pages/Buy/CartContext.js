@@ -22,12 +22,16 @@ const removeItem = (id) => {
 const clearCart = () => {
     dispatch({type: "CLEAR_CART"})
 }
+const closeModal = () => {
+    dispatch({type: "CLOSE_MODAL"})
+}
     return <ShopContext.Provider value={{
         viewDevice,
         state,
         addToCart,
         removeItem,
-        clearCart
+        clearCart,
+        closeModal
     }}
     
     >{children}</ShopContext.Provider>

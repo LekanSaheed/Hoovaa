@@ -1,3 +1,4 @@
+
 export const cartReducer = (state, action) => {
     if(action.type === "VIEW_DEVICE"){
         const selected = action.payload
@@ -7,7 +8,12 @@ export const cartReducer = (state, action) => {
             clickedDevice: [action.payload]
         }
     }
-
+    if(action.type === "CLOSE_MODAL"){
+        return{
+            ...state,
+            isModal: false
+        }
+    }
     if(action.type === 'ADD_TO_CART'){
         const newItem = action.payload
         localStorage.setItem('cart', JSON.stringify(state.cart) )
@@ -15,7 +21,9 @@ export const cartReducer = (state, action) => {
         console.log(find)
         return{
             ...state,
-            cart: [...state.cart, newItem]
+            cart: [...state.cart, newItem],
+            isModal: true,
+            modalContent: action.payload.name + ' is Added to cart Sucessfully'
         }
     }
     if(action.type === 'REMOVE_ITEM'){
@@ -24,15 +32,20 @@ export const cartReducer = (state, action) => {
         localStorage.setItem('cart', JSON.stringify(newCart) )
         return{
             ...state,
-            cart: newCart
+            cart: newCart,
+            isModal: true,
+            modalContent: '1 product removed successfully'
 
         }
     }
+ 
     if(action.type === "CLEAR_CART"){
         localStorage.removeItem('cart')
         return{
             ...state,
-            cart: []
+            cart: [],
+            isModal: true,
+            modalContent: 'Cart Emptied Succesfully'
         }
     }
     return state

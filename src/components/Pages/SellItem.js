@@ -2,8 +2,9 @@ import React from 'react'
 import './sellItem.css'
 import sell from '../../assets/sell.png'
 import { BsSpeaker, BsTv } from 'react-icons/bs'
-import { AiOutlineArrowLeft, AiOutlineCamera, AiOutlineDesktop, AiOutlineLaptop } from 'react-icons/ai'
+import { AiOutlineCamera, AiOutlineDesktop, AiOutlineLaptop } from 'react-icons/ai'
 import { IoIosWatch, IoLogoGameControllerB, IoMdPhonePortrait } from 'react-icons/io'
+import {FiArrowLeftCircle} from 'react-icons/fi'
 import { Link, Switch, Route, useRouteMatch, useHistory } from 'react-router-dom'
 import HowItWorks from '../HowItWorks'
 import PhoneBrands from './PhoneBrands'
@@ -58,8 +59,13 @@ const history = useHistory()
         <Switch>
              
         <Route exact path={path}>
+       
         <div className='sell-page-container'>
-        <div style={{position: 'sticky', top: '30px', left: '0'}} onClick={() => history.goBack()}><AiOutlineArrowLeft/></div>
+        <div style={{alignSelf: 'flex-start',
+    margin: '15px'}} onClick={() => history.goBack()}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '24px', color: 'grey'}}><FiArrowLeftCircle/><span style={{marginLeft: '5px', fontSize: '11px'}} >Go Back</span>
+            </div>
+            </div>
             <div className='centered-text'>
                 <img src={sell} alt='sell' />
                 <span>Sell Your Stuff and Get Cash Instantly</span></div>

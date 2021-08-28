@@ -5,7 +5,7 @@ import { Link, Route, useRouteMatch, Switch, useHistory } from 'react-router-dom
 import Devices from './subPages/Devices'
 import { GlobalContext } from '../../reducers/context'
 import HowItWorks from '../HowItWorks'
-import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { FiArrowLeftCircle } from 'react-icons/fi'
 
 const PhoneBrands = ({brands, device}) => {
     const {state} = GlobalContext()
@@ -40,9 +40,14 @@ const PhoneBrands = ({brands, device}) => {
         <Switch>
 <Route exact path={path}>  
 <div>     
-<div style={{ backgroundColor: 'white', padding: '6px', fontSize: '20px'}} onClick={() => history.goBack()}><AiOutlineArrowLeft/></div>
-        <div className='brand-container'>
 
+        <div className='brand-container'>
+        <div style={{alignSelf: 'flex-start',
+    margin: '0px 15px'}} onClick={() => history.goBack()}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '24px', color: 'grey'}}><FiArrowLeftCircle/>
+            <span style={{marginLeft: '5px', fontSize: '11px'}} >Go Back</span>
+            </div>
+            </div>
             <div className='centered-text' style={{marginTop: '15px'}}><img src={sell} alt='sell'/></div>
             <div className="search-container brand-search">
                 <input type='search' placeholder={`${'Search your ' + device + ' or brands'}`}/>
