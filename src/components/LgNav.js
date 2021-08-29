@@ -1,12 +1,14 @@
 import React from 'react'
 import { FaCaretDown } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { GlobalContext } from '../reducers/context'
 import './LgNav.css'
 
 const LgNav = () => {
+    const {state} = GlobalContext()
     const data = [
         {
-            text: 'Login',
+            text: !state.isUser ? 'Login' : 'Logout',
             link: './login',
             isLogin: true
         },{
@@ -41,19 +43,21 @@ const LgNav = () => {
         text: 'faq',
         link: null
     }]
+   
     const lgNav = data.map((item, index) => {
         return(
                 <ul key={index}>
+                    
                     <li style={{padding: '10px'}} className={`${item.to && 'show-hidden' }`}>
                         <Link style={{color: 'black', display: 'flex', alignItems: 'center'}}
-                         to={item.link && item.link}>
+                         to={state.isUser ? '/logout' : item.link}>
                             <span style={{backgroundColor: `${item.isLogin && '#7497ff'}`, 
                             color: `${item.isLogin && 'white'}`,
                             padding: `${item.isLogin && '10px 15px'}`,
                             fontSize: `${item.isLogin && '11px'}`,
                             borderRadius: `${item.isLogin && '5px'}`,
                             fontWeight: `${item.isLogin && '700'}`
-                            }}>{item.text}</span>{item.to && <FaCaretDown/>}
+                            }}>{ item.text && item.text}</span>{item.to && <FaCaretDown/>}
                             </Link></li>
                     <div className="header-hidden">
                    <Link to={item.l1 && item.l1}><li>{item.to && item.to}</li></Link>

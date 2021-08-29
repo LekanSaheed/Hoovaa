@@ -33,7 +33,7 @@ const Cart = () => {
                        </button>}
             </div>
 
-         <div className='total-item-and-checkout'>
+       {state.cart.length > 0 &&   <div className='total-item-and-checkout'>
              <div className='order-summary'>
                  <p>ORDER SUMMARY</p>
              </div>
@@ -65,7 +65,7 @@ const Cart = () => {
          
          </div>
          <button className='order-summary checkout'>CHECKOUT</button>
-         </div>
+         </div>}
         </div>
     )
 }

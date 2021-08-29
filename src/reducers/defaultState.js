@@ -2,6 +2,7 @@ import {laptopBrands, phoneBrands, computerBrands,
     smartSpeakerBrands, smartWatchbrands, tvBrands, gamingGadgetBrands, cameraBrands
 } from '../components/Pages/PhoneData'
 
+const localCurrentUser = localStorage.getItem('user')
 export const defaultState = {
     toggle: false,
     modalContent: '',
@@ -18,5 +19,7 @@ export const defaultState = {
     selectedDevice: [],
     newSelected: [],
     city: '',
-    isCity: true
+    isCity: true,
+    currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
+    isUser: localCurrentUser ? true : false
 }

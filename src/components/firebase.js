@@ -1,6 +1,8 @@
 import firebase from 'firebase/app'
 import 'firebase/storage'
 import 'firebase/firestore'
+import 'firebase/auth'
+
 const firebaseConfig = {
     apiKey: "AIzaSyBpnO89sx2tz55Q3r8KusYLKQEs6h7b2cY",
     authDomain: "hoovaa-1.firebaseapp.com",
@@ -13,4 +15,5 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 const firebaseStorage = firebase.storage()
 const db = firebase.firestore()
-  export {firebaseStorage, db}
+
+  export {firebaseStorage, db, firebase}

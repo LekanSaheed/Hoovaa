@@ -46,11 +46,18 @@ const setDeviceStorage = (n,s, p) => {
 const setCity = (city) => {
     dispatch({type: "SET_CITY", payload: city})
 }
+const setUser = (user) => {
+    dispatch({type: 'SET_USER', payload: user})
+}
+const logout = () => {
+    dispatch({type: 'LOG_OUT'})
+}
     return(
         <AppContext.Provider value={{
             state, toggleNav, 
             closeNav, getDevice,
-             setDeviceStorage, setCity
+             setDeviceStorage, setCity,
+              setUser, logout
         }}>{children}</AppContext.Provider>
     )
 }

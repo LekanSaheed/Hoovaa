@@ -12,7 +12,11 @@ import RepairDevice from './components/Pages/RepairDevice';
 import Admin from './Admin'
 import { GlobalShop } from './components/Pages/Buy/CartContext'
 import StatusModal from './components/StatusModal'
-
+import Login from './Auth/Login'
+import Account from './Auth/Account'
+import PrivateRoute from './PrivateRoute'
+import { GlobalContext } from './reducers/context'
+import LogOut from './Auth/LogOut'
 
 const App = ({hideLoader}) => {
  
@@ -20,6 +24,8 @@ const App = ({hideLoader}) => {
     window.scrollTo(0,0)
 })
 React.useEffect(hideLoader, [hideLoader])
+const newState = GlobalContext().state
+
 const {state} = GlobalShop()
   return (
     <div >
@@ -46,10 +52,16 @@ const {state} = GlobalShop()
         <Route path="/admin">
           <Admin/>
         </Route>
+        <Route path='/login'>
+          <Login/>
+        </Route>
+        <PrivateRoute path='/account' isUser={newState.isUser} component={Account}/>
+        <PrivateRoute path='/logout' isUser={newState.isUser} component={LogOut}/>
         <Route path='/*'>
           Page not found $)$
         </Route>
-       
+     
+
       </Switch>
       </Router>
 

@@ -34,8 +34,8 @@ const BuyItem = () => {
 const allItems = data.map((item, index) => {
  
     return(
-        <Link style={{color: 'black'}} to={url + '/buy-' + item.text.toLowerCase().replace(/ /g, '-')}>
-        <div className='buy-node' key={index}>
+        <Link  key={index} style={{color: 'black'}} to={url + '/buy-' + item.text.toLowerCase().replace(/ /g, '-')}>
+        <div className='buy-node'>
                 <div>{item.icon}</div>
                 <div>{item.text}</div>
         </div>

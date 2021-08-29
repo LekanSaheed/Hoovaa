@@ -25,6 +25,7 @@
           selectedDevice: [action.payload]
       }
   }
+
   if(action.type === 'SET_CITY'){
     return{
         ...state,
@@ -41,6 +42,22 @@
       return{
           ...state,
           newSelected: [{name,img, evaluated, price}]
+      }
+  }
+  if(action.type === "SET_USER"){
+      const user = action.payload
+    return{
+        ...state,
+        isUser: true,
+        currentUser: user
+    }
+  }
+  if(action.type === "LOG_OUT"){
+      localStorage.removeItem('user')
+    return{
+          ...state,
+          isUser: false,
+          currentUser: null
       }
   }
 }
