@@ -12,8 +12,28 @@ const firebaseConfig = {
     appId: "1:297978361550:web:d8313dd400d3ecea51c29f",
     measurementId: "G-MF9Y16X01N"
   };
-firebase.initializeApp(firebaseConfig)
+if(!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig)
+}
+else{
+  firebase.app();
+}
 const firebaseStorage = firebase.storage()
 const db = firebase.firestore()
 
-  export {firebaseStorage, db, firebase}
+const stateChange = () => {
+  return firebase.auth().onAuthStateChanged(user => {
+    if (user){
+      console.log('is logged in', user)
+     localStorage.setItem('user', JSON.stringify(user))
+
+
+    }
+    else{
+      console.log('not logged in')
+    }
+  })
+    
+}
+
+  export {firebaseStorage, db, firebase, stateChange}

@@ -1,0 +1,35 @@
+.account-page{
+    padding: 10px;
+}
+.account-links{
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+.account-links a{
+    color: black
+}
+.link-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+.account-links-child{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.account-icon{
+    color: #7497ff;
+    font-size: 17px;
+    margin-right: 8px;
+}
+.account-greeting{
+    display: flex;
+    justify-content: space-between;
+
+}
+.account-greeting img{
+    width: 40px;
+}

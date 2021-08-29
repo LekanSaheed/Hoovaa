@@ -36,6 +36,10 @@
     background-color: rgb(116, 151, 255);
     color: white;
     height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 14px;
 }
 .accordion p{
     font-size: 12px;

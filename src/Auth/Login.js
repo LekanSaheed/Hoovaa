@@ -35,7 +35,7 @@ const Login = () => {
                 <span style={{color: 'red', fontSize: '11px'}}>{error && error}</span>
             <div className='form-input-cont'>
                 <label>Email</label>
-                <input type='email' placeholder='Email' required onChange={(e) => {
+                <input type='email' placeholder='Email' value={email} required onChange={(e) => {
                      setEmail(e.target.value)
                      setError('')
                     }
@@ -43,7 +43,7 @@ const Login = () => {
             </div>
             <div className='form-input-cont'>
                 <label>Password</label>
-                <input type='email' placeholder='Password' required onChange={(e) => {
+                <input type='password' placeholder='Password' value={password} required onChange={(e) => {
                      setPassword(e.target.value)
                      setError('')
                 }

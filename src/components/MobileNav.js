@@ -31,7 +31,12 @@ const openCity = () => {
                  </div>
                     <div onClick={toggleNav}><AiOutlineClose style={{fontSize: '22px', textShadow: '0 0 5px 5px white'}}/></div>
                     </div>
-                    { <Link onClick={closeNav}to={`${state.isUser ? '/logout' : '/login'}`}>{state.isUser ? 'Logout' : 'Login'}</Link>}
+                   <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                   { <Link style={{color: '#7497ff', fontWeight: '600', padding: '3px 10px', background: 'white', borderRadius: '7px',
+                    margin: '10px 18px'}} 
+                    onClick={closeNav}to={`${state.isUser ? '/account' : '/login'}`}>{state.isUser ? 'Account' : 'Login'}</Link>}
+                   {state.isUser &&  <div>Hi {state.currentUser.displayName}</div>}
+                   </div> 
              </div>
             <HoovaaAccordion/>
         </div>

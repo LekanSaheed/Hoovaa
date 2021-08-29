@@ -17,12 +17,18 @@ import Account from './Auth/Account'
 import PrivateRoute from './PrivateRoute'
 import { GlobalContext } from './reducers/context'
 import LogOut from './Auth/LogOut'
+import { stateChange } from './components/firebase'
+import SignUp from './Auth/SignUp'
 
 const App = ({hideLoader}) => {
- 
+
   React.useEffect(()=> {
     window.scrollTo(0,0)
-})
+    const unsubscribe =  stateChange()
+      return () => {
+        unsubscribe()
+      }
+}, [])
 React.useEffect(hideLoader, [hideLoader])
 const newState = GlobalContext().state
 
@@ -57,6 +63,7 @@ const {state} = GlobalShop()
         </Route>
         <PrivateRoute path='/account' isUser={newState.isUser} component={Account}/>
         <PrivateRoute path='/logout' isUser={newState.isUser} component={LogOut}/>
+        <PrivateRoute path='/signup' isUser={!newState.isUser} component={SignUp}/>
         <Route path='/*'>
           Page not found $)$
         </Route>
