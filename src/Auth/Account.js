@@ -3,12 +3,14 @@ import { FiLogOut, FiSettings } from 'react-icons/fi'
 import { CgNotifications } from 'react-icons/cg'
 import { Link, Route, useRouteMatch, Switch } from 'react-router-dom'
 import {RiLockPasswordLine} from 'react-icons/ri'
+import {AiOutlineInfoCircle} from 'react-icons/ai'
 import React from 'react'
 import userImg from '../assets/user.png'
 import { GlobalContext } from '../reducers/context'
 import ProfileSettings from './ProfileSettings'
 import './Account.css'
 import { MdKeyboardArrowRight } from 'react-icons/md'
+// import { firebase } from '../components/firebase'
 
 const Account = () => {
     const {state} = GlobalContext()
@@ -37,6 +39,8 @@ console.log(currentUser)
       <Switch>
           <Route exact path={path}>
           <div className='account-page'>
+              {!currentUser.emailVerified && <div style={{border: 'solid 1px lightgrey', padding: '10px', fontSize: '12px'}}>
+                  <span style={{color: 'goldenrod'}}><AiOutlineInfoCircle/></span>Email not verified</div>}
             <h3>Account</h3>
            <div className="account-greeting">
         <img src={currentUser.photoUrl ? currentUser.photoUrl : userImg} alt='dp'/>

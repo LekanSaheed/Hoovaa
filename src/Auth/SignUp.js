@@ -7,7 +7,7 @@ const SignUp = () => {
     const [error, setError] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-
+    const [modal, setModal] = useState(false)
 const {path} = useRouteMatch()
 //const history = useHistory()
     const handleSubmit = (e) => {
@@ -15,7 +15,7 @@ const {path} = useRouteMatch()
     //   const  {email, password, firstName, lastName} = inputs
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(user => {
-            const displayName = firstName + ' ' + lastName
+            const displayName = firstName
             firebase.auth().currentUser.updateProfile({displayName})
             
         })
@@ -24,14 +24,13 @@ const {path} = useRouteMatch()
         })
         .then(() => {
             firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
-            .set({firstName, lastName})
-           
+            .set({firstName, lastName, email})
         })
         .then(() => {
-            alert('A verification Email has been sent to your provided email address')
-        })
-        .then(() => {
-            window.location.reload()
+            firebase.auth().currentUser.sendEmailVerification()
+            .then(() => {
+                setModal(true)
+            })
         })
         .catch(err => {
             setError(err.message)
@@ -39,6 +38,18 @@ const {path} = useRouteMatch()
     }
     return (
         <div className='login-form-container'>
+            {modal && 
+            <div className='login-form-container verify-modal-container'>
+                <div className="login-form">
+                    A Verification Email Has been sent to {email} <button onClick={() => {
+                        setModal(false)
+                        window.location.reload()
+                    }}>close</button>
+
+
+                   <button onClick={() => firebase.auth().currentUser.sendEmailVerification()}> resend email</button>
+                </div>
+                </div>}
         <form className='login-form'>
           <Switch>
               <Route path={path}>

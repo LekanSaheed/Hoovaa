@@ -57,7 +57,7 @@
     return{
           ...state,
           isUser: false,
-          currentUser: null
+          currentUser: {}
       }
   }
 }

@@ -56,6 +56,11 @@
 .signup-and-reset a{
     color: silver;
 }
+
+.verify-modal-container{
+    background-color: rgba(0,0,0,.8);
+    transition: .6s;
+}
 @media(max-width: 300px){
     .login-form{
         width: 260px;
