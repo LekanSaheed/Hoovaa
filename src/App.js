@@ -21,14 +21,19 @@ import { stateChange } from './components/firebase'
 import SignUp from './Auth/SignUp'
 import Cart from './components/Pages/Buy/Cart'
 import Footer from './components/Footer'
+import smoothscroll from 'smoothscroll-polyfill'
+
+
 const App = ({hideLoader}) => {
 
   React.useEffect(()=> {
     window.scrollTo(0,0)
+    smoothscroll.polyfill()
     const unsubscribe =  stateChange()
       return () => {
         unsubscribe()
       }
+   
 }, [])
 React.useEffect(hideLoader, [hideLoader])
 const newState = GlobalContext().state
