@@ -52,7 +52,8 @@ const loader = document.querySelector('.loader-container')
             </div>
             <div className='form-input-cont'>
                 <label>Password</label>
-                <Input error={error.code === 'auth/invalid-credential' && true} fullWidth={true} disableUnderline={!error} type='password' placeholder='Password' value={email} required onChange={(e) => {
+                <Input error={error.code === 'auth/invalid-credential' && true} fullWidth={true} disableUnderline={!error} type='password' placeholder='Password'
+                 value={password} required onChange={(e) => {
                      setPassword(e.target.value)
                      setError('')
                     } }/>
