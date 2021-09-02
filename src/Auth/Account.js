@@ -36,12 +36,13 @@ icon: <FiLogOut/>,
     const {path, url} = useRouteMatch()
 console.log(currentUser)
     return (
+        <>
       <Switch>
           <Route exact path={path}>
           <div className='account-page'>
               {!currentUser.emailVerified && <div style={{border: 'solid 1px lightgrey', padding: '10px', fontSize: '12px'}}>
-                  <span style={{color: 'goldenrod'}}><AiOutlineInfoCircle/></span>Email not verified</div>}
-            <h3>Account</h3>
+                  <span style={{color: 'goldenrod', marginRight: '10px'}}><AiOutlineInfoCircle/></span><span>Email not verified</span></div>}
+            <h3 className='theme-text account-title'>Account</h3>
            <div className="account-greeting">
         <img src={currentUser.photoUrl ? currentUser.photoUrl : userImg} alt='dp'/>
         <div>
@@ -63,13 +64,25 @@ console.log(currentUser)
                    )
                })}
             </div>
+            
         </div>
           </Route>
 
           <Route path={path + '/profile-setting'}>
               <ProfileSettings/>
           </Route>
+     
+     
       </Switch>
+          <div className='account-footer'>
+         <div className='af-child'>
+              <span className='theme-text'>Have a question? </span>
+          <span className='af-node'>
+             Talk to our customer care agents
+              </span>
+        </div>
+      </div>
+      </>
     )
 }
 

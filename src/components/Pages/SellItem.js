@@ -7,10 +7,10 @@ import { IoIosWatch, IoLogoGameControllerB, IoMdPhonePortrait } from 'react-icon
 import {FiArrowLeftCircle} from 'react-icons/fi'
 import { Link, Switch, Route, useRouteMatch, useHistory } from 'react-router-dom'
 import HowItWorks from '../HowItWorks'
-import PhoneBrands from './PhoneBrands'
+import Brands from './Brands'
 import { GlobalContext } from '../../reducers/context'
 import Cities from '../Cities'
-
+import BottomNav from '../BottomNav'
 const SellItem = () => {
 
     const {state} = GlobalContext()
@@ -61,6 +61,7 @@ const history = useHistory()
         <Route exact path={path}>
        
         <div className='sell-page-container'>
+            <BottomNav/>
         <div style={{alignSelf: 'flex-start',
     margin: '15px'}} onClick={() => history.goBack()}>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '24px', color: 'grey'}}><FiArrowLeftCircle/><span style={{marginLeft: '5px', fontSize: '11px'}} >Go Back</span>
@@ -90,28 +91,28 @@ const history = useHistory()
         </Route>
            
                     <Route  path={`${path + '/phones-brands'}`}>
-                        <PhoneBrands device='phone' brands={state.phoneBrands}/>
+                        <Brands device='phone' brands={state.phoneBrands}/>
                     </Route>
                     <Route path={`${path + '/laptops-brands'}`}>
-                        <PhoneBrands device='laptop' brands={state.laptopBrands}/>
+                        <Brands device='laptop' brands={state.laptopBrands}/>
                     </Route>
                     <Route path={`${path + '/computers-brands'}`}>
-                        <PhoneBrands device='computer' brands={state.computerBrands}/>
+                        <Brands device='computer' brands={state.computerBrands}/>
                     </Route>
                     <Route path={`${path + '/gaming-gadgets-brands'}`}>
-                        <PhoneBrands device='gaming Gadget' brands={state.gamingGadgetBrands}/>
+                        <Brands device='gaming Gadget' brands={state.gamingGadgetBrands}/>
                     </Route>
                     <Route path={`${path + '/tvs-brands'}`}>
-                        <PhoneBrands device='tv' brands={state.tvBrands}/>
+                        <Brands device='tv' brands={state.tvBrands}/>
                     </Route>
                     <Route path={`${path + '/cameras-brands'}`}>
-                        <PhoneBrands device='camera' brands={state.cameraBrands}/>
+                        <Brands device='camera' brands={state.cameraBrands}/>
                     </Route>
                     <Route path={`${path + '/smart-watches-brands'}`}>
-                        <PhoneBrands device='smart Watch' brands={state.smartWatchbrands}/>
+                        <Brands device='smart Watch' brands={state.smartWatchbrands}/>
                     </Route>
                     <Route path={`${path + '/smart-speakers-brands'}`}>
-                        <PhoneBrands device='smart Speaker' brands={state.smartSpeakerBrands}/>
+                        <Brands device='smart Speaker' brands={state.smartSpeakerBrands}/>
                     </Route>
            
             <HowItWorks/>

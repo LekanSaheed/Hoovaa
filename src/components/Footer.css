@@ -1,0 +1,32 @@
+ .footer-container{
+     background: #edf1fa;
+     padding:50px 10px 10px;
+ }
+ .footer-child{
+     display: flex;
+     flex-direction: column;
+     margin-bottom: 50px;
+ }
+.footer-child a{
+    color: #7497ff;
+    font-size: 11px;
+   
+}
+.footer-child-flex{
+    display: flex;
+    align-items: flex-end;
+
+}
+.footer-child-flex span{
+    margin-left: 4px;
+}
+.footer-child li{
+    padding: 5px;
+}
+
+ @media(min-width: 767px){
+     .footer-child{
+        flex-direction: row;
+        justify-content: space-around;
+     }
+ }

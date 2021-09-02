@@ -1,21 +1,25 @@
 import React from 'react'
 import { BsLaptop, BsTv } from 'react-icons/bs'
-import {FcPhoneAndroid} from 'react-icons/fc'
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom'
 import './BuyItem.css'
-import {IoLogoGameControllerA} from 'react-icons/io'
+import {IoLogoGameControllerA, IoMdPhonePortrait} from 'react-icons/io'
 import BuyGoods from './Buy/BuyGoods'
 import CartButton from './CartButton'
-import Cart from './Buy/Cart'
 import trolley from '../../assets/trolley.png'
 import HowItWorks from '../HowItWorks'
 import add from '../../assets/addtocart.png'
 import { GoCheck } from 'react-icons/go'
+import { RiFridgeLine } from 'react-icons/ri'
+import Search from '../Search'
+import Brands from './Buy/Brands'
+import { GlobalContext } from '../../reducers/context'
+
 
 const BuyItem = () => {
+    const {state} = GlobalContext()
     const data = [
         {text: 'Phones',
-        icon: <FcPhoneAndroid/>,
+        icon: <IoMdPhonePortrait/>,
     },
     {text: 'Laptops',
         icon: <BsLaptop/>,
@@ -26,17 +30,17 @@ const BuyItem = () => {
     {text: 'Gaming Gadgets',
         icon: <IoLogoGameControllerA/>,
     },
-    {text: 'Phones',
-        icon: <FcPhoneAndroid/>
+    {text: 'Home Appliances',
+        icon:  <RiFridgeLine/>
     }
     ]
     const {url, path} = useRouteMatch()
 const allItems = data.map((item, index) => {
  
     return(
-        <Link  key={index} style={{color: 'black'}} to={url + '/buy-' + item.text.toLowerCase().replace(/ /g, '-')}>
+        <Link  key={index} style={{color: 'black'}} to={url + '/' + item.text.toLowerCase().replace(/ /g, '-') + '-brands'}>
         <div className='buy-node'>
-                <div>{item.icon}</div>
+                <div className='sale-icons'>{item.icon}</div>
                 <div>{item.text}</div>
         </div>
         </Link>
@@ -59,7 +63,7 @@ const allItems = data.map((item, index) => {
             </div>
            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
                
-          <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}> 
+          <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%'}}> 
           <div className="buy-text">Choose your Category of choice or search gadget</div>
          <div className='gt-con'>
          <div className='guarantee-text'>
@@ -77,11 +81,12 @@ const allItems = data.map((item, index) => {
           <div className='guarantee-text'>
           <span><GoCheck/></span>
               <div>
-                 DoorPost Delivery
+                 Doorpost Delivery
               </div>
           </div>
          </div>
           </div>
+          <Search/>
               <div className="buy-items">
                 
                   {allItems}
@@ -91,13 +96,17 @@ const allItems = data.map((item, index) => {
             
             </div>
                </Route>
-               <Route path={path + '/cart'}>
-              <Cart/>
-          </Route>
               <Route path={path + '/buy-phones'}>
                   <BuyGoods/>
               </Route>
+              <Route path={path + '/phones-brands'}>
+                  <Brands  device='phone' brands={state.phoneBrands}/>
+              </Route>
+              <Route path={path + '/laptops-brands'}>
+                  <Brands  device='laptop' brands={state.laptopBrands}/>
+              </Route>
           </Switch>
+
           <HowItWorks/>
           </div>
        

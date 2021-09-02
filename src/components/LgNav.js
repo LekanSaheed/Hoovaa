@@ -6,9 +6,9 @@ import './LgNav.css'
 
 const LgNav = () => {
     const {state} = GlobalContext()
-    const data = [
+ const data = [
         {
-            text: !state.isUser ? 'Login' : 'Logout',
+            text: !state.isUser ? 'Login' : 'Account',
             link: './login',
             isLogin: true
         },{
@@ -50,7 +50,7 @@ const LgNav = () => {
                     
                     <li style={{padding: '10px'}} className={`${item.to && 'show-hidden' }`}>
                         <Link style={{color: 'black', display: 'flex', alignItems: 'center'}}
-                         to={state.isUser ? '/logout' : item.link}>
+                         to={state.isUser ? '/account' : item.link}>
                             <span style={{backgroundColor: `${item.isLogin && '#7497ff'}`, 
                             color: `${item.isLogin && 'white'}`,
                             padding: `${item.isLogin && '10px 15px'}`,
@@ -59,6 +59,8 @@ const LgNav = () => {
                             fontWeight: `${item.isLogin && '700'}`
                             }}>{ item.text && item.text}</span>{item.to && <FaCaretDown/>}
                             </Link></li>
+                   <div className='header-hd-con'>
+                           <div className='connector'></div>  
                     <div className="header-hidden">
                    <Link to={item.l1 && item.l1}><li>{item.to && item.to}</li></Link>
                    <Link to={item.l2 && item.l2}> <li>{item.to2 && item.to2}</li></Link>
@@ -66,6 +68,8 @@ const LgNav = () => {
                    <Link to={item.l4 && item.l4}> <li>{item.to4 && item.to4}</li></Link>
                     
                     </div>
+                   </div>
+                    <div className='hidden-bg'></div>
                 </ul>
         )
     })

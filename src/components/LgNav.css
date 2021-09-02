@@ -10,9 +10,9 @@
 
 }
 .header-hidden{
-    display: none;
+    display: block;
     position: absolute;
-    background-color: #edf1fa;
+    background-color: #fafafa;
     padding: 10px;
     height: 150px;
     border: solid 1px #f5f5f5;
@@ -44,8 +44,38 @@
     background-color: #edf1fa;
     transition: .5s;
 }
-.show-hidden:hover + .header-hidden{
+.connector{
+    height: 32px;
+    width: 200px;
+}
+.header-hd-con:hover + .hidden-bg{
     display: block;
+}
+.connector:hover{
+    display: block;
+}
+.header-hd-con{
+    display: none;
+    position: absolute;
+}
+.header-hd-con:hover{
+    display: block;
+}
+.show-hidden:hover ~ .header-hd-con{
+    display: block;
+}
+.show-hidden:hover ~.hidden-bg{
+    display: block;
+}
+.hidden-bg{
+    display: none;
+    background-color: rgba(0,0,0, .3);
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
 }
 li{
     list-style: none;

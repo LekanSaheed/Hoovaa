@@ -15,10 +15,16 @@
     font-weight: bolder;
     font-size: 16px;
     letter-spacing: -1px;
-  
+   display: flex;
+
+   color: rgb(116, 151, 255);
+   align-items: center;
 }
 .logo a{
     color: rgb(116, 151, 255);
+}
+.menu{
+    color: rgb(27, 27, 100);
 }
 .sticky{
     position: fixed;

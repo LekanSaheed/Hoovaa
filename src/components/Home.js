@@ -6,6 +6,7 @@ import Search from './Search'
 import WhyUs from './WhyUs'
 import MoreDetails from './MoreDetails'
 import Partners from './Partners'
+import CartButton from './Pages/CartButton'
 
 const Home = () => {
     React.useEffect(()=> {
@@ -15,12 +16,13 @@ const Home = () => {
         <>
          <Search/>
         <Cards/>
-
+        <CartButton/>
         <SalesComponent/>
         <HowItWorks/>
         <WhyUs/>
         <MoreDetails/>
         <Partners/>
+        
         </>
     )
 }

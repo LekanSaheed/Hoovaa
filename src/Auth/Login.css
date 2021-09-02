@@ -31,7 +31,12 @@
     padding: 13px;
     width: inherit;
     border-radius: 7px;
-
+    cursor: pointer;
+    transition: .1s;
+}
+.login-form-btn:active{
+   transform: scale(1.01);
+   color: rgb(196, 211, 255);
 }
 
 .login-form-container{
@@ -55,6 +60,9 @@
 }
 .signup-and-reset a{
     color: silver;
+}
+.signup-and-reset div{
+    margin: 5px;
 }
 
 .verify-modal-container{

@@ -19,7 +19,9 @@ import { GlobalContext } from './reducers/context'
 import LogOut from './Auth/LogOut'
 import { stateChange } from './components/firebase'
 import SignUp from './Auth/SignUp'
-
+import Cart from './components/Pages/Buy/Cart'
+import Footer from './components/Footer'
+import BottomNav from './components/BottomNav'
 const App = ({hideLoader}) => {
 
   React.useEffect(()=> {
@@ -61,6 +63,7 @@ const {state} = GlobalShop()
         <Route path='/login'>
           <Login/>
         </Route>
+        <Route path='/cart' component={Cart}/>
         <PrivateRoute path='/account' isUser={newState.isUser} component={Account}/>
         <PrivateRoute path='/logout' isUser={newState.isUser} component={LogOut}/>
         <PrivateRoute path='/signup' isUser={!newState.isUser} component={SignUp}/>
@@ -70,6 +73,8 @@ const {state} = GlobalShop()
      
 
       </Switch>
+      <BottomNav/>
+      <Footer/>
       </Router>
 
     </div>

@@ -10,9 +10,11 @@ const SignUp = () => {
     const [modal, setModal] = useState(false)
 const {path} = useRouteMatch()
 //const history = useHistory()
+const loader = document.querySelector('.loader-container')
     const handleSubmit = (e) => {
         e.preventDefault()
     //   const  {email, password, firstName, lastName} = inputs
+         loader.classList.remove('loader-hide')
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(user => {
             const displayName = firstName
@@ -29,11 +31,15 @@ const {path} = useRouteMatch()
         .then(() => {
             firebase.auth().currentUser.sendEmailVerification()
             .then(() => {
+                loader.classList.add('loader-hide')
                 setModal(true)
             })
         })
         .catch(err => {
+           
             setError(err.message)
+            loader.classList.add('loader-hide')
+            
         })
     }
     return (

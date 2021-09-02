@@ -1,5 +1,6 @@
 .account-page{
     padding: 10px;
+    min-height: 500px;
 }
 .account-links{
     color: black;
@@ -18,7 +19,12 @@
 .account-links-child{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px;
+    transition: all ease-in-out .3s;
+}
+.account-links-child:hover{
+    background-color: #fafafa;
+    transform: scale(1.02) ;
 }
 .account-icon{
     color: #7497ff;
@@ -28,8 +34,23 @@
 .account-greeting{
     display: flex;
     justify-content: space-between;
+    margin: 18px;
 
 }
 .account-greeting img{
     width: 40px;
+}
+.account-title{
+    padding: 15px;
+}
+.account-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: solid 1px rgb(232, 232, 232);
+    text-align: center;
+    padding: 20px;
+}
+.af-child{
+    font-size: 8pt;
 }

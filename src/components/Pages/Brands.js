@@ -7,7 +7,7 @@ import { GlobalContext } from '../../reducers/context'
 import HowItWorks from '../HowItWorks'
 import { FiArrowLeftCircle } from 'react-icons/fi'
 
-const PhoneBrands = ({brands, device}) => {
+const Brands = ({brands, device}) => {
     const {state} = GlobalContext()
  const [brand, setBrand] = useState('')
  const history = useHistory()
@@ -106,4 +106,4 @@ const PhoneBrands = ({brands, device}) => {
     )
 }
 
-export default PhoneBrands
+export default Brands

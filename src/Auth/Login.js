@@ -10,19 +10,23 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
+const loader = document.querySelector('.loader-container')
     const {setUser, state} = GlobalContext()
     const handleSubmit = (e) => {
         e.preventDefault()
+        loader.classList.remove('loader-hide')
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             var user = userCredential.user
+            loader.classList.add('loader-hide')
             localStorage.setItem('user', JSON.stringify(user))
             setUser(user)
+
         })
         .catch(err => {
             console.log(err.message, err.code)
             setError(err.message)
+            loader.classList.add('loader-hide')
         })
     }
     if(state.isUser){
@@ -31,7 +35,7 @@ const Login = () => {
     return (
         <div className='login-form-container'>
             <form className='login-form'>
-                <span style={{color: '#7497ff', fontWeight: '500', textAlign: 'center'}}>LOGIN TO HOOVAA</span>
+                <span style={{color: '#7497ff', fontWeight: '500', textAlign: 'center'}}>LOGIN TO HOOVAA</span><br/>
                 <span style={{color: 'red', fontSize: '11px'}}>{error && error}</span>
             <div className='form-input-cont'>
                 <label>Email</label>
@@ -55,8 +59,8 @@ const Login = () => {
             </div>
             </form>
             <div className='signup-and-reset'>
-                <span>New to Hoovaa? <Link to='/signup'>Sign Up</Link></span><br/>
-                <span>Forgot PassWord? <Link to='/reset-password'>Reset</Link></span>
+                <div>New to Hoovaa? <Link to='/signup'>Sign Up</Link></div>
+                <div>Forgot PassWord? <Link to='/reset-password'>Reset</Link></div>
             </div>
         </div>
     )
