@@ -30,6 +30,7 @@ const stateChange = () => {
 
     }
     else{
+      localStorage.removeItem('user')
       console.log('not logged in')
     }
   })
