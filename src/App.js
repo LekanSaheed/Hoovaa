@@ -21,7 +21,6 @@ import { stateChange } from './components/firebase'
 import SignUp from './Auth/SignUp'
 import Cart from './components/Pages/Buy/Cart'
 import Footer from './components/Footer'
-import BottomNav from './components/BottomNav'
 const App = ({hideLoader}) => {
 
   React.useEffect(()=> {
@@ -73,7 +72,6 @@ const {state} = GlobalShop()
      
 
       </Switch>
-      <BottomNav/>
       <Footer/>
       </Router>
 

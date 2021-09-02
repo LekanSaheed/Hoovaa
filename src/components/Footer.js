@@ -60,8 +60,8 @@ const footer = () => {
         <ul>
             {footerdata.filter((item) => item.category === 'quick-links' ).map((item, index) => {
                  return(
-                    <li>
-                        <Link key={index} to={item.link}>
+                    <li key={index}>
+                        <Link  to={item.link}>
                             <div className='footer-child-flex'>{item.icon}<span>{item.text}</span></div>
                         </Link>
                     </li>
@@ -75,8 +75,8 @@ const footer = () => {
               <ul>
             {footerdata.filter((item) => item.category === 'follow' ).map((item, index) => {
                  return(
-                    <li>
-                        <Link key={index} to={item.link}>
+                    <li key={index}>
+                        <Link to={item.link}>
                             <div className='footer-child-flex'>{item.icon}<span>{item.text}</span></div>
                         </Link>
                     </li>

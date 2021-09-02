@@ -1,10 +1,12 @@
 import React from 'react'
 import './Cards.css'
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 import cashman from '../assets/newoip.png'
 import trash from '../assets/trash.jpg'
 import phone from '../assets/phone.png'
 import repair from '../assets/repair.png'
+import { Fab } from '@material-ui/core'
+
 const cardData = [
     {
         titleText: 'Sell your device',
@@ -47,9 +49,24 @@ const Cards = () => {
             </div>
         )
     })
+    const [cont, setCont] = React.useState(null)
+React.useEffect(() => {
+    const cc = document.querySelector('#cardCon')
+    console.log(cc)
+    setCont(cc)
+}, [])
+
+const handleScroll = () => {
+    cont.scrollLeft += 290
+}
+const handleRightScroll = () => {
+    cont.scrollLeft += -290
+}
     return (
         <div>
+            {/* LargeScreen image */}
             <div className='lg-card'>
+                
                <div>
                <span>Sell Your Device</span>
                 <p>Get resale Value for your old device</p>
@@ -59,11 +76,17 @@ const Cards = () => {
                    <img src={cashman} alt='cashman'/>
                </div>
             </div>
-            <div className='card-container'>
-            {cardList}
 
+            {/* Small screen cards */}
+           
+            <div className='card-container' id="cardCon">
+            {cardList}
             </div>
-        </div>
+            
+       <div className='btn-fixed'> <Fab size='small'  onClick={handleRightScroll}><AiOutlineArrowLeft/></Fab></div>
+       <div className='btn-fixed-right'> <Fab size='small' onClick={handleScroll}><AiOutlineArrowRight/></Fab> </div>
+       </div>
+       
     )
 }
 

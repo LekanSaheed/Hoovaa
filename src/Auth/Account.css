@@ -1,5 +1,4 @@
 .account-page{
-    padding: 10px;
     min-height: 500px;
 }
 .account-links{
@@ -19,7 +18,7 @@
 .account-links-child{
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    padding: 20px;
     transition: all ease-in-out .3s;
 }
 .account-links-child:hover{

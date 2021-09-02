@@ -1,9 +1,11 @@
 import React from 'react'
+import BottomNav from '../BottomNav'
 
 const RepairDevice = () => {
     return (
         <div>
-            Repair device
+            <div className='centered-text'>What would you like to repair?</div>
+            <BottomNav/>
         </div>
     )
 }

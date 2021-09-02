@@ -10,9 +10,13 @@ import { GlobalContext } from '../reducers/context'
 import ProfileSettings from './ProfileSettings'
 import './Account.css'
 import { MdKeyboardArrowRight } from 'react-icons/md'
+import BottomNav from '../components/BottomNav'
 // import { firebase } from '../components/firebase'
 
 const Account = () => {
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    })
     const {state} = GlobalContext()
     const currentUser = state.currentUser
     const data = [
@@ -40,6 +44,7 @@ console.log(currentUser)
       <Switch>
           <Route exact path={path}>
           <div className='account-page'>
+          <BottomNav/>
               {!currentUser.emailVerified && <div style={{border: 'solid 1px lightgrey', padding: '10px', fontSize: '12px'}}>
                   <span style={{color: 'goldenrod', marginRight: '10px'}}><AiOutlineInfoCircle/></span><span>Email not verified</span></div>}
             <h3 className='theme-text account-title'>Account</h3>
@@ -64,7 +69,6 @@ console.log(currentUser)
                    )
                })}
             </div>
-            
         </div>
           </Route>
 

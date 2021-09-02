@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import {Input} from '@material-ui/core'
 import { GlobalContext } from '../reducers/context'
 import {firebase} from '../components/firebase'
 import {Link, Redirect} from 'react-router-dom'
@@ -25,7 +25,7 @@ const loader = document.querySelector('.loader-container')
         })
         .catch(err => {
             console.log(err.message, err.code)
-            setError(err.message)
+            setError(err)
             loader.classList.add('loader-hide')
         })
     }
@@ -36,22 +36,26 @@ const loader = document.querySelector('.loader-container')
         <div className='login-form-container'>
             <form className='login-form'>
                 <span style={{color: '#7497ff', fontWeight: '500', textAlign: 'center'}}>LOGIN TO HOOVAA</span><br/>
-                <span style={{color: 'red', fontSize: '11px'}}>{error && error}</span>
+                <span style={{color: 'red', fontSize: '11px'}}>{error && error.message}</span>
             <div className='form-input-cont'>
                 <label>Email</label>
-                <input type='email' placeholder='Email' value={email} required onChange={(e) => {
+                {/* <input type='email' placeholder='Email' value={email} required onChange={(e) => {
                      setEmail(e.target.value)
                      setError('')
                     }
-                }/>
+                }/> */}
+                <Input error={error.code === 'auth/invalid-email' || error.code === 'auth/invalid-credential' ? true : false }
+                 fullWidth={true} disableUnderline={!error} type='text' placeholder='Email' value={email} required onChange={(e) => {
+                     setEmail(e.target.value)
+                     setError('')
+                    } }/>
             </div>
             <div className='form-input-cont'>
                 <label>Password</label>
-                <input type='password' placeholder='Password' value={password} required onChange={(e) => {
+                <Input error={error.code === 'auth/invalid-credential' && true} fullWidth={true} disableUnderline={!error} type='password' placeholder='Password' value={email} required onChange={(e) => {
                      setPassword(e.target.value)
                      setError('')
-                }
-                }/>
+                    } }/>
             </div>
             <div className='form-input-cont'>
 

@@ -7,8 +7,10 @@ import WhyUs from './WhyUs'
 import MoreDetails from './MoreDetails'
 import Partners from './Partners'
 import CartButton from './Pages/CartButton'
+import BottomNav from './BottomNav'
 
 const Home = () => {
+    const current = 'home'
     React.useEffect(()=> {
         window.scrollTo(0,0)
     })
@@ -22,7 +24,7 @@ const Home = () => {
         <WhyUs/>
         <MoreDetails/>
         <Partners/>
-        
+        <BottomNav value={current}/>
         </>
     )
 }

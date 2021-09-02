@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { BsLaptop, BsTv } from 'react-icons/bs'
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom'
 import './BuyItem.css'
@@ -13,9 +13,13 @@ import { RiFridgeLine } from 'react-icons/ri'
 import Search from '../Search'
 import Brands from './Buy/Brands'
 import { GlobalContext } from '../../reducers/context'
+import BottomNav from '../BottomNav'
 
 
 const BuyItem = () => {
+    useEffect(() => {
+        window.scrollTo(0,0)
+    })
     const {state} = GlobalContext()
     const data = [
         {text: 'Phones',
@@ -51,6 +55,7 @@ const allItems = data.map((item, index) => {
 
         
             <div className='item-container'>
+                <BottomNav/>
             <CartButton/>
            <Switch>
                <Route exact path={path}>

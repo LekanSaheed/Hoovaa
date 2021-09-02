@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaCaretDown } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { GlobalContext } from '../reducers/context'
 import './LgNav.css'
 
@@ -9,7 +9,7 @@ const LgNav = () => {
  const data = [
         {
             text: !state.isUser ? 'Login' : 'Account',
-            link: './login',
+            link: state.isUser ? '/account' : './login',
             isLogin: true
         },{
         text: 'Services',
@@ -21,7 +21,6 @@ const LgNav = () => {
         l3: '/swap-item',
         to4: 'Repair',
         l4: '/repair-device',
-        link: null
     },
     {
         text: 'About',
@@ -33,24 +32,23 @@ const LgNav = () => {
         l3: '/contact',
         to4: 'What we do',
         l4: '/about-us',
-        link: null
     },
     {
         text: 'Help',
-        link: null
+        link: '/help'
     },
     {
         text: 'faq',
-        link: null
+        link: '/faq'
     }]
    
     const lgNav = data.map((item, index) => {
         return(
                 <ul key={index}>
-                    
+                    {/* Login button */}
                     <li style={{padding: '10px'}} className={`${item.to && 'show-hidden' }`}>
                         <Link style={{color: 'black', display: 'flex', alignItems: 'center'}}
-                         to={state.isUser ? '/account' : item.link}>
+                         to={item.link}>
                             <span style={{backgroundColor: `${item.isLogin && '#7497ff'}`, 
                             color: `${item.isLogin && 'white'}`,
                             padding: `${item.isLogin && '10px 15px'}`,
@@ -59,6 +57,8 @@ const LgNav = () => {
                             fontWeight: `${item.isLogin && '700'}`
                             }}>{ item.text && item.text}</span>{item.to && <FaCaretDown/>}
                             </Link></li>
+                            {/* login button code ends here */}
+
                    <div className='header-hd-con'>
                            <div className='connector'></div>  
                     <div className="header-hidden">

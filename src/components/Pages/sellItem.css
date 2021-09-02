@@ -24,14 +24,16 @@
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
     font-size: 10px;
+
 }
 .sale-items:hover{
     background-color: whitesmoke;
     transition: .5s;
 }
-.sell-page-container a{
+.sale-items a{
     color: black;
 }
+
 .sale-icons {
     font-size: 20px;
     color: #7497ff;

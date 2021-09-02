@@ -3,6 +3,7 @@
     grid-template-columns: repeat(100, 290px);
     align-items: start;
     overflow-x: scroll;
+    scroll-behavior: smooth;
 }
 .cards{
     background-color: rgb(116, 151, 255);
@@ -16,7 +17,21 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 0px 1px 1px #dfdfdf;
+    -webkit-overflow-scrolling: touch;
+    
 
+}
+.btn-fixed{
+    position: absolute;
+    margin-top: -100px;
+    left: 0;
+
+}
+.btn-fixed-right{
+    position: absolute;
+    margin-top: -100px;
+    right: 0
+    
 }
 .title-text{
     font-size: 12px;

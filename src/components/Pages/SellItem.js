@@ -61,7 +61,7 @@ const history = useHistory()
         <Route exact path={path}>
        
         <div className='sell-page-container'>
-            <BottomNav/>
+            <BottomNav current='sell'/>
         <div style={{alignSelf: 'flex-start',
     margin: '15px'}} onClick={() => history.goBack()}>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '24px', color: 'grey'}}><FiArrowLeftCircle/><span style={{marginLeft: '5px', fontSize: '11px'}} >Go Back</span>
