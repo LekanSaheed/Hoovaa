@@ -56,7 +56,7 @@ const BottomNav = ({current}) => {
 
     const LinkRef = React.forwardRef((props, ref) => <div><Link {...props} /></div>)
     return (
-       <div style={{position: 'fixed', bottom: '0', width: '100%', padding: '10px'}}>
+       <div style={{position: 'fixed', bottom: '0', width: '100%', padding: '10px', zIndex: '16'}}>
             <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
            <BottomNavigationAction showLabel={true} className={classes.bna} component={LinkRef} to='/buy-item' label={<span className={classes.label}>Buy</span>} value={"/buy-item"} icon={<Fa.FaHandHoldingUsd/>}/>
             <BottomNavigationAction showLabel={true} className={classes.bna} component={LinkRef} to='/sell-item' label={<span className={classes.label}>Sell</span>} value="/sell-item" icon={<Fa.FaDollarSign/>}/>

@@ -21,5 +21,5 @@ export const defaultState = {
     city: '',
     isCity: true,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
-    isUser: false//localCurrentUser ? true : false
+    isUser: localCurrentUser ? true : false
 }
