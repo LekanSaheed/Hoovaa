@@ -54,7 +54,7 @@ const newState = GlobalContext().state
 const {state} = GlobalShop()
   return (
     <div >
-      <Router forceRefresh={true}>
+      <Router forceRefresh={false}>
       <Header/>
       {state.isModal &&  <StatusModal modalContent={state.modalContent}/>}
      <MobileNav/>
