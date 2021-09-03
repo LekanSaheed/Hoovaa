@@ -24,7 +24,6 @@ const db = firebase.firestore()
 const stateChange = () => {
   return firebase.auth().onAuthStateChanged(user => {
     if (user){
-      console.log('is logged in', user)
      localStorage.setItem('user', JSON.stringify(user))
 
 

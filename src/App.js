@@ -29,6 +29,7 @@ const App = ({hideLoader}) => {
   React.useEffect(()=> {
     window.scrollTo(0,0)
     smoothscroll.polyfill()
+    window.__forceSmoothScrollPolyfill__ = true;
     const unsubscribe =  stateChange()
       return () => {
         unsubscribe()
