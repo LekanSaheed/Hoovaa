@@ -86,7 +86,7 @@ const history = useHistory()
                 </ul>
             </div>
             </div>
-            {state.isCity && <Cities/>}
+            {!state.isCity && <Cities/>}
             <HowItWorks bc='#fafafa' mTop='0px'/>
         </Route>
            
