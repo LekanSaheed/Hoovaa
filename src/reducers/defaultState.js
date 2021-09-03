@@ -19,7 +19,7 @@ export const defaultState = {
     selectedDevice: [],
     newSelected: [],
     city: localStorage.getItem('city') ? localStorage.getItem('city') : '',
-    isCity: true,//localStorage.getItem('city') ? false : true,
+    isCity: localStorage.getItem('city') ? false : true,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
     isUser: localCurrentUser ? true : false
 }
