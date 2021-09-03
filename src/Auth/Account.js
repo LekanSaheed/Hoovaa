@@ -53,8 +53,11 @@ console.log(currentUser)
         <div>
         { currentUser.displayName ? 'Welcome ' + currentUser.displayName : 'Welcome'}
         </div>
+        
            </div>
+           
             <div className='account-links'>
+            <div>city: {state.city ? state.city : 'please choose a city'}</div>
                {data.map((item, idx) => {
                    return(
                        <Link className='account-links-child' to={item.text === "Logout" ? '/logout' : url + '/' + item.text.toLowerCase().replace(/ /g, '-')} key={idx}>

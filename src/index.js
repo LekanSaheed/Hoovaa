@@ -7,7 +7,7 @@ import {AppProvider} from './reducers/context'
 import { ShopProvider } from './components/Pages/Buy/CartContext';
 const loader = document.querySelector('.loader-container');
 const showLoader = () => loader.classList.remove('loader-hide');
-const hideLoader = () => setTimeout(() => loader.classList.add('loader-hide') , 4000);
+const hideLoader = () => loader.classList.add('loader-hide');
 ReactDOM.render(
   <React.StrictMode>
    <AppProvider>

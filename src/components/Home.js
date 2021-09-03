@@ -10,7 +10,6 @@ import CartButton from './Pages/CartButton'
 import BottomNav from './BottomNav'
 
 const Home = () => {
-    const current = 'home'
     React.useEffect(()=> {
         window.scrollTo(0,0)
     })
@@ -24,7 +23,7 @@ const Home = () => {
         <WhyUs/>
         <MoreDetails/>
         <Partners/>
-        <BottomNav value={current}/>
+        <BottomNav/>
         </>
     )
 }

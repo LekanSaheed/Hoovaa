@@ -27,6 +27,7 @@
   }
 
   if(action.type === 'SET_CITY'){
+      localStorage.setItem('city', action.payload)
     return{
         ...state,
         isCity: false,

@@ -22,7 +22,7 @@ import SignUp from './Auth/SignUp'
 import Cart from './components/Pages/Buy/Cart'
 import Footer from './components/Footer'
 import smoothscroll from 'smoothscroll-polyfill'
-
+import {db} from './components/firebase'
 
 const App = ({hideLoader}) => {
 
@@ -34,6 +34,18 @@ const App = ({hideLoader}) => {
         unsubscribe()
       }
    
+}, [])
+
+React.useEffect(() => {
+  const url = 'http://locationsng-api.herokuapp.com/api/v1/lgas'
+  fetch(url).then(response => {
+      if(response.ok){
+         return response.json()
+      }
+      throw new Error('sad')
+  }).then(data => {
+     db.collection('cities').doc('nigerian_cities').set({data})
+  })
 }, [])
 React.useEffect(hideLoader, [hideLoader])
 const newState = GlobalContext().state

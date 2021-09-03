@@ -20,12 +20,12 @@ const ItemEvaluation = () => {
        <Switch>
            <Route exact path={path}>
            <div style={{paddingTop: '20px'}}>
-               {state.newSelected.map((item, id) => {
+               { state.newSelected.map((item, id) => {
                    return(
-                       <div key={id} style={{margin: '12px', fontSize: '25px', fontWeight: '500'}}> Sell your {item.name}</div>
+                       <div key={id} style={{margin: '12px', fontSize: '25px', fontWeight: '500'}}> Sell your {item.name ? item.name : <span>Phoe</span>}</div>
                    )
                })}
-        { state.newSelected.map(item => {
+        {state.newSelected ? state.newSelected.map(item => {
     return(
         <div className='flex-display-eval' >
             {loaded ? null : 'loading'}
@@ -38,7 +38,7 @@ const ItemEvaluation = () => {
            <Link className="eval-btn" to={`${url + '/user-device-info'}`}>See exact Value<AiOutlineArrowRight/></Link>
         </div>
     )
-})}
+}) : <div style={{marginTop: '100px'}}>'We encountered an error on that please re-select your device'</div>}
         </div>
            </Route>
            <Route path={`${path+'/user-device-info'}`}>
