@@ -4,10 +4,11 @@
     align-items: start;
     overflow-x: scroll;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
    
 }
 .cards{
-    background-color: rgb(116, 151, 255);
+  background-color: #6298ff;
     padding: 10px;
     color: white;
     max-width: 290px;
@@ -18,9 +19,22 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 0px 1px 1px #dfdfdf;
-    -webkit-overflow-scrolling: touch;
+   
     
 
+}
+.cashman{
+    background-image: url('../assets/OIP.png');
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+   
+}
+.handphone{
+    background-image: url('../assets/Handphone.png');
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .btn-fixed{
     position: absolute;
@@ -45,7 +59,7 @@
     padding-left: 6px;
     background-color: white;
     border-radius: 100%;
-   margin: auto;
+   /* margin: auto; */
 }
 .text-group{
     display: flex;
@@ -89,6 +103,9 @@
     .lg-card{
         display: flex;
     }
+    .btn-fixed,.btn-fixed-right{
+        display: none;
+    }
 }
 @media(max-width: 300px){
     .cards{
@@ -104,5 +121,15 @@
     }
     .last-text{
         font-size: 9px;
+    }
+}
+@media(max-width:500px ){
+    .btn-fixed,.btn-fixed-right{
+        display: none;
+    }
+}
+@media(min-width: 500px){
+    .btn-fixed-right,.btn-fixed{
+        display: block;
     }
 }

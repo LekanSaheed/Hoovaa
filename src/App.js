@@ -21,20 +21,21 @@ import { stateChange } from './components/firebase'
 import SignUp from './Auth/SignUp'
 import Cart from './components/Pages/Buy/Cart'
 import Footer from './components/Footer'
-import smoothscroll from 'smoothscroll-polyfill'
+//import smoothscroll from 'smoothscroll-polyfill'
 import {db} from './components/firebase'
 
 const App = ({hideLoader}) => {
 
   React.useEffect(()=> {
     window.scrollTo(0,0)
-    smoothscroll.polyfill()
-    window.__forceSmoothScrollPolyfill__ = true;
+    document.title = 'Buy sell Repair || Hoovaa Biggest Used Phones Buyer and Seller in Nigeria'
+  
+   
     const unsubscribe =  stateChange()
       return () => {
         unsubscribe()
       }
-   
+ 
 }, [])
 
 React.useEffect(() => {
@@ -43,9 +44,11 @@ React.useEffect(() => {
       if(response.ok){
          return response.json()
       }
-      throw new Error('sad')
+      throw new Error('Error Fetching data')
   }).then(data => {
      db.collection('cities').doc('nigerian_cities').set({data})
+  }).catch((err) => {
+    console.log(err)
   })
 }, [])
 React.useEffect(hideLoader, [hideLoader])

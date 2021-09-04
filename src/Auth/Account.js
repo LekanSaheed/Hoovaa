@@ -38,7 +38,12 @@ icon: <FiLogOut/>,
 }
     ]
     const {path, url} = useRouteMatch()
-console.log(currentUser)
+    // React.useEffect(() => {
+    //     if(currentUser){
+        
+    //      document.title = currentUser.displayName ? currentUser.displayName+"'s Account" : 'My account'
+    //     }
+    // })
     return (
         <>
       <Switch>
