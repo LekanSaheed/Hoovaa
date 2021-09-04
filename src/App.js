@@ -28,8 +28,6 @@ const App = ({hideLoader}) => {
 
   React.useEffect(()=> {
     window.scrollTo(0,0)
-    document.title = 'Buy sell Repair || Hoovaa Biggest Used Phones Buyer and Seller in Nigeria'
-  
    
     const unsubscribe =  stateChange()
       return () => {
