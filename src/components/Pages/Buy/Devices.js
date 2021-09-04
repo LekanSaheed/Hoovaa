@@ -19,7 +19,7 @@ console.log(state, path, history)
     return (
         <div>
            <Switch>
-               <Route path={path}>
+               <Route exact path={path}>
                <div className='grid-item-container'>
         {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
             {phones.filter((item) => item.brand === brand).map((item, index) => {
