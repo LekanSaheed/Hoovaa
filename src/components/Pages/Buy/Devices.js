@@ -14,16 +14,8 @@ const [loaded, setLoad] = useState(false)
 
 React.useEffect(() => {
     window.scrollTo(0,0)
-    const applyLoader = () => {
-        const loader = document.querySelector('.loader-container')
-      
-        loaded ? loader.classList.add('loader-hide') : loader.classList.remove('loader-hide')
-    }
-   const unsub = applyLoader()
-   return () => {
-       unsub()
-   }
-}, [loaded])
+    
+}, [])
     return (
         <div>
            <Switch>
