@@ -1,7 +1,8 @@
 .cart-btn-btn{
     position: fixed;
-    bottom: 13vh;
+    bottom: 12vh;
     right: 20px;
+    z-index: 2;
 }
 
 .btn-cart{

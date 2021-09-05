@@ -22,7 +22,7 @@ React.useEffect(() => {
                <Route exact path={path}>
                <div className='grid-item-container'>
                    {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0', right: '0',
-                left: '0', bottom: '0', width: '100%'}}>
+                left: '0', bottom: '0', width: '100%', zIndex: '1'}}>
                         <CircularProgress/></div>}
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
