@@ -1,28 +1,33 @@
 import React, {useState} from 'react'
 import { useRouteMatch, Link, Route, Switch } from 'react-router-dom'
-import Skeleton from 'react-loading-skeleton'
+import {CircularProgress} from '@material-ui/core'
 import { GlobalShop } from './CartContext'
 import GadgetDetails from './GadgetDetails'
 import './Devices.css'
 const Devices = ({phones, brand}) => {
    
-    React.useEffect(() => {
-        window.scrollTo(0,0)
-    }, [])
+   
    
 const {path, url} = useRouteMatch()
 const {viewDevice, state} = GlobalShop()
 const [loaded, setLoad] = useState(false)
+React.useEffect(() => {
+    window.scrollTo(0,0)
+    const loader = document.querySelector('.loader-container')
+   
+    loaded ? loader.classList.add('loader-hide') : loader.classList.remove('loader-hide')
+}, [])
     return (
         <div>
            <Switch>
                <Route exact path={path}>
                <div className='grid-item-container'>
-        {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
+                   {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', zIndex: '1'}}>
+                        <CircularProgress/></div>}
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
                     <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '=?') }`}  key={index}>
-                        {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
+                        
                     <div className='grid-item-item' onClick={() => viewDevice(item)} onLoad={()=> setLoad(true)}>
                         <div className='grid-img'>  <img src={item.img} alt='ige' /> </div>
                        <span> {item.name}</span>
