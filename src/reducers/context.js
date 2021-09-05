@@ -52,12 +52,16 @@ const setUser = (user) => {
 const logout = () => {
     dispatch({type: 'LOG_OUT'})
 }
+const setSearchResult = (item) => {
+    dispatch({type: 'SET_SEARCH_RESULT', payload: item})
+} 
     return(
         <AppContext.Provider value={{
             state, toggleNav, 
             closeNav, getDevice,
              setDeviceStorage, setCity,
-              setUser, logout
+              setUser, logout,
+              setSearchResult
         }}>{children}</AppContext.Provider>
     )
 }

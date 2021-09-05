@@ -45,6 +45,13 @@
           newSelected: [{name,img, evaluated, price}]
       }
   }
+  if(action.type === 'SET_SEARCH_RESULT'){
+      sessionStorage.setItem('result', JSON.stringify(action.payload))
+      return{
+          ...state,
+          searchResult: [action.payload]
+      }
+  }
   if(action.type === "SET_USER"){
       const user = action.payload
     return{

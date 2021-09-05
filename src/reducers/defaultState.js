@@ -4,6 +4,7 @@ import {laptopBrands, phoneBrands, computerBrands,
 } from '../components/Pages/PhoneData'
 
 const localCurrentUser = localStorage.getItem('user')
+const sessionSR = sessionStorage.getItem('result')
 export const defaultState = {
     toggle: false,
     modalContent: '',
@@ -22,5 +23,6 @@ export const defaultState = {
     city: localStorage.getItem('city') ? localStorage.getItem('city') : '',
     isCity: localStorage.getItem('city') ? false : true,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
-    isUser: localCurrentUser ? true : false
+    isUser: localCurrentUser ? true : false,
+    searchResult: sessionSR ? JSON.parse(sessionSR) : []
 }

@@ -67,7 +67,8 @@ export const cartReducer = (state, action) => {
         return{
             ...state,
             isModal: true,
-            modalContent: 'Product quantity succesfully Decreased'
+            modalContent: 'Product quantity succesfully Decreased',
+            cart: update
         }
     }
     if(action.type === "CLEAR_CART"){

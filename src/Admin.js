@@ -1,123 +1,39 @@
-import React, {useState} from 'react'
-import './Admin.css'
+import React from 'react'
+import AdminUpload from './AdminUpload'
+import {Link, Route, Switch, useRouteMatch} from 'react-router-dom'
+import {db} from './components/firebase'
+import {Box, makeStyles} from '@material-ui/core'
 
-import {db, firebaseStorage} from './components/firebase'
+
 const Admin = () => {
-    
-    const [img, setImg] = useState(null)
-    const [name, setName] = useState('')
-    const [brand, setBrand] = useState('')
-    const [category, setCategory] = useState('')
-    const [worth, setWorth] = useState(0)
-    const[error, setError] = useState('')
-
-   const types =['image/jpg', 'image/png', 'image/jpeg']
-   
-   const handleImg = (e) => {
-    const selected = e.target.files[0]
-    
-    if(selected && types.includes(selected.type)){
-        
-        setImg(selected)
-        setError('')
-        console.log(selected)
-        console.log(img)
-    }
-    else if(!selected){
-        setError('no file selected')
-        console.log('no file')
-    }
-    else{
-        setError('invalid file type')
-        setImg(null)
-       console.log('invalid')
-    }
-}
-
-
-   const handleSubmit = (e) => {
-       e.preventDefault()
-    const checked = []
-    const checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-    for(var i = 0; i < checkboxes.length; i++){
-        checked.push(checkboxes[i].value)
-    }  
-        const colRef = db.collection('phones')
-        const ref = firebaseStorage.ref(`/images/${img.name}`);
-        const uploadTask = ref.put(img);
-        uploadTask.on("state_changed", console.log, console.error, () => {
-          ref
-            .getDownloadURL()
-            .then((iurl) => {
-           //file upload
-            colRef.add({
-                id: new Date().getTime().toString(), name,brand, category, price:  parseInt(worth), storage: checked, img: iurl
-            })
-            .then(() => {
-                alert("Document successfully written!");
-            })
-            .catch((error) => {
-                alert("Error writing document: ", error);
-            });
-            });
-        });
-    
-   }
-  
+    const useStyle = makeStyles(theme => ({
+        root: {
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh',
+            [theme.breakpoints.up(801)]:{
+                flexDirection: 'row'
+        }
+        }
+    }))
+    const classes = useStyle()
+    const { url} = useRouteMatch()
     return (
-        <div>
-            Upload Device
-            <form className='form-control'>
-                {error && error}
-              <div className='input-container'>
-                  <label>Device Image</label>
-                   <input type='file' onChange={handleImg}/>
-              </div>
-               <div className='input-container'>
-                   <label>Device Name</label>
-                   <input type='text' value={name} onChange={(e) => setName(e.target.value)} required/>
-               </div>
-               <div className='input-container'>
-                   <label>Device Brand</label>
-                   <input type='text'  value={brand} onChange={(e) => setBrand(e.target.value)} required/>
-               </div>
-              
-               <div className='input-container'>
-                   <label>Category</label>
-                   <input type='text'  value={category} onChange={(e) => setCategory(e.target.value)} required/>
-               </div>
-               <div className='input-container'>
-                   <label>Device Worth</label>
-                   <input type='number' value={worth} onChange={(e) => setWorth(e.target.value.toLocaleString())} required/>
-               </div>
-               
-               <div className='check-container'>
-                   <label>Storage</label>
-                 <div className='checks'> <span>8GB</span> <input type='checkbox' value="8000000000" required/> </div>
-                   <div className='checks'>
-                       <span>16GB</span>
-                   <input type='checkbox' value='17179869184' required/>
-                   </div>
-                   <div className='checks'>
-                       <span>32GB</span>
-                   <input type='checkbox' value='34359738368' required/>
-                   </div>
-                  <div className='checks'><span>64GB</span> <input type='checkbox' value='68719476736' required/></div>
-                  <div className='checks'><span>128GB</span> <input type='checkbox' value='137438953472' required/></div>
-                  <div className='checks'><span>256GB</span> <input type='checkbox' value='274877906944' required/></div>
-                   <div className='checks'><span>512GB</span><input type='checkbox' value='549755813888' required/></div>
-                   <div className='checks'>
-                       <span>1TB</span>
-                   <input type='checkbox' value='1099511627776' required/>
-                   </div>
-                  <div className='checks'><span>2TB</span> <input type='checkbox' value='2199023255552' required/></div>
-               </div>
-             
-               <button onClick={handleSubmit}>Submit</button>
-            </form>
-            
-            
-        </div>
+        <Box className={classes.root}>
+            <ul>
+                <li><Link to={`${url}/upload-used-phones` }>Upload used phones details</Link></li>
+                <li><Link to={`${url}/upload-products` }>Upload Products</Link></li>
+            </ul>
+            <Switch>
+                <Route path={`${url}/upload-used-phones` }>
+                <AdminUpload colRef={db.collection('usedPhones')}/>
+                </Route>
+                <Route path={`${url}/upload-products` }>
+                <AdminUpload  colRef={db.collection('usedPhones')}/>
+                </Route>
+            </Switch>
+           
+        </Box>
     )
 }
 

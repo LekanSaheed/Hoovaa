@@ -23,6 +23,8 @@ import Cart from './components/Pages/Buy/Cart'
 import Footer from './components/Footer'
 //import smoothscroll from 'smoothscroll-polyfill'
 import {db} from './components/firebase'
+import SearchPage from './components/SearchPage'
+import Catalog from './components/Catalog'
 
 const App = ({hideLoader}) => {
 
@@ -63,9 +65,11 @@ const {state} = GlobalShop()
         <Route exact path='/'>
         <Home/>
         </Route>
+        <Route path='/search' component={SearchPage}/>
         <Route path='/sell-item'>
           <SellItem/>
          </Route> 
+         <Route path='/catalog/' component={Catalog}/>
         <Route path='/buy-item'>
           <BuyItem/>
         </Route>
