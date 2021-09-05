@@ -11,18 +11,26 @@ const Devices = ({phones, brand}) => {
 const {path, url} = useRouteMatch()
 const {viewDevice, state} = GlobalShop()
 const [loaded, setLoad] = useState(false)
+
 React.useEffect(() => {
     window.scrollTo(0,0)
-    const loader = document.querySelector('.loader-container')
-   
-    loaded ? loader.classList.add('loader-hide') : loader.classList.remove('loader-hide')
-}, [])
+    const applyLoader = () => {
+        const loader = document.querySelector('.loader-container')
+      
+        loaded ? loader.classList.add('loader-hide') : loader.classList.remove('loader-hide')
+    }
+   const unsub = applyLoader()
+   return () => {
+       unsub()
+   }
+}, [loaded])
     return (
         <div>
            <Switch>
                <Route exact path={path}>
                <div className='grid-item-container'>
-                   {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', zIndex: '1'}}>
+                   {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0', right: '0',
+                left: '0', bottom: '0', width: '100%'}}>
                         <CircularProgress/></div>}
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
