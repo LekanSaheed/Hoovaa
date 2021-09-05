@@ -2,9 +2,10 @@ import React, {} from 'react'
 import { GlobalShop } from './CartContext'
 import './Cart.css'
 import {BsTrash} from 'react-icons/bs'
+import { Button } from '@material-ui/core'
 
 const Cart = () => {
-    const {state, removeItem, clearCart} = GlobalShop()
+    const {state, removeItem, clearCart, increment, decrement} = GlobalShop()
        
 
     return (
@@ -22,6 +23,13 @@ const Cart = () => {
                             </div>
                             <div className='cart-item-brand'>
                         Brand   {item.brand}
+                            </div>
+                            <div className='cart-item-brand'>
+                        Quantity  {item.quantity}
+                            </div>
+                            <div className='cart-item-brand'>
+                       <button onClick={() => increment(item)}>Increemnt</button>
+                       <Button children={'-'} onClick={() => decrement(item)}/>
                             </div>
                             <button className='remove-btn' onClick={() => removeItem(item.id)}>Remove</button>
                         </div>

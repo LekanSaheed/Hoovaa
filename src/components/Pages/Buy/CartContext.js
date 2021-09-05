@@ -25,13 +25,21 @@ const clearCart = () => {
 const closeModal = () => {
     dispatch({type: "CLOSE_MODAL"})
 }
+const increment = (item) => {
+    dispatch({type: 'INCREMENT', payload: item})
+}
+const decrement = (item) => {
+    dispatch({type: 'DECREMENT', payload: item})
+}
     return <ShopContext.Provider value={{
         viewDevice,
         state,
         addToCart,
         removeItem,
         clearCart,
-        closeModal
+        closeModal,
+        increment,
+        decrement
     }}
     
     >{children}</ShopContext.Provider>

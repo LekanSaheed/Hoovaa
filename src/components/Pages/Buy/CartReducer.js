@@ -17,14 +17,25 @@ export const cartReducer = (state, action) => {
     if(action.type === 'ADD_TO_CART'){
         const newItem = action.payload
         localStorage.setItem('cart', JSON.stringify(state.cart) )
-        const find = state.cart.find(item => item === newItem)
-        console.log(find)
+        const find = state.cart.find(item => item.id === newItem.id)
+        newItem.quantity = 1
+       if(find){
+        localStorage.setItem('cart', JSON.stringify(state.cart) )
+           newItem.quantity += 1
+           return{
+               ...state,
+               isModal: true,
+               modalContent: 'Product quantity increased',
+           }
+       }
+       else{
         return{
             ...state,
             cart: [...state.cart, newItem],
             isModal: true,
             modalContent: action.payload.name + ' is Added to cart Sucessfully'
         }
+       }
     }
     if(action.type === 'REMOVE_ITEM'){
         const id = action.payload
@@ -38,7 +49,27 @@ export const cartReducer = (state, action) => {
 
         }
     }
- 
+
+    if(action.type === "INCREMENT"){
+        console.log('reached')
+        const current = action.payload
+       const update = state.cart.map(item => item.id === current.id ? {...item, quantity: item.quantity + 1} : item)
+        return{
+            ...state,
+            isModal: true,
+            modalContent: 'Product quantity succesfully increased',
+            cart: update
+        }
+    }
+    if(action.type === "DECREMENT"){
+        const current = action.payload
+       const update = state.cart.map(item => item.id === current.id ? {...item, quantity: item.quantity - 1} : item)
+        return{
+            ...state,
+            isModal: true,
+            modalContent: 'Product quantity succesfully Decreased'
+        }
+    }
     if(action.type === "CLEAR_CART"){
         localStorage.removeItem('cart')
         return{
