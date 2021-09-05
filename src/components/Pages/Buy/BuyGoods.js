@@ -54,7 +54,8 @@ id: 345676
             <div className='goods-container'>
                 {phones.map((item, idx) => {
                     return(
-                        <Link className='goods-node' key={idx} to={url + '/' + item.name.toLowerCase().replace(/ /g, '-') + '-' + item.id} onClick={() => viewDevice(item)}> 
+                        <Link className='goods-node' key={idx} to={url + '/' + item.name.toLowerCase().replace(/ /g, '-') + '-' + item.id}
+                        onClick={() => viewDevice(item)}> 
                         <div>{item.name}</div>
                       <div> ${item.price}</div>
                         </Link>

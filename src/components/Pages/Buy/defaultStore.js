@@ -4,5 +4,6 @@ export const defaultStore = {
     clickedDevice: [],
     cart: localCart ? localCart : [],
     isModal: false,
-    modalContent: ''
+    modalContent: '',
+    device: [{name: 'iphone 5', desc: 'Et minim deserunt quis pariatur cillum eiusmod anim exercitation ea.', price: 450}]
 }

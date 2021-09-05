@@ -5,7 +5,9 @@ import cashman from '../assets/newoip.png'
 //import trash from '../assets/trash.jpg'
 import phone from '../assets/phone.png'
 //import repair from '../assets/repair.png'
-import { Fab } from '@material-ui/core'
+import { Button, Fab, makeStyles } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+
 
 const cardData = [
     {
@@ -13,45 +15,71 @@ const cardData = [
         subText: 'Sell your old phone',
         lastText: 'Get latest resale value for your device',
         img: phone,
-        class: ''
+        class: '',
+        variant: true,
+        link: '/sell-item'
     },
     {
         titleText: 'Get Cash for your old device',
         subText: 'Planning to dispose it? Sell it.',
         lastText: 'Get latest resale value for your device',
-        class: 'cashman'
+        class: 'cashman',
+        child: 'Sell Now',
+        link: '/sell-item'
     },
     {
         titleText: 'Got a bad phone? ',
         subText: 'Repair it',
         lastText: 'Over 1000 personnel to help fix it',
-        class: 'handphone'
+        class: 'handphone',
+        child: 'Repair Now',
+        link: '/repair-device'
     },
     {
-        titleText: 'Sell your device',
-        subText: 'Sell your old phone',
-        lastText: 'Get latest resale value for your device',
-        class: 'repair'
+        titleText: 'Buy from us',
+        subText: 'We got what you want',
+        lastText: 'Get latest devices, you name it',
+        class: 'repair',
+        child: 'Buy Now',
+        link: '/buy-item'
     }
 ]
 const Cards = () => {
+
+    const useStyles = makeStyles({
+        root: {
+            background: 'black',
+            color: 'white',
+            fontSize: '8px'
+        },
+        isRound: {
+            backgroundColor: 'white',
+            color: 'black',
+            fontSize: '17px'
+        }
+    })
+
+    const classes = useStyles()
     const cardList = cardData.map((item, index) => {
         return(
-            <div className={`cards ${item.class}`} key={index}>
+            <Link to={item.link} key={index}>
+            <div className={`cards ${item.class}`} >
                <div className='text-group'>
                <p className='title-text'>{item.titleText}</p>
                 <p className='sub-text'>{item.subText}</p><hr style={{backgroundColor: 'white', border: 'solid 1px white', width: '50px'}}/>
                 <p className='last-text'>{item.lastText}</p>
                </div>
-               <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}> 
+               <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center'}}> 
 
                   {item.img && <img src={item.img} alt='icons'/>}
                   <div></div>
-                  <Fab size='small' children={<AiOutlineArrowRight/>}/>
+                 {item.variant &&  <Fab size='small' variant='extended' className={classes.isRound} children={<AiOutlineArrowRight/>}/>}
+                 {item.child &&  <Button size='small' className={classes.root} children={<span>{item.child}</span>}/>}
                    {/* <button><AiOutlineArrowRight style={{fontSize: '20px'}}/></button> */}
                </div>
               
             </div>
+            </Link>
         )
     })
     const [cont, setCont] = React.useState(null)

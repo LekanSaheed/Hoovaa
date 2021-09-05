@@ -6,6 +6,7 @@
     background-color: white;
     margin: 15px;
     text-align: center;
+    min-height: 60vh;
 }
 .grid-item-item{
     padding: 16px;
