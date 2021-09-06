@@ -70,7 +70,7 @@ const classes = useStyle()
                {state.cart.length < 1 ? <div className='theme-text'>No item in cart <Link className='bordered' to='/buy-item'>Start Buying</Link></div> : state.cart.map((item, idx) => {
                     return(
                         <div key={idx} className='cart-item'>
-                            <CardMedia className='MuiCardMedia-img' children={<img src={item.img} alt='product'/>}/>
+                            <CardMedia className='MuiCardMedia-img' children={<img style={{width: "100%}} src={item.img} alt='product'/>}/>
                             <div className='cart-item-name'>
                      {item.name}
                             </div>
