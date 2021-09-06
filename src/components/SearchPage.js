@@ -46,7 +46,7 @@ const SearchPage = () => {
     const history = useHistory()
     const barChild = <Box justifyContent='space-between'  padding="0 13px" alignItems='center' display='flex' >
         <span className={classes.icons} onClick={() => history.goBack()}><AiOutlineArrowLeft/></span> 
-    <Input value={search} onChange={(e) => setSearch(e.target.value)} className={classes.input} placeholder='Search for products' 
+    <Input autoFocus value={search} onChange={(e) => setSearch(e.target.value)} className={classes.input} placeholder='Search for products' 
     fullWidth={true} type='search'/>
     <span className={classes.icons}>
         <AiOutlineSearch/>

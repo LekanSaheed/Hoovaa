@@ -5,5 +5,6 @@ export const defaultStore = {
     cart: localCart ? localCart : [],
     isModal: false,
     modalContent: '',
-    device: [{name: 'iphone 5', desc: 'Et minim deserunt quis pariatur cillum eiusmod anim exercitation ea.', price: 450}]
+    device: [],
+    shippingFees: [{distance: 'near', fee: 0}, {distance: 'mid', fee: 30}, {distance: 'far', fee: 50}]
 }

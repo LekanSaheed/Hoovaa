@@ -16,7 +16,7 @@ export const cartReducer = (state, action) => {
     }
     if(action.type === 'ADD_TO_CART'){
         const newItem = action.payload
-        localStorage.setItem('cart', JSON.stringify(state.cart) )
+      
         const find = state.cart.find(item => item.id === newItem.id)
         newItem.quantity = 1
        if(find){
@@ -26,9 +26,11 @@ export const cartReducer = (state, action) => {
                ...state,
                isModal: true,
                modalContent: 'Product quantity increased',
+               
            }
        }
        else{
+        localStorage.setItem('cart', JSON.stringify(state.cart) )
         return{
             ...state,
             cart: [...state.cart, newItem],

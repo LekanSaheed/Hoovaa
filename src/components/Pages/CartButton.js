@@ -8,7 +8,8 @@ import {Badge} from '@material-ui/core'
 
 const CartButton = () => {
      const {state} = GlobalShop()
-
+     
+   
     return (
        
          
@@ -22,7 +23,7 @@ const CartButton = () => {
           //  </Fab>
           //   
           <Link className='cart-btn-btn' to='/cart'>
-          <Badge color="secondary" overlap='circular' showZero={true} badgeContent={<div>{state.cart.length}</div>} 
+          <Badge color="secondary" overlap='circular' showZero={true} badgeContent={<div>{state.cart.map(i => i.quantity).reduce((a,b) => a + b, 0)}</div>} 
           children={ <Fab className='MuiFab-primary'>
                  <FaOpencart style={{fontSize: '18px'}}/>
            </Fab>} />
