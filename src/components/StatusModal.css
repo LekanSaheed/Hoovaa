@@ -8,10 +8,11 @@
     left: 0;
     right: 0;
     width: 100%;
-    background-color: white;
+    background-color: #7497ff;
+    color: #fff;
 }
 .stat-check{
-    color: #7497ff;
+    color: #fff;
     font-size: 19px;
     margin-right: 8px;
 }
@@ -27,7 +28,6 @@
 .stat-modal-content{
     font-weight: 400;
     font-size: 12px;
-    color: rgb(61, 61, 61);
 }
 @media(min-width: 901px){
     .stat-modal-group{

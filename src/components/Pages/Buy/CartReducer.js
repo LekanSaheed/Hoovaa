@@ -53,7 +53,6 @@ export const cartReducer = (state, action) => {
     }
 
     if(action.type === "INCREMENT"){
-        console.log('reached')
         const current = action.payload
        const update = state.cart.map(item => item.id === current.id ? {...item, quantity: item.quantity + 1} : item)
         return{
@@ -65,7 +64,7 @@ export const cartReducer = (state, action) => {
     }
     if(action.type === "DECREMENT"){
         const current = action.payload
-       const update = state.cart.map(item => item.id === current.id ? {...item, quantity: item.quantity - 1} : item)
+       const update = state.cart.map(item => item.id === current.id ? {...item, quantity: item.quantity - 1} : item).filter(item => item.quantity !== 0)
         return{
             ...state,
             isModal: true,

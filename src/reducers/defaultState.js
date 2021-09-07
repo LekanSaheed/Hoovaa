@@ -2,14 +2,14 @@
 import {laptopBrands, phoneBrands, computerBrands, 
     smartSpeakerBrands, smartWatchbrands, tvBrands, gamingGadgetBrands, cameraBrands
 } from '../components/Pages/PhoneData'
-
+import iphone from '../assets/tecnoSpark4.jpg'
 const localCurrentUser = localStorage.getItem('user')
 const sessionSR = sessionStorage.getItem('result')
 export const defaultState = {
     toggle: false,
     modalContent: '',
     isModal: false,
-    phones: [],
+    phones: [{id: 1,name: 'tecno spark 4', price: 200, img: iphone, brand: 'tecno'}],
     phoneBrands: phoneBrands,
     laptopBrands: laptopBrands,
     computerBrands: computerBrands,

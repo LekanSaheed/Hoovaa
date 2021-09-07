@@ -1,50 +1,62 @@
-import React, {} from 'react'
+import React, {useEffect} from 'react'
 import { GlobalShop } from './CartContext'
 import './Cart.css'
-import {BsTrash} from 'react-icons/bs'
+import {BsFillTrash2Fill, BsTrash} from 'react-icons/bs'
 import { Box, Button, CardMedia, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import { AiFillMinusCircle ,  AiFillPlusCircle} from 'react-icons/ai'
 
 const Cart = () => {
     const {state, removeItem, clearCart, increment, decrement} = GlobalShop()
 
- 
-        const getPosition = (position) => {
-            console.log('position',position.coords.longitude)
-        }
+ useEffect(() => {
+     window.scrollTo(0,0)
+ },[])
+    //     const getPosition = (position) => {
+    //         console.log('position',position.coords.longitude)
+    //     }
         
-       if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
-            console.log('Error', error.message)
-        })
+    //    if(navigator.geolocation){
+    //     navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
+    //         console.log('Error', error.message)
+    //     })
 
-    }
-    else{
-        console.log('cant get location')
-    }
+    // }
+    // else{
+    //     console.log('cant get location')
+    // }
     
     
       const useStyle = makeStyles(theme => ({
           root: {
-
+            background: 'white',
+            borderRadius: '5px',
+            margin: '4px 7px',
+            padding: '10px ',
+            paddingBottom: '3px',
+           boxShadow: '0 0 8px 0px rgba(0 0 0 /10%)'
+          },
+          mainCon:{
+            borderBottom: 'solid 1px #f5f5f5',
+            padding: '5px'
           },
           incdec: {
               flexDirection: 'row-reverse',
               justifyContent: 'space-between',
-              border: 'solid 1px lightgrey',
               padding: '5px',
-              borderRadius: '10px',
               fontSize: '15px',
-              marginLeft: '10px',
               [theme.breakpoints.up('500')]: {
                   flexDirection: 'column-reverse',
                   border: 'none',
-                  fontSize: '20px'
+                  fontSize: '20px',
+                  alignItems: 'center'
               }
           },
           quantity: {
             alignItems: 'center',
             padding: '5px',
+            justifyContent: 'space-between',
+            marginTop: '2px',
               [theme.breakpoints.up('500')]: {
                   flexDirection: 'row',
                   justifyContent: 'space-between',
@@ -52,12 +64,16 @@ const Cart = () => {
 
               }
           },
-          qidCon: {
-           
+          remove: {
+              display: 'flex',
+              alignItems: 'center',
+              color: '#7497ff'
           },
+        
           contBtn:{
               padding: '0px',
-              fontSize: '19px'
+              fontSize: '19px',
+              color: '#7497ff'
               
           }
 
@@ -67,10 +83,17 @@ const classes = useStyle()
         <div className='cart-container'>
         
             <div className='cart-item-container'>
-               {state.cart.length < 1 ? <div className='theme-text'>No item in cart <Link className='bordered' to='/buy-item'>Start Buying</Link></div> : state.cart.map((item, idx) => {
+                 <p style={{color: '#f50057', fontWeight: 'bold', padding: '10px'}}>MY CART: <span className='theme-text'>{state.cart.map(i => i.quantity)
+                 .reduce((a,b) => a + b, 0)} Item{state.cart.map(i => i.quantity === 1 ? '' : 's')} in cart</span></p>
+               {state.cart.length < 1 ? <div className='theme-text'>No item in cart <Link className='bordered' to='/buy-item'>
+                   Start Buying</Link></div> : state.cart.map((item, idx) => {
                     return(
-                        <div key={idx} className='cart-item'>
-                            <CardMedia className='MuiCardMedia-img' children={<img src={item.img} alt='product'/>}/>
+                        // Cart Container
+                        <Box key={idx} display='flex' className={classes.root} flexDirection='column'>
+                            {/* Cart item MAIN */}
+                            <Box display='flex' className={classes.mainCon}>
+                            <CardMedia className='MuiCardMedia-img' children={<img style={{width: '120px'}}  src={item.img} alt='product'/>}/>
+                            <div>
                             <div className='cart-item-name'>
                      {item.name}
                             </div>
@@ -80,18 +103,23 @@ const classes = useStyle()
                             <div className='cart-item-brand'>
                         Brand: {item.brand}
                             </div>
-                          <Box display='flex' flexDirection='row' className={classes.quantity}>
-                          <div className={classes.qidCon}>
-                        Quantity: 
-                            </div> 
+                            </div>
+                        </Box>
+                         {/* Cart item MAIN ends here*/}
+
+                          <Box display='flex' flexDirection='row' className={classes.quantity}> 
+                         <Box className={classes.remove}  onClick={() => removeItem(item.id)}>
+                             <BsFillTrash2Fill/>
+                         <span >REMOVE</span>
+                         </Box>
                             <Box className={classes.incdec} display='flex' >
-                       <Button className={classes.contBtn} onClick={() => increment(item)}>+</Button>
+                       <Button className={classes.contBtn} onClick={() => increment(item)}><AiFillPlusCircle/></Button>
                        {item.quantity}
-                       <Button className={classes.contBtn} children={'-'} onClick={() => decrement(item)}/>
+                       <Button className={classes.contBtn} children={<AiFillMinusCircle/>} onClick={() => decrement(item)}/>
                             </Box>
+                           
                           </Box>
-                            <Button   onClick={() => removeItem(item.id)}>Remove</Button>
-                        </div>
+                          </Box>
                     )
                 })}
                 <div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiOutlineEuro, AiOutlineLaptop, AiOutlineInsurance,
      AiOutlineThunderbolt, AiOutlineTool } from 'react-icons/ai'
-import {BsGrid} from 'react-icons/bs'
+import {FaCashRegister} from 'react-icons/fa'
 import './SalesComponent.css'
 import {Link} from 'react-router-dom'
 const salesData = [
@@ -31,9 +31,9 @@ const salesData = [
         to: 'insurance'
     },
     {
-        info: 'All Services',
-        icon: <BsGrid/>,
-        to: 'all-services'
+        info: 'Register Gadget',
+        icon: <FaCashRegister/>,
+        to: 'register-gadget'
     },
 ]
 const SalesComponent = () => {
