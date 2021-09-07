@@ -30,8 +30,8 @@ React.useEffect(() => {
                         
                     <div className='grid-item-item' onClick={() => viewDevice(item)} onLoad={()=> setLoad(true)}>
                         <div className='grid-img'>  <img src={item.img} alt='ige' /> </div>
-                       <span> {item.name}</span>
-                       <div>{item.brand}</div>        
+                      {loaded && <> <span> {item.name}</span>
+                       <div>{item.brand}</div> </>    }  
                        </div> 
                        </Link>
                 )
