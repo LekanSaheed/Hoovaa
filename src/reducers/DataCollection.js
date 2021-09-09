@@ -5,7 +5,6 @@ import { db } from '../components/firebase'
 const DataCollection = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(null)
-    const [conditions, setConditions] = useState([])
     const [evaluatedAt, setEvaluated] = useState(null)
 
     // const handleSpread = (e) => {
@@ -88,21 +87,19 @@ const handleSubmit = () => {
 
           if(!isExist){
             arr.push(checkbox.value)
-            console.log(arr, conditions)
+            console.log(arr)
           }
          
     
     })
-    setConditions(arr)
     const colRef = db.collection('survey').doc('surveyResults')
     console.log( name,
         price,
-        conditions,
         evaluatedAt)
     colRef.set({
         name,
         price,
-        conditions,
+        conditions: arr,
         evaluatedAt
     }).then(()=> {
         window.location.reload()
