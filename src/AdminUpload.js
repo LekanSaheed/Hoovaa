@@ -1,11 +1,11 @@
-import { Input } from '@material-ui/core'
+import { Box, Input } from '@material-ui/core'
 import React, {useState} from 'react'
 import './Admin.css'
-
+import {makeStyles} from '@material-ui/core'
 import { firebaseStorage} from './components/firebase'
 
 
-const AdminUpload = ({colRef}) => {
+const AdminUpload = ({colRef, tag}) => {
     
     const [img, setImg] = useState(null)
     const [name, setName] = useState('')
@@ -14,6 +14,19 @@ const AdminUpload = ({colRef}) => {
     const [worth, setWorth] = useState(0)
     const[error, setError] = useState('')
 
+    const useStyles = makeStyles(theme => ({
+        tag: {
+            background: 'grey',
+            color: 'white',
+            textTransform: 'uppercase'
+        },
+        root: {
+            [theme.breakpoints.up('800')]: {
+                width: '100%'
+            }
+        }
+    }))
+    const classes = useStyles()
    const types =['image/jpg', 'image/png', 'image/jpeg']
    
    const handleImg = (e) => {
@@ -68,8 +81,8 @@ const AdminUpload = ({colRef}) => {
    }
   
     return (
-        <div>
-            Upload Device
+        <div className={classes.root}>
+           <Box className={classes.tag} padding='10px' children={<span>{tag}</span>}/>
             <form className='form-control'>
                 {error && error}
               <div className='input-container'>

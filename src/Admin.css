@@ -47,10 +47,20 @@
     border: none;
    
 }
+
 .checks span{
     border-right: solid 1px #7497ff;
     padding: 10px;
 }
 .checks input{
     justify-self: flex-start;
+}
+@media(min-width: 800px){
+    .admin-nav li a{
+        color: white;
+        line-height: 40px;
+    }
+    .form-control{
+        box-shadow: none;
+    }
 }

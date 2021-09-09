@@ -19,7 +19,7 @@ import BottomNav from '../BottomNav'
 const BuyItem = () => {
     useEffect(() => {
         window.scrollTo(0,0)
-    })
+    },[])
     const {state} = GlobalContext()
     const data = [
         {text: 'Phones',
@@ -91,7 +91,9 @@ const allItems = data.map((item, index) => {
           </div>
          </div>
           </div>
-          <Search/>
+        <div style={{width: '100%'}}> 
+        <Search/>
+        </div>
               <div className="buy-items">
                 
                   {allItems}

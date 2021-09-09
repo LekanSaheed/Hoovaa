@@ -10,6 +10,7 @@
     width: 100%;
     background-color: #7497ff;
     color: #fff;
+    z-index: 5
 }
 .stat-check{
     color: #fff;
@@ -29,7 +30,7 @@
     font-weight: 400;
     font-size: 12px;
 }
-@media(min-width: 901px){
+@media(min-width: 813px){
     .stat-modal-group{
         top: 105px;
     }

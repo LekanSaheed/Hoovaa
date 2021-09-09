@@ -44,6 +44,10 @@ id: 345676
     ]
     const {viewDevice} = GlobalShop()
     const {path, url} = useRouteMatch()
+    
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    },[])
     return (
       <Switch>
           <Route exact path={path}>

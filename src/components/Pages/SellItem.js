@@ -53,7 +53,7 @@ const SellItem = () => {
     
 }
     ]
-    console.log(path)
+   
 const history = useHistory()
     return (
         <Switch>

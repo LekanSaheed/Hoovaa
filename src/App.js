@@ -1,5 +1,5 @@
 
-import {BrowserRouter as Router,  Switch, Route } from 'react-router-dom'
+import {BrowserRouter as Router,  Switch, Route, Link } from 'react-router-dom'
 import React from 'react'
 import Header from './components/Header'
 import Home from './components/Home'
@@ -25,11 +25,13 @@ import Footer from './components/Footer'
 import {db} from './components/firebase'
 import SearchPage from './components/SearchPage'
 import Catalog from './components/Catalog'
+import DataCollection from './reducers/DataCollection'
+import { Box, Button } from '@material-ui/core'
+import { RiSurveyLine } from 'react-icons/ri'
 
 const App = ({hideLoader}) => {
 
   React.useEffect(()=> {
-    window.scrollTo(0,0)
    
     const unsubscribe =  stateChange()
       return () => {
@@ -61,8 +63,12 @@ const {state} = GlobalShop()
       <Header/>
       {state.isModal &&  <StatusModal modalContent={state.modalContent}/>}
      <MobileNav/>
+    
       <Switch>
         <Route exact path='/'>
+        <Box display='flex' alignItems='center' justifyContent='space-between' fontSize="13px" padding='10px'>
+       <span>Would you like to help take a survey?</span> <Link to='/survey'>
+       <Button variant='contained' size='small' color='primary' endIcon={<RiSurveyLine/>}>Take survey </Button></Link></Box>
         <Home/>
         </Route>
         <Route path='/search' component={SearchPage}/>
@@ -85,12 +91,13 @@ const {state} = GlobalShop()
         <Route path='/login'>
           <Login/>
         </Route>
+        <Route path='/survey' component={DataCollection}/>
         <Route path='/cart' component={Cart}/>
         <PrivateRoute path='/account' isUser={newState.isUser} component={Account}/>
         <PrivateRoute path='/logout' isUser={newState.isUser} component={LogOut}/>
         <PrivateRoute path='/signup' isUser={!newState.isUser} component={SignUp}/>
         <Route path='/*'>
-          Page not found $)$
+        404  Page not found 
         </Route>
      
 

@@ -12,7 +12,7 @@ import BottomNav from './BottomNav'
 const Home = () => {
     React.useEffect(()=> {
         window.scrollTo(0,0)
-    })
+    },[])
     return(
         <>
          <Search/>

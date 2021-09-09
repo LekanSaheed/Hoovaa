@@ -11,11 +11,10 @@ const Devices = ({phones, brand}) => {
 const {path, url} = useRouteMatch()
 const {viewDevice, state} = GlobalShop()
 const [loaded, setLoad] = useState(false)
-
 React.useEffect(() => {
     window.scrollTo(0,0)
-    
 }, [])
+
     return (
         <div>
            <Switch>

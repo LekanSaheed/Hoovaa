@@ -10,6 +10,9 @@ const Brands = ({brands, device}) => {
     const {state} = GlobalContext()
     const {path, url} = useRouteMatch()
     const history = useHistory()
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
     return (
         <Switch>
             <Route exact path={path}>

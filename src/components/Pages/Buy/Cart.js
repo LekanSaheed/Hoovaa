@@ -9,9 +9,9 @@ import { AiFillMinusCircle ,  AiFillPlusCircle} from 'react-icons/ai'
 const Cart = () => {
     const {state, removeItem, clearCart, increment, decrement} = GlobalShop()
 
- useEffect(() => {
-     window.scrollTo(0,0)
- },[])
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
     //     const getPosition = (position) => {
     //         console.log('position',position.coords.longitude)
     //     }
@@ -141,7 +141,7 @@ const classes = useStyle()
                      Sub Total
                  </div>
                  <div>
-                     ${state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0)}
+                     ${state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0).toLocaleString()}
                      </div>
              </div>
              <div className='cart-total'>

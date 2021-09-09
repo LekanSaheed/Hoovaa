@@ -13,7 +13,7 @@
     padding-top: 20px;
    border: solid  #f5f5f5;
     border-width: 0.5px;
-    font-size: 8px;
+    font-size: 10px;
     height: 140px;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,9 @@
     transition: .5s;
 }
 .grid-item-item:hover{
-    background: whitesmoke;
+    background: rgb(253, 253, 253);
+}.grid-item-container a{
+    color: black
 }
 .grid-img img{
     font-size: 20px;
@@ -57,4 +59,9 @@
 }
 @media(max-width:600px){
     
+}
+@media(min-width: 500px){
+    .grid-item-item{
+        font-size: 13px;
+    }
 }

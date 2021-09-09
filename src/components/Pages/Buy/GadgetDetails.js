@@ -1,13 +1,19 @@
-import React, {  } from 'react'
+import React from 'react'
 import { GlobalShop } from './CartContext'
-import {IconButton, Box, CardMedia, makeStyles, Link} from '@material-ui/core'
+import { Box, CardMedia, makeStyles, Button} from '@material-ui/core'
 import { AiOutlineCreditCard } from 'react-icons/ai'
 import { RiBuilding2Line, RiTruckLine } from 'react-icons/ri'
+import { useHistory} from 'react-router-dom'
+import { IoMdCart } from 'react-icons/io'
+
+
 const GadgetDetails = ({device}) => {
-    const {addToCart} = GlobalShop()
 
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
    
-
+const history = useHistory()
     const useStyle = makeStyles(theme => (
         {
             container: {
@@ -23,7 +29,7 @@ const GadgetDetails = ({device}) => {
             name: {
                 fontSize: '20px',
                 fontWeight: '500',
-             
+                textTransform: 'capitalize'
             },
             imgCon: {
                 background: '#fff',
@@ -65,10 +71,10 @@ const GadgetDetails = ({device}) => {
         }
     ) )
     const classes = useStyle()
-    const {state} = GlobalShop()
+    const {state, addToCart} = GlobalShop()
     return (
         <div className={classes.container}>
-            DeviceDetails
+
             {device.map((item, idx) => {
                 return(
                     <Box className={classes.root} display='flex'  flexDirection='column' key={idx}>
@@ -78,9 +84,9 @@ const GadgetDetails = ({device}) => {
                       alt='productImage'/>}/>
                        <Box padding='15px' display='flex' flexDirection='column' className={classes.detailsGroup}>
                       <Box display='flex' justifyContent='space-between' flexDirection='column' padding='5px'>
-                      <p className={classes.name}> {item.name.toUpperCase()}</p>
+                      <p className={classes.name}> {item.name}</p>
                      
-                      <p> <span>Brand: </span>{item.brand}</p>
+                      <p style={{fontSize: '11px', color: 'grey', marginTop: '15px'}}> <span>Brand: </span>{item.brand}</p>
                       </Box>
                      
                       
@@ -111,9 +117,10 @@ const GadgetDetails = ({device}) => {
                        </ul>
                        <br/>
                        <span className='theme-text' >DEVICE DETAILS</span><br/>
-                       {state.cart.find(i => i.id === item.id) ? <Link to='/cart'>Go to cart</Link> : 
-                         <IconButton className="MuiIconButton-colorPrimary" size='small' 
-                       onClick={() => addToCart(item)}>Add To cart</IconButton>
+                       {state.cart.find(i => i.id === item.id) ? <Button onClick={() => history.push('/cart')}
+                        children={<>Item In Cart Go to cart</>} size='large' color='primary' variant='outlined'/>: 
+                         <Button  size='large' variant='contained' color='primary' endIcon={<IoMdCart/>} 
+                       onClick={() => addToCart(item)}>Add To cart</Button>
                        }
                      </Box>
 

@@ -6,7 +6,7 @@ import HowItWorks from '../../HowItWorks'
 import { GlobalContext } from '../../../reducers/context'
 import {Switch, Route, Link} from 'react-router-dom'
 import DeviceDetails from './DeviceDetails'
-import Skeleton from 'react-loading-skeleton'
+import { CircularProgress } from '@material-ui/core'
 const Devices = ({deviceName, phones, brand}) => {
     const {getDevice} = GlobalContext()
     React.useEffect(() => {
@@ -17,6 +17,11 @@ const history = useHistory()
 const {path, url} = useRouteMatch()
 const {state} = GlobalContext()
 const [loaded, setLoad] = useState(false)
+
+React.useEffect(() => {
+    const loader = document.querySelector('.loader-container')
+    !loaded ? loader.classList.remove('loader-hide') : loader.classList.add('loader-hide')
+},[loaded])
     return (
       
         <div className="item-page">
@@ -28,14 +33,16 @@ const [loaded, setLoad] = useState(false)
                   <Route exact path={path}>
             <p style={{textAlign: 'center', fontWeight: 'bolder', marginTop: '10px'}}>Sell your old {deviceName}</p>
         <div className='grid-item-container'>
-        {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
+        {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position:
+         'absolute', top: '30px', right: '0',
+                left: '0', bottom: '0', width: '100%', zIndex: '1'}}>
+                        <CircularProgress/></div>}
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
                     <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '-') }`}  key={index}>
-                        {loaded ? null : <div style={{position: 'relative', zIndex: '200', paddingTop: '20px', paddingBottom: '20px'}}> <Skeleton height={70} width={50}/></div> }
                     <div className='grid-item-item' onClick={() => getDevice(item)} onLoad={()=> setLoad(true)}>
                         <div className='grid-img'>  <img src={item.img} alt='ige' /> </div>
-                       <span> {item.name}</span>
+                        {loaded && <> <span> {item.name}</span></>}
                        <div>{item.brand}</div>        
                        </div> 
                        </Link>
