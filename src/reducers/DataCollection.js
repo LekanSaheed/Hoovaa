@@ -92,7 +92,7 @@ const handleSubmit = () => {
          
     
     })
-    const colRef = db.collection('survey').doc('surveyResults')
+    const colRef = db.collection('survey')
     console.log( name,
         price,
         evaluatedAt)
