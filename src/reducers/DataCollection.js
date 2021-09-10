@@ -1,13 +1,28 @@
 import React, {useState} from 'react'
-import {Box, Button, Input, makeStyles} from '@material-ui/core'
+import {Box, Button, Input, makeStyles, Modal, Dialog} from '@material-ui/core'
 import {AiOutlineCloudUpload} from 'react-icons/ai'
 import { db } from '../components/firebase'
+import { useHistory } from 'react-router-dom'
 const DataCollection = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(null)
-    const [conditions, setConditions] = useState([])
     const [evaluatedAt, setEvaluated] = useState(null)
-
+    const [isBadScreen, setIsBadScreen] = useState(false)
+    const [isBadBattery, setIsBadBattery] = useState(false)
+    const [isBadChargingPort, setIsBadChargingPort] = useState(false)
+    const [isBadNetwork, setIsBadNetwork] = useState(false)
+    const [isBadSpeaker, setIsBadSpeaker] = useState(false)
+    const [isBadJack, setIsBadJack] = useState(false)
+    const [isScratchedBody, setIsScratchedBody] = useState(false)
+    const [isBadTouchPad, setIsBadTouchPad] = useState(false)
+    const [isBadPowerButton, setIsBadPowerButton] = useState(false)
+    const [isBadVolumeButtons, setIsBadVolumeButtons] = useState(false) 
+    const [isBadFrontCamera, setIsBadFrontCamera] = useState(false) 
+    const [isBadBackCamera, setIsBadBackCamera] = useState(false) 
+    const [isDeadMotherboard, setIsDeadMotherboard] = useState(false) 
+    const [isBadMic, setIsBadMic] = useState(false) 
+    const [isBadWifi, setIsBadWifi] = useState(false) 
+  const [modal, setModal] = useState(false)
     // const handleSpread = (e) => {
     //     const isExist =  conditions.some(i => i === e.target.value)
     //     if(!isExist){
@@ -16,96 +31,103 @@ const DataCollection = () => {
        
     //     console.log)
     // }
+    const loader = document.querySelector('.loader-container')
     const data = [
         {label: 'Bad Screen',
-        type: 'text',
-        value: 'bad screen',
+        func: () => setIsBadScreen(!isBadScreen),
+        value: isBadScreen,
     },
     {label: 'Bad Charging Port',
-    type: 'text',
-    value: 'bad charging port',
+    func:() => setIsBadChargingPort(!isBadChargingPort),
+    value: isBadChargingPort,
 },
 {label: 'Bad Speaker',
-type: 'text',
-value: 'bad speaker',
+func: () => setIsBadSpeaker(!isBadSpeaker),
+value: isBadSpeaker,
 },
 {label: 'Bad Touchpad',
-type: 'text',
-value: 'bad touchpad',
+func: () => setIsBadTouchPad(!isBadTouchPad),
+value: isBadTouchPad,
 },
 {label: 'Bad Battery',
-type: 'text',
-value: 'bad battery',
+func:() => setIsBadBattery(!isBadBattery),
+value: isBadBattery,
 },
 {label: 'Bad Power Button',
-type: 'text',
-value: 'bad power button',
+func:() => setIsBadPowerButton(!isBadPowerButton),
+value: isBadPowerButton,
 },
 {label: 'Bad mouthpiece',
-type: 'text',
-value: 'bad mouthpiece',
+func: () => setIsBadMic(!isBadMic),
+value: isBadMic,
 },
 {label: 'Bad Volume button',
-type: 'text',
-value: 'bad volume button',
+func:() => setIsBadVolumeButtons(!isBadVolumeButtons),
+value: isBadVolumeButtons,
 },
 {label: 'Bad Network',
-type: 'text',
-value: 'bad network',
+func:() =>  setIsBadNetwork(!isBadNetwork),
+value: isBadNetwork,
 },
 {label: 'No wifi',
-type: 'text',
-value: 'No wifi',
+func: () => setIsBadWifi(!isBadWifi),
+value: isBadWifi,
 },
-{label: 'No Factory box or carton',
-type: 'text',
-value: 'no factory box',
+{label: 'Bad Front Camera',
+func:() =>  setIsBadFrontCamera(!isBadFrontCamera),
+value: isBadFrontCamera
+},
+{label: 'Bad Back Camera',
+func: () => setIsBadBackCamera(!isBadBackCamera),
+value: isBadBackCamera
 },
 {label: 'Bad Earpiece Jack',
-type: 'text',
-value: 'bad earpiece jack',
+func: () => setIsBadJack(!isBadJack),
+value: isBadJack,
 },
-{label: 'Cracked Screen',
-type: 'text',
-value: 'cracked screen',
+{label: 'Dead Motherboard',
+func: () => setIsDeadMotherboard(!isDeadMotherboard),
+value: isDeadMotherboard,
 },
 {label: 'Scratched body',
-type: 'text',
-value: 'Scratched body'
+func:() =>  setIsScratchedBody(!isScratchedBody),
+value: isScratchedBody
 }
 
     ]
-    let arr = []
    React.useEffect(() => {
        window.scrollTo(0,0)
    },[])
 
  
 const handleSubmit = () => {
-    const checkboxes = document.querySelectorAll(`input[name=con]:checked`)
-    checkboxes.forEach(checkbox => {
-        const isExist = arr.some(e => e === checkbox.value)
-
-          if(!isExist){
-            arr.push(checkbox.value)
-            console.log(arr, conditions)
-          }
-         
-    
-    })
-    setConditions(arr)
-    const colRef = db.collection('survey').doc('surveyResults')
-    console.log( name,
-        price,
-        conditions,
-        evaluatedAt)
+    const loader = document.querySelector('.loader-container')
+        loader.classList.remove('loader-hide')
+    const colRef = db.collection('survey').doc()
     colRef.set({
         name,
         price,
-        conditions,
-        evaluatedAt
+        isBadMic,
+        isBadWifi,
+        isDeadMotherboard,
+        isBadBackCamera,
+        isBadFrontCamera,
+        isBadVolumeButtons,
+        isBadPowerButton,
+        isBadTouchPad,
+        isScratchedBody,
+        isBadJack,
+        isBadSpeaker,
+        isBadNetwork,
+        isBadChargingPort,
+        isBadBattery,
+        isBadScreen,
+        evaluatedAt,
     }).then(()=> {
-        window.location.reload()
+        
+        setModal(true).then(() => {
+            loader.classList.add('loader-hide')
+        })
     }).catch(err => {
         console.log(err)
     })
@@ -131,8 +153,23 @@ const useStyles = makeStyles({
     }
 })
 const classes = useStyles()
+const history = useHistory()
     return (
         <Box display='flex' flexDirection='column'  className={classes.root}>
+          <Modal open={modal} children={<Dialog className='MuiDialog-PaperFullWidth' children={<Box padding='15px'><h4>Thanks for taking the survey, your answers
+              have been saved. You can continue the survey or close this modal.</h4>
+              <Box display='flex' justifyContent='space-between'>
+                  <Button variant="contained" color='primary' onClick={() =>{
+                      loader.classList.add('loader-hide')
+                      setModal(false)
+                       window.location.reload()
+                       
+                  }}>Continue Survey</Button>
+                  <Button variant='outlined' color='secondary' onClick={() => {
+                      loader.classList.add('loader-hide')
+                      setModal(false)
+                      history.goBack()
+                  }}>Close Modal</Button></Box></Box>} open={modal}/>}/>
             <Box className={classes.modal}> 
                 <p>Please go through the following and answer appropiately. Tick a checkbox to select the condition or conditions you are answering for. Note you can select more than one 
                     checkbox.
@@ -158,7 +195,7 @@ const classes = useStyles()
                 return(
                   <div className={classes.label}>
                     <label key={id}>
-                    <input type='checkbox' value={i.value} name='con' />
+                    <input type='checkbox' onChange={i.func} value={i.value} name='con' />
                     {i.label} </label>
                     <br/>
                   </div >

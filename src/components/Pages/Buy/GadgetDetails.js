@@ -18,7 +18,8 @@ const history = useHistory()
         {
             container: {
                 padding: '8px',
-                background: '#f5f5f5'
+                background: '#f5f5f5',
+                fontFamily: 'Segoe UI',
             },
             root: {
                 color: '#1b2120'

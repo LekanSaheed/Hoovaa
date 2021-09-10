@@ -14,6 +14,7 @@
 .cart-container{
     background-color: #fafafa;
     min-height: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .remove-btn{
     background-color: #7497ff;
@@ -24,11 +25,6 @@
 }
 .cart-item-name{
     font-weight: 600;
-}
-.cart-item-price{
-    font-size: 19px;
-    font-weight: 600;
-  
 }
 .cart-item-price span{
     font-size: 13px;

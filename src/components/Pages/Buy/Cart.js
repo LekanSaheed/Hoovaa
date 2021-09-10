@@ -5,6 +5,7 @@ import {BsFillTrash2Fill, BsTrash} from 'react-icons/bs'
 import { Box, Button, CardMedia, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import { AiFillMinusCircle ,  AiFillPlusCircle} from 'react-icons/ai'
+import {  RiEBike2Fill } from 'react-icons/ri'
 
 const Cart = () => {
     const {state, removeItem, clearCart, increment, decrement} = GlobalShop()
@@ -35,6 +36,7 @@ const Cart = () => {
             padding: '10px ',
             paddingBottom: '3px',
            boxShadow: '0 0 8px 0px rgba(0 0 0 /10%)'
+           
           },
           mainCon:{
             borderBottom: 'solid 1px #f5f5f5',
@@ -64,6 +66,9 @@ const Cart = () => {
 
               }
           },
+          track:{
+              fontSize: '14px'
+          },
           remove: {
               display: 'flex',
               alignItems: 'center',
@@ -75,6 +80,11 @@ const Cart = () => {
               fontSize: '19px',
               color: '#7497ff'
               
+          },
+          price: {
+              fontSize: '16px !important',
+              color: 'black !important',
+              fontWeight: '600 !important'
           }
 
       }))
@@ -97,11 +107,17 @@ const classes = useStyle()
                             <div className='cart-item-name'>
                      {item.name}
                             </div>
-                            <div className='cart-item-price'>
-                      <span> Product Price:</span>  ${item.price}
-                            </div>
                             <div className='cart-item-brand'>
                         Brand: {item.brand}
+                            </div>
+                           
+                            
+                            <Box display="flex" className={classes.track}>
+                                <span className='theme-text'>Hoovaa</span> <span style={{display: 'flex', alignItems: 'center'}}>
+                                    Fast Track <RiEBike2Fill className='theme-text'/></span>
+                            </Box>
+                            <div className='cart-item-price'>
+                      <span> Product Price:</span> <span className={classes.price}> ${item.price}</span>
                             </div>
                             </div>
                         </Box>
