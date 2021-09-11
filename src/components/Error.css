@@ -1,0 +1,36 @@
+.error-code{
+    font-size: 100px;
+    font-weight: 900;
+}
+.error-container{
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(10, 8, 26);
+    color: rgb(161, 180, 255);
+    overflow: hidden;
+}
+.ball{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #7497ff;
+    animation: move 4s linear infinite;
+    box-shadow: inset 0px -2px 5px 2px black;
+    position: absolute;
+    left: 315px;
+    top: 143px
+}
+.ball1{
+    animation: move 3s  ease-in-out infinite;
+}
+
+@keyframes move{
+    0%{transform: rotate(0deg) translateX(0px) rotate(0deg);}
+    100%{transform: rotate(360deg) translateX(250px) rotate(-360deg)}
+}
+@keyframes move1{
+    0%{margin-top: 0px;}
+    50%{margin-top: 100px;}
+    100%{margin-top: 0px;}
+}

@@ -28,6 +28,7 @@ import Catalog from './components/Catalog'
 import DataCollection from './reducers/DataCollection'
 import { Box, Button } from '@material-ui/core'
 import { RiSurveyLine } from 'react-icons/ri'
+import Error from './components/Error'
 
 const App = ({hideLoader}) => {
 
@@ -97,7 +98,7 @@ const {state} = GlobalShop()
         <PrivateRoute path='/logout' isUser={newState.isUser} component={LogOut}/>
         <PrivateRoute path='/signup' isUser={!newState.isUser} component={SignUp}/>
         <Route path='/*'>
-        404  Page not found 
+        <Error/>
         </Route>
      
 
