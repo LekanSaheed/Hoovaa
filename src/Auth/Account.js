@@ -3,7 +3,7 @@ import { FiLogOut, FiSettings } from 'react-icons/fi'
 import { CgNotifications } from 'react-icons/cg'
 import { Link, Route, useRouteMatch, Switch } from 'react-router-dom'
 import {RiLockPasswordLine} from 'react-icons/ri'
-import {AiOutlineInfoCircle} from 'react-icons/ai'
+import {AiOutlineHistory, AiOutlineInbox, AiOutlineInfoCircle} from 'react-icons/ai'
 import React from 'react'
 import userImg from '../assets/user.png'
 import { GlobalContext } from '../reducers/context'
@@ -11,6 +11,8 @@ import ProfileSettings from './ProfileSettings'
 import './Account.css'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import BottomNav from '../components/BottomNav'
+import { FaRegAddressBook } from 'react-icons/fa'
+import AddressBook from './AddressBook'
 // import { firebase } from '../components/firebase'
 
 const Account = () => {
@@ -19,6 +21,21 @@ const Account = () => {
     })
     const {state} = GlobalContext()
     const currentUser = state.currentUser
+    const mainData = [
+        {
+            text: 'My Orders',
+            icon: <AiOutlineInbox/>
+        },
+        {
+            text: 'Gadget Sales History',
+            icon: <AiOutlineHistory/>
+        },
+        {
+            text: 'My Address Book',
+            icon: <FaRegAddressBook/>
+        },
+     
+    ]
     const data = [
         {text : "Profile Setting",
         icon: <FiSettings/>,
@@ -38,12 +55,7 @@ icon: <FiLogOut/>,
 }
     ]
     const {path, url} = useRouteMatch()
-    // React.useEffect(() => {
-    //     if(currentUser){
-        
-    //      document.title = currentUser.displayName ? currentUser.displayName+"'s Account" : 'My account'
-    //     }
-    // })
+  
     return (
         <>
       <Switch>
@@ -60,9 +72,24 @@ icon: <FiLogOut/>,
         </div>
         
            </div>
-           
+           <div className='account-links'>
+               {mainData.map((item, idx) => {
+                   return(
+                       <Link key={idx} className='account-links-child' to={`${url}/${item.text.toLowerCase().replace(/ /g, '-')}`}>
+                           <div className='link-flex'>
+                               <div className='account-icon'>
+                                   {item.icon}
+                               </div>
+                               <div>
+                                   {item.text}
+                               </div>
+                           </div>
+                           <MdKeyboardArrowRight/>
+                       </Link>
+                   )
+               })}
+           </div>
             <div className='account-links'>
-            <div>city: {state.city ? state.city : 'please choose a city'}</div>
                {data.map((item, idx) => {
                    return(
                        <Link className='account-links-child' to={item.text === "Logout" ? '/logout' : url + '/' + item.text.toLowerCase().replace(/ /g, '-')} key={idx}>
@@ -83,7 +110,9 @@ icon: <FiLogOut/>,
           <Route path={path + '/profile-setting'}>
               <ProfileSettings/>
           </Route>
-     
+          <Route path={path + '/my-address-book'}>
+              <AddressBook/>
+          </Route>
      
       </Switch>
           <div className='account-footer'>

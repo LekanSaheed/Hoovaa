@@ -13,19 +13,19 @@ const Cart = () => {
     useEffect(() => {
         window.scrollTo(0,0)
     }, [])
-    //     const getPosition = (position) => {
-    //         console.log('position',position.coords.longitude)
-    //     }
+        const getPosition = (position) => {
+            console.log('position',position.coords.longitude)
+        }
         
-    //    if(navigator.geolocation){
-    //     navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
-    //         console.log('Error', error.message)
-    //     })
+       if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
+            console.log('Error', error.message)
+        })
 
-    // }
-    // else{
-    //     console.log('cant get location')
-    // }
+    }
+    else{
+        console.log('cant get location')
+    }
     
     
       const useStyle = makeStyles(theme => ({
@@ -40,7 +40,8 @@ const Cart = () => {
           },
           mainCon:{
             borderBottom: 'solid 1px #f5f5f5',
-            padding: '5px'
+            padding: '5px',
+            gap: '10px'
           },
           incdec: {
               flexDirection: 'row-reverse',
@@ -85,6 +86,9 @@ const Cart = () => {
               fontSize: '16px !important',
               color: 'black !important',
               fontWeight: '600 !important'
+          },
+          cartText: {
+              
           }
 
       }))
@@ -94,7 +98,7 @@ const classes = useStyle()
         
             <div className='cart-item-container'>
                  <p style={{color: '#f50057', fontWeight: 'bold', padding: '10px'}}>MY CART: <span className='theme-text'>{state.cart.map(i => i.quantity)
-                 .reduce((a,b) => a + b, 0)} Item{state.cart.map(i => i.quantity === 1 ? '' : 's')} in cart</span></p>
+                 .reduce((a,b) => a + b, 0)} Item{state.cart.length < 1 ? '' : 's'} in cart</span></p>
                {state.cart.length < 1 ? <div className='theme-text'>No item in cart <Link className='bordered' to='/buy-item'>
                    Start Buying</Link></div> : state.cart.map((item, idx) => {
                     return(
@@ -103,7 +107,7 @@ const classes = useStyle()
                             {/* Cart item MAIN */}
                             <Box display='flex' className={classes.mainCon}>
                             <CardMedia className='MuiCardMedia-img' children={<img style={{width: '120px'}}  src={item.img} alt='product'/>}/>
-                            <div>
+                            <div className={classes.cartText}>
                             <div className='cart-item-name'>
                      {item.name}
                             </div>
