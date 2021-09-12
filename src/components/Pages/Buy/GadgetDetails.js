@@ -19,7 +19,7 @@ const history = useHistory()
             container: {
                 padding: '8px',
                 background: '#f5f5f5',
-                fontFamily: 'Roboto',
+                fontFamily: 'Roboto, san-serif',
             },
             root: {
                 color: '#1b2120'

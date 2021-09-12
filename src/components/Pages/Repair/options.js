@@ -1,0 +1,21 @@
+export  const options = [
+    { value: 'charging port', label: 'Charging Port' },
+    { value: 'battery', label: 'Battery' },
+    { value: 'battery connector', label: 'Battery Connector' },
+    { value: 'screen', label: 'Screen' },
+    { value: 'touch pad', label: 'Touch Pad' },
+    { value: 'RAM', label: 'RAM' },
+    { value: 'hard drive', label: 'Hard Drive' },
+    { value: 'SSD', label: 'SSD' },
+    { value: 'earpiece jack', label: 'Earpiece Jack' },
+    { value: 'mic', label: 'MouthPiece/Mic' },
+    { value: 'speaker', label: 'Speaker' },
+    { value: 'network', label: 'Network' },
+    { value: 'water damage', label: 'Water Damage' },
+    { value: 'gmail unlocking', label: 'Gmail unlocking' },
+    { value: 'flashing', label: 'Flashing' },
+    { value: 'invalid imei', label: 'Invalid IMEI' },
+    { value: 'receiver', label: 'Receiver' },
+    { value: 'bios', label: 'BIOS' },
+    { value: 'dead', label: 'Dead' }
+]

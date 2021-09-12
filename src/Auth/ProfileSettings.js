@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogContent, Input, Modal, TextField } from '@material-ui/core'
 import React,{useState} from 'react'
 import { AiOutlineUpload } from 'react-icons/ai'
-import {firebase} from '../components/firebase'
+import {db, firebase} from '../components/firebase'
 import { GlobalContext } from '../reducers/context'
 
 
@@ -28,6 +28,7 @@ const ProfileSettings = () => {
                 photoURL: photo
             })
             .then(() => {
+                
                 setSuccess('Succesfully Updated profile')
                 setError('')
             }).catch(err => {
@@ -37,7 +38,8 @@ const ProfileSettings = () => {
          if(user){
              user.updateEmail({
                  email: userEmail
-             }).then(() => {
+             }).then((user) => {
+                db.collection('users').doc(user.uid).update({email: userEmail})
                 setSuccess('Succesfully Updated profile')
                 setError('')
              }).catch(err => {

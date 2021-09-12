@@ -3,12 +3,16 @@ import {Box, Fab, makeStyles, AppBar, FormControl, TextField, Button, Select} fr
 import { AiOutlineArrowLeft, AiOutlinePlus } from 'react-icons/ai'
 import { Link, useRouteMatch, Switch, Route, useHistory } from 'react-router-dom'
 import { State, City} from 'country-state-city'
+import { db, firebase } from '../components/firebase'
+import { GlobalContext } from '../reducers/context'
+import {Skeleton} from '@material-ui/lab'
 
 const AddressBook = () => {
     const {url, path} = useRouteMatch()
     const useStyle = makeStyles(theme => ({
         root: {
-            minHeight: '90vh'
+            minHeight: '90vh',
+            padding: '10px'
         },
         addBtn: {
             background: '#7497ff',
@@ -17,14 +21,23 @@ const AddressBook = () => {
         },
     }))
     const classes = useStyle()
-
- 
+    const [address, setAddress] = useState('') 
+const {state} = GlobalContext()
+   React.useEffect(() => {
+    const userAddress = db.collection('users').doc(state.currentUser.uid)
+    userAddress.get().then(doc => {
+        setAddress(doc.data().address)
+        
+    }).catch(err => {
+        setAddress(err.message)
+    })
+   }, [state.currentUser.uid])
     return (
         <Switch>
             <Route exact path={path}>
            <Box className={classes.root}>
-           Add address
-
+           Add address<br/>
+        {address ? address : <><Skeleton width={100} /><br/><Skeleton variant="rect"/></>}
 <Link id='addBtn' to={url + '/add-address'} className='cart-btn-btn'>
     <Fab className={classes.addBtn} children={<AiOutlinePlus/>}/>
 </Link>
@@ -58,9 +71,27 @@ const AddAddress = () => {
     const [address1, setAddress1] = useState('')
     const [address2, setAddress2] = useState('')
     const [stateCode, setStateCode] = useState('')
+    const [userState, setUserState] = useState('')
+    const [userCity, setUserCity] = useState('')
   //  console.log(City.getCitiesOfState('NG', 'LA'))
     const states = State.getStatesOfCountry('NG')
     const city = City.getCitiesOfState('NG', stateCode)
+    const addAddress = () => {
+        firebase.auth().onAuthStateChanged(user => {
+            const currentUser = user
+            const docRef = db.collection('users').doc(currentUser.uid)
+
+           return docRef.update({
+                address: `${address1 + ', ' + address2 + ', ' + userCity  + ', ' + userState}`,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                console.log('Updated')
+            }).catch(err => {
+                console.log(err)
+            })
+        })
+     
+    }
     return(
         <Box className={classes.root}>
             <AppBar className={classes.bar} children={barChildren}/>
@@ -80,7 +111,8 @@ const AddAddress = () => {
                 <FormControl fullWidth={true}>
           <Select native={true} label='State' onChange={(e) => {
                         const ned =   JSON.parse(e.target.value)
-                      
+                        console.log(ned)
+                          setUserState(ned.name)
                         setStateCode(ned.isoCode)
                     }}>
               <option>
@@ -97,13 +129,15 @@ const AddAddress = () => {
         </FormControl>
         <FormControl fullWidth={true}>
 
-         <Select native={true} label='City' disabled={!stateCode}>
+         <Select native={true} label='City' disabled={!stateCode} onChange={(e) => {
+             setUserCity(e.target.value)
+         }}>
          <option>
                  City
               </option>
               {city.map((city, idx) => {
                   return(
-                      <option key={idx}>
+                      <option key={idx} value={city.name}>
                           {city.name}
                       </option>
                   )
@@ -113,7 +147,8 @@ const AddAddress = () => {
         <br/>
         <FormControl fullWidth={true}>
             <br/>
-        <Button children='Add' disabled={!address1 || !address2 || !stateCode} type='submit' variant='contained' size='medium' color='primary'/>
+        <Button onClick={addAddress} children='Add' disabled={!address1 || !address2 || !stateCode}
+         type='submit' variant='contained' size='medium' color='primary'/>
         </FormControl>
 
         
