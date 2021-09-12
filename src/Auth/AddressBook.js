@@ -8,7 +8,7 @@ const AddressBook = () => {
     const {url, path} = useRouteMatch()
     const useStyle = makeStyles(theme => ({
         root: {
-            minHeight: '75vh'
+            minHeight: '90vh'
         },
         addBtn: {
             background: '#7497ff',
@@ -17,13 +17,15 @@ const AddressBook = () => {
         },
     }))
     const classes = useStyle()
+
+ 
     return (
         <Switch>
             <Route exact path={path}>
            <Box className={classes.root}>
            Add address
 
-<Link to={url + '/add-address'} className='cart-btn-btn'>
+<Link id='addBtn' to={url + '/add-address'} className='cart-btn-btn'>
     <Fab className={classes.addBtn} children={<AiOutlinePlus/>}/>
 </Link>
            </Box>
@@ -58,7 +60,6 @@ const AddAddress = () => {
     const [stateCode, setStateCode] = useState('')
   //  console.log(City.getCitiesOfState('NG', 'LA'))
     const states = State.getStatesOfCountry('NG')
-    console.log(states)
     const city = City.getCitiesOfState('NG', stateCode)
     return(
         <Box className={classes.root}>
@@ -81,9 +82,6 @@ const AddAddress = () => {
                         const ned =   JSON.parse(e.target.value)
                       
                         setStateCode(ned.isoCode)
-                   console.log(ned.isoCode, stateCode, 'BY')
-                  
-                
                     }}>
               <option>
                   Please Select a state
@@ -98,7 +96,11 @@ const AddAddress = () => {
           </Select>
         </FormControl>
         <FormControl fullWidth={true}>
+
          <Select native={true} label='City' disabled={!stateCode}>
+         <option>
+                 City
+              </option>
               {city.map((city, idx) => {
                   return(
                       <option key={idx}>
@@ -108,8 +110,10 @@ const AddAddress = () => {
               })}
          </Select>
         </FormControl>
+        <br/>
         <FormControl fullWidth={true}>
-        <Button children='Add' type='submit' variant='contained' size='medium' color='primary'/>
+            <br/>
+        <Button children='Add' disabled={!address1 || !address2 || !stateCode} type='submit' variant='contained' size='medium' color='primary'/>
         </FormControl>
 
         

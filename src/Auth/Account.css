@@ -50,6 +50,9 @@
     text-align: center;
     padding: 20px;
 }
+.stay{
+    position: absolute;
+}
 .af-child{
     font-size: 8pt;
 }

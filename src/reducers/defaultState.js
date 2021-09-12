@@ -5,6 +5,7 @@ import {laptopBrands, phoneBrands, computerBrands,
 import appl from '../assets/tecnoSpark4.jpg'
 const localCurrentUser = localStorage.getItem('user')
 const sessionSR = sessionStorage.getItem('result')
+
 export const defaultState = {
     toggle: false,
     modalContent: '',
@@ -24,6 +25,6 @@ export const defaultState = {
     city: localStorage.getItem('city') ? localStorage.getItem('city') : '',
     isCity: localStorage.getItem('city') ? false : true,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
-    isUser: localCurrentUser ? true : false,
+    isUser: true,//localCurrentUser ? true : false,
     searchResult: sessionSR ? JSON.parse(sessionSR) : []
 }

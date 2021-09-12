@@ -1,3 +1,4 @@
+import { Box, Button, Dialog, DialogContent, DialogTitle, Modal } from '@material-ui/core'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { firebase} from '../components/firebase'
@@ -18,14 +19,19 @@ const LogOut = () => {
       })
   }
   const history = useHistory()
+  const dialog =   <Box display='flex' justifyContent='space-between' padding='10px'>
+  <Button variant='contained' color='secondary' onClick={handleLogout}>Yes</Button>
+    <Button variant='outlined' color='primary' onClick={() => history.goBack()}>No</Button>
+  </Box>
     return (
         <div>
             
-
-            DO YOU REALLY WANT TO LogOut
-            
-            <button onClick={handleLogout}>Yes</button>
-            <button onClick={() => history.goBack()}>No</button>
+        <Modal open={true} children={<Dialog fullWidth={true} children={<div>
+          <DialogTitle>Do You Really Want to Logout</DialogTitle>
+          <DialogContent>
+          {dialog}
+          </DialogContent>
+        </div>} open={true}/>} />
             {err && err}
         </div>
     )

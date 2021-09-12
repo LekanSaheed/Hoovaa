@@ -1,16 +1,18 @@
+import { Button, Dialog, DialogContent, Input, Modal, TextField } from '@material-ui/core'
 import React,{useState} from 'react'
+import { AiOutlineUpload } from 'react-icons/ai'
 import {firebase} from '../components/firebase'
-//import { GlobalContext } from '../reducers/context'
+import { GlobalContext } from '../reducers/context'
 
 
 
 const ProfileSettings = () => {
-  //  const {state} = GlobalContext()
+    const {state} = GlobalContext()
     // const user = firebase.auth().currentUser
     const [name, setName] = useState('')
     const [photo, setPhoto] = useState(null)
  //   const [photoURL, setPhotoUrl] = useState('')
-    const [userEmail, setEmail] = useState('')
+    const [userEmail, setEmail] = useState(state.currentUser.email)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
@@ -26,11 +28,22 @@ const ProfileSettings = () => {
                 photoURL: photo
             })
             .then(() => {
-                setSuccess('Succesfully Updated pROFILE')
+                setSuccess('Succesfully Updated profile')
                 setError('')
             }).catch(err => {
                 setError(err.message, err.code)
             })
+         }
+         if(user){
+             user.updateEmail({
+                 email: userEmail
+             }).then(() => {
+                setSuccess('Succesfully Updated profile')
+                setError('')
+             }).catch(err => {
+                setSuccess('')
+                setError(err.message, err.code)
+             })
          }
      })
     }
@@ -38,19 +51,25 @@ const ProfileSettings = () => {
     return (
         <div>
           <div className='centered-text'>Update Profile</div>
-            <form style={{padding: '10px'}}>
-                {error && error}
-                {success && success}
+            <form style={{padding: '10px', lineHeight: '70px'}}>
+               
+                <Modal  children={<Dialog open={error || success}
+                children={<DialogContent> {error && error}
+                {success && success} <br/>
+                 <Button variant="contained" size='small' color={`${error ? 'secondary' : 'primary'}`} onClick={() => {
+                    setError('')
+                    setSuccess('')
+                }}>Ok</Button> </DialogContent>} />}  open={error || success} />
                 <div >
-                    <input value={name} onChange={(e) => setName(e.target.value)}/>
+                    <TextField fullWidth={true} required value={name} label='Name' onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div>
-                    <input type='file' onChange={handleFile}/>
+                    <Input fullWidth={true} required type='file' onChange={handleFile}/>
                 </div>
                 <div>
-                    <input value={userEmail} type="email" onChange={(e) => setEmail(e.target.value)}/>
+                    <TextField fullWidth={true} required value={userEmail} label='email' type="email" onChange={(e) => setEmail(e.target.value)}/>
                 </div>
-                <button onClick={handleUpdate}>Update Profile</button>
+                <Button disabled={!userEmail || !photo || !name} onClick={handleUpdate} fullWidth={true} variant='contained' color='primary' endIcon={<AiOutlineUpload/>}>Update Profile</Button>
             </form>
         </div>
     )

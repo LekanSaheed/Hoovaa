@@ -3,9 +3,11 @@ export const cartReducer = (state, action) => {
     if(action.type === "VIEW_DEVICE"){
         const selected = action.payload
         localStorage.setItem('selected', JSON.stringify(selected) )
+        localStorage.setItem('recent', JSON.stringify(state.recentlyViewed) )
         return{
             ...state,
-            clickedDevice: [action.payload]
+            clickedDevice: [action.payload],
+            recentlyViewed: [...state.recentlyViewed, action.payload]
         }
     }
     if(action.type === "CLOSE_MODAL"){

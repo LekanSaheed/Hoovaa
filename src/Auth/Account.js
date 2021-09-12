@@ -13,6 +13,7 @@ import { MdKeyboardArrowRight } from 'react-icons/md'
 import BottomNav from '../components/BottomNav'
 import { FaRegAddressBook } from 'react-icons/fa'
 import AddressBook from './AddressBook'
+import Orders from './Orders'
 // import { firebase } from '../components/firebase'
 
 const Account = () => {
@@ -113,7 +114,7 @@ icon: <FiLogOut/>,
           <Route path={path + '/my-address-book'}>
               <AddressBook/>
           </Route>
-     
+               <Route path={path + '/my-orders'} component={Orders}/>
       </Switch>
           <div className='account-footer'>
          <div className='af-child'>
