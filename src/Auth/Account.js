@@ -11,9 +11,10 @@ import ProfileSettings from './ProfileSettings'
 import './Account.css'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import BottomNav from '../components/BottomNav'
-import { FaRegAddressBook } from 'react-icons/fa'
+import { FaRegAddressBook, FaTools } from 'react-icons/fa'
 import AddressBook from './AddressBook'
 import Orders from './Orders'
+import Repairs from './Repairs'
 // import { firebase } from '../components/firebase'
 
 const Account = () => {
@@ -35,6 +36,10 @@ const Account = () => {
             text: 'My Address Book',
             icon: <FaRegAddressBook/>
         },
+        {
+            text: 'My Repair History',
+            icon: <FaTools/>
+        }
      
     ]
     const data = [
@@ -115,6 +120,7 @@ icon: <FiLogOut/>,
               <AddressBook/>
           </Route>
                <Route path={path + '/my-orders'} component={Orders}/>
+               <Route path={path + '/my-repair-history'} component={Repairs}/>
       </Switch>
           <div className='account-footer'>
          <div className='af-child'>

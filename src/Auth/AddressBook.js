@@ -148,7 +148,7 @@ const AddAddress = () => {
         <FormControl fullWidth={true}>
             <br/>
         <Button onClick={addAddress} children='Add' disabled={!address1 || !address2 || !stateCode}
-         type='submit' variant='contained' size='medium' color='primary'/>
+         variant='contained' size='medium' color='primary'/>
         </FormControl>
 
         

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextField} from '@material-ui/core'
 import { GlobalContext } from '../reducers/context'
 import {firebase} from '../components/firebase'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect, useHistory} from 'react-router-dom'
 import './Login.css'
 
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const history = useHistory()
 const loader = document.querySelector('.loader-container')
     const {setUser, state} = GlobalContext()
     const handleSubmit = (e) => {
@@ -21,7 +22,7 @@ const loader = document.querySelector('.loader-container')
             loader.classList.add('loader-hide')
             localStorage.setItem('user', JSON.stringify(user))
             setUser(user)
-
+          history.goBack()
         })
         .catch(err => {
             console.log(err.message, err.code)
