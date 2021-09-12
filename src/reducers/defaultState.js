@@ -25,6 +25,6 @@ export const defaultState = {
     city: localStorage.getItem('city') ? localStorage.getItem('city') : '',
     isCity: localStorage.getItem('city') ? false : true,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
-    isUser: true,//localCurrentUser ? true : false,
+    isUser: localCurrentUser ? true : false,
     searchResult: sessionSR ? JSON.parse(sessionSR) : []
 }
