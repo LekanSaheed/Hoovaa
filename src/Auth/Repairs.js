@@ -9,10 +9,17 @@ const Repairs = () => {
     const [loaded, setLoad] = useState(false)
 const {state} = GlobalContext()
     React.useEffect(() => {
-        const userRef = db.collection('users').doc(state.currentUser.uid)
-        userRef.get().then(doc => {
-            setRepair(doc.data().repairHistory)
+        const userRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory')
+        userRef.get().then(snapshot => {
+            const arr = []
+            
+            snapshot.forEach(doc => {
+                arr.push(doc.data())
+                console.log(doc.data())
+            })
+            setRepair(arr)
             setLoad(true)
+           
         })
     },[state.currentUser.uid])
 
@@ -52,7 +59,7 @@ const {state} = GlobalContext()
                 </div>
                 <Box display='flex' className={classes.damages}>
                     Damages:  
-                    {item.damages.map(damages => {
+                    {item.damages && item.damages.map(damages => {
                         return(
                             <div>
                                 {damages.value}

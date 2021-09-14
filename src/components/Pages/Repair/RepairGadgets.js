@@ -45,13 +45,14 @@ const RepairGadgets = () => {
         if(!state.isUser){
             history.push('/login')
         }
+        const newId = new Date().getTime().toString()
         if(state.isUser){
             const systemDoc = db.collection('repairs').doc()
-          const docRef = db.collection('users').doc(state.currentUser.uid)
+          const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(newId)
           systemDoc.set({
-            isRepaired: false, name, brand, model, damages: selectedDamage, customerId: state.currentUser.uid 
+            isRepaired: false, name, brand, model, damages: selectedDamage, customerId: state.currentUser.uid, repairId: newId
           }).then(() =>{
-            docRef.update({repairHistory: [{isRepaired: false, name, brand, model, damages: selectedDamage}]})
+            docRef.set({isRepaired: false, name, brand, model, damages: selectedDamage})
             .then(() => {
                 setSuccess('Your Request Has been Received And You Shall be Contacted Shortly')
                 setError('')

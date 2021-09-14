@@ -75,5 +75,11 @@
           modalContent: action.payload
       }
   }
+  if(action.type === "CLOSE_MODAL"){
+    return{
+        ...state,
+        isModal: false
+    }
+}
 }
 export {reducer}
