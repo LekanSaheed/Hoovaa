@@ -91,7 +91,8 @@ const Repairs = () => {
                                 )
                             })
                         )}</div>
-                        <div>Repair Status: {repair.isRepaired ? <Box><span>Repaired</span><AiOutlineCheck/></Box> :<Box>
+                        <div>Repair Status: {repair.isRepaired ?
+                         <Box display='flex'><span>Repaired</span><AiOutlineCheck/></Box> :<Box display='flex'>
                             <AiOutlineCloseCircle/>
                             <span>Not Repaired</span>
                             </Box>}</div>
@@ -130,7 +131,11 @@ const Repairs = () => {
                                 )
                             })
                         )}</div>
-                        <div>Repair Status: {repair.isRepaired ? 'Repaired' : 'Not Repaired'}</div>
+                        <div>Repair Status: {repair.isRepaired ? 
+                         <Box display='flex'><span>Repaired</span><AiOutlineCheck/></Box> :<Box display='flex'>
+                         <AiOutlineCloseCircle/>
+                         <span>Not Repaired</span>
+                         </Box>}</div>
 
                         <Box>
                             <Button onClick={() => setModal(true)}>
