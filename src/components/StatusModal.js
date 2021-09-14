@@ -3,12 +3,15 @@ import { GrClose } from 'react-icons/gr'
 import { BsCheckCircle } from 'react-icons/bs'
 import './StatusModal.css'
 import { GlobalShop } from './Pages/Buy/CartContext'
+import { GlobalContext } from '../reducers/context'
 
 
 const StatusModal = ({modalContent}) => {
     const {closeModal} = GlobalShop()
+    const {close} = GlobalContext()
     setTimeout(()=> {
         closeModal() 
+        close()
     }, 4000)
 
     return (

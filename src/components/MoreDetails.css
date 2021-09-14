@@ -1,7 +1,11 @@
 .img-container{
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
 
 }
 .img-container img{
-    width: 100%;
+    width: 60%;
 }

@@ -55,13 +55,20 @@ const logout = () => {
 const setSearchResult = (item) => {
     dispatch({type: 'SET_SEARCH_RESULT', payload: item})
 } 
+const setModalStat = (content) => {
+    dispatch({type: 'SET_STAT', payload : content})
+}
+const close = () => {
+    dispatch({type: "CLOSE_MODAL"})
+}
     return(
         <AppContext.Provider value={{
             state, toggleNav, 
             closeNav, getDevice,
              setDeviceStorage, setCity,
               setUser, logout,
-              setSearchResult
+              setSearchResult, setModalStat,
+            close
         }}>{children}</AppContext.Provider>
     )
 }

@@ -2,7 +2,7 @@ import { Box, Input } from '@material-ui/core'
 import React, {useState} from 'react'
 import './Admin.css'
 import {makeStyles} from '@material-ui/core'
-import { firebaseStorage} from './components/firebase'
+import { firebaseStorage} from '../components/firebase'
 
 
 const AdminUpload = ({colRef, tag}) => {

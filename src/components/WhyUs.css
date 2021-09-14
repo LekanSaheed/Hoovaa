@@ -22,7 +22,24 @@
     margin: 15px;
     font-size: 11px;
 }
+.why-us-title{
+    font-weight: 600;
+     font-size: 14px;
+      margin-bottom: 4px
+}
 .why-us-container img{
     width: 35px;
     height: 35px;
+}
+@media(min-width: 1024px){
+   .why-us-node{
+    font-size: 16px;
+   }
+   .why-us-title{
+       font-size: 18px;
+   }
+   .why-us-details img{
+       width: 60px;
+       height: 60px
+   }
 }

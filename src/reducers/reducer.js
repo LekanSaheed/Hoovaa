@@ -68,5 +68,12 @@
           currentUser: {}
       }
   }
+  if(action.type === "SET_STAT"){
+      return{
+          ...state,
+          isModal: true,
+          modalContent: action.payload
+      }
+  }
 }
 export {reducer}

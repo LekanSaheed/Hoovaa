@@ -35,10 +35,12 @@ const {state} = GlobalContext()
         <Box className={classes.root} padding='10px' display='flex' flexDirection='column'>
             My Repair History
            {loaded ? null :  <>
-            <Skeleton variant='text'/>
-            <Skeleton variant='text'/>
+            <Skeleton variant='text' width='40%'/>
+            <Skeleton variant='text' width='60%'/>
             <Skeleton variant='rect'/>
-            <Skeleton variant='rect' height={200}/>
+            <Skeleton variant='rect' height={50}/>
+            <Skeleton variant='text'/>
+            <Skeleton variant='text'/>
             </>}
             {repair ? repair.map(item => {
                return(

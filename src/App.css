@@ -75,3 +75,16 @@ body{
 .card-container::-webkit-scrollbar, .partner-container::-webkit-scrollbar{
     display: none;
  }
+ @media(min-width: 767px){
+   .partner-container{
+     display: grid;
+     grid-template-columns: repeat(3, 33.3%);
+     align-content: center;
+     justify-items: center;
+    padding: 20px;
+   }
+   .partner-container img {
+     width: 150px;
+     height: 150px;
+   }
+ }

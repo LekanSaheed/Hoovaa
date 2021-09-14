@@ -17,7 +17,7 @@ const data = [
 const Partners = () => {
     return (
         <div>
-            <h2>Our partners</h2>
+            <p style={{textAlign: 'center', fontWeight: '600', fontSize: '20px'}}>Our partners</p>
             <div  className='partner-container'>
             {data.map((item, index) => {
                 return(

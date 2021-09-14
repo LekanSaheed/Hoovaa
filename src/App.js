@@ -9,7 +9,7 @@ import BuyItem from './components/Pages/BuyItem';
 import SellItem from './components/Pages/SellItem';
 import SwapItem from './components/Pages/SwapItem';
 import RepairDevice from './components/Pages/RepairDevice';
-import Admin from './Admin'
+import Admin from './Admin/Admin'
 import { GlobalShop } from './components/Pages/Buy/CartContext'
 import StatusModal from './components/StatusModal'
 import Login from './Auth/Login'
@@ -63,6 +63,7 @@ const {state} = GlobalShop()
       <Router forceRefresh={false}>
       <Header/>
       {state.isModal &&  <StatusModal modalContent={state.modalContent}/>}
+      {newState.isModal && <StatusModal modalContent={newState.modalContent}/>}
      <MobileNav/>
     
       <Switch>

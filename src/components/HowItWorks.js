@@ -3,7 +3,6 @@ import './HowItWorks.css'
 import pricing from '../assets/pricing.png'
 import driver from '../assets/driver.png'
 import buying from '../assets/buying.png'
-
 const HowItWorks = ({bc, mTop}) => {
     const details = [
         {
@@ -36,11 +35,15 @@ const HowItWorks = ({bc, mTop}) => {
                                           {/* <AiOutlineCloseCircle style={{marginBottom: '-40px'}}/> */}
                                 <img className='how-img' src={item.img} alt='how'/>
                     <div className='how-group'>
+                        {/* <Badge color="secondary" overlap='rectangular' anchorOrigin={{horizonttal: 'left', vertical: }} showZero={true}  badgeContent={item.id} >
+                            {item.title}
+                        </Badge> */}
                     <div className='title-and-serial'>
                      <span className='how-serial'>
                     {item.id}
                     </span> 
-                      <span style={{fontWeight: '600', fontSize: '14px', marginBottom: '4px', marginRight: '15px'}}>{item.title}</span>
+                      <span className='serial-title'>
+                          {item.title}</span>
                     </div>
                     <div className='how-node'>{item.text}</div>
                     </div>

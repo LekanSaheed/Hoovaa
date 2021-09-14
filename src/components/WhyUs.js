@@ -57,7 +57,7 @@ img: sell,
             return(
                 <div key={index} className='why-us-node'>
                     <div><img src={item.img} alt='icon'/></div>
-                    <p style={{fontWeight: '500', fontSize: '14px', marginBottom: '4px'}}>{item.titleText}</p>
+                    <p className='why-us-title'>{item.titleText}</p>
                     <p>{item.text}</p>
                 </div>
             )
