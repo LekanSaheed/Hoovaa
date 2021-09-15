@@ -25,9 +25,28 @@ const AppProvider = ({ children }) => {
         })
        
     }
+
+    const getRepairData = () => {
+        const repairData = []
+        const docRef = db.collection('repairs')
+        docRef.onSnapshot(snapshot => {
+            snapshot.forEach(doc => {
+                const {name, brand, model, damages, isRepaired, repairId, customerId} = doc.data()
+                repairData.push({
+                    name, brand, model, damages, isRepaired, repairId,
+                    customerId,
+                    id: doc.id
+                })
+               dispatch({type: 'SET_REPAIR_DATA', payload: repairData})
+            })
+           
+        })
+    }
     useEffect(() => {
+        getRepairData()
         getPhones()
     }, [])
+
 const [state, dispatch] = useReducer(reducer, defaultState)
 
 const toggleNav = () => {

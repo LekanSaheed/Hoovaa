@@ -75,6 +75,12 @@
           modalContent: action.payload
       }
   }
+  if(action.type === 'SET_REPAIR_DATA'){
+      return{
+          ...state,
+          repairDataAdmin: action.payload
+      }
+  }
   if(action.type === "CLOSE_MODAL"){
     return{
         ...state,

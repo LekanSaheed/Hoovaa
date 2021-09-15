@@ -50,9 +50,11 @@ const RepairGadgets = () => {
             const systemDoc = db.collection('repairs').doc()
           const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(newId)
           systemDoc.set({
-            isRepaired: false, name, brand, model, damages: selectedDamage, customerId: state.currentUser.uid, repairId: newId
+            isRepaired: false, name, brand, model, damages: selectedDamage, customerId: state.currentUser.uid, repairId: newId,
+            collected: false
           }).then(() =>{
-            docRef.set({isRepaired: false, name, brand, model, damages: selectedDamage})
+            docRef.set({isRepaired: false, name, brand, model, damages: selectedDamage,
+                collected: false})
             .then(() => {
                 setSuccess('Your Request Has been Received And You Shall be Contacted Shortly')
                 setError('')

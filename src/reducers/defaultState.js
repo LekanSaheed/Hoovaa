@@ -26,5 +26,6 @@ export const defaultState = {
     isCity: localStorage.getItem('city') ? false : true,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
     isUser: localCurrentUser ? true : false,
-    searchResult: sessionSR ? JSON.parse(sessionSR) : []
+    searchResult: sessionSR ? JSON.parse(sessionSR) : [],
+    repairDataAdmin: []
 }

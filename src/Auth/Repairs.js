@@ -10,11 +10,20 @@ const Repairs = () => {
 const {state} = GlobalContext()
     React.useEffect(() => {
         const userRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory')
-        userRef.get().then(snapshot => {
+        userRef.onSnapshot(snapshot => {
             const arr = []
             
             snapshot.forEach(doc => {
-                arr.push(doc.data())
+                const {collected, name, damages, brand, isRepaired, model} = doc.data()
+                arr.push({
+                    collected,
+                    name,
+                    damages,
+                    brand,
+                    isRepaired,
+                    model,
+                    docId: doc.id
+                })
                 console.log(doc.data())
             })
             setRepair(arr)
@@ -29,15 +38,43 @@ const {state} = GlobalContext()
         },
         gadget: {
             fontSize: '13px',
-            boxShadow: '0px 0px 10px 0px rgba(0 0 0 /14%)',
-            padding: '10px',
-            lineHeight: '40px'
+           border: 'solid 2px #7497ff19',
+           borderRadius: '15px',
+            padding: '15px',
+            lineHeight: '40px',
+            margin: '10px',
+            color: '#161B5B',
+            textTransform: 'capitalize',
+            
         },
         damages: {
             gap: '10px'
+        },
+        status: {
+            fontWeight: '700',
+            fontSize: '16px',
+            color: '#5E5DEE'
+        },
+        name: {
+            fontSize: '14px',
+            fontWeight: '800'
+        },
+        date: {
+            color: '#AAB2BA',
+            fontWeight: '500',
+            fontSize: '11px'
         }
     }))
     const classes = useStyle()
+    const cancelOrder = (item) => {
+        const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(item.docId)
+      
+        docRef.delete().then(() => {
+            console.log('deleted')
+        }).catch(err=> {
+            console.log('error')
+        })
+    }
     return (
         <Box className={classes.root} padding='10px' display='flex' flexDirection='column'>
             My Repair History
@@ -51,12 +88,14 @@ const {state} = GlobalContext()
             </>}
             {repair ? repair.map(item => {
                return(
-                <Box onLoad={() => setLoad(true)} className={classes.gadget} display='flex' flexDirection='column' key={item.name + item.brand + item.model}> 
-                <div>Device Name: {item.name + ' ' + item.model}</div>
-                <div>Device Brand: {item.brand}</div>
-                <div>Repair Status: {item.isRepaired ? 'Repaired' : 'Not Repaired'}
-                
+                <Box onLoad={() => setLoad(true)} className={classes.gadget} display='flex'
+                 flexDirection='column' key={item.id}> 
+                  <div className={classes.status}>STATUS: {item.isRepaired ? 'Repaired' : 'Not Repaired'}
                 </div>
+                <div className={classes.date}>Date </div>
+               <Box display='flex' className={classes.name} justifyContent='space-between'> <div> {item.name}</div>
+                <div> {item.brand}</div>
+                </Box>
                 <Box display='flex' className={classes.damages}>
                     Damages:  
                     {item.damages && item.damages.map(damages => {
@@ -67,7 +106,7 @@ const {state} = GlobalContext()
                         )
                     })}
                 </Box>
-                <Button size='small' variant='contained' color='secondary'>Remove</Button>
+                <Button size='large' variant='outlined'  color='primary' onClick={() => cancelOrder(item)}>CANCEL</Button>
                 </Box>
                )
             }) : 'Repair History Will appear here' }
