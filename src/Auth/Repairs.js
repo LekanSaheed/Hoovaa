@@ -6,10 +6,12 @@ import { Skeleton } from '@material-ui/lab'
 
 const Repairs = () => {
     const [repair, setRepair] = useState([])
+ 
     const [loaded, setLoad] = useState(false)
 const {state} = GlobalContext()
     React.useEffect(() => {
         const userRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory')
+  
         userRef.onSnapshot(snapshot => {
             const arr = []
             
@@ -24,7 +26,6 @@ const {state} = GlobalContext()
                     model,
                     docId: doc.id
                 })
-                console.log(doc.data())
             })
             setRepair(arr)
             setLoad(true)
@@ -68,11 +69,22 @@ const {state} = GlobalContext()
     const classes = useStyle()
     const cancelOrder = (item) => {
         const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(item.docId)
-      
+
+      const rdRefs = db.collection('repairs').where('repairId', '==', item.docId)
+     console.log(rdRefs)
+     rdRefs.get().then((querySnapshot)=> {
+        querySnapshot.forEach((doc)=> {
+          doc.ref.delete();
+          console.log('deleted')
+        });
+      }).catch(err=> {
+          console.log(err)
+      });
+     
         docRef.delete().then(() => {
             console.log('deleted')
         }).catch(err=> {
-            console.log('error')
+            console.log(err,'error')
         })
     }
     return (
