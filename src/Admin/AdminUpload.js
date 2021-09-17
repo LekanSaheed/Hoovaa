@@ -52,6 +52,8 @@ const AdminUpload = ({colRef, tag}) => {
 
 
    const handleSubmit = (e) => {
+   const loader = document.querySelector(".loader-container")
+loader.classList.remove("loader-hide")
        e.preventDefault()
     const checked = []
     const checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
@@ -72,9 +74,15 @@ const AdminUpload = ({colRef, tag}) => {
 created: db.FieldValue.serverTimestamp()
             })
             .then(() => {
+
+loader.classList.add("loader-hide")
+
                 alert("Document successfully written!");
             })
             .catch((error) => {
+
+loader.classList.add("loader-hide")
+
                 alert("Error writing document: ", error);
             });
             });
