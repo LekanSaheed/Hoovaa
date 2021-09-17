@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
 
     const getPhones = () => {
         const data = []
-        db.collection('phones').get().then(querySnapshot => {
+        db.collection('usedPhones').get().then(querySnapshot => {
            querySnapshot.forEach((doc) => {
                data.push(doc.data())
                dispatch({type: 'SET_PHONES', payload: data})
