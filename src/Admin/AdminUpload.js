@@ -2,7 +2,7 @@ import { Box, Input, Button } from '@material-ui/core'
 import React, {useState} from 'react'
 import './Admin.css'
 import {makeStyles} from '@material-ui/core'
-import { firebaseStorage, db} from '../components/firebase'
+import { firebaseStorage, firebase } from '../components/firebase'
 
 
 const AdminUpload = ({colRef, tag}) => {
@@ -71,7 +71,7 @@ loader.classList.remove("loader-hide")
             colRef.add({
                 id: new Date().getTime().toString(), name,brand, category,
  price:  parseInt(worth), storage: checked, img: iurl,
-created: db.FieldValue.serverTimestamp()
+created: firebase.firestore.Timestamp.now()
             })
             .then(() => {
 
