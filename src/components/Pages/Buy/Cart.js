@@ -165,7 +165,7 @@ const classes = useStyle()
                  Sub Total
              </div>
              <div>
-                 ${state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0).toLocaleString()}
+                 ${state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0).toLocaleString()}.00
                  </div>
          </div>
          <div className='cart-total'>
