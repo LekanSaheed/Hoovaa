@@ -2,7 +2,7 @@ import { Box, Input } from '@material-ui/core'
 import React, {useState} from 'react'
 import './Admin.css'
 import {makeStyles} from '@material-ui/core'
-import { firebaseStorage} from '../components/firebase'
+import { firebaseStorage, db} from '../components/firebase'
 
 
 const AdminUpload = ({colRef, tag}) => {
@@ -67,7 +67,9 @@ const AdminUpload = ({colRef, tag}) => {
             .then((iurl) => {
            //file upload
             colRef.add({
-                id: new Date().getTime().toString(), name,brand, category, price:  parseInt(worth), storage: checked, img: iurl
+                id: new Date().getTime().toString(), name,brand, category,
+ price:  parseInt(worth), storage: checked, img: iurl,
+created: db.FieldValue.serverTimestamp()
             })
             .then(() => {
                 alert("Document successfully written!");
