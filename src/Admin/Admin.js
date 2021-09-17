@@ -61,7 +61,7 @@ const Admin = () => {
                 <AdminUpload tag='Upload used phones' colRef={db.collection('usedPhones')}/>
                 </Route>
                 <Route path={`${path}/upload-products` }>
-                <AdminUpload tag='Upload gadgets' colRef={db.collection('usedPhones')}/>
+                <AdminUpload tag='Upload gadgets' colRef={db.collection('phones')}/>
                 </Route>
                 <Route path={`${path}/repair-orders` } component={Repairs}/>
             </Switch>
