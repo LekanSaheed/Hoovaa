@@ -8,6 +8,6 @@ export const defaultStore = {
     modalContent: '',
     device: [],
     shippingFees: [{distance: 'near', fee: 0}, {distance: 'mid', fee: 30}, {distance: 'far', fee: 50}],
-    totalAmount: localStorage.getItem('totalAmount') ? parseInt(localStorage.getItem('totalAmount')) : 0,
+    totalAmount: localStorage.getItem('totalAmount') ? parseInt(localStorage.getItem('totalAmount'))+ 00 : 0,
     recentlyViewed: recentlyViewed ? JSON.parse(recentlyViewed) : [],
 }
