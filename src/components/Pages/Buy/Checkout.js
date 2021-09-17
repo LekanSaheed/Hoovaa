@@ -17,7 +17,7 @@ const newState = GlobalContext().state
     const {state, clearCart} = GlobalShop()
    
   const publicKey = "pk_test_92a93b84a772b5837f40984aba6db9fcf7b20582"
-  const amount = state.totalAmount // Remember, set in kobo!
+  const amount = state.totalAmount + "00" // Remember, set in kobo!
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
