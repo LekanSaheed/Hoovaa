@@ -1,4 +1,4 @@
-import { Box, Input } from '@material-ui/core'
+import { Box, Input, Button } from '@material-ui/core'
 import React, {useState} from 'react'
 import './Admin.css'
 import {makeStyles} from '@material-ui/core'
@@ -131,7 +131,7 @@ created: db.FieldValue.serverTimestamp()
                   <div className='checks'><span>2TB</span> <Input type='checkbox' disableUnderline={true} value='2199023255552' required/></div>
                </div>
              
-               <button onClick={handleSubmit}>Submit</button>
+               <Button variant="outlined" color="primary" onClick={handleSubmit}>Submit</Button>
             </form>
             
             
