@@ -45,7 +45,7 @@ const DeviceDetails = ({device}) => {
                     </div>
                          </div>
                         <div className='storage-grid'>
-                        {item.storage.map((storage, id) => {
+                        {item.storage && item.storage.map((storage, id) => {
                            
                             console.log(storage)
                             return(

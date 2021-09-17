@@ -90,7 +90,8 @@ const {state} = GlobalContext()
     return (
         <Box className={classes.root} padding='10px' display='flex' flexDirection='column'>
             My Repair History
-           {loaded ? null :  <>
+            {loaded && 'loaded'}
+           { repair.length === 0 &&   <>
             <Skeleton variant='text' width='40%'/>
             <Skeleton variant='text' width='60%'/>
             <Skeleton variant='rect'/>

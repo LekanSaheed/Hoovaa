@@ -26,6 +26,7 @@ const DeviceQuestionnaire = () => {
  const [isScratches, setIsScratches] = useState(false)
  const [isCracked, setIsCracked] = useState(false)
   const [calcWorth, setCalcWorth] = useState(0)
+  
  const questions = [
      {
          titleText: '1. Is your Screen damaged?',

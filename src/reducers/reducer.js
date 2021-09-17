@@ -20,6 +20,7 @@
       }
   }
   if(action.type === 'SET_SELECTED_DEVICE'){
+      localStorage.setItem('userSelected', JSON.stringify(action.payload))
       return{
           ...state,
           selectedDevice: [action.payload]

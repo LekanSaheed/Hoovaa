@@ -31,11 +31,15 @@ const increment = (item) => {
 const decrement = (item) => {
     dispatch({type: 'DECREMENT', payload: item})
 }
+const setTotalAmount = (amount) => {
+    dispatch({type: 'SET_TOTAL_AMOUNT', payload: amount})
+}
     return <ShopContext.Provider value={{
         viewDevice,
         state,
         addToCart,
         removeItem,
+        setTotalAmount,
         clearCart,
         closeModal,
         increment,

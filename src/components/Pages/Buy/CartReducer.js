@@ -10,6 +10,13 @@ export const cartReducer = (state, action) => {
             recentlyViewed: [...state.recentlyViewed, action.payload]
         }
     }
+    if(action.type === 'SET_TOTAL_AMOUNT'){
+        localStorage.setItem("totalAmount", JSON.stringify(action.payload))
+        return{
+            ...state,
+            totalAmount: action.payload
+        }
+    }
     if(action.type === "CLOSE_MODAL"){
         return{
             ...state,

@@ -5,7 +5,7 @@ import {laptopBrands, phoneBrands, computerBrands,
 import appl from '../assets/tecnoSpark4.jpg'
 const localCurrentUser = localStorage.getItem('user')
 const sessionSR = sessionStorage.getItem('result')
-
+const selectedDevice = JSON.parse(localStorage.getItem('userSelected'))
 export const defaultState = {
     toggle: false,
     modalContent: '',
@@ -20,7 +20,7 @@ export const defaultState = {
     tvBrands: tvBrands,
     gamingGadgetBrands: gamingGadgetBrands,
     cameraBrands: cameraBrands,
-    selectedDevice: [],
+    selectedDevice: selectedDevice ?[ selectedDevice] : [],
     newSelected: [],
     city: localStorage.getItem('city') ? localStorage.getItem('city') : '',
     isCity: localStorage.getItem('city') ? false : true,

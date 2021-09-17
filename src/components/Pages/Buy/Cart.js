@@ -3,13 +3,15 @@ import { GlobalShop } from './CartContext'
 import './Cart.css'
 import {BsFillTrash2Fill, BsTrash} from 'react-icons/bs'
 import { Box, Button, CardMedia, makeStyles } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Link, Route, Switch, useRouteMatch } from 'react-router-dom'
 import { AiFillMinusCircle ,  AiFillPlusCircle} from 'react-icons/ai'
+import {CgShoppingCart} from 'react-icons/cg'
 import {  RiEBike2Fill } from 'react-icons/ri'
+import Checkout from './Checkout'
 
 const Cart = () => {
-    const {state, removeItem, clearCart, increment, decrement} = GlobalShop()
-
+    const {state, removeItem, clearCart, increment, decrement, setTotalAmount} = GlobalShop()
+const {path, url} = useRouteMatch()
     useEffect(() => {
         window.scrollTo(0,0)
     }, [])
@@ -94,97 +96,107 @@ const Cart = () => {
       }))
 const classes = useStyle()
     return (
-        <div className='cart-container'>
+        <Switch>
+            <Route exact path={path}>
+            <div className='cart-container'>
         
-            <div className='cart-item-container'>
-                 <p style={{color: '#f50057', fontWeight: 'bold', padding: '10px'}}>MY CART: <span className='theme-text'>{state.cart.map(i => i.quantity)
-                 .reduce((a,b) => a + b, 0)} Item{state.cart.length < 1 ? '' : 's'} in cart</span></p>
-               {state.cart.length < 1 ? <div className='theme-text'>No item in cart <Link className='bordered' to='/buy-item'>
-                   Start Buying</Link></div> : state.cart.map((item, idx) => {
-                    return(
-                        // Cart Container
-                        <Box key={idx} display='flex' className={classes.root} flexDirection='column'>
-                            {/* Cart item MAIN */}
-                            <Box display='flex' className={classes.mainCon}>
-                            <CardMedia className='MuiCardMedia-img' children={<img style={{width: '120px'}}  src={item.img} alt='product'/>}/>
-                            <div className={classes.cartText}>
-                            <div className='cart-item-name'>
-                     {item.name}
-                            </div>
-                            <div className='cart-item-brand'>
-                        Brand: {item.brand}
-                            </div>
-                           
-                            
-                            <Box display="flex" className={classes.track}>
-                                <span className='theme-text'>Hoovaa</span> <span style={{display: 'flex', alignItems: 'center'}}>
-                                    Fast Track <RiEBike2Fill className='theme-text'/></span>
-                            </Box>
-                            <div className='cart-item-price'>
-                      <span> Product Price:</span> <span className={classes.price}> ${item.price}</span>
-                            </div>
-                            </div>
+        <div className='cart-item-container'>
+             <p style={{color: '#f50057', fontWeight: 'bold', padding: '10px'}}>MY CART: <span className='theme-text'>{state.cart.map(i => i.quantity)
+             .reduce((a,b) => a + b, 0)} Item{state.cart.length < 1 ? '' : 's'} in cart</span></p>
+           {state.cart.length < 1 ? <div className='theme-text'>No item in cart <Link className='bordered' to='/buy-item'>
+               Start Buying</Link></div> : state.cart.map((item, idx) => {
+                return(
+                    // Cart Container
+                    <Box key={idx} display='flex' className={classes.root} flexDirection='column'>
+                        {/* Cart item MAIN */}
+                        <Box display='flex' className={classes.mainCon}>
+                        <CardMedia className='MuiCardMedia-img' children={<img style={{width: '120px'}}  src={item.img} alt='product'/>}/>
+                        <div className={classes.cartText}>
+                        <div className='cart-item-name'>
+                 {item.name}
+                        </div>
+                        <div className='cart-item-brand'>
+                    Brand: {item.brand}
+                        </div>
+                       
+                        
+                        <Box display="flex" className={classes.track}>
+                            <span className='theme-text'>Hoovaa</span> <span style={{display: 'flex', alignItems: 'center'}}>
+                                Fast Track <RiEBike2Fill className='theme-text'/></span>
                         </Box>
-                         {/* Cart item MAIN ends here*/}
+                        <div className='cart-item-price'>
+                  <span> Product Price:</span> <span className={classes.price}> ${item.price}</span>
+                        </div>
+                        </div>
+                    </Box>
+                     {/* Cart item MAIN ends here*/}
 
-                          <Box display='flex' flexDirection='row' className={classes.quantity}> 
-                         <Box className={classes.remove}  onClick={() => removeItem(item.id)}>
-                             <BsFillTrash2Fill/>
-                         <span >REMOVE</span>
-                         </Box>
-                            <Box className={classes.incdec} display='flex' >
-                       <Button className={classes.contBtn} onClick={() => increment(item)}><AiFillPlusCircle/></Button>
-                       {item.quantity}
-                       <Button className={classes.contBtn} children={<AiFillMinusCircle/>} onClick={() => decrement(item)}/>
-                            </Box>
-                           
-                          </Box>
-                          </Box>
-                    )
-                })}
-                <div>
-                {state.cart.length > 0 &&  <Button color='secondary'  onClick={() => clearCart()}
-                 children={<>
-                      <span>Clear all</span>
-                      <BsTrash/>
-                       </>}/>}
-                </div>
+                      <Box display='flex' flexDirection='row' className={classes.quantity}> 
+                     <Box className={classes.remove}  onClick={() => removeItem(item.id)}>
+                         <BsFillTrash2Fill/>
+                     <span >REMOVE</span>
+                     </Box>
+                        <Box className={classes.incdec} display='flex' >
+                   <Button className={classes.contBtn} onClick={() => increment(item)}><AiFillPlusCircle/></Button>
+                   {item.quantity}
+                   <Button className={classes.contBtn} children={<AiFillMinusCircle/>} onClick={() => decrement(item)}/>
+                        </Box>
+                       
+                      </Box>
+                      </Box>
+                )
+            })}
+            <div>
+            {state.cart.length > 0 &&  <Button color='secondary'  onClick={() => clearCart()}
+             children={<>
+                  <span>Clear all</span>
+                  <BsTrash/>
+                   </>}/>}
             </div>
-
-       {state.cart.length > 0 &&   <div className='total-item-and-checkout'>
-             <div className='order-summary'>
-                 <p>ORDER SUMMARY</p>
-             </div>
-         <div className='cart-total-group'>
-             <div className='cart-total'>
-                 <div>
-                     Sub Total
-                 </div>
-                 <div>
-                     ${state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0).toLocaleString()}
-                     </div>
-             </div>
-             <div className='cart-total'>
-                 <div>
-                Shipping Fees
-                 </div>
-                 <div>
-                     ${state.shippingFees.filter(i => i.distance === 'far').map(i => i.fee)}
-                 </div>
-             </div>
-             <div className='cart-total'>
-                 <div>
-                  Estimated Total 
-                 </div>
-                 <div>
-                     $
-                 </div>
-             </div>
-         
-         </div>
-         <button className='order-summary checkout'>CHECKOUT</button>
-         </div>}
         </div>
+
+   {state.cart.length > 0 &&   <div className='total-item-and-checkout'>
+         <div className='order-summary'>
+             <p>ORDER SUMMARY</p>
+         </div>
+     <div className='cart-total-group'>
+         <div className='cart-total'>
+             <div>
+                 Sub Total
+             </div>
+             <div>
+                 ${state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0).toLocaleString()}
+                 </div>
+         </div>
+         <div className='cart-total'>
+             <div>
+            Shipping Fees
+             </div>
+             <div>
+                 ${state.shippingFees.filter(i => i.distance === 'far').map(i => i.fee)}
+             </div>
+         </div>
+         <div className='cart-total'>
+             <div>
+              Estimated Total 
+             </div>
+             <div>
+                 $
+             </div>
+         </div>
+     
+     </div>
+    <Link to={url + '/checkout'}> 
+    <Button variant='contained' onClick={() => setTotalAmount(state.cart.map(i => i.price * i.quantity).reduce((a,b) => a + b, 0))} color="primary" size='large' endIcon={<CgShoppingCart/>}
+      className='order-summary checkout' >CHECKOUT</Button></Link>
+     </div>}
+    </div>
+            </Route>
+
+    <Route path={path + '/checkout'}>
+        <Checkout/>
+    </Route>
+        </Switch>
     )
 }
 

@@ -13,7 +13,7 @@ const RecentlyViewed = () => {
    }))
    const classes = useStyle()
     const {state} = GlobalShop()
-    const recent = state.recentlyViewed.length > 5 ? state.recentlyViewed : state.recentlyViewed
+    const recent = state.recentlyViewed.length > 4 ? state.recentlyViewed.slice(-5) : state.recentlyViewed
     return (
         <div>
             <h5>Recently Viewed</h5>

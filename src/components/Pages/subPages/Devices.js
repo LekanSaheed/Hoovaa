@@ -39,6 +39,7 @@ React.useEffect(() => {
                         <CircularProgress/></div>}
             {phones.filter((item) => item.brand === brand).map((item, index) => {
                  return(
+                     
                     <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '-') }`}  key={index}>
                     <div className='grid-item-item' onClick={() => getDevice(item)} onLoad={()=> setLoad(true)}>
                         <div className='grid-img'>  <img src={item.img} alt='ige' /> </div>
