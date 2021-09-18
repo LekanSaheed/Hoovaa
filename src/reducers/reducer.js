@@ -5,6 +5,12 @@
              phones: action.payload
          }
      }
+     if(action.type === 'SET_USED_GADGETS'){
+        return{
+            ...state,
+            usedGadgets: action.payload
+        }
+    }
   if(action.type === "TOGGLE_NAV"){
       return{
           ...state,

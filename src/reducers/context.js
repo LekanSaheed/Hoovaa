@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
 
     const getPhones = () => {
         const data = []
-        db.collection('usedPhones').get().then(querySnapshot => {
+        db.collection('phones').get().then(querySnapshot => {
            querySnapshot.forEach((doc) => {
                data.push(doc.data())
                dispatch({type: 'SET_PHONES', payload: data})
@@ -42,9 +42,24 @@ const AppProvider = ({ children }) => {
            
         })
     }
+    
+    const getUsedGadgets = () => {
+        const data = []
+        db.collection('usedPhones').get().then(querySnapshot => {
+           querySnapshot.forEach((doc) => {
+               data.push(doc.data())
+               dispatch({type: 'SET_USED_GADGETS', payload: data})
+           })
+            
+        }).catch(err => {
+            console.log(err)
+        })
+       
+    }
     useEffect(() => {
         getRepairData()
         getPhones()
+        getUsedGadgets()
     }, [])
 
 const [state, dispatch] = useReducer(reducer, defaultState)
