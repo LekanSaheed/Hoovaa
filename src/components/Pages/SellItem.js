@@ -11,6 +11,7 @@ import Brands from './Brands'
 import { GlobalContext } from '../../reducers/context'
 import Cities from '../Cities'
 import BottomNav from '../BottomNav'
+import {Helmet} from 'react-helmet'
 const SellItem = () => {
 
     const {state} = GlobalContext()
@@ -61,6 +62,12 @@ const history = useHistory()
         <Route exact path={path}>
        
         <div className='sell-page-container'>
+            <Helmet>
+                <title>Sell gadgets</title>
+                <meta name='description' content='Sell your used gadgets, sell your used phones, sell your used laptop, hoovaa, hoovaa sell, 
+                sell old gadgets, sell unused gadgtes for cash, sell your old stuff instantly, sell, cash, hoovaa cash, money, laptop, old laptop, 
+                old smartphones, old'/>
+            </Helmet>
             <BottomNav current='sell'/>
         <div style={{alignSelf: 'flex-start',
     margin: '15px'}} onClick={() => history.goBack()}>

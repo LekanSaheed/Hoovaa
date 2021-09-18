@@ -15,6 +15,7 @@ import { FaRegAddressBook, FaTools } from 'react-icons/fa'
 import AddressBook from './AddressBook'
 import Orders from './Orders'
 import Repairs from './Repairs'
+import {Helmet} from 'react-helmet'
 // import { firebase } from '../components/firebase'
 
 const Account = () => {
@@ -67,6 +68,11 @@ icon: <FiLogOut/>,
       <Switch>
           <Route exact path={path}>
           <div className='account-page'>
+              <Helmet>
+                  <title>{currentUser.displayName ? currentUser.displayName + "'s Account" : 'My Hoovaa Account'}</title>
+                  <meta name='description' content='Hoovaa account, login, 
+                  hoovaa login, sign up, hoovaa, sign in, buy, sell, swap, repair, hoova repair'/>
+              </Helmet>
           <BottomNav/>
               {!currentUser.emailVerified && <div style={{border: 'solid 1px lightgrey', padding: '10px', fontSize: '12px'}}>
                   <span style={{color: 'goldenrod', marginRight: '10px'}}><AiOutlineInfoCircle/></span><span>Email not verified</span></div>}

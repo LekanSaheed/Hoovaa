@@ -8,10 +8,9 @@
     right: 0;
     left: 0;
     height: 100vh;
-    z-index: 6;
+    z-index: 1000;
 }
 .nav-container{
-    background-color: rgb(116, 151, 255);
     color: black;
     padding: 20px;
     width: 0;
@@ -20,6 +19,7 @@
     margin-left: 1000px;
     position: fixed;
     transition: .3s;
+    z-index: 1000;
    
 }
 .show-nav a{
