@@ -90,16 +90,16 @@ const Brands = ({brands, device}) => {
 
      </Route>
             <Route  path={`${path + '/apple-phones'}`}>
-                <Devices deviceName='Apple phone' phones={state.usedPhones} brand='apple'/>
+                <Devices deviceName='Apple phone' phones={state.usedGadgets} brand='apple'/>
             </Route>
             <Route path={`${path + '/samsung-phones'}`}>
-                <Devices deviceName='Samsung Phone' phones={state.usedPhones} brand='samsung'/>
+                <Devices deviceName='Samsung Phone' phones={state.usedGadgets} brand='samsung'/>
             </Route>
             <Route path={`${path + '/tecno-phones'}`}>
-                <Devices deviceName='Tecno Phone' phones={state.usedPhones} brand='tecno'/>
+                <Devices deviceName='Tecno Phone' phones={state.usedGadgets} brand='tecno'/>
             </Route>
             <Route path={`${path + '/infinix-phones'}`}>
-                <Devices deviceName='Infinix Phone' phones={state.usedPhones} brand='infinix'/>
+                <Devices deviceName='Infinix Phone' phones={state.usedGadgets} brand='infinix'/>
             </Route>
         </Switch>
       
