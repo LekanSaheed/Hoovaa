@@ -29,7 +29,7 @@
     height: 70px;
     color: black;
     transition: .5s;
-    font-weight: 600
+    font-weight: 500
 }
 .sale-item:hover{
     background-color: #F9F9F9;
