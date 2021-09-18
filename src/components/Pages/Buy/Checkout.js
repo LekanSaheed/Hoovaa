@@ -49,7 +49,7 @@ const newState = GlobalContext().state
   }
     return (
         <Box display='flex' flexDirection='column' className="checkout-form">
-            <Box>Pay {state.totalAmount}</Box>
+            <Box>Pay {state.totalAmount.toLocaleString()}</Box>
         <div className="checkout-field">
         
           <TextField
