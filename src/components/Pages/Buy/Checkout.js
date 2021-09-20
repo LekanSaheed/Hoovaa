@@ -18,7 +18,7 @@ const newState = GlobalContext().state
    
   const publicKey = "pk_test_92a93b84a772b5837f40984aba6db9fcf7b20582"
   const amount = state.totalAmount + "00" // Remember, set in kobo!
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState(newState.currentUser.email)
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
     
@@ -49,7 +49,7 @@ const newState = GlobalContext().state
   }
     return (
         <Box display='flex' flexDirection='column' className="checkout-form">
-            <Box>Pay {state.totalAmount}</Box>
+            <Box>Pay {state.totalAmount.toLocaleString()}</Box>
         <div className="checkout-field">
         
           <TextField
