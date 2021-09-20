@@ -11,7 +11,7 @@ export const defaultState = {
     modalContent: '',
     isModal: false,
     usedGadgets: [],
-    phones: [{img: appl,id: 1, name: 'iphone 6', price: 45000, brand: 'apple', category: 'phones'},
+    allGadgets: [{img: appl,id: 1, name: 'iphone 6', price: 45000, brand: 'apple', category: 'phones'},
 {img: appl ,id: 2, name: 'iphone 11', price: 66000, brand: 'tecno', category: 'phones'}],
     phoneBrands: phoneBrands,
     laptopBrands: laptopBrands,

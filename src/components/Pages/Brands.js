@@ -68,7 +68,7 @@ const Brands = ({brands, device}) => {
                 )
             })}
         </div>
-        <Link to={`${path+ `${'/all-'+ device + '-brands'}`}`}>
+        <Link to={`${url+ `${'/all-'+ device + '-brands'}`}`}>
             <div>See all Brands</div>
         </Link>
        <div style={{fontWeight: "600"}}> Sell your <span>{brand}</span> {device}</div>
@@ -86,20 +86,109 @@ const Brands = ({brands, device}) => {
         
          <HowItWorks bc='#fafafa'/>
          </div>
+         
         </div>
 
      </Route>
             <Route  path={`${path + '/apple-phones'}`}>
-                <Devices deviceName='Apple phone' phones={state.usedPhones} brand='apple'/>
+                <Devices deviceName='Apple phone' category='phones' gadget={state.usedGadgets} brand='apple'/>
             </Route>
             <Route path={`${path + '/samsung-phones'}`}>
-                <Devices deviceName='Samsung Phone' phones={state.usedPhones} brand='samsung'/>
+                <Devices deviceName='Samsung Phone' category='phones' gadget={state.usedGadgets} brand='samsung'/>
             </Route>
             <Route path={`${path + '/tecno-phones'}`}>
-                <Devices deviceName='Tecno Phone' phones={state.usedPhones} brand='tecno'/>
+                <Devices deviceName='Tecno Phone' category='phones' gadget={state.usedGadgets} brand='tecno'/>
             </Route>
             <Route path={`${path + '/infinix-phones'}`}>
-                <Devices deviceName='Infinix Phone' phones={state.usedPhones} brand='infinix'/>
+                <Devices deviceName='Infinix Phone' category='phones' gadget={state.usedGadgets} brand='infinix'/>
+            </Route>
+            {/* Laptops */}
+            <Route path={`${path + '/hp-laptops'}`}>
+                <Devices deviceName='Hp laptop' category='laptops' gadget={state.usedGadgets} brand='hp'/>
+            </Route>
+            <Route path={`${path + '/apple-laptops'}`}>
+                <Devices deviceName='Apple laptop' category='laptops' gadget={state.usedGadgets} brand='apple'/>
+            </Route>
+            <Route path={`${path + '/toshiba-laptops'}`}>
+                <Devices deviceName='Toshiba laptop' category='laptops' gadget={state.usedGadgets} brand='toshiba'/>
+            </Route>
+            <Route path={`${path + '/dell-laptops'}`}>
+                <Devices deviceName='Dell laptop' category='laptops' gadget={state.usedGadgets} brand='dell'/>
+            </Route>
+            {/* Computers */}
+
+            <Route path={`${path + '/hp-computers'}`}>
+                <Devices deviceName='Hp computer' category='computers' gadget={state.usedGadgets} brand='hp'/>
+            </Route>
+            <Route path={`${path + '/apple-computers'}`}>
+                <Devices deviceName='Apple computer' category='computers' gadget={state.usedGadgets} brand='apple'/>
+            </Route>
+            <Route path={`${path + '/toshiba-computers'}`}>
+                <Devices deviceName='Toshiba computer' category='computers' gadget={state.usedGadgets} brand='toshiba'/>
+            </Route>
+            <Route path={`${path + '/dell-computers'}`}>
+                <Devices deviceName='Dell computer' category='computers' gadget={state.usedGadgets} brand='dell'/>
+            </Route>
+
+            {/* Gaming gadgets */}
+            <Route path={`${path + '/microsoft-consoles'}`}>
+                <Devices deviceName='Microsoft Console' category='consoles' gadget={state.usedGadgets} brand='microsoft'/>
+            </Route>
+            <Route path={`${path + '/sony-consoles'}`}>
+                <Devices deviceName='Sony Console' category='consoles' gadget={state.usedGadgets} brand='sony'/>
+            </Route>
+
+            {/* TVs */}
+            <Route path={`${path + '/toshiba-tvs'}`}>
+                <Devices deviceName='Toshiba Tv' category='tvs' gadget={state.usedGadgets} brand='toshiba'/>
+            </Route>
+            <Route path={`${path + '/samsung-tvs'}`}>
+                <Devices deviceName='Samsung Tv' category='tvs' gadget={state.usedGadgets} brand='samsung'/>
+            </Route>
+            <Route path={`${path + '/philips-tvs'}`}>
+                <Devices deviceName='Philips Tv' category='tvs' gadget={state.usedGadgets} brand='philips'/>
+            </Route>
+            <Route path={`${path + '/panasonic-tvs'}`}>
+                <Devices deviceName='Panasonic Tv' category='tvs' gadget={state.usedGadgets} brand='panasonic'/>
+            </Route>
+
+            {/* Cameras */}
+
+             <Route path={`${path + '/nikon-cameras'}`}>
+                <Devices deviceName='Nikon Tv' category='cameras' gadget={state.usedGadgets} brand='nikon'/>
+            </Route>
+            <Route path={`${path + '/Canon-cameras'}`}>
+                <Devices deviceName='Canon Tv' category='cameras' gadget={state.usedGadgets} brand='nikon'/>
+            </Route>
+           
+sw
+            {/* Smart-Watches */}
+            <Route path={`${path + '/mi-sw'}`}>
+                <Devices deviceName='Mi Smart Watch' category='smartWatches' gadget={state.usedGadgets} brand='mi'/>
+            </Route>
+            <Route path={`${path + '/apple-sw'}`}>
+                <Devices deviceName='Apple Smart Watch' category='smartWatches' gadget={state.usedGadgets} brand='apple'/>
+            </Route>
+            <Route path={`${path + '/samsung-sw'}`}>
+                <Devices deviceName='Samsung Smart Watch' category='smartWatches' gadget={state.usedGadgets} brand='samsung'/>
+            </Route>
+            <Route path={`${path + '/dell-sw'}`}>
+                <Devices deviceName='Dell Smart Watch' category='smartWatches' gadget={state.usedGadgets} brand='dell'/>
+            </Route>
+
+            {/* Smart Speakers */}
+
+            <Route path={`${path + '/hp-smart-speakers'}`}>
+                <Devices deviceName='Hp Smart Speaker' category='smartSpeakers' gadget={state.usedGadgets} brand='hp'/>
+            </Route>
+            <Route path={`${path + '/apple-smart-speakers'}`}>
+                <Devices deviceName='Apple Smart Speaker' category='smartSpeakers' gadget={state.usedGadgets} brand='apple'/>
+            </Route>
+            <Route path={`${path + '/samsung-smart-speakers'}`}>
+                <Devices deviceName='Samsung Smart Speaker' category='computers' gadget={state.usedGadgets} brand='samsung'/>
+            </Route>
+            <Route path={`${path + '/dell-smart-speakers'}`}>
+                <Devices deviceName='Dell Smart Speaker' category='smartSpeakers' gadget={state.usedGadgets} brand='dell'/>
             </Route>
         </Switch>
       

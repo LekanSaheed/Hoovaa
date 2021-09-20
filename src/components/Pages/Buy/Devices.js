@@ -4,10 +4,12 @@ import {CircularProgress} from '@material-ui/core'
 import { GlobalShop } from './CartContext'
 import GadgetDetails from './GadgetDetails'
 import './Devices.css'
-const Devices = ({phones, brand}) => {
+
+import { GlobalContext } from '../../../reducers/context'
+const Devices = ({ brand, category}) => {
    
-   
-   
+   const newState = GlobalContext().state
+   const allGadgets = newState.allGadgets
 const {path, url} = useRouteMatch()
 const {viewDevice, state} = GlobalShop()
 const [loaded, setLoad] = useState(false)
@@ -23,7 +25,7 @@ React.useEffect(() => {
                    {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0', right: '0',
                 left: '0', bottom: '0', width: '100%', zIndex: '1'}}>
                         <CircularProgress/></div>}
-            {phones.filter((item) => item.brand === brand).map((item, index) => {
+            {allGadgets.filter((item) => item.brand === brand && item.category === category).map((item, index) => {
                  return(
                     <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '=?') }`}  key={index}>
                         

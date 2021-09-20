@@ -1,6 +1,5 @@
 import apple from '../../assets/Apple.png'
 import samsung from '../../assets/Samsung.png'
-import tec4 from '../../assets/tecnoSpark4.jpg'
 import hp from '../../assets/Hp.png'
 import tecno from '../../assets/tecno.jpg'
 import infinix from '../../assets/infinix.jpg'
@@ -8,6 +7,11 @@ import microsoft from '../../assets/microsoft.jpg'
 import toshiba from '../../assets/toshiba.jpg'
 import sony from '../../assets/sony.jpg'
 import dell from '../../assets/Dell.png'
+import philips from '../../assets/philips.jpg'
+import nikon from '../../assets/nikon.jpg'
+import canon from '../../assets/canon.jpg'
+import panasonic from '../../assets/panasonic.jpg'
+import mi from '../../assets/mi.jpg'
 
 
 export const phoneBrands = [
@@ -36,7 +40,7 @@ export const laptopBrands = [
     to: '/apple-laptops',
     brand: 'apple'
 },
-    {img: samsung,
+    {img: toshiba,
     to: '/toshiba-laptops',
     brand: 'toshiba'},
     {img: dell,
@@ -71,15 +75,15 @@ export const gamingGadgetBrands = [
 }
 ]
 export const tvBrands = [
-    {img: hp,
+    {img: toshiba,
     to: '/toshiba-tvs',
     brand: 'toshiba'},
     
-    {img: dell,
+    {img: philips,
     to: '/philips-tvs',
     brand: 'philips'
 },
-    {img: hp,
+    {img: panasonic,
     to: '/panasonic-tvs',
     brand: 'panasonic'},
 
@@ -88,7 +92,7 @@ export const tvBrands = [
     to: '/samsung-tvs'}
 ]
 export const smartWatchbrands = [
-    {img: toshiba,
+    {img: mi,
     to: '/mi-sw',
     brand: 'mi'},
     
@@ -120,183 +124,12 @@ export const smartSpeakerBrands = [
     to: '/dell-smart-speakers'}
 ]
 export const cameraBrands = [
-    {img: microsoft,
+    {img: nikon,
     to: '/nikon-cameras',
-    brand: 'canon'},
+    brand: 'nikon'},
     
-    {img: apple,
+    {img: canon,
     to: '/canon-cameras',
     brand: 'canon'
 }
-]
-export const phoneDatas = [{
-    name: 'Iphone 6',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-    price: 38000,
-    img: tec4
-},
-{
-    name: 'Iphone 6s',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [2,4],
-    price: 45000,
-    img: tec4
-},
-{
-    name: 'Iphone 6 Plus',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [2,4],
-},
-{
-    name: 'Iphone 6s Plus',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 64, 128],
-    ram: [2,4],
-},
-{
-    name: 'Iphone 7',
-    brand: 'apple',
-    BrandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 128],
-    ram: [2,4],
-},
-{
-    name: 'Iphone 7 Plus',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 128, 256],
-    ram: [2,4],
-},
-{
-    name: 'Iphone 8',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 64, 128, 256],
-    ram: [2,4],
-},
-{
-    name: 'Iphone 8 Plus',
-    brand: 'apple',
-    brandImg: apple,
-    category: 'phone',
-    storage: [16, 32, 64, 128, 256],
-    ram: [2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Iphone 6',
-    brand: 'apple',
-    img: apple,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-},
-{
-    name: 'Samsung A11',
-    brand: 'samsung',
-    img: samsung,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-    
-},
-{
-    name: 'Samsung S10',
-    brand: 'samsung',
-    img: samsung,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-    
-},
-{
-    name: 'Samsung S20 ultra',
-    brand: 'samsung',
-    img: samsung,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-    
-},
-{
-    name: 'Samsung J5',
-    brand: 'samsung',
-    brandImg: samsung,
-    img: samsung,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-    
-},
-{
-    name: 'Samsung A1',
-    brand: 'samsung',
-    img: samsung,
-    category: 'phone',
-    storage: [16, 32, 64],
-    ram: [1,2,4],
-    
-},
 ]

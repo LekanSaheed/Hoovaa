@@ -1,15 +1,15 @@
 
-import React from 'react'
+import React, {useState} from 'react'
 import { FiArrowLeftCircle } from 'react-icons/fi'
 import {Link, Route, useHistory, useRouteMatch, Switch} from 'react-router-dom'
 import buy from '../../../assets/trolley.png'
-import { GlobalContext } from '../../../reducers/context'
+import AllBrands from '../AllBrands'
 import Devices from './Devices'
 
 const Brands = ({brands, device}) => {
-    const {state} = GlobalContext()
     const {path, url} = useRouteMatch()
     const history = useHistory()
+    const [brand, setBrand] = useState('')
     React.useEffect(() => {
         window.scrollTo(0,0)
     }, [])
@@ -41,31 +41,84 @@ const Brands = ({brands, device}) => {
                
                 {brands.map((item, index) => {
                     return(
-                       <Link key={index} to={url+item.to}> <img className='brand-img' src={item.img} alt='brands'/></Link>
+                       <Link key={index} to={url+item.to}> <img className='brand-img' src={item.img} alt='brands' onClick={() => {
+                           setBrand(item.brand)
+                       }}/></Link>
                     )
                 })}
             </div>
-            <Link to={`${path+ `${'/all-'+ device + '-brands'}`}`}>
+            <Link to={`${path+ `${'/all-'+ device.toLowerCase().replace(/ /g, '-') + '-brands'}`}`}>
                 <div>See all Brands</div>
             </Link> 
              </div>
             </div>
             </Route>
-
+                {/* all brands */}
+                <Route  path={path + '/all-' + device.toLowerCase().replace(/ /g, '-') + '-brands'} >
+                   <AllBrands brand={brand} device={device}/>   
+                </Route>
+          
+                {/* Phones */}
             <Route path={path + '/apple-phones'}>
-               <Devices phones={state.phones} brand='apple'/>
+               <Devices category  brand='apple'/>
                 </Route>
-                <Route path={path + '/samsung-phones'}>
-               <Devices phones={state.phones} brand='samsung'/>
+                <Route category path={path + '/samsung-phones'}>
+               <Devices  brand='samsung'/>
                 </Route>
-                <Route path={path + '/tecno-phones'}>
-               <Devices phones={state.phones} brand='tecno'/>
+                <Route category path={path + '/tecno-phones'}>
+               <Devices  brand='tecno'/>
                 </Route>
-                <Route path={path + '/infinix-phones'}>
-               <Devices phones={state.phones} brand='infinix'/>
+                <Route category path={path + '/infinix-phones'}>
+               <Devices  brand='infinix'/>
                 </Route>
-                <Route path={path + '/apple-phones'}>
-               <Devices phones={state.phones} brand='apple'/>
+
+               {/* Laptops */}
+<Route path={path + '/apple-laptops'}>
+               <Devices category='laptops'  brand='apple'/>
+                </Route>
+                <Route category='laptops' path={path + '/hp-laptops'}>
+               <Devices  brand='hp'/>
+                </Route>
+                <Route category='laptops' path={path + '/toshiba-laptops'}>
+               <Devices  brand='toshiba'/>
+                </Route>
+                <Route category='laptops' path={path + '/dell-laptops'}>
+               <Devices  brand='dell'/>
+                </Route>
+
+               {/* Tvs */}
+<Route path={path + '/toshiba-tvs'}>
+               <Devices category='tvs'  brand='apple'/>
+                </Route>
+                <Route category='tvs' path={path + '/philips-tvs'}>
+               <Devices  brand='philips'/>
+                </Route>
+                <Route category='tvs' path={path + '/panasonic-tvs'}>
+               <Devices  brand='panasonic'/>
+                </Route>
+                <Route category='tvs' path={path + '/samsung-tvs'}>
+               <Devices  brand='philips'/>
+                </Route>
+               {/* Home Appliances */}
+               <Route path={path + '/apple-phones'}>
+               <Devices category='homeAppliances'  brand='apple'/>
+                </Route>
+                <Route category='homeAppliances' path={path + '/samsung-phones'}>
+               <Devices  brand='samsung'/>
+                </Route>
+                <Route category='homeAppliances' path={path + '/tecno-phones'}>
+               <Devices brand='tecno'/>
+                </Route>
+                <Route category='homeAppliances' path={path + '/infinix-phones'}>
+               <Devices  brand='infinix'/>
+                </Route>
+               {/* Gaming */}
+
+               <Route category='gamingGadgets' path={path + '/microsoft-consoles'}>
+               <Devices  brand='microsoft'/>
+                </Route>
+                <Route category='gamingGadgets' path={path + '/sony-consoles'}>
+               <Devices  brand='sony'/>
                 </Route>
         </Switch>
         

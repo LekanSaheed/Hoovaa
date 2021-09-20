@@ -58,10 +58,10 @@ const Admin = () => {
             </ul>
             <Switch>
                 <Route path={`${path}/upload-used-phones` }>
-                <AdminUpload tag='Upload used phones' colRef={db.collection('usedPhones')}/>
+                <AdminUpload tag='Upload used phones' colRef={db.collection('usedGadgets')}/>
                 </Route>
                 <Route path={`${path}/upload-products` }>
-                <AdminUpload tag='Upload gadgets' colRef={db.collection('phones')}/>
+                <AdminUpload tag='Upload gadgets' colRef={db.collection('gadgets')}/>
                 </Route>
                 <Route path={`${path}/repair-orders` } component={Repairs}/>
             </Switch>

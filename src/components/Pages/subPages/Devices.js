@@ -7,7 +7,7 @@ import { GlobalContext } from '../../../reducers/context'
 import {Switch, Route, Link} from 'react-router-dom'
 import DeviceDetails from './DeviceDetails'
 import { CircularProgress } from '@material-ui/core'
-const Devices = ({deviceName, phones, brand}) => {
+const Devices = ({deviceName, gadget, brand, category}) => {
     const {getDevice} = GlobalContext()
     React.useEffect(() => {
         window.scrollTo(0,0)
@@ -18,10 +18,10 @@ const {path, url} = useRouteMatch()
 const {state} = GlobalContext()
 const [loaded, setLoad] = useState(false)
 
-React.useEffect(() => {
-    const loader = document.querySelector('.loader-container')
-    !loaded ? loader.classList.remove('loader-hide') : loader.classList.add('loader-hide')
-},[loaded])
+// React.useEffect(() => {
+//     const loader = document.querySelector('.loader-container')
+//     !loaded ? loader.classList.remove('loader-hide') : loader.classList.add('loader-hide')
+// },[loaded])
     return (
       
         <div className="item-page">
@@ -37,7 +37,7 @@ React.useEffect(() => {
          'absolute', top: '30px', right: '0',
                 left: '0', bottom: '0', width: '100%', zIndex: '1'}}>
                         <CircularProgress/></div>}
-            {phones.filter((item) => item.brand === brand).map((item, index) => {
+            {gadget.filter((item) => item.brand === brand && item.category === category).map((item, index) => {
                  return(
                      
                     <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '-') }`}  key={index}>

@@ -112,6 +112,15 @@ const allItems = data.map((item, index) => {
               <Route path={path + '/laptops-brands'}>
                   <Brands  device='laptop' brands={state.laptopBrands}/>
               </Route>
+              <Route path={path + '/tv-brands'}>
+                  <Brands  device='Tv' brands={state.tvBrands}/>
+              </Route>
+              <Route path={path + '/gaming-gadgets-brands'}>
+                  <Brands  device='Gaming Gadget' brands={state.gamingGadgetBrands}/>
+              </Route>
+              <Route path={path + '/home-appliances-brands'}>
+                  <Brands  device='Home Appliances' brands={state.laptopBrands}/>
+              </Route>
           </Switch>
 
           <HowItWorks/>
