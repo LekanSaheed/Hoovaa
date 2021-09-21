@@ -101,20 +101,20 @@ loader.classList.add("loader-hide")
               </div>
                <div className='input-container'>
                    <label>Device Name</label>
-                   <Input type='text' value={name} onChange={(e) => setName(e.target.value)} required/>
+                   <Input type='text' value={name} onChange={(e) => setName(e.target.value.toLowerCase())} required/>
                </div>
                <div className='input-container'>
                    <label>Device Brand</label>
-                   <Input type='text'  value={brand} onChange={(e) => setBrand(e.target.value)} required/>
+                   <Input type='text'  value={brand} onChange={(e) => setBrand(e.target.value.toLowerCase())} required/>
                </div>
               
                <div className='input-container'>
                    <label>Category</label>
-                   <Input type='text'  value={category} onChange={(e) => setCategory(e.target.value)} required/>
+                   <Input type='text'  value={category} onChange={(e) => setCategory(e.target.value.toLowerCase())} required/>
                </div>
                <div className='input-container'>
                    <label>Device Worth</label>
-                   <Input type='number' value={worth} onChange={(e) => setWorth(e.target.value.toLocaleString())} required/>
+                   <Input type='number' value={worth} onChange={(e) => setWorth(e.target.value.toLowerCase())} required/>
                </div>
                
                <div className='check-container'>
