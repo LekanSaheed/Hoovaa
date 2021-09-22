@@ -27,6 +27,7 @@
     border-radius: 5px;
     align-items: center;
     line-height: 28px;
+    gap: 10px
 
 }
 .flex-display-eval img{

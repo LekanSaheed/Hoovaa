@@ -31,6 +31,12 @@
     font-weight: 500;
     color: rgb(136, 136, 136);
 }
+.paystack-button{
+    background-color: #7497ff;
+    color: white;
+    border: none;
+    padding: 10px;
+}
 .cart-item-brand{
     font-weight: 500;
     color: rgb(136, 136, 136);

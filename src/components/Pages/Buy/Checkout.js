@@ -52,11 +52,11 @@ const newState = GlobalContext().state
   }
     return (
         <Box display='flex' flexDirection='column' className="checkout-form">
-            <Box>Pay {state.totalAmount.toLocaleString()}</Box>
+            <Box display='flex' alignItems='center' justifyContent='center'>Pay {state.totalAmount.toLocaleString()}</Box>
         <div className="checkout-field">
         
           <TextField
-          variant='standard'
+          variant='outlined'
           label='Name'
           fullWidth={true}
             type="text"
@@ -67,7 +67,7 @@ const newState = GlobalContext().state
         <div className="checkout-field">
         
           <TextField
-          variant='standard'
+          variant='outlined'
           label='Email'
           fullWidth={true}
             type="email"
@@ -78,7 +78,7 @@ const newState = GlobalContext().state
         <div className="checkout-field">
          
           <TextField
-          variant='standard'
+          variant='outlined'
           label='Phone No'
           fullWidth={true}
             type="number"
