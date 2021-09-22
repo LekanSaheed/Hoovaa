@@ -1,6 +1,6 @@
  .footer-container{
      background: #edf1fa;
-     padding:50px 10px 10px;
+     padding:50px 25px 25px;
  }
  .footer-child{
      display: flex;
@@ -9,7 +9,7 @@
  }
 .footer-child a{
     color: #7497ff;
-    font-size: 11px;
+    font-size: 15px;
    
 }
 .footer-child-flex{
@@ -22,6 +22,7 @@
 }
 .footer-child li{
     padding: 5px;
+    margin: 7px;
 }
 
  @media(min-width: 767px){

@@ -22,6 +22,18 @@ const newState = GlobalContext().state
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
     
+
+  const addToDb = () => {
+    const docRef = 
+    db.collection('orders').doc()
+    docRef.set({orders: state.cart}).then(()=> {
+      clearCart()
+      window.location.reload()
+      history.push('/account')
+    }).catch(err => {
+      console.log(err)
+    })
+  }
   const componentProps = {
     email,
     amount,
@@ -34,16 +46,7 @@ const newState = GlobalContext().state
     onSuccess: () =>
     {
     setModalStat('Transaction Successful')
-   
-    db.collection('orders').set(state.totalAmount)
-    .then(() => {
-        alert('set succesfully')
-         clearCart()
-        window.location.reload()
-        history.push('/account')})
-        .catch(err => {
-            console.log(err)
-        })
+   addToDb()
 },
     onClose: () => setModalStat('Transaction Canceled'),
   }

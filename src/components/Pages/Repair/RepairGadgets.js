@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
-import {TextField, Button, makeStyles, Box, RadioGroup, Radio, Modal, Dialog, DialogContent} from '@material-ui/core'
+import {TextField, Button, makeStyles, Box,  Modal, Dialog, DialogContent} from '@material-ui/core'
 import Select from 'react-select'
 import {options} from './options'
 import { db } from '../../firebase'
 import { GlobalContext } from '../../../reducers/context'
 import { useHistory } from 'react-router-dom'
+import {Helmet} from 'react-helmet'
+import {BsGear} from 'react-icons/bs'
+
 const RepairGadgets = () => {
   
     React.useEffect(() => {
@@ -35,11 +38,13 @@ const RepairGadgets = () => {
     const [selectedDamage, setSelectedDamage] = useState(null)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
-    const radio = document.querySelectorAll('input[type=radio]:checked')
+
+
+   
+
     const history = useHistory()
     const handleDamage = (selectedDamage) => {
             setSelectedDamage(selectedDamage)
-            console.log('iselected', selectedDamage)
     }
     const handleSubmit = () => {
         if(!state.isUser){
@@ -67,21 +72,25 @@ const RepairGadgets = () => {
               setError(err.message)
               setSuccess('')
           })
-         
+         console.log(radio)
         }
     }
+    const radio = document.querySelectorAll('input[type=radio]:checked')
     return (
-        <form>
+        <form className={classes.root}>
+            <Helmet>
+                <meta name='description' content='hoovaa, repair, repair gadgets, repair now, hoovaa, sell buy repair'/>
+            </Helmet>
             <Modal open={error || success} children={<Dialog open={success || error} children={<DialogContent>{error && error}
-             {success && success}<br/>
+             {success && success}<br/><br/>
              <Button variant='contained' color={`${error ? 'secondary': 'primary'}`} onClick={() => {
                  setError('')
                  setSuccess('')
              } }>Close</Button> </DialogContent>}/>} />
-            <Box padding='10px' display='flex' flexDirection='column'>
-            <TextField fullWidth={true} value={name} onChange={(e) => setName(e.target.value)} required label="Gadget Name" />
-            <TextField fullWidth={true} value={model} onChange={(e) => setModel(e.target.value)} required label="Gadget Model" />
-            <TextField fullWidth={true} value={brand} onChange={(e) => setBrand(e.target.value)} required label="Gadget Brand Name" />
+            <Box padding='10px' gridGap='10px' display='flex' flexDirection='column'>
+            <TextField fullWidth={true} variant='outlined' value={name} onChange={(e) => setName(e.target.value)} required label="Gadget Name" />
+            <TextField fullWidth={true} variant='outlined' value={model} onChange={(e) => setModel(e.target.value)} required label="Gadget Model" />
+            <TextField fullWidth={true} variant='outlined' value={brand} onChange={(e) => setBrand(e.target.value)} required label="Gadget Brand Name" />
            
             <Select isMulti={true}
             isSearchable={true}
@@ -92,11 +101,12 @@ const RepairGadgets = () => {
         theme={theme => ({
             ...theme,
             borderRadius: '50',
-            fontSize: '11',
-            padding: '10',
+            fontSize: '10px',
+            padding: '20px',
             colors: {
                 ...theme.colors,
                 primary25: '#7497ff',
+                primary: 'white'
                 
             }
 
@@ -104,19 +114,24 @@ const RepairGadgets = () => {
       />
           
          
-           <div>
+           {/* <div>
                <h3>Service Type</h3>
          
-           <RadioGroup className={classes.radioContainer}>
+           {/* <RadioGroup className={classes.radioContainer}>
               <label className={classes.radio}>
-                   <Radio  color='primary' value='door post' label='Door Post Repair' about='Door'/> Door Post Repair
+                   <Radio  color='primary' value='door post'/> Door Post Repair
               (Extra Charges Apply)</label> 
               <label className={classes.radio}>
-                   <Radio  value='outlet' color='primary' label='Outlet Repair'/> Outlet Repair</label>
-           </RadioGroup>
-           </div>
+                   <Radio  value='outlet' color='primary'/> Outlet Repair</label>
+           </RadioGroup> */}
+           {/* <Box display='flex' padding='10px' gridGap='10px' flexDirection='column'>
+              <label> <input name='service type' type='radio'/> Door Post Repair</label>
+              <label> <input name='service type' type='radio'/> Outlet Repair</label>
+           </Box> */}
+           
            <br/>
-           <Button disabled={!name || !brand || !model  || !radio} onClick={handleSubmit} 
+           <Button disabled={!name || !brand || !model  || !selectedDamage ||
+            selectedDamage === null || selectedDamage.length < 1} size='large' endIcon={<BsGear/>} onClick={handleSubmit} 
            children='Request Service' variant='contained' color='primary'/>
             </Box>
         </form>
