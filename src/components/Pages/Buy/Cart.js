@@ -15,19 +15,19 @@ const {path, url} = useRouteMatch()
     useEffect(() => {
         window.scrollTo(0,0)
     }, [])
-        const getPosition = (position) => {
-            console.log('position',position.coords.longitude)
-        }
+    //     const getPosition = (position) => {
+    //         console.log('position',position.coords.longitude)
+    //     }
         
-       if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
-            console.log('Error', error.message)
-        })
+    //    if(navigator.geolocation){
+    //     navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
+    //         console.log('Error', error.message)
+    //     })
 
-    }
-    else{
-        console.log('cant get location')
-    }
+    // }
+    // else{
+    //     console.log('cant get location')
+    // }
     
     
       const useStyle = makeStyles(theme => ({

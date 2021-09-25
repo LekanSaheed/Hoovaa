@@ -22,6 +22,31 @@
     padding: 20px;
     transition: all ease-in-out .3s;
 }
+.circle{
+    background-color: #414659;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    position: absolute;
+    margin-right: -30px;
+    margin-top: -10px;
+    z-index: 1;
+}
+.circle2{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+    position: relative;
+    float: right;
+    margin-top: 0px;
+    margin-right: 30px;
+    background-color: #22222c;
+}
+.circContainer{
+    align-self: flex-end;
+    margin-bottom: -60px;
+    position: relative;
+}
 .account-links-child:hover{
     background-color: #fafafa;
     transform: scale(1.02) ;

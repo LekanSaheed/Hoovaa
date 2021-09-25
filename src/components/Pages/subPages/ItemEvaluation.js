@@ -33,7 +33,8 @@ const ItemEvaluation = () => {
         <div>  <div style={{fontSize: '14px', fontWeight: '500'}}> {item.name}</div>
            <div style={{ fontSize: '12px'}}>Evaluated at</div>
            <div style={{color: '#7497ff', fontSize: '20px'}}>{item.evaluated.toLocaleString() + ' Naira'}</div>
-            <div style={{fontSize:'11px'}}><span className='theme-text'>{Math.floor(Math.random(150) * 10) + 1}k+ </span>of this sold on <span className='theme-text'>Hoovah</span></div>
+            <div style={{fontSize:'11px'}}><span className='theme-text'>{Math.floor(Math.random(150) * 10) + 1}k+
+             </span>of this sold on <span className='theme-text'>Hoovah</span></div>
            </div>
            <Link className="eval-btn" to={`${url + '/user-device-info'}`}>See exact Value<AiOutlineArrowRight/></Link>
         </div>

@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 import {BsGear} from 'react-icons/bs'
 
+
+
 const RepairGadgets = () => {
   
     React.useEffect(() => {
@@ -112,7 +114,7 @@ const RepairGadgets = () => {
 
         })}
       />
-          
+    
          
            {/* <div>
                <h3>Service Type</h3>
