@@ -3,7 +3,8 @@ import React, {useState} from 'react'
 import { db } from '../components/firebase'
 import { GlobalContext } from '../reducers/context'
 import {AiOutlineCheck, AiOutlineCloseCircle} from 'react-icons/ai'
-
+import { MdKeyboardArrowRight } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 const Repairs = () => {
     const {state} = GlobalContext()
@@ -95,10 +96,10 @@ const Repairs = () => {
         const custRef = db.collection('users').doc(item.customerId).collection('repairHistory').doc(item.repairId)  
        console.log(item)
         custRef.update({
-           collected: true
+           personnelReturned: true
         })  
         .then(()=> {
-            docRef.update({collected: true})  
+            docRef.update({personnelReturned: true})  
            
         })
         .then(()=>{
@@ -126,12 +127,19 @@ const Repairs = () => {
             {error && error}
             <Box>
                 {loaded ? null : 'Loading'}
+                <Link><Box display='flex' justifyContent='space-between' >
+                    <span>
+                        New Repair Orders
+                    </span>
+                    <span>
+                        <MdKeyboardArrowRight/>
+                    </span></Box></Link>
         {React.Children.toArray(
             repairs.filter(i => i.isRepaired === false).map(repair => {
                 return(
                     
                     <Box className={classes.gadgets} display='flex' flexDirection='column' onLoad={() => setLoad(true)}>
-                      
+                      <div>Date: {repair.created.toDate().toDateString()}</div>
                         <div>Gadget Name: {repair.name}</div>
                         <div>Gadget Brand: {repair.brand}</div>
                         <div>Gadget Model: {repair.model}</div>
@@ -202,7 +210,7 @@ const Repairs = () => {
                     <Box>
                         
                        <Box>
-                       {repair.collected ? 'Returned' : 'Not Returned'}
+                       {repair.personnelReturned ? 'Returned' : 'Not Returned'}
                         </Box>
                         <Button onClick={() => updateRepairDoc(repair)}>
                             Change Status

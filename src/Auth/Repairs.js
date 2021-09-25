@@ -132,7 +132,7 @@ const {state} = GlobalContext()
                   </div>
                 </div>
                
-                <div className={classes.date}>Date </div>
+                <div className={classes.date}>Date: {repair.created.toDate().toDateString()} </div>
                <Box display='flex' className={classes.name} justifyContent='space-between'> <div> {item.name}</div>
                 <div> {item.brand}</div>
                 </Box>

@@ -57,11 +57,14 @@ const RepairGadgets = () => {
             const systemDoc = db.collection('repairs').doc()
           const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(newId)
           systemDoc.set({
-            isRepaired: false, name, brand, model, damages: selectedDamage, customerId: state.currentUser.uid, repairId: newId,
-            personnelReceived: false, personnelReturned: false
+            isRepaired: false, name, brand, model, damages: selectedDamage,
+             customerId: state.currentUser.uid, repairId: newId,
+            personnelReceived: false, personnelReturned: false,
+            created: firebase.firestore.Timestamp.now()
           }).then(() =>{
             docRef.set({isRepaired: false, name, brand, model, damages: selectedDamage,
-                personnelReceived: false, personnelReturned: false})
+                personnelReceived: false, personnelReturned: false,
+                created: firebase.firestore.Timestamp.now()})
             .then(() => {
                 setSuccess('Your Request Has been Received And You Shall be Contacted Shortly')
                 setError('')

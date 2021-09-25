@@ -29,11 +29,13 @@ const AppProvider = ({ children }) => {
     const getRepairData = () => {
         const repairData = []
         const docRef = db.collection('repairs')
-        docRef.onSnapshot(snapshot => {
+        docRef.orderBy('created', 'asc').onSnapshot(snapshot => {
             snapshot.forEach(doc => {
-                const {name, brand, model, damages, isRepaired, repairId, customerId} = doc.data()
+                const {name, brand, model, damages, isRepaired, repairId, customerId, personnelReceived,
+                     personnelReturned, created,} = doc.data()
                 repairData.push({
                     name, brand, model, damages, isRepaired, repairId,
+                    personnelReceived, personnelReturned, created,
                     customerId,
                     id: doc.id
                 })
