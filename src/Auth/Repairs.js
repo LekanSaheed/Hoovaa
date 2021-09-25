@@ -15,9 +15,13 @@ const {state} = GlobalContext()
             const arr = []
             
             snapshot.forEach(doc => {
-                const {collected, name, damages, brand, isRepaired, model} = doc.data()
+                const {created, personnelReturned, 
+                    personnelReceived,
+                     name, damages, brand, isRepaired, model} = doc.data()
                 arr.push({
-                    collected,
+                    created,
+                     personnelReturned,
+                     personnelReceived,
                     name,
                     damages,
                     brand,
@@ -50,7 +54,7 @@ const {state} = GlobalContext()
         damagesCont: {
             gap: '10px',
             alignItems: 'center',
-            overflowY: 'scroll'
+            overflowX: 'scroll'
         },
         dmgItem: {
             padding: '5px 10px',
@@ -117,6 +121,7 @@ const {state} = GlobalContext()
                Your repair orders will appear here when you make a repair order</div>
             </>}
             {repair ? repair.map(item => {
+                
                return(
                 <Box onLoad={() => setLoad(true)} className={classes.gadget} display='flex'
                  flexDirection='column' key={item.id} > 
@@ -132,7 +137,7 @@ const {state} = GlobalContext()
                   </div>
                 </div>
                
-                <div className={classes.date}>Date: {repair.created.toDate().toDateString()} </div>
+                <div className={classes.date}>Date: {item.created.toDate().toDateString()}  </div>
                <Box display='flex' className={classes.name} justifyContent='space-between'> <div> {item.name}</div>
                 <div> {item.brand}</div>
                 </Box>
