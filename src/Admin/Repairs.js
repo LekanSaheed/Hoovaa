@@ -11,7 +11,7 @@ const Repairs = () => {
  const [modal, setModal] = useState(false)
  const [error, setError] = useState('')
  const [loaded, setLoad] = useState(false)
- const repairs = state.repairDataAdmin
+
  
     React.useEffect(() => {
         // const repairData = []
@@ -162,7 +162,7 @@ const Repairs = () => {
 <Route path={path + '/repaired-gadgets'}>
 <Box>
        {React.Children.toArray(
-           repairs.filter(i => i.isRepaired === true).map(repair => {
+           state.repairDataAdmin.filter(i => i.isRepaired === true).map(repair => {
                return(
                    <Box className={classes.gadgets} display='flex' flexDirection='column' onLoad={() => setLoad(true)}>
                      
@@ -214,7 +214,7 @@ const Repairs = () => {
 </Route>
            <Route path={path + '/new-repair-orders'}>
       {React.Children.toArray(
-           repairs.filter(i => i.isRepaired === false).map(repair => {
+           state.repairDataAdmin.filter(i => i.isRepaired === false).map(repair => {
                return(
                    
                    <Box className={classes.gadgets} display='flex' flexDirection='column' onLoad={() => setLoad(true)}>
