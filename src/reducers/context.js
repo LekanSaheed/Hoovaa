@@ -27,9 +27,10 @@ const AppProvider = ({ children }) => {
     }
 
     const getRepairData = () => {
-        const repairData = []
+        let repairData = []
         const docRef = db.collection('repairs')
-        docRef.orderBy('created', 'asc').onSnapshot(snapshot => {
+        docRef.orderBy('created', 'desc').onSnapshot(snapshot => {
+            repairData = []
             snapshot.forEach(doc => {
                 const {name, brand, model, damages, isRepaired, repairId, customerId, personnelReceived,
                      personnelReturned, created,} = doc.data()
@@ -47,16 +48,13 @@ const AppProvider = ({ children }) => {
     
     const getUsedGadgets = () => {
         const data = []
-        db.collection('usedGadgets').get().then(querySnapshot => {
+        db.collection('usedGadgets').orderBy('created').onSnapshot(querySnapshot => {
            querySnapshot.forEach((doc) => {
                data.push(doc.data())
                dispatch({type: 'SET_USED_GADGETS', payload: data})
            })
             
-        }).catch(err => {
-            console.log(err)
         })
-       
     }
     useEffect(() => {
         getRepairData()

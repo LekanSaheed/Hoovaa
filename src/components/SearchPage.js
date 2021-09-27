@@ -41,7 +41,7 @@ const SearchPage = () => {
     }))
     const {setSearchResult, state} = GlobalContext()
     const [search, setSearch] = useState('')
-    const dummy = state.phones
+    const dummy = state.gadgets
     const classes = useStyle()
     const history = useHistory()
     const barChild = <Box justifyContent='space-between'  padding="0 13px" alignItems='center' display='flex' >
@@ -54,7 +54,7 @@ const SearchPage = () => {
     </Box>
    
  const {path, url} = useRouteMatch()
-    const searchResult = dummy.filter(n => {
+    const searchResult = dummy && dummy.filter(n => {
         return n.name.toLowerCase().includes(search.toLowerCase())
     }).map((n, id) => {
         return(

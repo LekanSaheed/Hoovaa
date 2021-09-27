@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { db } from '../components/firebase'
 import { GlobalContext } from '../reducers/context'
 import {Box, makeStyles} from '@material-ui/core'
+import { Route, Switch, useRouteMatch, useHistory } from 'react-router-dom'
+import EditRepair from './EditRepair'
 
 const Repairs = () => {
     const [repair, setRepair] = useState([])
@@ -91,12 +93,19 @@ const {state} = GlobalContext()
             fontSize: '11px'
         }
     }))
+
+
     const classes = useStyle()
+
+
+    const {path, url} = useRouteMatch()
+    const history = useHistory()
+
     const cancelOrder = (item) => {
-        const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(item.docId)
+        const docRef = db.collection('users').doc(state.currentUser.uid)
+        .collection('repairHistory').doc(item.docId)
 
       const rdRefs = db.collection('repairs').where('repairId', '==', item.docId)
-     console.log(rdRefs)
      rdRefs.get().then((querySnapshot)=> {
         querySnapshot.forEach((doc)=> {
           doc.ref.delete();
@@ -113,6 +122,8 @@ const {state} = GlobalContext()
         })
     }
     return (
+        <Switch>
+            <Route path={path} exact>
         <Box className={classes.root} padding='10px' display='flex' flexDirection='column'>
             My Repair History
             {loaded && 'loaded'}
@@ -137,7 +148,7 @@ const {state} = GlobalContext()
                   </div>
                 </div>
                
-                <div className={classes.date}>Date: {item.created.toDate().toDateString()}  </div>
+                <div className={classes.date}>Date: {item.created && item.created.toDate().toDateString()}  </div>
                <Box display='flex' className={classes.name} justifyContent='space-between'> <div> {item.name}</div>
                 <div> {item.brand}</div>
                 </Box>
@@ -152,8 +163,13 @@ const {state} = GlobalContext()
                     })}
                 </Box>
                 <Box display='flex' gridGap='10px' justifyContent='space-between'>
-                <button style={{width: '100%', padding: '17px', borderRadius: '15px', border: 'none',
+        
+                    <button onClick={() => {
+                        history.push(url + '/edit')
+                    localStorage.setItem('oldRepairState', JSON.stringify(item))
+                }} style={{width: '100%', padding: '17px', borderRadius: '15px', border: 'none',
                  background: '#e5e7fe', fontWeight: '600'}} >Edit</button>
+                 
                  <button style={{width: '100%', padding: '17px', borderRadius: '15px', border: 'none',
                   background: '#243c92', color: '#fff', fontWeight: '600'}}
                 onClick={() => cancelOrder(item)}>Cancel</button>
@@ -162,6 +178,12 @@ const {state} = GlobalContext()
                )
             }) : 'Repair History Will appear here' }
         </Box>
+
+        </Route>
+            <Route path={path + '/edit'}>
+                <EditRepair/>
+            </Route>
+        </Switch>
     )
 }
 

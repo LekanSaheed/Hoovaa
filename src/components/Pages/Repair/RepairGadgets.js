@@ -36,7 +36,7 @@ const RepairGadgets = () => {
     const [name, setName] = useState('')
     const [brand, setBrand] = useState('')
     const [model, setModel] = useState('')
-    const {state} = GlobalContext()
+    const {state, setModalStat} = GlobalContext()
     const [selectedDamage, setSelectedDamage] = useState(null)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -49,33 +49,58 @@ const RepairGadgets = () => {
             setSelectedDamage(selectedDamage)
     }
     const handleSubmit = () => {
+        const loader = document.querySelector('.loader-container')
+        loader.classList.remove('loader-hide')
         if(!state.isUser){
             history.push('/login')
+            loader.classList.add('loader-hide')
         }
         const newId = new Date().getTime().toString()
         if(state.isUser){
             const systemDoc = db.collection('repairs').doc()
-          const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory').doc(newId)
+          const docRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory')
+          .doc(newId)
+          let notificationRef = db.collection('notifications').doc()
+        //   Set order to database
           systemDoc.set({
             isRepaired: false, name, brand, model, damages: selectedDamage,
              customerId: state.currentUser.uid, repairId: newId,
             personnelReceived: false, personnelReturned: false,
             created: firebase.firestore.Timestamp.now()
           }).then(() =>{
+            //   Set order to user database
             docRef.set({isRepaired: false, name, brand, model, damages: selectedDamage,
                 personnelReceived: false, personnelReturned: false,
                 created: firebase.firestore.Timestamp.now()})
             .then(() => {
+                //Set notifications
+               
+                notificationRef.set({
+                    repairId: newId,
+                    customerId: state.currentUser.uid,
+                    message: `${'New repair order placed'}`,
+                    read: false,
+                    type: 'repair',
+                   attachments: {
+                       name, damages: selectedDamage, brand, model
+                   },
+                   created: firebase.firestore.Timestamp.now()
+                })
                 setSuccess('Your Request Has been Received And You Shall be Contacted Shortly')
                 setError('')
-            })
-            .catch(err => {
-              setError(err.message)
-              setSuccess('')
+                setName('')
+                setBrand('')
+                setSelectedDamage([])
+                setModel('')
+                loader.classList.add('loader-hide')
+                setModalStat('Request placed Successfully')
             })
           }).catch(err => {
               setError(err.message)
               setSuccess('')
+              loader.classList.add('loader-hide')
+              setModalStat('An Error Occured')
+              
           })
          console.log(radio)
         }

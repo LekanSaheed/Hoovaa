@@ -7,7 +7,7 @@ const Search = () => {
 
     return (
        <Link to='/search'>
-            <div className='search-container'>
+            <div id='search' className='search-container'>
             <AiOutlineSearch/>
             <input type='search' placeholder='Search your brand or model'/>
             

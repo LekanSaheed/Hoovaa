@@ -36,11 +36,11 @@ const loader = document.querySelector('.loader-container')
     return (
         <div className='login-form-container'>
             <form className='login-form'>
-                <span style={{color: '#7497ff', fontWeight: '500', textAlign: 'center'}}>LOGIN TO HOOVAA</span><br/>
+                <Link to='/' style={{color: '#7497ff', fontWeight: '500', textAlign: 'center'}}>LOGIN TO HOOVAA</Link><br/>
                 <span style={{color: 'red', fontSize: '11px'}}>{error && error.message}</span>
             <div className='form-input-cont'>
                 
-                <TextField label='email' variant='standard' error={error.code === 'auth/invalid-email' || error.code === 'auth/invalid-credential' ? true : false }
+                <TextField label='email' variant='outlined' error={error.code === 'auth/invalid-email' || error.code === 'auth/invalid-credential' ? true : false }
                  fullWidth={true} disableUnderline={!error} type='text' placeholder='Email' value={email} required onChange={(e) => {
                      setEmail(e.target.value)
                      setError('')
@@ -48,7 +48,9 @@ const loader = document.querySelector('.loader-container')
             </div>
             <div className='form-input-cont'>
                
-                <TextField label='password' error={error.code === 'auth/invalid-credential' && true} fullWidth={true} disableUnderline={!error} type='password' placeholder='Password'
+                <TextField label='password' 
+                error={error.code === 'auth/invalid-credential' && true} 
+                fullWidth={true} disableUnderline={!error} type='password' variant='outlined' placeholder='Password'
                  value={password} required onChange={(e) => {
                      setPassword(e.target.value)
                      setError('')

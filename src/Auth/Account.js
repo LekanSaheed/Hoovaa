@@ -16,6 +16,8 @@ import AddressBook from './AddressBook'
 import Orders from './Orders'
 import Repairs from './Repairs'
 import {Helmet} from 'react-helmet'
+import { Box } from '@material-ui/core'
+import Notifications from './Notifications'
 // import { firebase } from '../components/firebase'
 
 const Account = () => {
@@ -84,7 +86,10 @@ icon: <FiLogOut/>,
         </div>
         
            </div>
+           <Box style={{color: '#bebebe', fontSize:'14px', borderBottom: 'solid 1px #bebebe'}}
+           margin='10px' padding='10px'>History</Box>
            <div className='account-links'>
+             
                {mainData.map((item, idx) => {
                    return(
                        <Link key={idx} className='account-links-child' to={`${url}/${item.text.toLowerCase().replace(/ /g, '-')}`}>
@@ -101,7 +106,10 @@ icon: <FiLogOut/>,
                    )
                })}
            </div>
+               <Box style={{color: '#bebebe', fontSize:'14px', borderBottom: 'solid 1px #bebebe'}}
+           margin='10px' padding='10px'>Profile & Notifications</Box>
             <div className='account-links'>
+
                {data.map((item, idx) => {
                    return(
                        <Link className='account-links-child' to={item.text === "Logout" ? '/logout' : url + '/' + item.text.toLowerCase().replace(/ /g, '-')} key={idx}>
@@ -127,6 +135,7 @@ icon: <FiLogOut/>,
           </Route>
                <Route path={path + '/my-orders'} component={Orders}/>
                <Route path={path + '/my-repair-history'} component={Repairs}/>
+               <Route path={path + '/notifications'} component={Notifications}/>
       </Switch>
           <div className='account-footer'>
          <div className='af-child'>

@@ -1,6 +1,8 @@
 .form-input-cont{
     width: 100%;
     margin: 10px 0;
+    display: flex;
+    align-items: baseline;
 }
 .form-input-cont label{
     font-size: 12px;
@@ -22,6 +24,9 @@
     width: 320px;
     border: solid 1px whitesmoke;
     margin-top: -60px;
+    gap: '20px';
+    display: flex;
+    flex-direction: column;
 
 }
 .login-form-btn{
