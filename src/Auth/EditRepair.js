@@ -25,13 +25,15 @@ const EditRepair = () => {
       const rdRefs = db.collection('repairs').where('repairId', '==', oldState.docId)
       docRef.update({name, brand, model, damages: selectedDamage, modified: 
              firebase.firestore.Timestamp.now()}).then(() => {
-                 rdRefs.update({name, brand, model, damages: selectedDamage, modified: 
+                 rdRefs.forEach(doc => {
+             doc.update({name, brand, model, damages: selectedDamage, modified: 
                     firebase.firestore.Timestamp.now()})
                     .then(() => loader.classList.add('loader-hide'))
                     .catch(err => {console.log(err)
                         loader.classList.add('loader-hide')})
                     setModalStat('Successfully Updated')
                     localStorage.removeItem('oldRepairState')
+})
              }).catch(err => {
                  setModalStat('An error Occured')
                  loader.classList.add('loader-hide')
