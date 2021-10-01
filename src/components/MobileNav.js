@@ -14,10 +14,11 @@ import { Button, Box } from '@material-ui/core'
 
 
 const MobileNav = () => {
-    const {state, toggleNav, closeNav} = GlobalContext()
+    const {state, toggleNav, closeNav, cityStat} = GlobalContext()
     
 const openCity = () => {
     closeNav()
+    cityStat()
     
 }
     return (
@@ -28,11 +29,13 @@ const openCity = () => {
                  <MdLocationOn/>
                    <div> <div>Your city<br/>
                    <div style={{display: 'flex', alignItems: 'center'}}> 
-                   <span style={{fontSize: '15px', fontWeight: '500'}} onClick={openCity}>{state.city}</span><AiOutlineCaretDown/></div>
+                   <span style={{fontSize: '15px', fontWeight: '500'}} 
+                   onClick={openCity}>{state.city ? state.city : 'Select a city'}</span><AiOutlineCaretDown/></div>
                     </div>
                     </div>
                  </div>
-                    <div onClick={toggleNav}><CgClose style={{fontSize: '22px', textShadow: '0 0 5px 5px white'}}/></div>
+                    <div onClick={toggleNav}><CgClose style={{fontSize: '30px',
+                    }}/></div>
                     </div>
                    <Box display='flex' justifyContent='space-between'
                    alignItems='center' padding='10px'>

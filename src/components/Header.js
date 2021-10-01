@@ -15,9 +15,9 @@ const {toggleNav} = GlobalContext()
             <div className='header-container' id='tdop' ref={headerRef}>
                 <div className='logo'><BsCheckCircle/><Link to='/'>HOOVAA</Link></div>
                 
-                <div className='menu'>
-                <AiOutlineMenu style={{fontSize: '20px'}}onClick={toggleNav}/>
-                </div>
+                <span className='menu' onClick={toggleNav}>
+                <AiOutlineMenu lassName='menu'/>
+                </span>
                 <LgNav/>
             </div>
         </>

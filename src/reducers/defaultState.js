@@ -25,8 +25,9 @@ export const defaultState = {
     newSelected: [],
     city: localStorage.getItem('city') ? localStorage.getItem('city') : '',
     isCity: localStorage.getItem('city') ? false : true,
+    isMainCity: false,
     currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
-    isUser: localCurrentUser ? true : false,
+    isUser: true,//localCurrentUser ? true : false,
     searchResult: sessionSR ? JSON.parse(sessionSR) : [],
     repairDataAdmin: []
 }

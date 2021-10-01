@@ -35,12 +35,20 @@
 
   if(action.type === 'SET_CITY'){
       localStorage.setItem('city', action.payload)
+
     return{
         ...state,
         isCity: false,
+        isMainCity: false,
         city: action.payload
     }
 }
+  if(action.type === 'CITY_STAT'){
+      return{
+          ...state,
+          isMainCity: true
+      }
+  }
   if(action.type === "SET_DEVICE_STORAGE"){
       const name = action.payload
       const img = action.payload2
@@ -68,7 +76,7 @@
     }
   }
   if(action.type === "LOG_OUT"){
-      localStorage.removeItem('user')
+      localStorage.clear()
     return{
           ...state,
           isUser: false,

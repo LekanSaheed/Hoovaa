@@ -27,11 +27,12 @@
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
     font-size: 10px;
-
+   transition: .9s;
 }
 .sale-items:hover{
     background-color: whitesmoke;
     transition: .5s;
+    animation: blob 12s infinite;
 }
 .sale-items a{
     color: black;

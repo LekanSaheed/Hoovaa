@@ -29,6 +29,7 @@ import DataCollection from './reducers/DataCollection'
 import { Box, Button } from '@material-ui/core'
 import { RiSurveyLine } from 'react-icons/ri'
 import Error from './components/Error'
+import Cities from './components/Cities'
 
 const App = ({hideLoader}) => {
 
@@ -65,7 +66,7 @@ const {state} = GlobalShop()
       {state.isModal &&  <StatusModal modalContent={state.modalContent}/>}
       {newState.isModal && <StatusModal modalContent={newState.modalContent}/>}
      <MobileNav/>
-    
+    <Cities state={newState.isMainCity}/>
       <Switch>
         <Route exact path='/'>
         <Box display='flex' alignItems='center' justifyContent='space-between' fontSize="13px" padding='10px'>

@@ -10,12 +10,13 @@ const LogOut = () => {
   const  handleLogout = () => {
       firebase.auth().signOut()
       .then(() => {
+       
        history.push('/login')
         logout()
       })
+      .then(() =>  window.location.reload())
       .catch((error) => {
         setErr(error)
-        console.log(err)
       })
   }
   const history = useHistory()

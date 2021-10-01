@@ -7,13 +7,14 @@
     background-color: #fafafa;
 }
 .brand-img{
-    height: 70px;
-    width: 70px;
+    height: 85px;
+    width: 80px;
     flex: 1;
     margin: 6px;
     box-shadow: 0 0 14px 0 rgba(0 0 0 / 14%);
-    border-radius: 5px;
+    border-radius: 7px;
     transition: .5s;
+    background-color: white;
 }
 .brand-img:hover{
     transform:scale(1.05)

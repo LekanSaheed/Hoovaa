@@ -71,7 +71,7 @@ const Cards = () => {
                </div>
                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center'}}> 
 
-                  {item.img && <img src={item.img} alt='icons'/>}
+                  {item.img && <img style={{margin: '0'}} className='blob' src={item.img} alt='icons'/>}
                   <div></div>
                  {item.variant &&  <Fab size='small' variant='extended' className={classes.isRound} children={<AiOutlineArrowRight/>}/>}
                  {item.child &&  <Button size='small' className={classes.root} children={<span>{item.child}</span>}/>}

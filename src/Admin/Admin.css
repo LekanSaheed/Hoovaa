@@ -8,25 +8,16 @@
     margin-top: 20px;
     box-shadow: 0 0 10px 0 rgba(0 0 0 / 17%);
 }
-.form-control label{
-    font-size: 12px;
-}
+
 .form-control button{
-    padding: 13px;
-    border: solid 2px #7497ff23;
-    background-color: #7497ff;
-    color: white;
-    font-weight: 600;
+    margin-top: 20px;
 }
 .input-container{
     width: 100%;
     padding: 10px;
     margin-bottom: 7px;
 }
-.input-container input{
-    width: 100%;
-    padding: 10px;
-}
+
 .check-container{
     border: solid 2px #7497ff23;
     border-radius: 7px;

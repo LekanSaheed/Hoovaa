@@ -93,10 +93,10 @@ const history = useHistory()
                 </ul>
             </div>
             </div>
-            {state.isCity && <Cities/>}
+            {state.isCity && <Cities state={state.isCity}/>}
             <HowItWorks bc='#fafafa' mTop='0px'/>
         </Route>
-           
+            
                     <Route  path={`${path + '/phones-brands'}`}>
                         <Brands device='phone' brands={state.phoneBrands}/>
                     </Route>

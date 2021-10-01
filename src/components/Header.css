@@ -25,22 +25,12 @@
 }
 .menu{
     color: rgb(27, 27, 100);
-}
-.sticky{
-    position: fixed;
-    background-color: white;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-.sticky ~ .search-container{
-    margin-top: 60px !important;
+    font-size: 30px !important;
+  
 }
 @media(min-width: 812px){
     .menu{
         display: none;
     }
-    .sticky ~ .search-container{
-        margin-top: 100px !important;
-    }
+   
 }

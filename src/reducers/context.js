@@ -80,6 +80,9 @@ const setDeviceStorage = (n,s, p) => {
 const setCity = (city) => {
     dispatch({type: "SET_CITY", payload: city})
 }
+const cityStat = () => {
+    dispatch({type: 'CITY_STAT'})
+}
 const setUser = (user) => {
     dispatch({type: 'SET_USER', payload: user})
 }
@@ -102,7 +105,7 @@ const close = () => {
              setDeviceStorage, setCity,
               setUser, logout,
               setSearchResult, setModalStat,
-            close
+            close, cityStat
         }}>{children}</AppContext.Provider>
     )
 }

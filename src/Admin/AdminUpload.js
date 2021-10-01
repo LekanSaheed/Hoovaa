@@ -1,19 +1,39 @@
-import { Box, Input, Button } from '@material-ui/core'
+import { Box, Button, TextField } from '@material-ui/core'
 import React, {useState} from 'react'
 import './Admin.css'
 import {makeStyles} from '@material-ui/core'
 import { firebaseStorage, firebase } from '../components/firebase'
+import Select from 'react-select'
+import {brandOptions, categoryOptions, storageOptions} from './options'
+import { GlobalContext } from '../reducers/context'
 
-
-const AdminUpload = ({colRef, tag}) => {
+const AdminUpload = ({colRef, tag, type}) => {
     
     const [img, setImg] = useState(null)
+    const [img2, setImg2] = useState(null)
+    const [img3, setImg3] = useState(null)
     const [name, setName] = useState('')
-    const [brand, setBrand] = useState('')
-    const [category, setCategory] = useState('')
-    const [worth, setWorth] = useState(0)
-    const[error, setError] = useState('')
+    const [brand, setBrand] = useState(null)
+    const [category, setCategory] = useState(null)
+    const [storage, setStorage] = useState(null)
+    const [worth, setWorth] = useState(null)
+    const [error, setError] = useState('')
+    const [error2, setError2] = useState('')
+    const [error3, setError3] = useState('')
+    const [description, setDescription] = useState('')
 
+
+    const handleBrand = (brand) => {
+        setBrand(brand)
+   
+    }
+    const handleCategory = (category) => {
+        setCategory(category)
+        
+    }
+    const handleStorage = (storage) => {
+        setStorage(storage)
+    }
     const useStyles = makeStyles(theme => ({
         tag: {
             background: 'grey',
@@ -31,35 +51,62 @@ const AdminUpload = ({colRef, tag}) => {
    
    const handleImg = (e) => {
     const selected = e.target.files[0]
-    
     if(selected && types.includes(selected.type)){
         
         setImg(selected)
         setError('')
-        console.log(selected)
-        console.log(img)
     }
     else if(!selected){
-        setError('no file selected')
-        console.log('no file')
+        setError('No file selected')
+       
     }
     else{
-        setError('invalid file type')
+        setError('Invalid file type')
         setImg(null)
-       console.log('invalid')
     }
 }
+
+const handleImg2 = (e) => {
+    const selected = e.target.files[0]
+    if(selected && types.includes(selected.type)){
+        
+        setImg2(selected)
+        setError2('')
+    }
+    else if(!selected){
+        setError2('No file selected')
+       
+    }
+    else{
+        setError2('Invalid file type')
+        setImg2(null)
+    }
+}
+
+const handleImg3 = (e) => {
+    const selected = e.target.files[0]
+    if(selected && types.includes(selected.type)){
+        
+        setImg3(selected)
+        setError3('')
+    }
+    else if(!selected){
+        setError3('No file selected')
+       
+    }
+    else{
+        setError3('Invalid file type')
+        setImg3(null)
+    }
+}
+
+const {setModalStat} = GlobalContext()
 
 
    const handleSubmit = (e) => {
    const loader = document.querySelector(".loader-container")
 loader.classList.remove("loader-hide")
-       e.preventDefault()
-    const checked = []
-    const checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-    for(var i = 0; i < checkboxes.length; i++){
-        checked.push(checkboxes[i].value)
-    }  
+       e.preventDefault() 
         // const colRef = db.collection('usedPhones')
         const ref = firebaseStorage.ref(`/images/${img.name}`);
         const uploadTask = ref.put(img);
@@ -70,20 +117,20 @@ loader.classList.remove("loader-hide")
            //file upload
             colRef.add({
                 id: new Date().getTime().toString(), name,brand, category,
- price:  parseInt(worth), storage: checked, img: iurl,
+              desc: (type === 'products' && description),
+ price:  parseInt(worth), storage, img: iurl,
 created: firebase.firestore.Timestamp.now()
             })
             .then(() => {
 
 loader.classList.add("loader-hide")
 
-                alert("Document successfully written!");
+                setModalStat("Document successfully written!");
             })
-            .catch((error) => {
+            .catch((err) => {
 
-loader.classList.add("loader-hide")
-
-                alert("Error writing document: ", error);
+                loader.classList.add("loader-hide")
+                setModalStat('Error Writing Document')
             });
             });
         });
@@ -92,54 +139,123 @@ loader.classList.add("loader-hide")
   
     return (
         <div className={classes.root}>
-           <Box className={classes.tag} padding='10px' children={<span>{tag}</span>}/>
+           <Box className={classes.tag}  padding='10px' children={<span>{tag}</span>}/>
             <form className='form-control'>
-                {error && error}
+               <div className='input-container centered-text' style={{color: 'red'}}> {error && error} <br/>
+               {error2 && error2}<br/>
+               {error3 && error3}
+               </div>
               <div className='input-container'>
                   <label>Device Image</label>
-                   <Input type='file' onChange={handleImg}/>
+                   <TextField error={error} fullWidth={true} type='file' variant='outlined' onChange={handleImg}/>
               </div>
+              {type === 'products' && <>
+              <div className='input-container'>
+                  <label>Second Image</label>
+                   <TextField error={error2} fullWidth={true} type='file' variant='outlined' onChange={handleImg2}/>
+              </div>
+              <div className='input-container'>
+                  <label>Third Image</label>
+                   <TextField error={error3} fullWidth={true} type='file' variant='outlined' onChange={handleImg3}/>
+              </div>
+              </>}
                <div className='input-container'>
-                   <label>Device Name</label>
-                   <Input type='text' value={name} onChange={(e) => setName(e.target.value.toLowerCase())} required/>
+                   
+                   <TextField  label="Device Name" fullWidth={true} type='text' variant='outlined'
+                    value={name} onChange={(e) => setName(e.target.value.toLowerCase())} required/>
                </div>
                <div className='input-container'>
-                   <label>Device Brand</label>
-                   <Input type='text'  value={brand} onChange={(e) => setBrand(e.target.value.toLowerCase())} required/>
+                   
+                   <TextField type='number'
+                   variant='outlined' 
+                   value={worth} onChange={(e) => setWorth(e.target.value.toLowerCase())} required
+                   label='Device price'
+                   fullWidth={true}
+                   />
+               </div>
+               <div className='input-container'>
+                 
+                   <Select 
+            isSearchable={true}
+        value={brand}
+        onChange={handleBrand}
+        options={brandOptions}
+        placeholder='select brand'
+        theme={theme => ({
+            ...theme,
+            borderRadius: '50',
+            fontSize: '10px',
+            padding: '20px',
+            colors: {
+                ...theme.colors,
+                primary: 'black'
+                
+            }
+
+        })}
+      />
                </div>
               
                <div className='input-container'>
-                   <label>Category</label>
-                   <Input type='text'  value={category} onChange={(e) => setCategory(e.target.value.toLowerCase())} required/>
-               </div>
-               <div className='input-container'>
-                   <label>Device Worth</label>
-                   <Input type='number' value={worth} onChange={(e) => setWorth(e.target.value.toLowerCase())} required/>
-               </div>
+                 
+                   <Select
+            isSearchable={true}
+        value={category}
+        onChange={handleCategory}
+        options={categoryOptions}
+        placeholder='Select Category'
+        theme={theme => ({
+            ...theme,
+            borderRadius: '50',
+            fontSize: '10px',
+            padding: '20px',
+            colors: {
+                ...theme.colors,
+                primary: 'black'
+                
+            }
+
+        })}
+      />
+</div>
                
-               <div className='check-container'>
-                   <label>Storage</label>
-                 <div className='checks'> <span>8GB</span> <Input disableUnderline={true} type='checkbox' value="8000000000" required/> </div>
-                   <div className='checks'>
-                       <span>16GB</span>
-                   <Input type='checkbox' disableUnderline={true} value='17179869184' required/>
-                   </div>
-                   <div className='checks'>
-                       <span>32GB</span>
-                   <Input type='checkbox' disableUnderline={true} value='34359738368' required/>
-                   </div>
-                  <div className='checks'><span>64GB</span> <Input disableUnderline={true} type='checkbox' value='68719476736' required/></div>
-                  <div className='checks'><span>128GB</span> <Input disableUnderline={true} type='checkbox' value='137438953472' required/></div>
-                  <div className='checks'><span>256GB</span> <Input disableUnderline={true} type='checkbox' value='274877906944' required/></div>
-                   <div className='checks'><span>512GB</span><Input disableUnderline={true} type='checkbox' value='549755813888' required/></div>
-                   <div className='checks'>
-                       <span>1TB</span>
-                   <Input disableUnderline={true} type='checkbox' value='1099511627776' required/>
-                   </div>
-                  <div className='checks'><span>2TB</span> <Input type='checkbox' disableUnderline={true} value='2199023255552' required/></div>
-               </div>
-             
-               <Button variant="outlined" color="primary" onClick={handleSubmit}>Submit</Button>
+               
+            
+            <div className='input-container'>
+            <Select isMulti={type === 'usedGadgets' && true}
+            isSearchable={true}
+        value={storage}
+        onChange={handleStorage}
+        options={storageOptions}
+        placeholder='Select Storage'
+        theme={theme => ({
+            ...theme,
+            borderRadius: '50',
+            fontSize: '10px',
+            padding: '20px',
+            colors: {
+                ...theme.colors,
+                primary: 'black'
+                
+            }
+
+        })}
+      />
+            </div>
+            {type === 'products' &&  
+           <div className='input-container'>
+                <TextField variant='outlined' value={description} 
+                onChange={(e) => setDescription(e.target.value)}
+             placeholder='Description' fullWidth={true} multiline={true}
+            minRows={3}/>
+            </div>}
+             <div className='input-container'>
+             <Button disabled={!name || !brand || !category || !worth
+             || !storage || storage.length === 0 || !img || error ||
+            (type === 'products' && !description) || (type === 'products' && !img2)
+        || (type === 'products' && !img3)} fullWidth={true} size='large'
+              variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
+             </div>
             </form>
             
             

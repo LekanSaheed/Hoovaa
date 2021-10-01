@@ -16,7 +16,7 @@ import AddressBook from './AddressBook'
 import Orders from './Orders'
 import Repairs from './Repairs'
 import {Helmet} from 'react-helmet'
-import { Box } from '@material-ui/core'
+import { Box, Button } from '@material-ui/core'
 import Notifications from './Notifications'
 // import { firebase } from '../components/firebase'
 
@@ -81,9 +81,9 @@ icon: <FiLogOut/>,
             <h3 className='theme-text account-title'>Account</h3>
            <div className="account-greeting">
         <img src={currentUser.photoUrl ? currentUser.photoUrl : userImg} alt='dp'/>
-        <div>
+        <Button>
         { currentUser.displayName ? 'Welcome ' + currentUser.displayName : 'Welcome'}
-        </div>
+        </Button>
         
            </div>
            <Box style={{color: '#bebebe', fontSize:'14px', borderBottom: 'solid 1px #bebebe'}}

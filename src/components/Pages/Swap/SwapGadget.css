@@ -1,0 +1,35 @@
+.blob{
+    height: 100px;
+    width: 100px;
+    color: white;
+    background-color: #7497ff;
+    border-radius: 69% 31% 30% 67% / 72% 47% 40% 26%;
+    animation: blob 12s infinite linear;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    box-shadow: inset 0px 0px 10px 6px #5781ff;
+    transition: .9s;
+    font-weight: 600;
+}
+.blob:hover{
+    animation: shake .2s linear;
+}
+
+@keyframes shake {
+    0%{transform: scale(1);}
+    50%{transform: scale(1.06);}
+    100%{transform: scale(1);}
+}
+@keyframes blob {
+    0%{border-radius: 69% 31% 30% 67% / 72% 47% 40% 26%;}
+     30%{border-radius: 77% 82% 85% 75% / 60% 77% 57% 86%;} 
+    50%{border-radius:  31% 69% 67% 30% / 47% 72% 26% 40%}
+    70%{border-radius: 77% 82% 85% 75% / 60% 77% 57% 86%;} 
+    100%{border-radius: 69% 31% 30% 67% / 72% 47% 40% 26%;}
+}
+@-webkit-keyframes blob {
+  
+}

@@ -111,13 +111,15 @@ const RepairGadgets = () => {
             <Helmet>
                 <meta name='description' content='hoovaa, repair, repair gadgets, repair now, hoovaa, sell buy repair'/>
             </Helmet>
-            <Modal open={error || success} children={<Dialog open={success || error} children={<DialogContent>{error && error}
+            <Modal open={error || success}
+             children={<Dialog open={success || error} children={<DialogContent>{error && error}
              {success && success}<br/><br/>
              <Button variant='contained' color={`${error ? 'secondary': 'primary'}`} onClick={() => {
                  setError('')
                  setSuccess('')
              } }>Close</Button> </DialogContent>}/>} />
             <Box padding='10px' gridGap='10px' display='flex' flexDirection='column'>
+                <div className='blob'>Repair</div>
             <TextField fullWidth={true} variant='outlined' value={name} onChange={(e) => setName(e.target.value)} required label="Gadget Name" />
             <TextField fullWidth={true} variant='outlined' value={model} onChange={(e) => setModel(e.target.value)} required label="Gadget Model" />
             <TextField fullWidth={true} variant='outlined' value={brand} onChange={(e) => setBrand(e.target.value)} required label="Gadget Brand Name" />
