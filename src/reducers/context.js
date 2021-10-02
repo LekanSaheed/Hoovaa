@@ -32,12 +32,27 @@ const AppProvider = ({ children }) => {
         docRef.orderBy('created', 'desc').onSnapshot(snapshot => {
             repairData = []
             snapshot.forEach(doc => {
-                const {name, brand, model, damages, isRepaired, repairId, customerId, personnelReceived,
-                     personnelReturned, created,} = doc.data()
+                const {
+                    name,
+                     brand,
+                      model,
+                       damages,
+                        isRepaired,
+                         repairId, 
+                            customerId,
+                             personnelReceived,
+                               personnelReturned,
+                                created,
+                                dateReceived,
+                                   dateReturned,
+                                       dateRepaired} = doc.data()
                 repairData.push({
                     name, brand, model, damages, isRepaired, repairId,
                     personnelReceived, personnelReturned, created,
                     customerId,
+                     dateReceived,
+                    dateReturned,
+                     dateRepaired,
                     id: doc.id
                 })
                dispatch({type: 'SET_REPAIR_DATA', payload: repairData})

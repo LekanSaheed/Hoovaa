@@ -16,7 +16,8 @@
     /* grid-template-rows: repeat(2, auto); */
     margin-left: -1px  !important;
     margin-right: -2px  !important;
-    padding: 10px;
+    padding: 15px;
+    background-color: #fafafa;
 }
 .sale-icon{
     font-size: 24px;
@@ -24,18 +25,23 @@
     color: #7494ff;
 }
 .sale-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 7px;
     text-align: center;
     border: solid 1px #f5f5f5;
-    padding: 14px 16px;
+    padding: 12px 14px;
     font-size: 10px;
     height: 80px;
     color: black;
     transition: .5s;
     font-weight: 500;
-    margin: 8px;
+    margin: 5px;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 0px rgba(0 0 0 / 19%)
+    box-shadow: 0 0 5px 0px rgba(0 0 0 / 10%);
+    background-color: white;
 }
 .sale-item:hover{
     background-color: #F9F9F9;
@@ -69,7 +75,7 @@ a{
     font-weight: 600;
 }
 .sale-grid{
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 33.3%);
     grid-template-rows: repeat(2, auto);
 }
 }

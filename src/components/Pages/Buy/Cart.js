@@ -116,7 +116,7 @@ const classes = useStyle()
                  {item.name}
                         </div>
                         <div className='cart-item-brand'>
-                    Brand: {item.brand}
+                    Brand: {item.brand[0].value}
                         </div>
                        
                         

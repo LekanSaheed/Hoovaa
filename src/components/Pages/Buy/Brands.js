@@ -60,65 +60,65 @@ const Brands = ({brands, device}) => {
           
                 {/* Phones */}
             <Route path={path + '/apple-phones'}>
-               <Devices category  brand='apple'/>
+               <Devices category='phones'  brand='apple'/>
                 </Route>
-                <Route category path={path + '/samsung-phones'}>
-               <Devices  brand='samsung'/>
+                <Route  path={path + '/samsung-phones'}>
+               <Devices category='phones'  brand='samsung'/>
                 </Route>
-                <Route category path={path + '/tecno-phones'}>
-               <Devices  brand='tecno'/>
+                <Route  path={path + '/tecno-phones'}>
+               <Devices category='phones' brand='tecno'/>
                 </Route>
-                <Route category path={path + '/infinix-phones'}>
-               <Devices  brand='infinix'/>
+                <Route path={path + '/infinix-phones'}>
+               <Devices category='phones' brand='infinix'/>
                 </Route>
 
                {/* Laptops */}
 <Route path={path + '/apple-laptops'}>
                <Devices category='laptops'  brand='apple'/>
                 </Route>
-                <Route category='laptops' path={path + '/hp-laptops'}>
-               <Devices  brand='hp'/>
+                <Route  path={path + '/hp-laptops'}>
+               <Devices category='laptops' brand='hp'/>
                 </Route>
-                <Route category='laptops' path={path + '/toshiba-laptops'}>
-               <Devices  brand='toshiba'/>
+                <Route  path={path + '/toshiba-laptops'}>
+               <Devices category='laptops'  brand='toshiba'/>
                 </Route>
-                <Route category='laptops' path={path + '/dell-laptops'}>
-               <Devices  brand='dell'/>
+                <Route  path={path + '/dell-laptops'}>
+               <Devices category='laptops'  brand='dell'/>
                 </Route>
 
                {/* Tvs */}
 <Route path={path + '/toshiba-tvs'}>
                <Devices category='tvs'  brand='apple'/>
                 </Route>
-                <Route category='tvs' path={path + '/philips-tvs'}>
-               <Devices  brand='philips'/>
+                <Route  path={path + '/philips-tvs'}>
+               <Devices category='tvs' brand='philips'/>
                 </Route>
-                <Route category='tvs' path={path + '/panasonic-tvs'}>
+                <Route  path={path + '/panasonic-tvs'}>
                <Devices  brand='panasonic'/>
                 </Route>
-                <Route category='tvs' path={path + '/samsung-tvs'}>
-               <Devices  brand='philips'/>
+                <Route  path={path + '/samsung-tvs'}>
+               <Devices category='tvs' brand='philips'/>
                 </Route>
                {/* Home Appliances */}
                <Route path={path + '/apple-phones'}>
                <Devices category='homeAppliances'  brand='apple'/>
                 </Route>
-                <Route category='homeAppliances' path={path + '/samsung-phones'}>
-               <Devices  brand='samsung'/>
+                <Route  path={path + '/samsung-phones'}>
+               <Devices category='homeAppliances' brand='samsung'/>
                 </Route>
-                <Route category='homeAppliances' path={path + '/tecno-phones'}>
-               <Devices brand='tecno'/>
+                <Route  path={path + '/tecno-phones'}>
+               <Devices category='homeAppliances' brand='tecno'/>
                 </Route>
-                <Route category='homeAppliances' path={path + '/infinix-phones'}>
-               <Devices  brand='infinix'/>
+                <Route path={path + '/infinix-phones'}>
+               <Devices category='homeAppliances' brand='infinix'/>
                 </Route>
                {/* Gaming */}
 
-               <Route category='gamingGadgets' path={path + '/microsoft-consoles'}>
-               <Devices  brand='microsoft'/>
+               <Route  path={path + '/microsoft-consoles'}>
+               <Devices category='gamingGadgets' brand='microsoft'/>
                 </Route>
-                <Route category='gamingGadgets' path={path + '/sony-consoles'}>
-               <Devices  brand='sony'/>
+                <Route  path={path + '/sony-consoles'}>
+               <Devices category='gamingGadgets' brand='sony'/>
                 </Route>
         </Switch>
         

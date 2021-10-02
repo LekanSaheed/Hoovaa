@@ -106,19 +106,21 @@ const {state} = GlobalContext()
         .collection('repairHistory').doc(item.docId)
 
       const rdRefs = db.collection('repairs').where('repairId', '==', item.docId)
-     rdRefs.get().then((querySnapshot)=> {
-        querySnapshot.forEach((doc)=> {
-          doc.ref.delete();
-          console.log('deleted')
+         rdRefs.get()
+         .then((querySnapshot) => {
+          querySnapshot.forEach((doc)=> {
+              doc.ref.delete();
         });
-      }).catch(err=> {
+      })
+      .catch(err => {
           console.log(err)
+            window.location.reload()
       });
-     
         docRef.delete().then(() => {
             console.log('deleted')
         }).catch(err=> {
             console.log(err,'error')
+            window.location.reload()
         })
     }
     return (
@@ -162,7 +164,7 @@ const {state} = GlobalContext()
                         )
                     })}
                 </Box>
-                <Box display='flex' gridGap='10px' justifyContent='space-between'>
+               {!item.personnelReceived && <Box display='flex' gridGap='10px' justifyContent='space-between'>
         
                     <button onClick={() => {
                         history.push(url + '/edit')
@@ -172,8 +174,9 @@ const {state} = GlobalContext()
                  
                  <button style={{width: '100%', padding: '17px', borderRadius: '15px', border: 'none',
                   background: '#243c92', color: '#fff', fontWeight: '600'}}
-                onClick={() => cancelOrder(item)}>Cancel</button>
+                onClick={() => cancelOrder(item)}>Delete</button>
                 </Box>
+            }
                 </Box>
                )
             }) : 'Repair History Will appear here' }

@@ -39,12 +39,14 @@ const salesData = [
 const SalesComponent = () => {
     const sell = salesData.map((item, index) => {
         return(
+            <Link to={item.to}>
             <div key={index} className='sale-item'>
-               <Link to={item.to}>
+            
                <p className='sale-icon'>{item.icon}</p>
                 <p>{item.info}</p>
-                </Link>
+               
             </div>
+            </Link>
         )
     })
     return (

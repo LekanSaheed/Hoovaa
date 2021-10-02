@@ -130,7 +130,7 @@ loader.classList.add("loader-hide")
             .catch((err) => {
 
                 loader.classList.add("loader-hide")
-                setModalStat('Error Writing Document')
+                setModalStat('Error Writing Document', err)
             });
             });
         });
@@ -147,7 +147,9 @@ loader.classList.add("loader-hide")
                </div>
               <div className='input-container'>
                   <label>Device Image</label>
-                   <TextField error={error} fullWidth={true} type='file' variant='outlined' onChange={handleImg}/>
+                 
+                  <TextField hidden error={error} fullWidth={true} type='file' variant='outlined' onChange={handleImg}/>
+                  
               </div>
               {type === 'products' && <>
               <div className='input-container'>

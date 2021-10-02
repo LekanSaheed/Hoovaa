@@ -17,6 +17,8 @@ React.useEffect(() => {
     window.scrollTo(0,0)
 }, [])
 
+const newf = allGadgets.map(item => item);
+console.log(newf);
     return (
         <div>
            <Switch>
@@ -25,14 +27,14 @@ React.useEffect(() => {
                    {loaded ? null :<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0', right: '0',
                 left: '0', bottom: '0', width: '100%', zIndex: '1'}}>
                         <CircularProgress/></div>}
-            {allGadgets.filter((item) => item.brand === brand && item.category === category).map((item, index) => {
+            {allGadgets.filter((item) => item.brand[0].value === brand && item.category[0].value === category).map((item, index) => {
                  return(
                     <Link to={`${url + '/' + item.id + item.name.toLowerCase().replace(/ /g, '=?') }`}  key={index}>
                         
                     <div className='grid-item-item' onClick={() => viewDevice(item)} onLoad={()=> setLoad(true)}>
                         <div className='grid-img'>  <img src={item.img} alt='ige' /> </div>
                       {loaded && <> <span> {item.name}</span>
-                       <div>{item.brand}</div> </>    }  
+                       <div>{item.brand.map(i => i.value)}</div> </>    }  
                        </div> 
                        </Link>
                 )

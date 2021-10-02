@@ -17,23 +17,44 @@ const EditRepair = () => {
 }
 
     const handleUpdate = () => {
-        const loader = document.querySelector('.loader-container')
-        loader.classList.remove('loader-hide')
+        const loader = document.querySelector('.loader-container');
+        loader.classList.remove('loader-hide');
+        const rdRefs = db.collection('repairs').where('repairId', '==', oldState.docId);
         const docRef = db.collection('users').doc(state.currentUser.uid)
-        .collection('repairHistory').doc(oldState.docId)
-
-      const rdRefs = db.collection('repairs').where('repairId', '==', oldState.docId)
-      docRef.update({name, brand, model, damages: selectedDamage, modified: 
-             firebase.firestore.Timestamp.now()}).then(() => {
-                 rdRefs.forEach(doc => {
-             doc.update({name, brand, model, damages: selectedDamage, modified: 
-                    firebase.firestore.Timestamp.now()})
-                    .then(() => loader.classList.add('loader-hide'))
+        .collection('repairHistory')
+        .doc(oldState.docId);
+        
+     
+     docRef.update(
+         {
+             name,
+             brand,
+             model,
+             damages: selectedDamage,
+             modified: firebase.firestore.Timestamp.now()
+          })
+             .then(() => {
+                //  Update repair in admin doc
+                 rdRefs.get().then(snapshot => {
+                     snapshot.forEach(doc => {
+                    doc.ref.update(
+                        {
+                            name,
+                            brand, 
+                            model, 
+                            damages: selectedDamage,
+                            modified: firebase.firestore.Timestamp.now()
+                        })
+                    .then(() => {
+                        loader.classList.add('loader-hide')
+                        setModalStat('Successfully Updated')
+                        localStorage.removeItem('oldRepairState')
+                    })
                     .catch(err => {console.log(err)
-                        loader.classList.add('loader-hide')})
-                    setModalStat('Successfully Updated')
-                    localStorage.removeItem('oldRepairState')
-})
+                        loader.classList.add('loader-hide')
+                    }) 
+                })
+            })
              }).catch(err => {
                  setModalStat('An error Occured')
                  loader.classList.add('loader-hide')

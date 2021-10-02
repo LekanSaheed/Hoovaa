@@ -87,7 +87,7 @@ const history = useHistory()
                       <Box display='flex' justifyContent='space-between' flexDirection='column' padding='5px'>
                       <p className={classes.name}> {item.name}</p>
                      
-                      <p style={{fontSize: '11px', color: 'grey', marginTop: '15px'}}> <span>Brand: </span>{item.brand}</p>
+                      <p style={{fontSize: '11px', color: 'grey', marginTop: '15px'}}> <span>Brand: </span>{item.brand[0].value}</p>
                       </Box>
                      
                       
