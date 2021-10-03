@@ -35,6 +35,7 @@ export const defaultState = {
   tvBrands: tvBrands,
   gamingGadgetBrands: gamingGadgetBrands,
   cameraBrands: cameraBrands,
+  orders: [],
   selectedDevice: selectedDevice ? [selectedDevice] : [],
   newSelected: [],
   city: localStorage.getItem("city") ? localStorage.getItem("city") : "",
