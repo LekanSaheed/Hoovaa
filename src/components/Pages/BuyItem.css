@@ -34,8 +34,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.buy-icons{
+    font-size: 35px;
+    color: #7497ff
 }
 .flex-items-and-img{
     display: flex;

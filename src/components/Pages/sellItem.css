@@ -26,8 +26,10 @@
     border-radius: 9px;
     box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
     background-color: white;
-    font-size: 10px;
+    font-size: 12px;
    transition: .9s;
+   text-transform: uppercase;
+   font-weight: 600;
 }
 .sale-items:hover{
     background-color: whitesmoke;
@@ -39,7 +41,7 @@
 }
 
 .sale-icons {
-    font-size: 20px;
+    font-size: 35px;
     color: #7497ff;
 }
 .centered-text{

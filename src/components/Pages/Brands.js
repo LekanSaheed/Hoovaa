@@ -17,15 +17,12 @@ const Brands = ({brands, device}) => {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       if(/windows phone/i.test(userAgent)){
           setBrand('windows')
-          console.log('windows')
       }
       if(/android/i.test(userAgent)){
           setBrand('android')
-        console.log('android')
     }
     if(/iPad| iPhone/i.test(userAgent) && !window.MSStream){
         setBrand('apple')
-        console.log('ios')
     }
   }
   useEffect(() => {

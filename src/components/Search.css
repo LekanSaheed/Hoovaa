@@ -15,9 +15,13 @@
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
 @media(min-width:901px){
     .search-container{
         position: sticky;
        top: 100px;
     }
+    .whiteSearch{
+    background-color: white !important;
+}
 }

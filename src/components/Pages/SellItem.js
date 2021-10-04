@@ -84,7 +84,7 @@ const history = useHistory()
                         return(
                            <li key={index}> 
                            <Link to={url + '/' + item.text.toLowerCase().replace(/ /g, '-') + ' brands'.replace(/ /g, '-')} className='sale-items'>
-                                <span className='sale-icons'>{item.icon}</span>
+                                <span className='sale-icons buy-icons'>{item.icon}</span>
                                 <span>{item.text}</span>
                                 </Link>
                           </li>

@@ -57,6 +57,7 @@ const SwapGadget = () => {
       margin: "10px",
       textAlign: "center",
       cursor: "pointer",
+      borderRadius: '10px',
       [theme.breakpoints.up("767")]: {
         height: "150px",
       },
@@ -125,7 +126,7 @@ const SwapGadget = () => {
         <div className="blob" onClick={() => setModal(true)}>
           Swap
         </div>
-        <div className="sale-grid">
+        <div className="swap-grid">
           {React.Children.toArray(
             swapLinks.map((children) => {
               return (

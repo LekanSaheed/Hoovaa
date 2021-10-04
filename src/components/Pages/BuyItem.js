@@ -44,7 +44,7 @@ const allItems = data.map((item, index) => {
     return(
         <Link  key={index} style={{color: 'black'}} to={url + '/' + item.text.toLowerCase().replace(/ /g, '-') + '-brands'}>
         <div className='buy-node'>
-                <div className='sale-icons'>{item.icon}</div>
+                <div className='sale-icons buy-icons'>{item.icon}</div>
                 <div>{item.text}</div>
         </div>
         </Link>
@@ -69,7 +69,7 @@ const allItems = data.map((item, index) => {
            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
                
           <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%'}}> 
-          <div className="buy-text">Choose your Category of choice or search gadget</div>
+          <div className="buy-text">Choose your Category of choice or search</div>
          <div className='gt-con'>
          <div className='guarantee-text'>
           <span><GoCheck/></span>
@@ -92,7 +92,7 @@ const allItems = data.map((item, index) => {
          </div>
           </div>
         <div style={{width: '100%'}}> 
-        <Search/>
+        <Search search='whiteSearch'/>
         </div>
               <div className="buy-items">
                 
