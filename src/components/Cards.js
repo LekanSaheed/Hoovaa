@@ -14,8 +14,7 @@ const cardData = [
         titleText: 'Sell your device',
         subText: 'Sell your old phone',
         lastText: 'Get latest resale value for your device',
-        img: phone,
-        class: '',
+        class: 'handphone',
         variant: true,
         link: '/sell-item'
     },
@@ -31,9 +30,10 @@ const cardData = [
         titleText: 'Got a bad phone? ',
         subText: 'Repair it',
         lastText: 'Over 1000 personnel to help fix it',
-        class: 'handphone',
+        class: '',
         child: 'Repair Now',
-        link: '/repair-device'
+        link: '/repair-device',
+        img: phone
     },
     {
         titleText: 'Buy from us',
