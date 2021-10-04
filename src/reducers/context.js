@@ -81,7 +81,7 @@ const AppProvider = ({ children }) => {
   };
   const getOrders = () => {
     let data = [];
-    db.collection("orders").onSnapshot((querySnapshot) => {
+    db.collection("orders").orderBy('created', 'desc').onSnapshot((querySnapshot) => {
       data = [];
       querySnapshot.forEach((doc) => {
         data.push(doc.data());

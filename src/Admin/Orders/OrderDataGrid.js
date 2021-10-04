@@ -1,18 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { db } from "../../components/firebase";
 
 const OrderDataGrid = ({ orders }) => {
+  const [rows, setRows] = useState([])
   const columns = [
     {
       field: "id",
       headerName: "ID",
-      width: 150,
+      width: 100,
       editable: true,
     },
     {
       field: "created",
       headerName: "Date Created",
-      width: 150,
+      width: 100,
+      editable: true,
+    },
+    {
+      field: "time",
+      headerName: "Time",
+      width: 100,
       editable: true,
     },
     {
@@ -30,13 +38,13 @@ const OrderDataGrid = ({ orders }) => {
     {
       field: "price",
       headerName: "Price",
-      width: 150,
+      width: 100,
       editable: true,
     },
     {
       field: "quantity",
       headerName: "Quantity",
-      width: 150,
+      width: 50,
       editable: true,
     },
     {
@@ -45,6 +53,7 @@ const OrderDataGrid = ({ orders }) => {
       width: 150,
       editable: true,
     },
+    
   ];
   //   const rows = [
   //     {
@@ -57,23 +66,32 @@ const OrderDataGrid = ({ orders }) => {
   //     },
   //   ];
 
-  let rows = [];
-  for (var i = 0; i < orders.length; i++) {
+
+  React.useEffect(() => {
+   let dataRows = [];
+
     orders.forEach((item) => {
-      rows.push({
-        id: new Date().getTime().toString(),
+      
+      
+      dataRows.push({
+        id: item.created,
         created:
-          item.created.toDate().toDateString() +
-          " @ " +
-          item.created.toDate().toLocaleTimeString(),
-        // customerId: item.uid,
+          item.created.toDate().toDateString(),
+          time:  item.created.toDate().toLocaleTimeString(),
+         customerId: item.uid,
         //   goods: order.map(i => i)
+        customer:  JSON.stringify(db.collection('users').doc(item.uid).get().then(user => user.data().firstName))
       });
     });
-  }
+    setRows(dataRows)
+   
+  }, [orders])
+ 
+  
+  
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "500px", width: 'auto' }}>
       <DataGrid pageSize={5} checkboxSelection columns={columns} rows={rows} />
     </div>
   );

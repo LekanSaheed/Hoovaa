@@ -78,7 +78,7 @@ const Admin = () => {
         </div>
       </ul>
       <Switch>
-        <Box flex="2">
+        <Box flex="1">
           <Route path={`${path}/upload-used-phones`}>
             <AdminUpload
               tag="Upload used phones"

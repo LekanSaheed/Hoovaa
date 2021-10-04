@@ -1,25 +1,13 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link, } from "react-router-dom";
+import React, { Suspense, lazy} from "react";
 import Header from "./components/Header";
-import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
 import "./App.css";
-import BuyItem from "./components/Pages/BuyItem";
-import SellItem from "./components/Pages/SellItem";
-import SwapItem from "./components/Pages/SwapItem";
-import RepairDevice from "./components/Pages/RepairDevice";
-import Admin from "./Admin/Admin";
 import { GlobalShop } from "./components/Pages/Buy/CartContext";
 import StatusModal from "./components/StatusModal";
-import Login from "./Auth/Login";
-import Account from "./Auth/Account";
-import PrivateRoute from "./PrivateRoute";
 import { GlobalContext } from "./reducers/context";
 import LogOut from "./Auth/LogOut";
 import { stateChange } from "./components/firebase";
-import SignUp from "./Auth/SignUp";
-import Cart from "./components/Pages/Buy/Cart";
-import Footer from "./components/Footer";
 //import smoothscroll from 'smoothscroll-polyfill'
 import { db } from "./components/firebase";
 import SearchPage from "./components/SearchPage";
@@ -30,6 +18,20 @@ import { RiSurveyLine } from "react-icons/ri";
 import Error from "./components/Error";
 import Cities from "./components/Cities";
 import { Toaster } from "react-hot-toast";
+import Loading from "./components/Loading";
+
+const Admin = lazy(() => import( "./Admin/Admin"));
+const Login =  lazy(() => import("./Auth/Login"));
+const  SignUp = lazy(() => import( "./Auth/SignUp"));
+const  Home = lazy(() => import("./components/Home"));
+const  Account = lazy(() => import("./Auth/Account"));
+const BuyItem = lazy(() => import("./components/Pages/BuyItem"));
+const SellItem = lazy(() => import("./components/Pages/SellItem"));
+const SwapItem = lazy(() => import("./components/Pages/SwapItem"));
+const RepairDevice = lazy(() => import( "./components/Pages/RepairDevice"));
+const  Cart = lazy(() => import("./components/Pages/Buy/Cart"));
+const Footer = lazy(() => import('./components/Footer'))
+const PrivateRoute = lazy(() => import("./PrivateRoute"))
 
 const App = ({ hideLoader }) => {
   React.useEffect(() => {
@@ -76,6 +78,7 @@ const App = ({ hideLoader }) => {
         />
         <MobileNav />
         <Cities state={newState.isMainCity} />
+        <Suspense fallback={<Loading/>}>
         <Switch>
           <Route exact path="/">
             <Box
@@ -140,7 +143,8 @@ const App = ({ hideLoader }) => {
             <Error />
           </Route>
         </Switch>
-        <Footer />
+          <Footer />
+        </Suspense>
       </Router>
     </div>
   );
