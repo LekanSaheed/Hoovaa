@@ -1,35 +1,49 @@
 import toast from "react-hot-toast";
 
 export const cartReducer = (state, action) => {
-  if (action.type === "VIEW_DEVICE") {
+  localStorage.setItem("recent", JSON.stringify([state.recentlyViewed]));
+  if (action.type === "SET_RECENT") {
     action.payload.item.link = action.payload.link;
-    const selected = action.payload.item;
-    const find = state.recentlyViewed.some(
-      (i) => i.id === action.payload.item.id
-    );
-    const findItem = state.clickedDevice.some(
-      (i) => i.id === action.payload.item.id
-    );
-    if (!find) {
+    const id = action.payload.item.id;
+    const find =
+      state.recentlyViewed.length > 1 &&
+      state.recentlyViewed.some((i) => i.id === id);
+    console.log(find);
+    console.log("reacent", JSON.parse(localStorage.getItem("recent")));
+    if (find) {
+      return {
+        ...state,
+      };
+    } else {
       localStorage.setItem(
         "recent",
         JSON.stringify([...state.recentlyViewed, action.payload.item])
-      );
-      console.log(JSON.parse(localStorage.getItem("recent")));
-    }
-    if (!findItem) {
-      localStorage.setItem(
-        "selected",
-        JSON.stringify([...state.clickedDevice, selected])
       );
       return {
         ...state,
         recentlyViewed: [...state.recentlyViewed, action.payload.item],
       };
     }
-    return {
-      ...state,
-    };
+  }
+  if (action.type === "VIEW_DEVICE") {
+    action.payload.item.link = action.payload.link;
+    const findItem = state.clickedDevice.some(
+      (i) => i.id === action.payload.item.id
+    );
+    if (findItem) {
+      return {
+        ...state,
+      };
+    } else {
+      localStorage.setItem(
+        "selected",
+        JSON.stringify([...state.clickedDevice, action.payload.item])
+      );
+      return {
+        ...state,
+        clickedDevice: [...state.clickedDevice, action.payload.item],
+      };
+    }
   }
   if (action.type === "SET_TOTAL_AMOUNT") {
     localStorage.setItem("totalAmount", JSON.stringify(action.payload));

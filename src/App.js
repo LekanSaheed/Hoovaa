@@ -37,8 +37,8 @@ const Footer = lazy(() => import("./components/Footer"));
 
 const App = ({ hideLoader }) => {
   React.useEffect(() => {
-    localStorage.removeItem("selected");
-    localStorage.removeItem("recent");
+    // localStorage.removeItem("selected");
+    // localStorage.removeItem("recent");
     const unsubscribe = stateChange();
     return () => {
       unsubscribe();

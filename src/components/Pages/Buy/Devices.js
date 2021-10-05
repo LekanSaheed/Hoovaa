@@ -10,7 +10,7 @@ const Devices = ({ brand, category }) => {
   const newState = GlobalContext().state;
   const allGadgets = newState.allGadgets;
   const { path, url } = useRouteMatch();
-  const { viewDevice, state } = GlobalShop();
+  const { setRecent, viewDevice, state } = GlobalShop();
   const [loaded, setLoad] = useState(false);
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,7 +57,7 @@ const Devices = ({ brand, category }) => {
                   >
                     <div
                       className="grid-item-item"
-                      onClick={() =>
+                      onClick={() => {
                         viewDevice(
                           item,
                           `${
@@ -66,8 +66,17 @@ const Devices = ({ brand, category }) => {
                             item.id +
                             item.name.toLowerCase().trim().replace(/ /g, "-")
                           }`
-                        )
-                      }
+                        );
+                        setRecent(
+                          item,
+                          `${
+                            url +
+                            "/" +
+                            item.id +
+                            item.name.toLowerCase().trim().replace(/ /g, "-")
+                          }`
+                        );
+                      }}
                       onLoad={() => setLoad(true)}
                     >
                       <div className="grid-img">

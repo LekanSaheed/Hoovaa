@@ -24,7 +24,7 @@ const RecentlyViewed = () => {
           ? "Recently viewed Items will appear here"
           : recent.map((item, idx) => {
               return (
-                <Link to={item.link} key={idx}>
+                <Link to={item.link && item.link} key={idx}>
                   <Box
                     display="flex"
                     flexDirection="column"
