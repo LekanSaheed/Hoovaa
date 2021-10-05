@@ -10,8 +10,8 @@ const GlobalShop = () => {
 const ShopProvider = ({children}) => {
     const [state, dispatch] = useReducer(cartReducer, defaultStore)
 
-const viewDevice = (item) => {
-    dispatch({type: "VIEW_DEVICE", payload: item})
+const viewDevice = (item, link) => {
+    dispatch({type: "VIEW_DEVICE", payload: {item, link}})
 }
 const addToCart = (item) => {
     dispatch({type: "ADD_TO_CART", payload: item})

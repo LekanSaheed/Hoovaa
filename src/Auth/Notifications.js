@@ -13,7 +13,7 @@ const Notifications = () => {
         let arr = []
         db.collection('notifications')
         .where('customerId', '==', state.currentUser.uid)
-        .orderBy('created', 'asc')
+        .orderBy('created', 'desc')
         .onSnapshot(snapshot => {
             arr = []
             snapshot.forEach(doc => {
@@ -28,14 +28,16 @@ const Notifications = () => {
   
     
     return (
-        <div>
+        <div style={{minHeight: '300px'}}>
            
             <div className='centered-text'>Notifications</div>
-            <Box padding='10px'>{notifications && <div>{ notifications.filter(i => i.read === false).length === 0 ? 'No ' :
-             notifications.filter(i => i.read === false).length} new Notifications</div>}</Box>
+           {notifications.length > 0 && <Box padding='10px'>{notifications && <div>
+                { notifications.filter(i => i.read === false).length === 0 ? 'No' :
+             notifications.filter(i => i.read === false).length} New Notifications</div>}
+             </Box>}
              <Paper>
             {React.Children.toArray(
-                notifications.length < 1 ? <>'No notifications yet'</> : notifications.map(notif => {
+                notifications.length < 1 ? <Box padding='10px'>No notifications yet</Box> : notifications.map(notif => {
                     const notifAbout = <Box padding='10px'><div>{notif.message }</div>
     <div>{ notif.attachments.name && notif.attachments.name}</div>
     <div>{notif.attachments.model &&  notif.attachments.model}</div>

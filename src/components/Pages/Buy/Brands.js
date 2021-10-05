@@ -5,7 +5,7 @@ import {Link, Route, useHistory, useRouteMatch, Switch} from 'react-router-dom'
 import buy from '../../../assets/trolley.png'
 import AllBrands from '../AllBrands'
 import Devices from './Devices'
-
+import './Brands.css'
 const Brands = ({brands, device}) => {
     const {path, url} = useRouteMatch()
     const history = useHistory()
@@ -25,7 +25,8 @@ const Brands = ({brands, device}) => {
                 <span style={{marginLeft: '5px', fontSize: '11px'}} >Go Back</span>
                 </div>
                 </div>
-                <div className='centered-text' style={{marginTop: '15px'}}><img src={buy} alt='buy'/></div>
+                <div className='centered-text' style={{marginTop: '15px'}}>
+                    <img src={buy} alt='buy'/></div>
                 <div className="search-container brand-search">
                     <input type='search' placeholder={`${'Search ' + device + ' or brands'}`}/>
                     <div style={{fontSize: '10px', fontWeight: '600', color: 'white', padding: '12px', backgroundColor: '#7497ff'}}>Search</div>

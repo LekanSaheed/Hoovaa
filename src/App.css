@@ -72,7 +72,73 @@ body{
   }
   100%{transform: rotate(360deg);}
 }
+.centered-text{
+    text-align: center;
+    font-size: 18px;font-weight: 600;
+    margin: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.centered-text span{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.centered-text img{
+    height:100px;
+    width: 100px;
+}
 
+.balls{
+  display: flex;
+  gap: 15px;
+}
+.bal {
+  height: 13px;
+  width: 13px;
+  border-radius: 100px;
+  background-color: #7497ff;
+}
+.bal1{
+  background-color: deeppink;
+  animation: height .9s infinite;
+  transition: .2s;
+}
+.bal2{
+  background-color: orange;
+  animation: height2 .9s infinite;
+  animation-delay: .3s;
+}
+.bal3{
+   animation: height3 .9s infinite;
+   animation-delay: .6s;
+}
+
+@keyframes height{
+  0%{transform: scale(1);}
+  50%{transform: scale(1.5);}
+  100%{transform: scale(1);}
+
+}
+
+@keyframes height2{
+  0%{transform: scale(1);}
+  50%{transform: scale(1.5);}
+  100%{transform: scale(1);}
+
+}
+ @keyframes height3{
+   0%{transform: scale(1);}
+  50%{transform: scale(1.5);}
+  100%{transform: scale(1);}
+} 
+ @-webkit-keyframes height{
+   from{transform: scale(1.0)}
+  to{transform: scale(1.1)}
+} 
 .card-container::-webkit-scrollbar, .partner-container::-webkit-scrollbar{
     display: none;
  }

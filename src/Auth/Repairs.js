@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { db } from '../components/firebase'
 import { GlobalContext } from '../reducers/context'
-import {Box, makeStyles} from '@material-ui/core'
+import {Box, CircularProgress, makeStyles} from '@material-ui/core'
 import { Route, Switch, useRouteMatch, useHistory } from 'react-router-dom'
 import EditRepair from './EditRepair'
 
@@ -17,6 +17,7 @@ const {state} = GlobalContext()
             const arr = []
             
             snapshot.forEach(doc => {
+                 setLoad(true)
                 const {created, personnelReturned, 
                     personnelReceived,
                      name, damages, brand, isRepaired, model} = doc.data()
@@ -33,7 +34,7 @@ const {state} = GlobalContext()
                 })
             })
             setRepair(arr)
-            setLoad(true)
+           
            
         })
     },[state.currentUser.uid])
@@ -123,20 +124,26 @@ const {state} = GlobalContext()
             window.location.reload()
         })
     }
+     const userRef = db.collection('users').doc(state.currentUser.uid).collection('repairHistory')
+    if(!userRef){
+        return 'no data'
+    }
     return (
         <Switch>
             <Route path={path} exact>
-        <Box className={classes.root} padding='10px' display='flex' flexDirection='column'>
-            My Repair History
-            {loaded && 'loaded'}
-           { repair.length === 0 &&   <>
+        <Box 
+        className={classes.root}
+         padding='10px' display='flex' 
+         flexDirection='column' alignItems='center' justifyContent='center'>
+            {loaded ? 
+            repair.length === 0 &&   <>
            <div className='centered-text'>
                Your repair orders will appear here when you make a repair order</div>
-            </>}
-            {repair ? repair.map(item => {
+            </> : <CircularProgress/>}
+            {repair.length > 0 && repair.map(item => {
                 
                return(
-                <Box onLoad={() => setLoad(true)} className={classes.gadget} display='flex'
+                <Box className={classes.gadget} display='flex'
                  flexDirection='column' key={item.id} > 
                   <div className={classes.status}>
                       <Box display='flex' alignItems='center' gridGap='20px'
@@ -179,7 +186,7 @@ const {state} = GlobalContext()
             }
                 </Box>
                )
-            }) : 'Repair History Will appear here' }
+            })}
         </Box>
 
         </Route>

@@ -46,14 +46,14 @@ const Account = () => {
      
     ]
     const data = [
+         {text : "Notifications",
+    icon: <CgNotifications/>,
+    
+},
         {text : "Profile Setting",
         icon: <FiSettings/>,
 
     },
-    {text : "Notifications",
-    icon: <CgNotifications/>,
-    
-},
 {text : "Password Management",
 icon: <RiLockPasswordLine/>,
 

@@ -16,19 +16,7 @@ const Cart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  //     const getPosition = (position) => {
-  //         console.log('position',position.coords.longitude)
-  //     }
-
-  //    if(navigator.geolocation){
-  //     navigator.geolocation.getCurrentPosition(getPosition, (error)=> {
-  //         console.log('Error', error.message)
-  //     })
-
-  // }
-  // else{
-  //     console.log('cant get location')
-  // }
+ 
 
   const useStyle = makeStyles((theme) => ({
     root: {
@@ -245,7 +233,8 @@ const Cart = () => {
                   color="primary"
                   size="large"
                   endIcon={<CgShoppingCart />}
-                  className="order-summary checkout"
+                  className="checkout"
+                  fullWidth={true}
                 >
                   CHECKOUT
                 </Button>

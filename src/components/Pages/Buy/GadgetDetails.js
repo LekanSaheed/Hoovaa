@@ -3,7 +3,7 @@ import { GlobalShop } from "./CartContext";
 import { Box, CardMedia, makeStyles, Button } from "@material-ui/core";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { RiBuilding2Line, RiTruckLine } from "react-icons/ri";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { GlobalContext } from "../../../reducers/context";
 
@@ -12,6 +12,7 @@ const GadgetDetails = ({ device }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const { url } = useRouteMatch();
   const history = useHistory();
   const useStyle = makeStyles((theme) => ({
     container: {
@@ -69,119 +70,135 @@ const GadgetDetails = ({ device }) => {
   const classes = useStyle();
   const { state, addToCart } = GlobalShop();
   const { formatBytes } = GlobalContext();
+  console.log(url);
   return (
     <div className={classes.container}>
-      {device.map((item, idx) => {
-        return (
-          <Box
-            className={classes.root}
-            display="flex"
-            flexDirection="column"
-            key={idx}
-          >
-            <CardMedia
-              className={`MuiCardMedia-img ${classes.imgCon}`}
-              children={
-                <img
-                  className={classes.img}
-                  src={item.img}
-                  alt="productImage"
-                />
-              }
-            />
-            <Box
-              padding="15px"
-              display="flex"
-              flexDirection="column"
-              className={classes.detailsGroup}
-            >
+      {device
+        .filter((i) => i.link === url)
+        .map((item) => {
+          return (
+            <Box className={classes.root} display="flex" flexDirection="column">
+              <CardMedia
+                className={`MuiCardMedia-img ${classes.imgCon}`}
+                children={
+                  <img
+                    className={classes.img}
+                    src={item.img}
+                    alt="productImage"
+                  />
+                }
+              />
               <Box
+                padding="15px"
                 display="flex"
-                justifyContent="space-between"
                 flexDirection="column"
-                padding="5px"
+                className={classes.detailsGroup}
               >
-                <p className={classes.name}> {item.name}</p>
-
-                <p
-                  style={{ fontSize: "11px", color: "grey", marginTop: "15px" }}
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  flexDirection="column"
+                  padding="5px"
                 >
-                  {" "}
-                  <span>Brand: </span>
-                  {item.brand.value}
+                  <p className={classes.name}> {item.name}</p>
+
+                  <p
+                    style={{
+                      fontSize: "11px",
+                      color: "grey",
+                      marginTop: "15px",
+                    }}
+                  >
+                    {" "}
+                    <span>Brand: </span>
+                    {item.brand.value}
+                  </p>
+                </Box>
+
+                <p className={classes.boldText}>
+                  ${item.price.toLocaleString()}
                 </p>
+                <div className={`theme-text ${classes.borderedText}`}>
+                  AVAILABLE STORAGE:
+                  {formatBytes(parseInt(item.storage.value))}
+                </div>
+                <br />
+                <ul className={`bordered ${classes.desc}`}>
+                  <li className={classes.list}>
+                    <Box display="flex">
+                      <span
+                        style={{ marginRight: "5px" }}
+                        className="theme-text"
+                      >
+                        <span className={classes.icons}>
+                          <AiOutlineCreditCard />{" "}
+                        </span>
+                      </span>
+                      <span>Payment with card.</span>
+                    </Box>
+                  </li>
+                  <li className={classes.list}>
+                    <Box display="flex">
+                      <span
+                        style={{ marginRight: "5px" }}
+                        className="theme-text"
+                      >
+                        <span className={classes.icons}>
+                          <RiTruckLine />{" "}
+                        </span>
+                      </span>
+                      <span>Payment on delivery.</span>
+                    </Box>
+                  </li>
+                  <li className={classes.list}>
+                    <Box display="flex">
+                      <span
+                        style={{ marginRight: "5px" }}
+                        className="theme-text"
+                      >
+                        <span className={classes.icons}>
+                          <RiBuilding2Line />{" "}
+                        </span>
+                      </span>
+                      <span>Warehouse Pickup.</span>
+                    </Box>
+                  </li>
+                </ul>
+                <br />
+                <Box>
+                  <span className="theme-text">DEVICE DETAILS</span>
+                  <div>{item.desc && item.desc}</div>
+                </Box>
+                <br />
+                {state.cart.find((i) => i.id === item.id) ? (
+                  <Button
+                    onClick={() => history.push("/cart")}
+                    children={<>Item In Cart Go to cart</>}
+                    size="large"
+                    color="primary"
+                    variant="outlined"
+                  />
+                ) : (
+                  <Button
+                    size="large"
+                    variant="contained"
+                    color="primary"
+                    endIcon={<IoMdCart />}
+                    onClick={() => addToCart(item)}
+                  >
+                    Add To cart
+                  </Button>
+                )}
               </Box>
 
-              <p className={classes.boldText}>${item.price.toLocaleString()}</p>
-              <div className={`theme-text ${classes.borderedText}`}>
-                AVAILABLE STORAGE:
-                {formatBytes(parseInt(item.storage.value))}
-              </div>
-              <br />
-              <ul className={`bordered ${classes.desc}`}>
-                <li className={classes.list}>
-                  <Box display="flex">
-                    <span style={{ marginRight: "5px" }} className="theme-text">
-                      <span className={classes.icons}>
-                        <AiOutlineCreditCard />{" "}
-                      </span>
-                    </span>
-                    <span>Payment with card.</span>
-                  </Box>
-                </li>
-                <li className={classes.list}>
-                  <Box display="flex">
-                    <span style={{ marginRight: "5px" }} className="theme-text">
-                      <span className={classes.icons}>
-                        <RiTruckLine />{" "}
-                      </span>
-                    </span>
-                    <span>Payment on delivery.</span>
-                  </Box>
-                </li>
-                <li className={classes.list}>
-                  <Box display="flex">
-                    <span style={{ marginRight: "5px" }} className="theme-text">
-                      <span className={classes.icons}>
-                        <RiBuilding2Line />{" "}
-                      </span>
-                    </span>
-                    <span>Warehouse Pickup.</span>
-                  </Box>
-                </li>
-              </ul>
-              <br />
-              <span className="theme-text">DEVICE DETAILS</span>
-              <br />
-              {state.cart.find((i) => i.id === item.id) ? (
-                <Button
-                  onClick={() => history.push("/cart")}
-                  children={<>Item In Cart Go to cart</>}
-                  size="large"
-                  color="primary"
-                  variant="outlined"
-                />
-              ) : (
-                <Button
-                  size="large"
-                  variant="contained"
-                  color="primary"
-                  endIcon={<IoMdCart />}
-                  onClick={() => addToCart(item)}
-                >
-                  Add To cart
-                </Button>
-              )}
-            </Box>
-
-            {/* {state.cart.some(i => i === item) ? <>
+              {/* {state.cart.some(i => i === item) ? <>
                         <Button className={classes.contBtn} onClick={() => increment(item)}><AiFillPlusCircle/></Button>
                        {item.quantity}
                        <Button className={classes.contBtn} children={<AiFillMinusCircle/>} onClick={() => decrement(item)}/>
                        </> : } */}
-          </Box>
-        );
-      })}
+            </Box>
+          );
+        })}
     </div>
   );
 };

@@ -51,13 +51,23 @@ const Devices = ({ brand, category }) => {
                       url +
                       "/" +
                       item.id +
-                      item.name.toLowerCase().replace(/ /g, "=?")
+                      item.name.toLowerCase().trim().replace(/ /g, "-")
                     }`}
                     key={index}
                   >
                     <div
                       className="grid-item-item"
-                      onClick={() => viewDevice(item)}
+                      onClick={() =>
+                        viewDevice(
+                          item,
+                          `${
+                            url +
+                            "/" +
+                            item.id +
+                            item.name.toLowerCase().trim().replace(/ /g, "-")
+                          }`
+                        )
+                      }
                       onLoad={() => setLoad(true)}
                     >
                       <div className="grid-img">
