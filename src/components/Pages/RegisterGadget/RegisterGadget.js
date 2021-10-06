@@ -9,7 +9,7 @@ import {
   Dialog,
   DialogContent,
 } from "@material-ui/core";
-import { db } from "../../firebase";
+import { db, firebase } from "../../firebase";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router";
 import { GlobalContext } from "../../../reducers/context";
@@ -54,6 +54,14 @@ const RegisterGadget = () => {
         brand,
         price,
         code,
+        userId: state.currentUser.uid,
+        created: firebase.firestore.Timestamp.now(),
+      })
+      .then(() => {
+        const userDb = db.collection("users").doc(state.currentUser.uid);
+        userDb.update({
+          gadgetCode: code,
+        });
       })
       .then(() => {
         setModal(true);

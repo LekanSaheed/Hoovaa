@@ -46,7 +46,7 @@ const SalesComponent = () => {
       <Link to={item.to}>
         <div key={index} className="sale-item">
           <p className="sale-icon">
-            <img src={item.icon} alt={item.text.toUppercase().slice(0, 1)} />
+            <img src={item.icon} alt={item.info.toUpperCase().slice(0, 1)} />
           </p>
           <p>{item.info}</p>
         </div>
