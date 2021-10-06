@@ -22,7 +22,7 @@ import Loading from "./components/Loading";
 import "./components/Pages/subPages/Devices.css";
 import "./components/Pages/PhoneBrands.css";
 import PrivateRoute from "./PrivateRoute";
-
+import RegisterGadget from "./components/Pages/RegisterGadget/RegisterGadget";
 const Admin = lazy(() => import("./Admin/Admin"));
 const Login = lazy(() => import("./Auth/Login"));
 const SignUp = lazy(() => import("./Auth/SignUp"));
@@ -120,6 +120,9 @@ const App = ({ hideLoader }) => {
             </Route>
             <Route path="/repair-device">
               <RepairDevice />
+            </Route>
+            <Route path="/register-gadget">
+              <RegisterGadget />
             </Route>
             <Route path="/admin">
               <Admin />
