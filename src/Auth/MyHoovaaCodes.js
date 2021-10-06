@@ -15,7 +15,7 @@ const MyHoovaaCodes = () => {
   const { path, url } = useRouteMatch();
   return (
     <Switch>
-      <Route path={path}></Route>
+      <Route exact path={path}></Route>
       <div className="centered-text">
         You can check codes for all your hoovaa actions here
       </div>
