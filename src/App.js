@@ -23,11 +23,14 @@ import "./components/Pages/subPages/Devices.css";
 import "./components/Pages/PhoneBrands.css";
 import PrivateRoute from "./PrivateRoute";
 import RegisterGadget from "./components/Pages/RegisterGadget/RegisterGadget";
+import Home from "./components/Home";
+import Account from "./Auth/Account";
+import AllCities from "./components/AllCities";
+
 const Admin = lazy(() => import("./Admin/Admin"));
 const Login = lazy(() => import("./Auth/Login"));
 const SignUp = lazy(() => import("./Auth/SignUp"));
-const Home = lazy(() => import("./components/Home"));
-const Account = lazy(() => import("./Auth/Account"));
+
 const BuyItem = lazy(() => import("./components/Pages/BuyItem"));
 const SellItem = lazy(() => import("./components/Pages/SellItem"));
 const SwapItem = lazy(() => import("./components/Pages/SwapItem"));
@@ -147,6 +150,9 @@ const App = ({ hideLoader }) => {
               isUser={!newState.isUser}
               component={SignUp}
             />
+            <Route path="/all-cities">
+              <AllCities />
+            </Route>
             <Route path="/*">
               <Error />
             </Route>

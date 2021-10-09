@@ -53,6 +53,7 @@ export const defaultState = {
   city: localStorage.getItem("city") ? localStorage.getItem("city") : "",
   isCity: localStorage.getItem("city") ? false : true,
   isMainCity: false,
+  allCities: ["Agege", "Shomlu", "Iyana Ipaja"],
   currentUser: localCurrentUser ? JSON.parse(localCurrentUser) : {},
   isUser: localCurrentUser ? true : false,
   searchResult: sessionSR ? JSON.parse(sessionSR) : [],

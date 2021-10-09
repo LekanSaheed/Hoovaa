@@ -15,16 +15,17 @@ const MyHoovaaCodes = () => {
   const { path, url } = useRouteMatch();
   return (
     <Switch>
-      <Route path={path}></Route>
-      <div className="centered-text">
-        You can check codes for all your hoovaa actions here
-      </div>
-      <Link to={url + "/registered-gadgets-code"}>
-        Registered Gadget(s) code(s)
-        <br />
-        {code}
-      </Link>
-      <Route path={path + "/registered-gadgets-code"}></Route>
+      <Route exact path={path}>
+        <div className="centered-text">
+          You can check codes for all your hoovaa actions here
+        </div>
+        <Link to={url + "/registered-gadgets-code"}>
+          Registered Gadget(s) code(s)
+          <br />
+          {code}
+        </Link>
+        <Route path={path + "/registered-gadgets-code"}></Route>
+      </Route>
     </Switch>
   );
 };

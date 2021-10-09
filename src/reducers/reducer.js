@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const reducer = (state, action) => {
   if (action.type === "SET_PHONES") {
     return {
@@ -31,10 +33,21 @@ const reducer = (state, action) => {
       selectedDevice: [action.payload],
     };
   }
-
+  if (action.type === "SET_ALL_CITY") {
+    return {
+      ...state,
+      allCities: action.payload,
+    };
+  }
+  if (action.type === "CLOSE_CITY") {
+    return {
+      ...state,
+      isMainCity: false,
+    };
+  }
   if (action.type === "SET_CITY") {
     localStorage.setItem("city", action.payload);
-
+    toast.success("Set Successfully");
     return {
       ...state,
       isCity: false,

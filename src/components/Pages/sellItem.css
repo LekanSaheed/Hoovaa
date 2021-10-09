@@ -1,59 +1,59 @@
-.sell-items-container ul{
-    display: flex;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-    flex-basis: 100%;
-    justify-content: center;
+.sell-items-container ul {
+  display: flex;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  justify-content: center;
 }
-.sell-items-container ul li a{
-    color: black;
+.sell-items-container ul li a {
+  color: rgb(102, 94, 94);
 }
-.sell-items-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
+.sell-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
 }
-.sale-items{
-    margin: 10px;
-    padding: 15px;
-    padding-left: 18px;
-    padding-right: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    border-radius: 9px;
-    box-shadow:0 0 8px 0 rgb(0 0 0 / 14%);
-    background-color: white;
-    font-size: 12px;
-   transition: .9s;
-   text-transform: uppercase;
-   font-weight: 600;
+.sale-items {
+  margin: 10px;
+  padding: 15px;
+  padding-left: 18px;
+  padding-right: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  border-radius: 9px;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 14%);
+  background-color: white;
+  font-size: 12px;
+  transition: 0.9s;
+  text-transform: uppercase;
+  font-weight: 600;
 }
-.sale-items:hover{
-    background-color: whitesmoke;
-    transition: .5s;
-    animation: blob 12s infinite;
+.sale-items:hover {
+  background-color: whitesmoke;
+  transition: 0.5s;
+  animation: blob 12s infinite;
 }
-.sale-items a{
-    color: black;
+.sale-items a {
+  color: rgb(102, 94, 94);
 }
 
 .sale-icons {
-    font-size: 35px;
-    color: #7497ff;
+  font-size: 35px;
+  color: #7497ff;
 }
 
-.sell-page-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fafafa;
-    padding-bottom: 50px;
+.sell-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafafa;
+  padding-bottom: 50px;
 }
-@media(max-width: 300px){
-    .sell-page-container{
-        font-size: 11px;
-    }
+@media (max-width: 300px) {
+  .sell-page-container {
+    font-size: 11px;
+  }
 }

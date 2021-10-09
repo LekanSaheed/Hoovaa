@@ -81,14 +81,16 @@ const AppProvider = ({ children }) => {
   };
   const getOrders = () => {
     let data = [];
-    db.collection("orders").orderBy('created', 'desc').onSnapshot((querySnapshot) => {
-      data = [];
-      querySnapshot.forEach((doc) => {
-        data.push(doc.data());
-        console.log(doc.data());
-        dispatch({ type: "SET_ORDERS", payload: data });
+    db.collection("orders")
+      .orderBy("created", "desc")
+      .onSnapshot((querySnapshot) => {
+        data = [];
+        querySnapshot.forEach((doc) => {
+          data.push(doc.data());
+          console.log(doc.data());
+          dispatch({ type: "SET_ORDERS", payload: data });
+        });
       });
-    });
   };
   useEffect(() => {
     getRepairData();
@@ -149,6 +151,9 @@ const AppProvider = ({ children }) => {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
   };
 
+  const closeCity = () => {
+    dispatch({ type: "CLOSE_CITY" });
+  };
   return (
     <AppContext.Provider
       value={{
@@ -165,6 +170,7 @@ const AppProvider = ({ children }) => {
         close,
         cityStat,
         formatBytes,
+        closeCity,
       }}
     >
       {children}

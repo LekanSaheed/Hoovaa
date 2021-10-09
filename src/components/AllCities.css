@@ -1,0 +1,12 @@
+.allCityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.cityList {
+  cursor: pointer;
+  border-bottom: solid 1px #efefef;
+  padding: 13px;
+  font-size: 13px;
+}
