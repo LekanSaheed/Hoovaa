@@ -24,8 +24,8 @@ const MyHoovaaCodes = () => {
           <br />
           {code}
         </Link>
-        <Route path={path + "/registered-gadgets-code"}></Route>
       </Route>
+      <Route path={path + "/registered-gadgets-code"}></Route>
     </Switch>
   );
 };

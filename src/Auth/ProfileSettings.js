@@ -2,7 +2,6 @@ import {
   Button,
   Dialog,
   DialogContent,
-  Input,
   Modal,
   TextField,
 } from "@material-ui/core";
