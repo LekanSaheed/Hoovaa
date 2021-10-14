@@ -13,7 +13,7 @@ const Cities = ({ state }) => {
   const [cities, setCities] = React.useState([
     { lgas: ["ghana", "jamaica", "Araromi", "Agege"] },
   ]);
-  const [loading, setLoading] = React.useState(!true);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const loader = document.querySelector(".loader-container");

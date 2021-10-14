@@ -79,6 +79,7 @@ const AppProvider = ({ children }) => {
         });
       });
   };
+
   const getOrders = () => {
     let data = [];
     db.collection("orders")
@@ -87,7 +88,6 @@ const AppProvider = ({ children }) => {
         data = [];
         querySnapshot.forEach((doc) => {
           data.push(doc.data());
-          console.log(doc.data());
           dispatch({ type: "SET_ORDERS", payload: data });
         });
       });

@@ -39,14 +39,17 @@ const RegisterGadget = () => {
     const docRef = dbRef.where("identifier", "==", identifier);
 
     const isSnap = docRef.get().then((snaps) => {
-      if (snaps.exists) {
-        console.log("exists");
-        return true;
-      }
-      if (!snaps.exists) {
-        console.log("Not exist");
-        return false;
-      }
+      snaps.forEach((doc) => {
+        if (doc.exists) {
+          console.log("true");
+          return true;
+        }
+      });
+      snaps.forEach((doc) => {
+        if (!doc.exists) {
+          console.log("Not exust");
+        }
+      });
     });
     return isSnap;
   };
@@ -275,7 +278,7 @@ const RegisterGadget = () => {
           variant="outlined"
           color="primary"
           size="large"
-          onClick={registerGadget}
+          onClick={findImei}
         >
           Register
         </Button>
